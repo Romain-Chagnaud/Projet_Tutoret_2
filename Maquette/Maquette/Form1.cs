@@ -87,19 +87,16 @@ namespace Maquette
             if (listBox2.SelectedIndex != -1)
             {
                 DateTime date = DateTime.Now;
-                MessageBox.Show(date.ToString("d"));
-                DateTime newDate = date.AddDays
 
                 ABONNÉS a = (ABONNÉS)listBox3.Items[0];
                 ALBUMS al = (ALBUMS)listBox2.SelectedItem;
-                MessageBox.Show(a.ToString());
-                MessageBox.Show(al.ToString());
+                DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
 
                 EMPRUNTER em = new EMPRUNTER();
                 em.CODE_ABONNÉ = a.CODE_ABONNÉ;
                 em.CODE_ALBUM = al.CODE_ALBUM;
                 em.DATE_EMPRUNT = date;
-                em.DATE_RETOUR_ATTENDUE = date.AddYears(1);
+                em.DATE_RETOUR_ATTENDUE = newDate;
                 MessageBox.Show(em.ToString());
 
                 musique.EMPRUNTER.Add(em);
