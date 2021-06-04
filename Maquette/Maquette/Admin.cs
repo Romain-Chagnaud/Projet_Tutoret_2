@@ -53,7 +53,7 @@ namespace Maquette
             }
 
             var alb = (from al in musique.ALBUMS
-                       where al.CODE_ALBUM == 27
+                       where al.TITRE_ALBUM == "Wolf: 22 Lieder"
                        select al);
 
             foreach (ALBUMS a in alb)
@@ -61,7 +61,7 @@ namespace Maquette
                 em.ALBUMS = a;
             }
 
-            em.DATE_EMPRUNT = new DateTime(2000, 1, 28);
+            em.DATE_EMPRUNT = new DateTime(2021, 1, 28);
             em.DATE_RETOUR_ATTENDUE = new DateTime(2021, 6, 3);
 
             musique.EMPRUNTER.Add(em);
@@ -106,7 +106,7 @@ namespace Maquette
                     bool estActif = false;
 
                     while (compteur < emprunts.Count && !estActif)
-                    {                        
+                    {
                         EMPRUNTER emp = emprunts[compteur];
                         DateTime date = emp.DATE_EMPRUNT.AddYears(1);
 
@@ -116,13 +116,53 @@ namespace Maquette
                         }
                         compteur++;
                     }
-                    
+
                     if (!estActif)
                     {
                         listBox3.Items.Add(abo);
                     }
                 }
 
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var albums = (from al in musique.ALBUMS
+                          select al).ToList();
+
+            foreach (ALBUMS al in albums)
+            {
+                var emprunts = (from em in musique.EMPRUNTER
+                                where em.CODE_ALBUM == al.CODE_ALBUM
+                                select em).ToList();
+
+                if (emprunts.Count == 0)
+                {
+                    listBox4.Items.Add(al);
+                }
+                else
+                {
+                    int compteur = 0;
+                    bool aEteEmprunte = false;
+
+                    while (compteur < emprunts.Count && !aEteEmprunte)
+                    {
+                        EMPRUNTER emp = emprunts[compteur];
+                        DateTime date = emp.DATE_EMPRUNT.AddYears(1);
+
+                        if (date.CompareTo(DateTime.Now) > 0)
+                        {
+                            aEteEmprunte = true;
+                        }
+                        compteur++;
+                    }
+
+                    if (!aEteEmprunte)
+                    {
+                        listBox4.Items.Add(al);
+                    }
+                }
             }
         }
     }
