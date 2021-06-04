@@ -10,7 +10,7 @@ namespace Maquette
     {
         public override string ToString()
         {
-            return TITRE_ALBUM + ", " + ANNÉE_ALBUM + ", édition " + EDITEURS;
+            return TITRE_ALBUM.Trim() + ", " + ANNÉE_ALBUM + ", édition " + EDITEURS;
         }
     }
 }
