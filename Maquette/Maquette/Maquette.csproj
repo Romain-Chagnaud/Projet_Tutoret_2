@@ -97,11 +97,15 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyEmprunter.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Abonné.resx">
+      <DependentUpon>Abonné.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
