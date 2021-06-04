@@ -37,11 +37,12 @@ namespace Maquette
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(759, 27);
+            this.textBox1.Location = new System.Drawing.Point(967, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -49,7 +50,7 @@ namespace Maquette
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(759, 65);
+            this.textBox2.Location = new System.Drawing.Point(967, 38);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
@@ -94,7 +95,7 @@ namespace Maquette
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(611, 253);
+            this.button3.Location = new System.Drawing.Point(611, 233);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 7;
@@ -112,11 +113,20 @@ namespace Maquette
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(729, 222);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(328, 199);
+            this.listBox3.TabIndex = 9;
+            // 
             // Abonné
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 450);
+            this.ClientSize = new System.Drawing.Size(1069, 450);
+            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.listBox2);
@@ -142,5 +152,6 @@ namespace Maquette
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }
