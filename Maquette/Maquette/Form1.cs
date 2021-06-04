@@ -43,8 +43,66 @@ namespace Maquette
                 a.LOGIN_ABONNÉ = login.Text;
                 a.PASSWORD_ABONNÉ = mdp.Text;
 
-                listBox1.Items.Add(a);
+                Abonne_Load();
                 musique.ABONNÉS.Add(a);
+                musique.SaveChanges();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (log2.Text != "" && mdp2.Text != "")
+            {
+                var abo = (from a in musique.ABONNÉS
+                           where a.LOGIN_ABONNÉ == log2.Text && a.PASSWORD_ABONNÉ == mdp2.Text
+                           select a).ToList();
+
+                if (abo.Count == 1)
+                {
+                    MessageBox.Show("Bienvenue, " + abo[0]);
+                    listBox3.Items.Add(abo[0]);
+                    Albums_Load();
+
+                }
+                else
+                {
+                    MessageBox.Show("T'es qui toi ? ");
+                }
+            }
+        }
+
+        private void Albums_Load()
+        {
+            var albums = (from al in musique.ALBUMS
+                          select al).ToList();
+
+            foreach (ALBUMS al in albums)
+            {
+                listBox2.Items.Add(al);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex != -1)
+            {
+                DateTime date = DateTime.Now;
+                MessageBox.Show(date.ToString("d"));
+                DateTime newDate = date.AddDays
+
+                ABONNÉS a = (ABONNÉS)listBox3.Items[0];
+                ALBUMS al = (ALBUMS)listBox2.SelectedItem;
+                MessageBox.Show(a.ToString());
+                MessageBox.Show(al.ToString());
+
+                EMPRUNTER em = new EMPRUNTER();
+                em.CODE_ABONNÉ = a.CODE_ABONNÉ;
+                em.CODE_ALBUM = al.CODE_ALBUM;
+                em.DATE_EMPRUNT = date;
+                em.DATE_RETOUR_ATTENDUE = date.AddYears(1);
+                MessageBox.Show(em.ToString());
+
+                musique.EMPRUNTER.Add(em);
                 musique.SaveChanges();
             }
         }
