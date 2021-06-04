@@ -38,14 +38,11 @@ namespace Maquette
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // nom
             // 
-            this.nom.Location = new System.Drawing.Point(21, 46);
+            this.nom.Location = new System.Drawing.Point(21, 60);
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(100, 20);
             this.nom.TabIndex = 0;
@@ -73,14 +70,14 @@ namespace Maquette
             // 
             // log2
             // 
-            this.log2.Location = new System.Drawing.Point(506, 23);
+            this.log2.Location = new System.Drawing.Point(278, 60);
             this.log2.Name = "log2";
             this.log2.Size = new System.Drawing.Size(100, 20);
             this.log2.TabIndex = 4;
             // 
             // mdp2
             // 
-            this.mdp2.Location = new System.Drawing.Point(506, 49);
+            this.mdp2.Location = new System.Drawing.Point(278, 86);
             this.mdp2.Name = "mdp2";
             this.mdp2.PasswordChar = '*';
             this.mdp2.Size = new System.Drawing.Size(100, 20);
@@ -89,7 +86,7 @@ namespace Maquette
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(477, 238);
+            this.listBox1.Location = new System.Drawing.Point(278, 162);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(235, 186);
             this.listBox1.TabIndex = 6;
@@ -106,7 +103,7 @@ namespace Maquette
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(517, 75);
+            this.button2.Location = new System.Drawing.Point(278, 112);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
@@ -114,41 +111,11 @@ namespace Maquette
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.HorizontalScrollbar = true;
-            this.listBox2.Location = new System.Drawing.Point(718, 23);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(450, 407);
-            this.listBox2.TabIndex = 9;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1196, 23);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(466, 113);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(170, 69);
-            this.listBox3.TabIndex = 11;
-            // 
-            // Form1
+            // Connexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1415, 447);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.listBox2);
+            this.ClientSize = new System.Drawing.Size(669, 447);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
@@ -158,7 +125,7 @@ namespace Maquette
             this.Controls.Add(this.login);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
-            this.Name = "Form1";
+            this.Name = "Connexion";
             this.Text = "  ";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,9 +143,6 @@ namespace Maquette
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox3;
     }
 }
 

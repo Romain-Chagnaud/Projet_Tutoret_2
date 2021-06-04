@@ -13,6 +13,7 @@ namespace Maquette
     public partial class Connexion : Form
     {
         MusiqueEntities musique;
+        ABONNÉS abonnéConnecté;
 
         public Connexion()
         {
@@ -59,48 +60,15 @@ namespace Maquette
 
                 if (abo.Count == 1)
                 {
-                    MessageBox.Show("Bienvenue, " + abo[0]);
-                    listBox3.Items.Add(abo[0]);
-                    Albums_Load();
-
+                    MessageBox.Show("Bienvenue, " + abo[0]);                    
+                    abonnéConnecté=abo[0];
+                    Abonné abonne = new Abonné(musique, abonnéConnecté);
+                    abonne.ShowDialog();
                 }
                 else
                 {
                     MessageBox.Show("T'es qui toi ? ");
                 }
-            }
-        }
-
-        private void Albums_Load()
-        {
-            var albums = (from al in musique.ALBUMS
-                          select al).ToList();
-
-            foreach (ALBUMS al in albums)
-            {
-                listBox2.Items.Add(al);
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (listBox2.SelectedIndex != -1)
-            {
-                DateTime date = DateTime.Now;
-
-                ABONNÉS a = (ABONNÉS)listBox3.Items[0];
-                ALBUMS al = (ALBUMS)listBox2.SelectedItem;
-                DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
-
-                EMPRUNTER em = new EMPRUNTER();
-                em.CODE_ABONNÉ = a.CODE_ABONNÉ;
-                em.CODE_ALBUM = al.CODE_ALBUM;
-                em.DATE_EMPRUNT = date;
-                em.DATE_RETOUR_ATTENDUE = newDate;
-                MessageBox.Show(em.ToString());
-
-                musique.EMPRUNTER.Add(em);
-                musique.SaveChanges();
             }
         }
     }
