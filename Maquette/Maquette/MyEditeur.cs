@@ -10,7 +10,7 @@ namespace Maquette
     {
         public override string ToString()
         {
-            return NOM_EDITEUR;
+            return NOM_EDITEUR.Trim();
         }
     }
 }

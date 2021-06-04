@@ -25,6 +25,7 @@ namespace Maquette
 
         private void Abonne_Load()
         {
+            listBox1.Items.Clear();
             var abonnes = (from a in musique.ABONNÉS
                            select a).ToList();
 
@@ -60,10 +61,18 @@ namespace Maquette
 
                 if (abo.Count == 1)
                 {
-                    MessageBox.Show("Bienvenue, " + abo[0]);                    
-                    abonnéConnecté=abo[0];
-                    Abonné abonne = new Abonné(musique, abonnéConnecté);
-                    abonne.ShowDialog();
+                    MessageBox.Show("Bienvenue, " + abo[0]);
+                    abonnéConnecté = abo[0];
+                    if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
+                    {
+                        Admin admin = new Admin(musique);
+                        admin.ShowDialog();
+                    }
+                    else
+                    {
+                        Abonné abonne = new Abonné(musique, abonnéConnecté);
+                        abonne.ShowDialog();
+                    }
                 }
                 else
                 {
