@@ -10,7 +10,7 @@ namespace Maquette
     {
         public override string ToString()
         {
-            return NOM_ABONNÉ + " " + PRÉNOM_ABONNÉ;
+            return NOM_ABONNÉ.Trim() + " " + PRÉNOM_ABONNÉ.Trim();
         }
     }
 }
