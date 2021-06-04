@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Maquette
 {
-    public partial class Form1 : Form
+    public partial class Connexion : Form
     {
         MusiqueEntities musique;
 
-        public Form1()
+        public Connexion()
         {
             InitializeComponent();
 
