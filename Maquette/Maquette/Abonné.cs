@@ -12,70 +12,74 @@ namespace Maquette
 {
     public partial class Abonné : Form
     {
-            MusiqueEntities musique;
-            ABONNÉS abonne;
-            public Abonné(MusiqueEntities m, ABONNÉS ab)
+        MusiqueEntities musique;
+        ABONNÉS abonne;
+        public Abonné(MusiqueEntities m, ABONNÉS ab)
+        {
+            InitializeComponent();
+            musique = m;
+            abonne = ab;
+            textBox1.Text = ab.LOGIN_ABONNÉ.Trim();
+            textBox2.Text = ab.PASSWORD_ABONNÉ;
+            afficherEmprunts();
+            afficherAlbums();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
+            DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
+            if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
             {
-                InitializeComponent();
-                musique = m;
-                abonne = ab;
-                textBox1.Text = ab.LOGIN_ABONNÉ.Trim();
-                textBox2.Text = ab.PASSWORD_ABONNÉ;
+                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                musique.SaveChanges();
                 afficherEmprunts();
-                afficherAlbums();
             }
+        }
 
-            private void button1_Click(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
             {
                 EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
-                DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
-                if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
-                {
-                    emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    musique.SaveChanges();
-                    afficherEmprunts();
-                }
-            }
-
-            private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
-                textBox3.Text = emprunt.ALBUMS.GENRES.DÉLAI + " ";
                 DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
                 if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) != 0)
                 {
                     button1.Enabled = false;
-                } else
+                }
+                else
                 {
                     button1.Enabled = true;
                 }
             }
+        }
 
-            private void afficherEmprunts()
+        private void afficherEmprunts()
+        {
+            listBox1.Items.Clear();
+            var emprunts = from e in musique.EMPRUNTER
+                           where e.CODE_ABONNÉ == abonne.CODE_ABONNÉ
+                           && e.DATE_RETOUR == null
+                           select e;
+            foreach (var e in emprunts)
             {
-                listBox1.Items.Clear();
-                var emprunts = from e in musique.EMPRUNTER
-                               where e.CODE_ABONNÉ == abonne.CODE_ABONNÉ
-                               select e;
-                foreach (var e in emprunts)
+                listBox1.Items.Add(e);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (EMPRUNTER emprunt in listBox1.Items)
+            {
+                DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
+                if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
                 {
-                    listBox1.Items.Add(e);
+                    emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
                 }
             }
-
-            private void button2_Click(object sender, EventArgs e)
-            {
-                foreach (EMPRUNTER emprunt in listBox1.Items)
-                {
-                    DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
-                    if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
-                    {
-                        emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    }
-                }
-                musique.SaveChanges();
-                afficherEmprunts();
-            }
+            musique.SaveChanges();
+            afficherEmprunts();
+        }
 
         private void afficherAlbums()
         {
@@ -83,7 +87,13 @@ namespace Maquette
             var albums = (from al in musique.ALBUMS
                           select al).ToList();
 
-            foreach (ALBUMS al in albums)
+            var emprunté = (from al1 in musique.ALBUMS
+                            join e1 in musique.EMPRUNTER
+                            on al1.CODE_ALBUM equals e1.CODE_ALBUM
+                            where e1.DATE_RETOUR == null
+                            select al1).ToList();
+
+            foreach (ALBUMS al in albums.Except(emprunté))
             {
                 listBox2.Items.Add(al);
             }
@@ -102,12 +112,26 @@ namespace Maquette
                 em.CODE_ALBUM = al.CODE_ALBUM;
                 em.DATE_EMPRUNT = date;
                 em.DATE_RETOUR_ATTENDUE = newDate;
-                MessageBox.Show(em.ToString());
-
                 musique.EMPRUNTER.Add(em);
                 musique.SaveChanges();
+                MessageBox.Show(em.ToString());
+                afficherAlbums();
+                afficherEmprunts();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                DateTime date = DateTime.Now;
+                EMPRUNTER em = (EMPRUNTER)listBox1.SelectedItem;
+                em.DATE_RETOUR = DateTime.Now;
+                musique.SaveChanges();
+                afficherAlbums();
+                afficherEmprunts();
+            }
+        }
+
     }
-    
 }

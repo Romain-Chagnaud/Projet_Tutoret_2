@@ -42,28 +42,28 @@ namespace Maquette
             // 
             // nom
             // 
-            this.nom.Location = new System.Drawing.Point(21, 60);
+            this.nom.Location = new System.Drawing.Point(33, 60);
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(100, 20);
             this.nom.TabIndex = 0;
             // 
             // prenom
             // 
-            this.prenom.Location = new System.Drawing.Point(21, 93);
+            this.prenom.Location = new System.Drawing.Point(33, 98);
             this.prenom.Name = "prenom";
             this.prenom.Size = new System.Drawing.Size(100, 20);
             this.prenom.TabIndex = 1;
             // 
             // login
             // 
-            this.login.Location = new System.Drawing.Point(21, 216);
+            this.login.Location = new System.Drawing.Point(33, 180);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(100, 20);
             this.login.TabIndex = 2;
             // 
             // mdp
             // 
-            this.mdp.Location = new System.Drawing.Point(21, 242);
+            this.mdp.Location = new System.Drawing.Point(33, 216);
             this.mdp.Name = "mdp";
             this.mdp.Size = new System.Drawing.Size(100, 20);
             this.mdp.TabIndex = 3;
@@ -93,11 +93,11 @@ namespace Maquette
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(63, 311);
+            this.button1.Location = new System.Drawing.Point(33, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
+            this.button1.Text = "S\'inscrire";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -105,9 +105,9 @@ namespace Maquette
             // 
             this.button2.Location = new System.Drawing.Point(278, 112);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
+            this.button2.Text = "Se connecter";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

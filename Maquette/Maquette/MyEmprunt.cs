@@ -10,7 +10,7 @@ namespace Maquette
     {
         public override string ToString()
         {
-            return "Emprunté le " + DATE_EMPRUNT +"\n À remettre le " + DATE_RETOUR_ATTENDUE;
+            return ALBUMS.TITRE_ALBUM +": emprunté le " + DATE_EMPRUNT +"\n À remettre le " + DATE_RETOUR_ATTENDUE;
         }
     }
 }
