@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -29,9 +30,7 @@ namespace Maquette
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            var emprunts = (from em in musique.EMPRUNTER
-                            where em.DATE_RETOUR == null
-                            select em);
+            var emprunts = getEMPRUNTERNonRendus();
 
             foreach (EMPRUNTER em in emprunts)
             {
@@ -50,30 +49,10 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            EMPRUNTER em = new EMPRUNTER();
-            var abo = (from a in musique.ABONNÉS
-                       where a.LOGIN_ABONNÉ == "Mijel"
-                       select a).ToList();
-
-            foreach (ABONNÉS a in abo)
-            {
-                em.ABONNÉS = a;
-            }
-
-            var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM == "Haendel : Saul"
-                       select al);
-
-            foreach (ALBUMS a in alb)
-            {
-                em.ALBUMS = a;
-            }
-            em.DATE_EMPRUNT = new DateTime(2021, 3, 12);
-            em.DATE_RETOUR_ATTENDUE = new DateTime(2021, 6, 7);
-            musique.EMPRUNTER.Add(em);
-            musique.SaveChanges();
+        private void button2_Click(object sender, EventArgs e) {
+            var abo = getAbonnéSelonLogin("Mijel");
+            var alb = getAlbumSelonTitre("Haendel : Saul");
+            nouvelEmprunt(abo, alb);
         }
 
 
@@ -87,8 +66,7 @@ namespace Maquette
         {
             listBox2.Items.Clear();
 
-            var emprunts = (from em in musique.EMPRUNTER
-                            select em).ToList();
+            var emprunts = getEMPRUNTERs();
 
             foreach (EMPRUNTER em in emprunts)
             {
@@ -108,8 +86,7 @@ namespace Maquette
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-            var abos = (from a in musique.ABONNÉS
-                        select a).ToList();
+            var abos = getABONNÉSs();
 
             foreach (ABONNÉS abo in abos)
             {
@@ -118,9 +95,7 @@ namespace Maquette
                                 on em.CODE_ABONNÉ equals a.CODE_ABONNÉ
                                 select em).ToList();*/
                 button6.Enabled = true;
-                var emprunts = (from em in musique.EMPRUNTER
-                                where em.CODE_ABONNÉ == abo.CODE_ABONNÉ
-                                select em).ToList();
+                var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
 
                 if (emprunts.Count > 0)
                 {
@@ -156,14 +131,11 @@ namespace Maquette
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            var albums = (from al in musique.ALBUMS
-                          select al).ToList();
+            var albums = getALBUMSs();
 
             foreach (ALBUMS al in albums)
             {
-                var emprunts = (from em in musique.EMPRUNTER
-                                where em.CODE_ALBUM == al.CODE_ALBUM
-                                select em).ToList();
+                var emprunts = getEmpruntsSelonAlbum(al.CODE_ALBUM);
 
                 if (emprunts.Count == 0)
                 {
@@ -222,8 +194,7 @@ namespace Maquette
         private void button7_Click(object sender, EventArgs e)
         {
             listBox5.Items.Clear();
-            var emprunts = (from em in musique.EMPRUNTER
-                           select em).ToList();
+            var emprunts = getEMPRUNTERs();
             List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
             foreach (EMPRUNTER em in emprunts)
             {
@@ -238,24 +209,21 @@ namespace Maquette
             {
                 for (int i = 0; i<10; i++)
                 {
-                    int id = albumsTriés[i].ALBUMS;
-                    var selection = from a in musique.ALBUMS
-                                    where a.CODE_ALBUM == id
-                                    select a;
-                    ALBUMS ab = selection.ToList()[0];
+                    int id = albumsTriés[i].ALBUMS; 
+                    ALBUMS ab = getAlbumSelonID(id);
                     listBox5.Items.Add(ab);
                 }
-            } else
+            } else if (albumsTriés.Count > 0)
             {
                 for(int i = 0;i<albumsTriés.Count; i++)
                 {
                     int id = albumsTriés[i].ALBUMS;
-                    var selection = from a in musique.ALBUMS
-                                    where a.CODE_ALBUM == id
-                                    select a;
-                    ALBUMS ab = selection.ToList()[0];
+                    ALBUMS ab = getAlbumSelonID(id);
                     listBox5.Items.Add(ab);
                 }
+            } else
+            {
+                listBox5.Items.Add("Aucun emprunt");
             }
         }
     }

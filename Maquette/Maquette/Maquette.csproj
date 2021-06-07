@@ -107,6 +107,7 @@
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEditeur.cs" />
     <Compile Include="MyEmprunt.cs" />
+    <Compile Include="Outil.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

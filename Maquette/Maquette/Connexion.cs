@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -34,8 +35,7 @@ namespace Maquette
         private void Abonne_Load()
         {
             listBox1.Items.Clear();
-            var abonnes = (from a in musique.ABONNÉS
-                           select a).ToList();
+            var abonnes = getABONNÉSs();
 
             foreach (ABONNÉS a in abonnes)
             {
@@ -52,13 +52,7 @@ namespace Maquette
         {
             if (nom.Text != "" && prenom.Text != "" && login.Text != "" && mdp.Text != "")
             {
-                ABONNÉS a = new ABONNÉS();
-                a.PRÉNOM_ABONNÉ = prenom.Text;
-                a.NOM_ABONNÉ = nom.Text;
-                a.LOGIN_ABONNÉ = login.Text;
-                a.PASSWORD_ABONNÉ = mdp.Text;               
-                musique.ABONNÉS.Add(a);
-                musique.SaveChanges();
+                inscription(prenom.Text, nom.Text, login.Text, mdp.Text);
                 Abonne_Load();
                 nom.Text = "";
                 prenom.Text = "";
@@ -76,14 +70,11 @@ namespace Maquette
         {
             if (log2.Text != "" && mdp2.Text != "")
             {
-                var abo = (from a in musique.ABONNÉS
-                           where a.LOGIN_ABONNÉ == log2.Text && a.PASSWORD_ABONNÉ == mdp2.Text
-                           select a).ToList();
-
-                if (abo.Count == 1)
+                ABONNÉS abo = connexion(log2.Text, mdp2.Text);
+                if (abo != null)
                 {
-                    MessageBox.Show("Bienvenue, " + abo[0]);
-                    abonnéConnecté = abo[0];
+                    MessageBox.Show("Bienvenue, " + abo);
+                    abonnéConnecté = abo;
                     if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
                     {
                         Admin admin = new Admin(musique);

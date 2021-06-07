@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -75,10 +76,7 @@ namespace Maquette
         private void afficherEmprunts()
         {
             listBox1.Items.Clear();
-            var emprunts = from e in musique.EMPRUNTER
-                           where e.CODE_ABONNÉ == abonne.CODE_ABONNÉ
-                           && e.DATE_RETOUR == null
-                           select e;
+            var emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
             foreach (var e in emprunts)
             {
                 listBox1.Items.Add(e);
@@ -112,14 +110,9 @@ namespace Maquette
         private void afficherAlbums()
         {
             listBox2.Items.Clear();
-            var albums = (from al in musique.ALBUMS
-                          select al).ToList();
+            var albums = getALBUMSs();
 
-            var empruntés = (from al1 in musique.ALBUMS
-                             join e1 in musique.EMPRUNTER
-                             on al1.CODE_ALBUM equals e1.CODE_ALBUM
-                             where e1.DATE_RETOUR == null
-                             select al1).ToList();
+            var empruntés = getIndisponibles();
 
             foreach (ALBUMS al in albums.Except(empruntés))
             {
@@ -137,17 +130,8 @@ namespace Maquette
         {
             if (listBox2.SelectedIndex != -1)
             {
-                DateTime date = DateTime.Now;
                 ALBUMS al = (ALBUMS)listBox2.SelectedItem;
-                DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
-
-                EMPRUNTER em = new EMPRUNTER();
-                em.CODE_ABONNÉ = abonne.CODE_ABONNÉ;
-                em.CODE_ALBUM = al.CODE_ALBUM;
-                em.DATE_EMPRUNT = date;
-                em.DATE_RETOUR_ATTENDUE = newDate;
-                musique.EMPRUNTER.Add(em);
-                musique.SaveChanges();
+                EMPRUNTER em = nouvelEmprunt(abonne, al);
                 MessageBox.Show(em.ToString());
                 afficherAlbums();
                 afficherEmprunts();
@@ -167,7 +151,7 @@ namespace Maquette
             {
                 DateTime date = DateTime.Now;
                 EMPRUNTER em = (EMPRUNTER)listBox1.SelectedItem;
-                em.DATE_RETOUR = DateTime.Now;
+                em.setDate(date);
                 musique.SaveChanges();
                 afficherAlbums();
                 afficherEmprunts();
@@ -181,39 +165,28 @@ namespace Maquette
         private void afficherSuggestions()
         {
             listBox3.Items.Clear();
-            var albumsEmpruntés = from al2 in musique.ALBUMS
-                                  join em1 in musique.EMPRUNTER
-                                  on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                  where em1.CODE_ABONNÉ == abonne.CODE_ABONNÉ
-                                  select al2;
+            var albumsEmpruntés = getToutAlbumsEmpruntésParAbonné(abonne.CODE_ABONNÉ);
 
             var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
             var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
 
-            var albums = (from al in musique.ALBUMS
-                          select al).ToList();
-            var listeAlbum = albums.Except(albumsEmpruntés);
+            var albums = getALBUMSs();
+            var listeAlbum = albums.Except(albumsEmpruntés).ToList();
             List<List<ALBUMS>> albumsRecommandés = new List<List<ALBUMS>>();
             if (genresTriés.Count >= 1)
             {
                 GENRES premierGenre = genresTriés[0].GENRES;
-                var albumsRecommandés1 = (from al2 in listeAlbum
-                                          where al2.CODE_GENRE == premierGenre.CODE_GENRE
-                                          select al2).ToList();
+                var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
                 albumsRecommandés.Add(albumsRecommandés1);
                 if (genresTriés.Count >= 2)
                 {
                     GENRES deuxiemeGenre = genresTriés[1].GENRES;
-                    var albumsRecommandés2 = (from al2 in listeAlbum
-                                              where al2.CODE_GENRE == deuxiemeGenre.CODE_GENRE
-                                              select al2).ToList();
+                    var albumsRecommandés2 = getAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
                     albumsRecommandés.Add(albumsRecommandés2);
                     if (genresTriés.Count >= 3)
                     {
                         GENRES troisiemeGenre = genresTriés[2].GENRES;
-                        var albumsRecommandés3 = (from al2 in listeAlbum
-                                                  where al2.CODE_GENRE == troisiemeGenre.CODE_GENRE
-                                                  select al2).ToList();
+                        var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
                         albumsRecommandés.Add(albumsRecommandés3);
                     }
                     foreach (var l in albumsRecommandés)
