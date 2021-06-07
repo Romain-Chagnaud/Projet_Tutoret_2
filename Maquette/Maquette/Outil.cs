@@ -8,7 +8,7 @@ namespace Maquette
 {
     public static class Outil
     {
-        static MusiqueEntities musique = new MusiqueEntities();
+        public static MusiqueEntities musique { get; set; }
 
         public static List<ABONNÉS> getABONNÉSs()
         {

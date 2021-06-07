@@ -110,7 +110,8 @@ namespace Maquette
         private void afficherAlbums()
         {
             listBox2.Items.Clear();
-            var albums = getALBUMSs();
+            var albums = getALBUMSs().OrderBy(a => a.TITRE_ALBUM);
+
 
             var empruntés = getIndisponibles();
 
@@ -149,9 +150,10 @@ namespace Maquette
         {
             if (listBox1.SelectedIndex != -1)
             {
+                
                 DateTime date = DateTime.Now;
                 EMPRUNTER em = (EMPRUNTER)listBox1.SelectedItem;
-                em.setDate(date);
+                em.DATE_RETOUR = date;
                 musique.SaveChanges();
                 afficherAlbums();
                 afficherEmprunts();

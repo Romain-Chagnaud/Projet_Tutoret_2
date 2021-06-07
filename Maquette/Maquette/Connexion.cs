@@ -23,6 +23,7 @@ namespace Maquette
         {
             InitializeComponent();
             musique = new MusiqueEntities();
+            Outil.musique = musique;
             Abonne_Load();
             
             //Test_Interface inter = new Test_Interface(musique);
