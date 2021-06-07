@@ -147,11 +147,11 @@ namespace Maquette
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1092, 12);
+            this.button7.Location = new System.Drawing.Point(1142, 12);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 23);
+            this.button7.Size = new System.Drawing.Size(193, 23);
             this.button7.TabIndex = 11;
-            this.button7.Text = "Les plus empruntés";
+            this.button7.Text = "Les plus empruntés cette année";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 

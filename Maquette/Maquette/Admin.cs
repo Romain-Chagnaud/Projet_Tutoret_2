@@ -20,6 +20,7 @@ namespace Maquette
             this.musique = musique;
         }
 
+        //Méthode ci-dessous : US 4
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -40,11 +41,12 @@ namespace Maquette
 
         }
 
+        //Méthode ci-dessous : US 5, générer un retard
         private void button2_Click(object sender, EventArgs e)
         {
             EMPRUNTER em = new EMPRUNTER();
             var abo = (from a in musique.ABONNÉS
-                       where a.LOGIN_ABONNÉ == "jean"
+                       where a.LOGIN_ABONNÉ == "Mijel"
                        select a).ToList();
 
             foreach (ABONNÉS a in abo)
@@ -53,7 +55,7 @@ namespace Maquette
             }
 
             var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM == "Wolf: 22 Lieder"
+                       where al.TITRE_ALBUM == "Haendel : Saul"
                        select al);
 
             foreach (ALBUMS a in alb)
@@ -61,13 +63,14 @@ namespace Maquette
                 em.ALBUMS = a;
             }
 
-            em.DATE_EMPRUNT = new DateTime(2021, 1, 28);
-            em.DATE_RETOUR_ATTENDUE = new DateTime(2021, 6, 3);
+            em.DATE_EMPRUNT = new DateTime(2021, 3, 12);
+            em.DATE_RETOUR_ATTENDUE = new DateTime(2021, 6, 7);
 
             musique.EMPRUNTER.Add(em);
             musique.SaveChanges();
         }
 
+        //Méthode ci-dessous : US 5
         private void button3_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
@@ -85,6 +88,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 6
         private void button4_Click(object sender, EventArgs e)
         {
             var abos = (from a in musique.ABONNÉS
@@ -127,6 +131,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 8
         private void button5_Click(object sender, EventArgs e)
         {
             var albums = (from al in musique.ALBUMS
@@ -167,6 +172,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 8
         private void button6_Click(object sender, EventArgs e)
         {
             foreach (ABONNÉS ab in listBox3.Items)
@@ -178,12 +184,21 @@ namespace Maquette
             button6.Enabled = false;
         }
 
+        //Méthode ci-dessous : US 7
         private void button7_Click(object sender, EventArgs e)
         {
             listBox5.Items.Clear();
-            var emprunts = from em in musique.EMPRUNTER
-                           select em;
-            var albumsParEmprunt = emprunts.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
+            var emprunts = (from em in musique.EMPRUNTER
+                           select em).ToList();
+            List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
+            foreach (EMPRUNTER em in emprunts)
+            {
+                if (em.DATE_EMPRUNT.AddYears(1).CompareTo(DateTime.Now) > 0)
+                {
+                    empruntsList.Add(em);
+                }
+            }
+            var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
             var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList();
             if(albumsTriés.Count >= 10)
             {

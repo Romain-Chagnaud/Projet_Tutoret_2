@@ -26,6 +26,7 @@ namespace Maquette
             afficherSuggestions();
         }
 
+        //Méthode ci-dessous : US 3
         private void button1_Click(object sender, EventArgs e)
         {
             EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
@@ -38,6 +39,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 3
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
@@ -55,6 +57,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 2
         private void afficherEmprunts()
         {
             listBox1.Items.Clear();
@@ -68,6 +71,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 9
         private void button2_Click(object sender, EventArgs e)
         {
             foreach (EMPRUNTER emprunt in listBox1.Items)
@@ -82,6 +86,7 @@ namespace Maquette
             afficherEmprunts();
         }
 
+        //Méthode ci-dessous : US 1
         private void afficherAlbums()
         {
             listBox2.Items.Clear();
@@ -100,6 +105,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 1
         private void button3_Click(object sender, EventArgs e)
         {
             if (listBox2.SelectedIndex != -1)
@@ -122,6 +128,7 @@ namespace Maquette
             }
         }
 
+        //Méthode ci-dessous : US 1-?
         private void button4_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
@@ -135,7 +142,7 @@ namespace Maquette
             }
         }
 
-
+        //Méthode ci-dessous : US 10
         private void afficherSuggestions()
         {
             listBox3.Items.Clear();

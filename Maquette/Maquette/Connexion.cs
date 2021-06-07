@@ -12,13 +12,13 @@ namespace Maquette
 {
     public partial class Connexion : Form
     {
+        //Toute cette classe correspond à l'US 1 du sprint 1
         MusiqueEntities musique;
         ABONNÉS abonnéConnecté;
 
         public Connexion()
         {
             InitializeComponent();
-
             musique = new MusiqueEntities();
             Abonne_Load();
         }
@@ -43,11 +43,14 @@ namespace Maquette
                 a.PRÉNOM_ABONNÉ = prenom.Text;
                 a.NOM_ABONNÉ = nom.Text;
                 a.LOGIN_ABONNÉ = login.Text;
-                a.PASSWORD_ABONNÉ = mdp.Text;
-
-                Abonne_Load();
+                a.PASSWORD_ABONNÉ = mdp.Text;               
                 musique.ABONNÉS.Add(a);
                 musique.SaveChanges();
+                Abonne_Load();
+                nom.Text = "";
+                prenom.Text = "";
+                login.Text = "";
+                mdp.Text = "";
             }
         }
 
@@ -76,7 +79,7 @@ namespace Maquette
                 }
                 else
                 {
-                    MessageBox.Show("T'es qui toi ? ");
+                    MessageBox.Show("Utilisateur non reconnu.");
                 }
             }
         }
