@@ -12,7 +12,9 @@ namespace Maquette
 {
     public partial class Connexion : Form
     {
-        //Toute cette classe correspond à l'US 1 du sprint 1
+        /// <summary>
+        /// Toute cette classe correspond à l'US 1 du sprint 1
+        /// </summary>
         MusiqueEntities musique;
         ABONNÉS abonnéConnecté;
 
@@ -21,11 +23,14 @@ namespace Maquette
             InitializeComponent();
             musique = new MusiqueEntities();
             Abonne_Load();
-
-            Test_Interface inter = new Test_Interface(musique);
-            inter.ShowDialog();
+            
+            //Test_Interface inter = new Test_Interface(musique);
+            //inter.ShowDialog();
         }
 
+        /// <summary>
+        /// Chargement des abonnés
+        /// </summary>
         private void Abonne_Load()
         {
             listBox1.Items.Clear();
@@ -38,6 +43,11 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Méthode pour l'inscription
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (nom.Text != "" && prenom.Text != "" && login.Text != "" && mdp.Text != "")
@@ -57,6 +67,11 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Méthode pour la connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (log2.Text != "" && mdp2.Text != "")

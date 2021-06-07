@@ -20,10 +20,14 @@ namespace Maquette
             this.musique = musique;
         }
 
-        //Méthode ci-dessous : US 4
+        /// <summary>
+        /// Méthode ci-dessous : US 4
+        /// Méthode pour connaître les emprunts prolongés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
             listBox1.Items.Clear();
             var emprunts = (from em in musique.EMPRUNTER
                             where em.DATE_RETOUR == null
@@ -41,7 +45,11 @@ namespace Maquette
 
         }
 
-        //Méthode ci-dessous : US 5, générer un retard
+        /// <summary>
+        /// Méthode ci-dessous : US 5, générer un retard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             EMPRUNTER em = new EMPRUNTER();
@@ -62,15 +70,19 @@ namespace Maquette
             {
                 em.ALBUMS = a;
             }
-
             em.DATE_EMPRUNT = new DateTime(2021, 3, 12);
             em.DATE_RETOUR_ATTENDUE = new DateTime(2021, 6, 7);
-
             musique.EMPRUNTER.Add(em);
             musique.SaveChanges();
         }
 
-        //Méthode ci-dessous : US 5
+
+        /// <summary>
+        /// Méthode ci-dessous : US 5
+        /// Méthode pour connaître les emprunts en retard de 10 jours
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
@@ -88,7 +100,12 @@ namespace Maquette
             }
         }
 
-        //Méthode ci-dessous : US 6
+        /// <summary>
+        /// Méthode ci-dessous : US 6
+        /// Méthode pour afficher les abonnés n'ayant rien emprunté depuis 1 an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
             var abos = (from a in musique.ABONNÉS
@@ -131,7 +148,12 @@ namespace Maquette
             }
         }
 
-        //Méthode ci-dessous : US 8
+        /// <summary>
+        /// Méthode ci-dessous : US 8
+        /// Méthode pour afficher les albums n'ayant pas été emprunté depuis 1 an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
             var albums = (from al in musique.ALBUMS
@@ -172,7 +194,13 @@ namespace Maquette
             }
         }
 
-        //Méthode ci-dessous : US 8
+
+        /// <summary>
+        /// Méthode ci-dessous : US 6
+        /// Méthode pour purger les abonnés n'ayant rien emprunté depuis 1 an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
             foreach (ABONNÉS ab in listBox3.Items)
@@ -184,7 +212,13 @@ namespace Maquette
             button6.Enabled = false;
         }
 
-        //Méthode ci-dessous : US 7
+
+        /// <summary>
+        /// Méthode ci-dessous : US 7
+        /// Méthode pour connaître les 10 albums les plus empruntés de l'année
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
             listBox5.Items.Clear();
