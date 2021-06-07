@@ -21,6 +21,9 @@ namespace Maquette
 
             musique = new MusiqueEntities();
             Abonne_Load();
+
+            Test_Interface inter = new Test_Interface(musique);
+            inter.ShowDialog();
         }
 
         private void Abonne_Load()
