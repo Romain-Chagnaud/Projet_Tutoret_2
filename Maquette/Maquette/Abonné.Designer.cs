@@ -38,6 +38,7 @@ namespace Maquette
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -121,11 +122,21 @@ namespace Maquette
             this.listBox3.Size = new System.Drawing.Size(328, 199);
             this.listBox3.TabIndex = 9;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(726, 206);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Suggestions :";
+            // 
             // Abonné
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -153,5 +164,6 @@ namespace Maquette
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label1;
     }
 }
