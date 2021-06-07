@@ -96,6 +96,7 @@ namespace Maquette
                                 join a in musique.ABONNÉS
                                 on em.CODE_ABONNÉ equals a.CODE_ABONNÉ
                                 select em).ToList();*/
+                button6.Enabled = true;
                 var emprunts = (from em in musique.EMPRUNTER
                                 where em.CODE_ABONNÉ == abo.CODE_ABONNÉ
                                 select em).ToList();
@@ -162,6 +163,49 @@ namespace Maquette
                     {
                         listBox4.Items.Add(al);
                     }
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            foreach (ABONNÉS ab in listBox3.Items)
+            {
+                musique.ABONNÉS.Remove(ab);
+            }
+            musique.SaveChanges();
+            listBox3.Items.Clear();
+            button6.Enabled = false;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            listBox5.Items.Clear();
+            var emprunts = from em in musique.EMPRUNTER
+                           select em;
+            var albumsParEmprunt = emprunts.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
+            var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList();
+            if(albumsTriés.Count >= 10)
+            {
+                for (int i = 0; i<10; i++)
+                {
+                    int id = albumsTriés[i].ALBUMS;
+                    var selection = from a in musique.ALBUMS
+                                    where a.CODE_ALBUM == id
+                                    select a;
+                    ALBUMS ab = selection.ToList()[0];
+                    listBox5.Items.Add(ab);
+                }
+            } else
+            {
+                for(int i = 0;i<albumsTriés.Count; i++)
+                {
+                    int id = albumsTriés[i].ALBUMS;
+                    var selection = from a in musique.ALBUMS
+                                    where a.CODE_ALBUM == id
+                                    select a;
+                    ALBUMS ab = selection.ToList()[0];
+                    listBox5.Items.Add(ab);
                 }
             }
         }
