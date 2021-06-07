@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maquette", "Maquette\Maquette.csproj", "{584D5EA9-C733-4452-BD86-51B7AA0E6BB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaquetteTests", "MaquetteTests\MaquetteTests.csproj", "{06AFD959-2189-4939-A886-AEC0FFCEF4D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{584D5EA9-C733-4452-BD86-51B7AA0E6BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{584D5EA9-C733-4452-BD86-51B7AA0E6BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{584D5EA9-C733-4452-BD86-51B7AA0E6BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06AFD959-2189-4939-A886-AEC0FFCEF4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06AFD959-2189-4939-A886-AEC0FFCEF4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06AFD959-2189-4939-A886-AEC0FFCEF4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06AFD959-2189-4939-A886-AEC0FFCEF4D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

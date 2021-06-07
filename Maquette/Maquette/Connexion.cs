@@ -53,12 +53,18 @@ namespace Maquette
         {
             if (nom.Text != "" && prenom.Text != "" && login.Text != "" && mdp.Text != "")
             {
-                inscription(prenom.Text, nom.Text, login.Text, mdp.Text);
-                Abonne_Load();
-                nom.Text = "";
-                prenom.Text = "";
-                login.Text = "";
-                mdp.Text = "";
+                ABONNÉS a = inscription(prenom.Text, nom.Text, login.Text, mdp.Text);
+                if (a != null)
+                {
+                    Abonne_Load();
+                    nom.Text = "";
+                    prenom.Text = "";
+                    login.Text = "";
+                    mdp.Text = "";
+                } else
+                {
+                    MessageBox.Show("Client déjà existant");
+                }
             }
         }
 

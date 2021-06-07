@@ -45,13 +45,13 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Méthode ci-dessous : US 5, générer un retard
+        /// Méthode ci-dessous : US 5, générer un retard de plus de 10 jours
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e) {
             var abo = getAbonnéSelonLogin("Mijel");
-            var alb = getAlbumSelonTitre("Haendel : Saul");
+            var alb = getAlbumSelonTitre("Haendel: Saul");
             nouvelEmprunt(abo, alb);
         }
 

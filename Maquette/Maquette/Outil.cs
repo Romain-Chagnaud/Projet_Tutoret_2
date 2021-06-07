@@ -45,15 +45,24 @@ namespace Maquette
             }
         }
 
-        public static void inscription(string prenom, string nom, string login, string mdp)
+        public static ABONNÉS inscription(string prenom, string nom, string login, string mdp)
         {
-            ABONNÉS a = new ABONNÉS();
-            a.PRÉNOM_ABONNÉ = prenom;
-            a.NOM_ABONNÉ = nom;
-            a.LOGIN_ABONNÉ = login;
-            a.PASSWORD_ABONNÉ = mdp;
-            musique.ABONNÉS.Add(a);
-            musique.SaveChanges();
+            ABONNÉS abo = null;
+            var logins = (from a in musique.ABONNÉS
+                         where a.LOGIN_ABONNÉ==login
+                         select a).ToList();
+            if (logins.Count == 0)
+            {
+                abo = new ABONNÉS();
+                abo.PRÉNOM_ABONNÉ = prenom;
+                abo.NOM_ABONNÉ = nom;
+                abo.LOGIN_ABONNÉ = login;
+                abo.PASSWORD_ABONNÉ = mdp;
+                musique.ABONNÉS.Add(abo);
+                musique.SaveChanges();
+                
+            }
+            return abo;
         }
 
         
@@ -71,7 +80,7 @@ namespace Maquette
         public static ALBUMS getAlbumSelonTitre(string titre)
         {
             var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM == titre
+                       where al.TITRE_ALBUM==titre
                        select al).ToList();
             if (alb.Count > 0)
             {
@@ -135,8 +144,6 @@ namespace Maquette
             return em;
         }
 
-        
-        
         public static List<EMPRUNTER> getEMPRUNTERs()
         {
             var emprunts = (from em in musique.EMPRUNTER

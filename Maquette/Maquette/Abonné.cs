@@ -190,13 +190,13 @@ namespace Maquette
                         GENRES troisiemeGenre = genresTriés[2].GENRES;
                         var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
                         albumsRecommandés.Add(albumsRecommandés3);
-                    }
-                    foreach (var l in albumsRecommandés)
+                    }               
+                }
+                foreach (var l in albumsRecommandés)
+                {
+                    for (int i = 0; i < 10 / albumsRecommandés.Count; i++)
                     {
-                        for (int i = 0; i < 10 / albumsRecommandés.Count; i++)
-                        {
-                            listBox3.Items.Add(l[i]);
-                        }
+                        listBox3.Items.Add(l[i]);
                     }
                 }
 
