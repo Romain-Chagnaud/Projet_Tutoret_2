@@ -118,6 +118,7 @@ namespace Maquette
                 MessageBox.Show(em.ToString());
                 afficherAlbums();
                 afficherEmprunts();
+                afficherSuggestions();
             }
         }
 
@@ -137,6 +138,7 @@ namespace Maquette
 
         private void afficherSuggestions()
         {
+            listBox3.Items.Clear();
             var albumsEmpruntés = from al2 in musique.ALBUMS
                                   join em1 in musique.EMPRUNTER
                                   on al2.CODE_ALBUM equals em1.CODE_ALBUM
@@ -145,27 +147,69 @@ namespace Maquette
 
             var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
             var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
-            GENRES premierGenre = genresTriés[0].GENRES;
-            GENRES deuxiemeGenre = genresTriés[1].GENRES;
-            GENRES troisiemeGenre = genresTriés[2].GENRES;
-            var albums = (from al in musique.ALBUMS
-                          select al).ToList();
-            var listeAlbum = albums.Except(albumsEmpruntés);
-            var albumsRecommandés1 = from al2 in listeAlbum
-                                    where al2.CODE_GENRE == premierGenre.CODE_GENRE
-                                    select al2;
-            var albumsRecommandés2 = from al2 in listeAlbum
-                                     where al2.CODE_GENRE == deuxiemeGenre.CODE_GENRE
-                                     select al2;
-            var albumsRecommandés3 = from al2 in listeAlbum
-                                     where al2.CODE_GENRE == troisiemeGenre.CODE_GENRE
-                                     select al2;
-
-            for(int i = 0; i<3; i++)
+            if (genresTriés.Count >= 3)
             {
-                listBox3.Items.Add(albumsRecommandés1.ToList()[i]);
-                listBox3.Items.Add(albumsRecommandés2.ToList()[i]);
-                listBox3.Items.Add(albumsRecommandés3.ToList()[i]);
+                GENRES premierGenre = genresTriés[0].GENRES;
+                GENRES deuxiemeGenre = genresTriés[1].GENRES;
+                GENRES troisiemeGenre = genresTriés[2].GENRES;
+                var albums = (from al in musique.ALBUMS
+                              select al).ToList();
+                var listeAlbum = albums.Except(albumsEmpruntés);
+                var albumsRecommandés1 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == premierGenre.CODE_GENRE
+                                         select al2;
+                var albumsRecommandés2 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == deuxiemeGenre.CODE_GENRE
+                                         select al2;
+                var albumsRecommandés3 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == troisiemeGenre.CODE_GENRE
+                                         select al2;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    listBox3.Items.Add(albumsRecommandés1.ToList()[i]);
+                    listBox3.Items.Add(albumsRecommandés2.ToList()[i]);
+                    listBox3.Items.Add(albumsRecommandés3.ToList()[i]);
+                }
+            } else if (genresTriés.Count >= 2)
+            {
+                GENRES premierGenre = genresTriés[0].GENRES;
+                GENRES deuxiemeGenre = genresTriés[1].GENRES;
+                var albums = (from al in musique.ALBUMS
+                              select al).ToList();
+                var listeAlbum = albums.Except(albumsEmpruntés);
+                var albumsRecommandés1 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == premierGenre.CODE_GENRE
+                                         select al2;
+                var albumsRecommandés2 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == deuxiemeGenre.CODE_GENRE
+                                         select al2;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    listBox3.Items.Add(albumsRecommandés1.ToList()[i]);
+                    if (i < 4)
+                    {
+                        listBox3.Items.Add(albumsRecommandés2.ToList()[i]);
+                    }
+                }
+            } else if (genresTriés.Count >= 1)
+            {
+                GENRES premierGenre = genresTriés[0].GENRES;
+                var albums = (from al in musique.ALBUMS
+                              select al).ToList();
+                var listeAlbum = albums.Except(albumsEmpruntés);
+                var albumsRecommandés1 = from al2 in listeAlbum
+                                         where al2.CODE_GENRE == premierGenre.CODE_GENRE
+                                         select al2;
+
+                for (int i = 0; i < 9; i++)
+                {
+                    listBox3.Items.Add(albumsRecommandés1.ToList()[i]);
+                }
+            } else
+            {
+                listBox3.Items.Add("Aucun emprunt");
             }
         }
     }

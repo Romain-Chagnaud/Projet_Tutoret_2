@@ -38,6 +38,9 @@ namespace Maquette
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.listBox4 = new System.Windows.Forms.ListBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -50,11 +53,11 @@ namespace Maquette
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(94, 13);
+            this.button1.Location = new System.Drawing.Point(94, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(108, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Vérifier prolong.";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -81,19 +84,19 @@ namespace Maquette
             // 
             this.button3.Location = new System.Drawing.Point(377, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(137, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
+            this.button3.Text = "Retard de 10 jours ou +";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(377, 223);
+            this.button4.Location = new System.Drawing.Point(377, 229);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(123, 23);
             this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
+            this.button4.Text = "Afficher inactifs";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -107,11 +110,11 @@ namespace Maquette
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(94, 408);
+            this.button5.Location = new System.Drawing.Point(85, 419);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(187, 23);
             this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
+            this.button5.Text = "Non emprunté depuis + d\'1 an";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -123,11 +126,43 @@ namespace Maquette
             this.listBox4.Size = new System.Drawing.Size(759, 134);
             this.listBox4.TabIndex = 8;
             // 
+            // button6
+            // 
+            this.button6.Enabled = false;
+            this.button6.Location = new System.Drawing.Point(543, 229);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(123, 23);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "Supprimer inactifs";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(1074, 49);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(336, 537);
+            this.listBox5.TabIndex = 10;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1092, 12);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(140, 23);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Les plus empruntés";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 626);
+            this.ClientSize = new System.Drawing.Size(1451, 626);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.listBox5);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.listBox3);
@@ -154,5 +189,8 @@ namespace Maquette
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.Button button7;
     }
 }
