@@ -32,13 +32,8 @@ namespace Maquette
         private void button1_Click(object sender, EventArgs e)
         {
             EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
-            DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
-            if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
-            {
-                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                musique.SaveChanges();
-                afficherEmprunts();
-            }
+            prolongation(emprunt);
+            afficherEmprunts();
         }
 
         /// <summary>
@@ -51,16 +46,7 @@ namespace Maquette
         {
             if (listBox1.SelectedIndex != -1)
             {
-                EMPRUNTER emprunt = (EMPRUNTER)listBox1.SelectedItem;
-                DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
-                if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) != 0)
-                {
-                    button1.Enabled = false;
-                }
-                else
-                {
-                    button1.Enabled = true;
-                }
+                button1.Enabled = estProlongeable((EMPRUNTER)listBox1.SelectedItem);
             }
         }
 
@@ -88,11 +74,7 @@ namespace Maquette
         {
             foreach (EMPRUNTER emprunt in listBox1.Items)
             {
-                DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
-                if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) == 0)
-                {
-                    emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                }
+                prolongation(emprunt);
             }
             musique.SaveChanges();
             afficherEmprunts();

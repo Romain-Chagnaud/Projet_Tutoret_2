@@ -112,5 +112,39 @@ namespace PTTests
             liste = getEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
             Assert.IsTrue(!liste.Contains(e));
         }
+
+        [TestMethod]
+        public void testProlongation()
+        {
+            chargerMusiqueEntities();
+            ABONNÉS ab = connexion("lp", "lp");
+
+            ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
+            EMPRUNTER e = nouvelEmprunt(ab, a);
+            var liste = getEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
+
+            //Prolongement d'un nouvel emprunt
+            Assert.IsTrue(estProlongeable(e));
+            DateTime ancienne = e.DATE_RETOUR_ATTENDUE;
+            prolongation(e);
+            Assert.IsTrue(e.DATE_RETOUR_ATTENDUE != ancienne);
+            ancienne = e.DATE_RETOUR_ATTENDUE;
+            Assert.IsFalse(estProlongeable(e));
+            prolongation(e);
+            Assert.IsTrue(e.DATE_RETOUR_ATTENDUE == ancienne);
+
+            //Vérification prolongement de tout les emprunts
+            foreach (EMPRUNTER emprunt in liste)
+            {
+                prolongation(emprunt);
+            }
+            foreach(EMPRUNTER emprunt in liste)
+            {
+                Assert.IsFalse(estProlongeable(emprunt));
+            }
+
+            rendreEmprunt(e);
+            
+        }
     }
 }
