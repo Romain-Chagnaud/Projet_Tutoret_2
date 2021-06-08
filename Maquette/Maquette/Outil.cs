@@ -8,6 +8,11 @@ namespace Maquette
     {
         public static MusiqueEntities musique { get; set; }
 
+        public static void chargerMusiqueEntities()
+        {
+            musique = new MusiqueEntities();
+        }
+
         public static List<ABONNÉS> getABONNÉSs()
         {
             var abonnés = (from a in musique.ABONNÉS
@@ -65,7 +70,11 @@ namespace Maquette
             return abo;
         }
 
-
+        public static void removeAbonné(ABONNÉS a)
+        {
+            musique.ABONNÉS.Remove(a);
+            musique.SaveChanges();
+        }
 
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
@@ -134,21 +143,32 @@ namespace Maquette
 
         public static EMPRUNTER nouvelEmprunt(ABONNÉS ab, ALBUMS al)
         {
-            EMPRUNTER em;
-            DateTime date = DateTime.Now;
-            DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
-            em = new EMPRUNTER();
-            em.CODE_ABONNÉ = ab.CODE_ABONNÉ;
-            em.CODE_ALBUM = al.CODE_ALBUM;
-            em.DATE_EMPRUNT = date;
-            em.DATE_RETOUR_ATTENDUE = newDate;
-            EMPRUNTER existant = musique.EMPRUNTER.FirstOrDefault(e => e.Equals(em));
-            if (existant != null)
+            EMPRUNTER em = null;
+            if (!getIndisponibles().Contains(al))
             {
-                musique.EMPRUNTER.Remove(existant);
+                DateTime date = DateTime.Now;
+                DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
+                em = new EMPRUNTER();
+                em.CODE_ABONNÉ = ab.CODE_ABONNÉ;
+                em.CODE_ALBUM = al.CODE_ALBUM;
+                em.DATE_EMPRUNT = date;
+                em.DATE_RETOUR_ATTENDUE = newDate;
+                EMPRUNTER existant = null;
+                foreach (EMPRUNTER e in musique.EMPRUNTER)
+                {
+                    if (e.Equals(em))
+                    {
+                        existant = e;
+                    }
+                }
+                if (existant != null)
+                {
+                    musique.EMPRUNTER.Remove(existant);
+                    musique.SaveChanges();
+                }
+                musique.EMPRUNTER.Add(em);
+                musique.SaveChanges();
             }
-            musique.EMPRUNTER.Add(em);
-            musique.SaveChanges();
             return em;
         }
 
@@ -237,5 +257,6 @@ namespace Maquette
 
             }
             return albumsRecommandés;
+        }
     }
 }

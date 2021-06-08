@@ -22,8 +22,8 @@ namespace Maquette
         public Connexion()
         {
             InitializeComponent();
-            musique = new MusiqueEntities();
-            Outil.musique = musique;
+            chargerMusiqueEntities();
+            musique = Outil.musique;
             Abonne_Load();
             
             //Test_Interface inter = new Test_Interface(musique);
