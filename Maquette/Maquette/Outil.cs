@@ -265,5 +265,28 @@ namespace Maquette
             }
             return albumsRecommandés;
         }
+
+        public static bool estProlongeable(EMPRUNTER emprunt)
+        {
+            DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
+            if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) != 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static EMPRUNTER prolongation(EMPRUNTER emprunt)
+        {
+            if (estProlongeable(emprunt))
+            {
+                emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                musique.SaveChanges();
+            }
+            return emprunt;
+        }
     }
 }
