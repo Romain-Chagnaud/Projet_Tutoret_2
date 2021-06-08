@@ -14,7 +14,9 @@ namespace MaquetteTests
             string nom, prenom, login, mdp;
             nom = "Belmondo";
             prenom = "Jean-Paul";
-            login = "";
+            login = "Belmont";
+            mdp = "JPBelmont";
+            
         }
     }
 }

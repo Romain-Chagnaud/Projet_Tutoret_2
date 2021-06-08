@@ -128,7 +128,13 @@ namespace Maquette
             {
                 ALBUMS al = (ALBUMS)listBox2.SelectedItem;
                 EMPRUNTER em = nouvelEmprunt(abonne, al);
-                MessageBox.Show(em.ToString());
+                if (em != null)
+                {
+                    MessageBox.Show(em.ToString());
+                } else
+                {
+                    MessageBox.Show("Album déjà pris");
+                }
                 afficherAlbums();
                 afficherEmprunts();
                 afficherSuggestions();

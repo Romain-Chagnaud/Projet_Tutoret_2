@@ -19,11 +19,18 @@ namespace Maquette
             {
                 return false;
             }
-            EMPRUNTER other = (EMPRUNTER)obj;
-            if(this.CODE_ABONNÉ==other.CODE_ABONNÉ && this.CODE_ALBUM == other.CODE_ABONNÉ)
+            try
             {
-                return true;
-            } else
+                EMPRUNTER other = (EMPRUNTER)obj;
+                if (this.CODE_ABONNÉ == other.CODE_ABONNÉ && this.CODE_ALBUM == other.CODE_ALBUM)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            } catch (InvalidCastException e)
             {
                 return false;
             }
