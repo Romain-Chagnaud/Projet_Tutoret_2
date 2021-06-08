@@ -120,6 +120,7 @@ namespace PTTests
             chargerMusiqueEntities();
             ABONNÉS ab = connexion("lp", "lp");
 
+            //Nouvel emprunt
             ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
             EMPRUNTER e = nouvelEmprunt(ab, a);
             var liste = getEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
@@ -154,9 +155,11 @@ namespace PTTests
             chargerMusiqueEntities();
             ABONNÉS ab = connexion("lp", "lp");
 
+            //On récupère la liste de tous les emprunts déjà réalisés de l'abonné, et des suggestions qui lui sont proposés
             var liste = getEmpruntsAbonné(ab.CODE_ABONNÉ);
             var suggestion = getSuggestions(ab.CODE_ABONNÉ);
 
+            //On récupère la liste des albums et de leurs genres des emprunts de l'abonné
             HashSet<GENRES> genres = new HashSet<GENRES>();
             List<ALBUMS> albumsEmpruntés = new List<ALBUMS>();
             foreach (EMPRUNTER e in liste)
@@ -164,6 +167,8 @@ namespace PTTests
                 genres.Add(e.ALBUMS.GENRES);
                 albumsEmpruntés.Add(e.ALBUMS);
             }
+
+            //On vérifie que les suggestions ne contient que des albums jamais empruntés et des genres déjà empruntés
             foreach (var l in suggestion)
             {
                 foreach (ALBUMS a in l)
@@ -173,16 +178,19 @@ namespace PTTests
                 }
             }
 
+            //On ajoute un nouvel emprunt
             ALBUMS al = getALBUMSs().Except(getIndisponibles()).ToList()[0];
             EMPRUNTER em = nouvelEmprunt(ab, al);
-
             liste = getEmpruntsAbonné(ab.CODE_ABONNÉ);
             suggestion = getSuggestions(ab.CODE_ABONNÉ);
 
+            //On vérifie que le nouvel emprunt est bien dans la liste des emprunts
             Assert.IsTrue(liste.Contains(em));
 
+            //On ajoute le genre et l'album de l'emprunts dans les listes correspondantes
             genres.Add(em.ALBUMS.GENRES);
             albumsEmpruntés.Add(em.ALBUMS);
+            //Puis on revérifie
             foreach (var l in suggestion)
             {
                 foreach (ALBUMS a in l)
