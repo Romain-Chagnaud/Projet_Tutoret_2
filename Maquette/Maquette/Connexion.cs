@@ -25,9 +25,6 @@ namespace Maquette
             chargerMusiqueEntities();
             musique = Outil.musique;
             Abonne_Load();
-            
-            //Test_Interface inter = new Test_Interface(musique);
-            //inter.ShowDialog();
         }
 
         /// <summary>
@@ -61,7 +58,8 @@ namespace Maquette
                     prenom.Text = "";
                     login.Text = "";
                     mdp.Text = "";
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Client déjà existant");
                 }

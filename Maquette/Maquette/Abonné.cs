@@ -10,6 +10,11 @@ namespace Maquette
     {
         MusiqueEntities musique;
         ABONNÉS abonne;
+
+        int pageEmprunts = 0;
+
+
+
         public Abonné(MusiqueEntities m, ABONNÉS ab)
         {
             InitializeComponent();
@@ -56,12 +61,17 @@ namespace Maquette
         /// </summary>
         private void afficherEmprunts()
         {
-            listBox1.Items.Clear();
+            panelEmprunts.Controls.Clear();
             var emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
-            foreach (var e in emprunts)
+            for (int i = 4 * pageEmprunts; i < 4 * (pageEmprunts + 1); i++)
             {
-                listBox1.Items.Add(e);
+                if (i < emprunts.Count)
+                {
+                    panelEmprunts.Controls.Add(new AlbumARendre(emprunts[i]));
+                }
             }
+
+            lblPageEmp.Text = (pageEmprunts + 1).ToString();
         }
 
         /// <summary>
@@ -160,6 +170,53 @@ namespace Maquette
             else
             {
                 listBox3.Items.Add("Aucun emprunt");
+            }
+        }
+
+        private void lblEspace_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMagasin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Appui sur le bouton "Précédent" des albums empruntés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPagePre_Click(object sender, EventArgs e)
+        {
+            DiminuerEmprunt();
+        }
+
+        /// <summary>
+        /// Appui sur le bouton "Suivant" des albums empruntés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPageSui_Click(object sender, EventArgs e)
+        {
+            AugmenterEmprunt();
+        }
+        private void AugmenterEmprunt()
+        {
+            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4))
+            {
+                pageEmprunts++;
+                afficherEmprunts();
+            }
+        }
+
+        private void DiminuerEmprunt()
+        {
+            if (pageEmprunts > 0)
+            {
+                pageEmprunts--;
+                afficherEmprunts();
             }
         }
     }
