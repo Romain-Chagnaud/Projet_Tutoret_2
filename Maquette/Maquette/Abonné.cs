@@ -151,12 +151,7 @@ namespace Maquette
         {
             if (listBox1.SelectedIndex != -1)
             {
-
-                DateTime date = DateTime.Now;
-                EMPRUNTER em = (EMPRUNTER)listBox1.SelectedItem;
-                em.DATE_RETOUR = date;
-                musique.SaveChanges();
-                afficherAlbums();
+                rendreEmprunt((EMPRUNTER)listBox1.SelectedItem);
                 afficherEmprunts();
             }
         }

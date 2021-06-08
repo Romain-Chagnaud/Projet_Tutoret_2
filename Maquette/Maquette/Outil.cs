@@ -172,6 +172,13 @@ namespace Maquette
             return em;
         }
 
+        public static void rendreEmprunt(EMPRUNTER em)
+        {
+            DateTime date = DateTime.Now;
+            em.DATE_RETOUR = date;
+            musique.SaveChanges();
+        }
+
         public static List<EMPRUNTER> getEMPRUNTERs()
         {
             var emprunts = (from em in musique.EMPRUNTER
