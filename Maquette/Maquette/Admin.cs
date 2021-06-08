@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Maquette.Outil;
 
@@ -30,18 +24,11 @@ namespace Maquette
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            var emprunts = getEMPRUNTERNonRendus();
-
+            var emprunts = getProlongés();
             foreach (EMPRUNTER em in emprunts)
             {
-                DateTime dateTime = new DateTime(em.DATE_EMPRUNT.Year, em.DATE_EMPRUNT.Month, em.DATE_EMPRUNT.Day);
-                if (dateTime.AddDays(em.ALBUMS.GENRES.DÉLAI).Date.CompareTo(em.DATE_RETOUR_ATTENDUE.Date) != 0)
-                {
-                    listBox1.Items.Add(em);
-                }
+                listBox1.Items.Add(em);
             }
-
-
         }
 
         /// <summary>
@@ -49,7 +36,8 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e) {
+        private void button2_Click(object sender, EventArgs e)
+        {
             var abo = getAbonnéSelonLogin("Mijel");
             var alb = getAlbumSelonTitre("Haendel: Saul");
             nouvelEmprunt(abo, alb);
@@ -195,23 +183,25 @@ namespace Maquette
         {
             listBox5.Items.Clear();
             List<dynamic> albumsTriés = getTop10();
-            if(albumsTriés.Count >= 10)
+            if (albumsTriés.Count >= 10)
             {
-                for (int i = 0; i<10; i++)
-                {
-                    int id = albumsTriés[i].ALBUMS; 
-                    ALBUMS ab = getAlbumSelonID(id);
-                    listBox5.Items.Add(ab);
-                }
-            } else if (albumsTriés.Count > 0)
-            {
-                for(int i = 0;i<albumsTriés.Count; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     int id = albumsTriés[i].ALBUMS;
                     ALBUMS ab = getAlbumSelonID(id);
                     listBox5.Items.Add(ab);
                 }
-            } else
+            }
+            else if (albumsTriés.Count > 0)
+            {
+                for (int i = 0; i < albumsTriés.Count; i++)
+                {
+                    int id = albumsTriés[i].ALBUMS;
+                    ALBUMS ab = getAlbumSelonID(id);
+                    listBox5.Items.Add(ab);
+                }
+            }
+            else
             {
                 listBox5.Items.Add("Aucun emprunt");
             }

@@ -288,5 +288,19 @@ namespace Maquette
             }
             return emprunt;
         }
+
+        public static List<EMPRUNTER> getProlongés()
+        {
+            List<EMPRUNTER> liste = new List<EMPRUNTER>();
+            var listeEmpruntés = getEMPRUNTERNonRendus();
+            foreach(EMPRUNTER em in listeEmpruntés)
+            {
+                if (!estProlongeable(em))
+                {
+                    liste.Add(em);
+                }
+            }
+            return liste;
+        }
     }
 }
