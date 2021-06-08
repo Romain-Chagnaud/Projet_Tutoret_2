@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Maquette.Outil;
 
@@ -150,7 +145,7 @@ namespace Maquette
         {
             if (listBox1.SelectedIndex != -1)
             {
-                
+
                 DateTime date = DateTime.Now;
                 EMPRUNTER em = (EMPRUNTER)listBox1.SelectedItem;
                 em.DATE_RETOUR = date;
@@ -167,31 +162,9 @@ namespace Maquette
         private void afficherSuggestions()
         {
             listBox3.Items.Clear();
-            var albumsEmpruntés = getToutAlbumsEmpruntésParAbonné(abonne.CODE_ABONNÉ);
-
-            var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
-            var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
-
-            var albums = getALBUMSs();
-            var listeAlbum = albums.Except(albumsEmpruntés).ToList();
-            List<List<ALBUMS>> albumsRecommandés = new List<List<ALBUMS>>();
-            if (genresTriés.Count >= 1)
+            var albumsRecommandés = getSuggestions(abonne.CODE_ABONNÉ);
+            if (albumsRecommandés.Count > 0)
             {
-                GENRES premierGenre = genresTriés[0].GENRES;
-                var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
-                albumsRecommandés.Add(albumsRecommandés1);
-                if (genresTriés.Count >= 2)
-                {
-                    GENRES deuxiemeGenre = genresTriés[1].GENRES;
-                    var albumsRecommandés2 = getAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
-                    albumsRecommandés.Add(albumsRecommandés2);
-                    if (genresTriés.Count >= 3)
-                    {
-                        GENRES troisiemeGenre = genresTriés[2].GENRES;
-                        var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
-                        albumsRecommandés.Add(albumsRecommandés3);
-                    }               
-                }
                 foreach (var l in albumsRecommandés)
                 {
                     for (int i = 0; i < 10 / albumsRecommandés.Count; i++)

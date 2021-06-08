@@ -6,7 +6,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MaquetteTests
 {
     [TestClass]
-    class Abonné
+    public class Abonné
     {
+        [TestMethod]
+        public void testInscription()
+        {
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "";
+        }
     }
 }

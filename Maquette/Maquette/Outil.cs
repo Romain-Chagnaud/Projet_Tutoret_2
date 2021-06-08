@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maquette
 {
@@ -13,7 +11,7 @@ namespace Maquette
         public static List<ABONNÉS> getABONNÉSs()
         {
             var abonnés = (from a in musique.ABONNÉS
-             select a).ToList();
+                           select a).ToList();
             return abonnés;
         }
 
@@ -25,11 +23,12 @@ namespace Maquette
             if (abo.Count > 0)
             {
                 return abo[0];
-            } else
+            }
+            else
             {
                 return null;
             }
-        }      
+        }
 
         public static ABONNÉS connexion(string login, string mdp)
         {
@@ -39,7 +38,8 @@ namespace Maquette
             if (abo.Count > 0)
             {
                 return abo[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -49,8 +49,8 @@ namespace Maquette
         {
             ABONNÉS abo = null;
             var logins = (from a in musique.ABONNÉS
-                         where a.LOGIN_ABONNÉ==login
-                         select a).ToList();
+                          where a.LOGIN_ABONNÉ == login
+                          select a).ToList();
             if (logins.Count == 0)
             {
                 abo = new ABONNÉS();
@@ -60,32 +60,33 @@ namespace Maquette
                 abo.PASSWORD_ABONNÉ = mdp;
                 musique.ABONNÉS.Add(abo);
                 musique.SaveChanges();
-                
+
             }
             return abo;
         }
 
-        
+
 
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
             var albumsEmpruntés = (from al2 in musique.ALBUMS
-                                  join em1 in musique.EMPRUNTER
-                                  on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                  where em1.CODE_ABONNÉ == id
-                                  select al2).ToList();
+                                   join em1 in musique.EMPRUNTER
+                                   on al2.CODE_ALBUM equals em1.CODE_ALBUM
+                                   where em1.CODE_ABONNÉ == id
+                                   select al2).ToList();
             return albumsEmpruntés;
         }
 
         public static ALBUMS getAlbumSelonTitre(string titre)
         {
             var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM==titre
+                       where al.TITRE_ALBUM == titre
                        select al).ToList();
             if (alb.Count > 0)
             {
                 return alb[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -111,12 +112,13 @@ namespace Maquette
         public static ALBUMS getAlbumSelonID(int id)
         {
             var album = (from al in musique.ALBUMS
-                          where al.CODE_ALBUM == id
-                          select al).ToList();
+                         where al.CODE_ALBUM == id
+                         select al).ToList();
             if (album.Count > 0)
             {
                 return album[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -125,20 +127,26 @@ namespace Maquette
         public static List<ALBUMS> getAlbumsSelonGenreDansListe(int id, List<ALBUMS> listeAlbum)
         {
             var albums = (from al in listeAlbum
-                                     where al.CODE_GENRE == id
-                                     select al).ToList();
+                          where al.CODE_GENRE == id
+                          select al).ToList();
             return albums;
         }
 
         public static EMPRUNTER nouvelEmprunt(ABONNÉS ab, ALBUMS al)
         {
+            EMPRUNTER em;
             DateTime date = DateTime.Now;
             DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
-            EMPRUNTER em = new EMPRUNTER();
+            em = new EMPRUNTER();
             em.CODE_ABONNÉ = ab.CODE_ABONNÉ;
             em.CODE_ALBUM = al.CODE_ALBUM;
             em.DATE_EMPRUNT = date;
             em.DATE_RETOUR_ATTENDUE = newDate;
+            EMPRUNTER existant = musique.EMPRUNTER.FirstOrDefault(e => e.Equals(em));
+            if (existant != null)
+            {
+                musique.EMPRUNTER.Remove(existant);
+            }
             musique.EMPRUNTER.Add(em);
             musique.SaveChanges();
             return em;
@@ -183,5 +191,51 @@ namespace Maquette
             return emprunts;
         }
 
+        public static List<dynamic> getTop10()
+        {
+            var emprunts = getEMPRUNTERs();
+            List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
+            foreach (EMPRUNTER em in emprunts)
+            {
+                if (em.DATE_EMPRUNT.AddYears(1).CompareTo(DateTime.Now) > 0)
+                {
+                    empruntsList.Add(em);
+                }
+            }
+            var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
+            var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList<dynamic>();
+            return albumsTriés;
+        }
+
+        public static List<List<ALBUMS>> getSuggestions(int id)
+        {
+            var albumsEmpruntés = getToutAlbumsEmpruntésParAbonné(id);
+
+            var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
+            var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
+
+            var albums = getALBUMSs();
+            var listeAlbum = albums.Except(albumsEmpruntés).ToList();
+            List<List<ALBUMS>> albumsRecommandés = new List<List<ALBUMS>>();
+            if (genresTriés.Count >= 1)
+            {
+                GENRES premierGenre = genresTriés[0].GENRES;
+                var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                albumsRecommandés.Add(albumsRecommandés1);
+                if (genresTriés.Count >= 2)
+                {
+                    GENRES deuxiemeGenre = genresTriés[1].GENRES;
+                    var albumsRecommandés2 = getAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
+                    albumsRecommandés.Add(albumsRecommandés2);
+                    if (genresTriés.Count >= 3)
+                    {
+                        GENRES troisiemeGenre = genresTriés[2].GENRES;
+                        var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
+                        albumsRecommandés.Add(albumsRecommandés3);
+                    }
+                }
+
+            }
+            return albumsRecommandés;
     }
 }
