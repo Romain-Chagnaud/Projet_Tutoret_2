@@ -70,6 +70,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbumARendre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumARendre.Designer.cs">
+      <DependentUpon>AlbumARendre.cs</DependentUpon>
+    </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -119,17 +125,14 @@
     <Compile Include="Test_Interface.Designer.cs">
       <DependentUpon>Test_Interface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Abonné.resx">
       <DependentUpon>Abonné.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumARendre.resx">
+      <DependentUpon>AlbumARendre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
@@ -142,12 +145,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Test_Interface.resx">
       <DependentUpon>Test_Interface.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -181,6 +182,15 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\visibility.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\timer.png" />
+    <None Include="Resources\quick-time.png" />
+    <None Include="Resources\loupe.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\hourglass.png" />
+    <None Include="Resources\fantome.png" />
+    <None Include="Properties\backgrounds\flou.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
