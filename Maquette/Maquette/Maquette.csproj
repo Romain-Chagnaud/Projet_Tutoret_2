@@ -76,6 +76,12 @@
     <Compile Include="AlbumARendre.Designer.cs">
       <DependentUpon>AlbumARendre.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbumEmpruntable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumEmpruntable.Designer.cs">
+      <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
+    </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumARendre.resx">
       <DependentUpon>AlbumARendre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumEmpruntable.resx">
+      <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>

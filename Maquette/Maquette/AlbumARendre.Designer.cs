@@ -33,6 +33,8 @@ namespace Maquette
             this.lblTitre = new System.Windows.Forms.Label();
             this.lblRendre = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnEtendre = new System.Windows.Forms.Button();
+            this.btnRendre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,10 +75,37 @@ namespace Maquette
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Date";
             // 
+            // btnEtendre
+            // 
+            this.btnEtendre.BackColor = System.Drawing.Color.Teal;
+            this.btnEtendre.BackgroundImage = global::Maquette.Properties.Resources.hourglass;
+            this.btnEtendre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEtendre.Location = new System.Drawing.Point(265, 10);
+            this.btnEtendre.Name = "btnEtendre";
+            this.btnEtendre.Size = new System.Drawing.Size(100, 100);
+            this.btnEtendre.TabIndex = 4;
+            this.btnEtendre.UseVisualStyleBackColor = false;
+            this.btnEtendre.Click += new System.EventHandler(this.btnEtendre_Click);
+            // 
+            // btnRendre
+            // 
+            this.btnRendre.BackColor = System.Drawing.Color.Teal;
+            this.btnRendre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRendre.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRendre.Location = new System.Drawing.Point(394, 10);
+            this.btnRendre.Name = "btnRendre";
+            this.btnRendre.Size = new System.Drawing.Size(100, 100);
+            this.btnRendre.TabIndex = 5;
+            this.btnRendre.Text = "Rendre l\'album";
+            this.btnRendre.UseVisualStyleBackColor = false;
+            this.btnRendre.Click += new System.EventHandler(this.btnRendre_Click);
+            // 
             // AlbumARendre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRendre);
+            this.Controls.Add(this.btnEtendre);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblRendre);
             this.Controls.Add(this.lblTitre);
@@ -95,5 +124,7 @@ namespace Maquette
         private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.Label lblRendre;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Button btnEtendre;
+        private System.Windows.Forms.Button btnRendre;
     }
 }
