@@ -1,6 +1,7 @@
 ﻿using Maquette;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static Maquette.Outil;
 namespace PTTests
@@ -138,13 +139,58 @@ namespace PTTests
             {
                 prolongation(emprunt);
             }
-            foreach(EMPRUNTER emprunt in liste)
+            foreach (EMPRUNTER emprunt in liste)
             {
                 Assert.IsFalse(estProlongeable(emprunt));
             }
 
             rendreEmprunt(e);
-            
+
+        }
+
+        [TestMethod]
+        public void testSuggestions()
+        {
+            chargerMusiqueEntities();
+            ABONNÉS ab = connexion("lp", "lp");
+
+            var liste = getEmpruntsAbonné(ab.CODE_ABONNÉ);
+            var suggestion = getSuggestions(ab.CODE_ABONNÉ);
+
+            HashSet<GENRES> genres = new HashSet<GENRES>();
+            List<ALBUMS> albumsEmpruntés = new List<ALBUMS>();
+            foreach (EMPRUNTER e in liste)
+            {
+                genres.Add(e.ALBUMS.GENRES);
+                albumsEmpruntés.Add(e.ALBUMS);
+            }
+            foreach (var l in suggestion)
+            {
+                foreach (ALBUMS a in l)
+                {
+                    Assert.IsTrue(genres.Contains(a.GENRES));
+                    Assert.IsFalse(albumsEmpruntés.Contains(a));
+                }
+            }
+
+            ALBUMS al = getALBUMSs().Except(getIndisponibles()).ToList()[0];
+            EMPRUNTER em = nouvelEmprunt(ab, al);
+
+            liste = getEmpruntsAbonné(ab.CODE_ABONNÉ);
+            suggestion = getSuggestions(ab.CODE_ABONNÉ);
+
+            Assert.IsTrue(liste.Contains(em));
+
+            genres.Add(em.ALBUMS.GENRES);
+            albumsEmpruntés.Add(em.ALBUMS);
+            foreach (var l in suggestion)
+            {
+                foreach (ALBUMS a in l)
+                {
+                    Assert.IsTrue(genres.Contains(a.GENRES));
+                    Assert.IsFalse(albumsEmpruntés.Contains(a));
+                }
+            }
         }
     }
 }
