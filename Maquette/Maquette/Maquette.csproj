@@ -39,11 +39,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,8 +58,15 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonneFantome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AbonneFantome.Designer.cs">
+      <DependentUpon>AbonneFantome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abonné.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,18 @@
     </Compile>
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminIHM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminIHM.Designer.cs">
+      <DependentUpon>AdminIHM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminIHM2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminIHM2.Designer.cs">
+      <DependentUpon>AdminIHM2.cs</DependentUpon>
     </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -107,17 +131,47 @@
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEditeur.cs" />
     <Compile Include="MyEmprunt.cs" />
+    <Compile Include="NonEmprunte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NonEmprunte.Designer.cs">
+      <DependentUpon>NonEmprunte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Outil.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Prologation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prologation.Designer.cs">
+      <DependentUpon>Prologation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sous_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sous_Admin.Designer.cs">
+      <DependentUpon>Sous_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sous_Admin2cs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sous_Admin2cs.Designer.cs">
+      <DependentUpon>Sous_Admin2cs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Interface.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Test_Interface.Designer.cs">
       <DependentUpon>Test_Interface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopAlbum.Designer.cs">
+      <DependentUpon>TopAlbum.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -125,14 +179,29 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AbonneFantome.resx">
+      <DependentUpon>AbonneFantome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abonné.resx">
       <DependentUpon>Abonné.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminIHM.resx">
+      <DependentUpon>AdminIHM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminIHM2.resx">
+      <DependentUpon>AdminIHM2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NonEmprunte.resx">
+      <DependentUpon>NonEmprunte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prologation.resx">
+      <DependentUpon>Prologation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,9 +211,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sous_Admin.resx">
+      <DependentUpon>Sous_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sous_Admin2cs.resx">
+      <DependentUpon>Sous_Admin2cs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test_Interface.resx">
       <DependentUpon>Test_Interface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopAlbum.resx">
+      <DependentUpon>TopAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -181,6 +260,13 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\user.png" />
+    <None Include="Resources\bad-review.png" />
+    <None Include="Resources\flou1.PNG" />
+    <None Include="Resources\flou.PNG" />
+    <None Include="Resources\quick-time.png" />
+    <None Include="Resources\timer.png" />
+    <None Include="Resources\fantome.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

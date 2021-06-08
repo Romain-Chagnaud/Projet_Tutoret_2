@@ -65,8 +65,6 @@ namespace Maquette
             return abo;
         }
 
-        
-
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
             var albumsEmpruntés = (from al2 in musique.ALBUMS
@@ -181,6 +179,42 @@ namespace Maquette
                             where e.CODE_ALBUM == id
                             select e).ToList();
             return emprunts;
+        }
+
+        public static List<ABONNÉS> getFantome()
+        {
+            List<ABONNÉS> fantome = new List<ABONNÉS>();
+            var abos = getABONNÉSs();
+
+            foreach (ABONNÉS abo in abos)
+            {               
+                var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
+
+                if (emprunts.Count > 0)
+                {
+                    int compteur = 0;
+                    bool estActif = false;
+
+                    while (compteur < emprunts.Count && !estActif)
+                    {
+                        EMPRUNTER emp = emprunts[compteur];
+                        DateTime date = emp.DATE_EMPRUNT.AddYears(1);
+
+                        if (date.CompareTo(DateTime.Now) > 0)
+                        {
+                            estActif = true;
+                        }
+                        compteur++;
+                    }
+
+                    if (!estActif)
+                    {
+                        fantome.Add(abo);
+                    }
+                }
+
+            }
+            return fantome;
         }
 
     }

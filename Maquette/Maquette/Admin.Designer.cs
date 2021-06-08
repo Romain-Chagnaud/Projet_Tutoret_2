@@ -50,6 +50,7 @@ namespace Maquette
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(243, 329);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -79,6 +80,7 @@ namespace Maquette
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(490, 134);
             this.listBox2.TabIndex = 3;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -144,6 +146,7 @@ namespace Maquette
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(336, 537);
             this.listBox5.TabIndex = 10;
+            this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
             // 
             // button7
             // 
@@ -174,6 +177,7 @@ namespace Maquette
             this.Controls.Add(this.listBox1);
             this.Name = "Admin";
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.Admin_Load);
             this.ResumeLayout(false);
 
         }
