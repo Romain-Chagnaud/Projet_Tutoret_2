@@ -44,20 +44,24 @@ namespace Maquette
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnPageSui = new System.Windows.Forms.Button();
-            this.btnPagePre = new System.Windows.Forms.Button();
+            this.panelGrandEmprunt = new System.Windows.Forms.Panel();
+            this.lblPageEmp = new System.Windows.Forms.Label();
+            this.btnSuiEmp = new System.Windows.Forms.Button();
+            this.btnPreEmp = new System.Windows.Forms.Button();
             this.panelEmprunts = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEmprunt = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelGrandConseils = new System.Windows.Forms.Panel();
             this.lblConseil = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblBvn = new System.Windows.Forms.Label();
-            this.lblPageEmp = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPreCon = new System.Windows.Forms.Button();
+            this.btnSuiCon = new System.Windows.Forms.Button();
+            this.lblPageReco = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelGrandEmprunt.SuspendLayout();
+            this.panelGrandConseils.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,38 +203,47 @@ namespace Maquette
             this.splitter2.TabIndex = 14;
             this.splitter2.TabStop = false;
             // 
-            // panel1
+            // panelGrandEmprunt
             // 
-            this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.lblPageEmp);
-            this.panel1.Controls.Add(this.btnPageSui);
-            this.panel1.Controls.Add(this.btnPagePre);
-            this.panel1.Controls.Add(this.panelEmprunts);
-            this.panel1.Controls.Add(this.lblEmprunt);
-            this.panel1.Location = new System.Drawing.Point(41, 105);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(519, 548);
-            this.panel1.TabIndex = 15;
+            this.panelGrandEmprunt.BackColor = System.Drawing.Color.Teal;
+            this.panelGrandEmprunt.Controls.Add(this.lblPageEmp);
+            this.panelGrandEmprunt.Controls.Add(this.btnSuiEmp);
+            this.panelGrandEmprunt.Controls.Add(this.btnPreEmp);
+            this.panelGrandEmprunt.Controls.Add(this.panelEmprunts);
+            this.panelGrandEmprunt.Controls.Add(this.lblEmprunt);
+            this.panelGrandEmprunt.Location = new System.Drawing.Point(41, 105);
+            this.panelGrandEmprunt.Name = "panelGrandEmprunt";
+            this.panelGrandEmprunt.Size = new System.Drawing.Size(519, 548);
+            this.panelGrandEmprunt.TabIndex = 15;
             // 
-            // btnPageSui
+            // lblPageEmp
             // 
-            this.btnPageSui.Location = new System.Drawing.Point(441, 520);
-            this.btnPageSui.Name = "btnPageSui";
-            this.btnPageSui.Size = new System.Drawing.Size(75, 23);
-            this.btnPageSui.TabIndex = 3;
-            this.btnPageSui.Text = "Suivant";
-            this.btnPageSui.UseVisualStyleBackColor = true;
-            this.btnPageSui.Click += new System.EventHandler(this.btnPageSui_Click);
+            this.lblPageEmp.AutoSize = true;
+            this.lblPageEmp.Location = new System.Drawing.Point(214, 525);
+            this.lblPageEmp.Name = "lblPageEmp";
+            this.lblPageEmp.Size = new System.Drawing.Size(32, 13);
+            this.lblPageEmp.TabIndex = 4;
+            this.lblPageEmp.Text = "Page";
             // 
-            // btnPagePre
+            // btnSuiEmp
             // 
-            this.btnPagePre.Location = new System.Drawing.Point(8, 520);
-            this.btnPagePre.Name = "btnPagePre";
-            this.btnPagePre.Size = new System.Drawing.Size(75, 23);
-            this.btnPagePre.TabIndex = 2;
-            this.btnPagePre.Text = "Précédent";
-            this.btnPagePre.UseVisualStyleBackColor = true;
-            this.btnPagePre.Click += new System.EventHandler(this.btnPagePre_Click);
+            this.btnSuiEmp.Location = new System.Drawing.Point(441, 520);
+            this.btnSuiEmp.Name = "btnSuiEmp";
+            this.btnSuiEmp.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiEmp.TabIndex = 3;
+            this.btnSuiEmp.Text = "Suivant";
+            this.btnSuiEmp.UseVisualStyleBackColor = true;
+            this.btnSuiEmp.Click += new System.EventHandler(this.btnPageSui_Click);
+            // 
+            // btnPreEmp
+            // 
+            this.btnPreEmp.Location = new System.Drawing.Point(8, 520);
+            this.btnPreEmp.Name = "btnPreEmp";
+            this.btnPreEmp.Size = new System.Drawing.Size(75, 23);
+            this.btnPreEmp.TabIndex = 2;
+            this.btnPreEmp.Text = "Précédent";
+            this.btnPreEmp.UseVisualStyleBackColor = true;
+            this.btnPreEmp.Click += new System.EventHandler(this.btnPagePre_Click);
             // 
             // panelEmprunts
             // 
@@ -250,17 +263,21 @@ namespace Maquette
             this.lblEmprunt.TabIndex = 0;
             this.lblEmprunt.Text = "Albums empruntés :";
             // 
-            // panel2
+            // panelGrandConseils
             // 
-            this.panel2.BackColor = System.Drawing.Color.Teal;
-            this.panel2.Controls.Add(this.lblConseil);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.lblNom);
-            this.panel2.Controls.Add(this.lblBvn);
-            this.panel2.Location = new System.Drawing.Point(625, 105);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(519, 548);
-            this.panel2.TabIndex = 16;
+            this.panelGrandConseils.BackColor = System.Drawing.Color.Teal;
+            this.panelGrandConseils.Controls.Add(this.lblPageReco);
+            this.panelGrandConseils.Controls.Add(this.btnSuiCon);
+            this.panelGrandConseils.Controls.Add(this.btnPreCon);
+            this.panelGrandConseils.Controls.Add(this.panel1);
+            this.panelGrandConseils.Controls.Add(this.lblConseil);
+            this.panelGrandConseils.Controls.Add(this.pictureBox1);
+            this.panelGrandConseils.Controls.Add(this.lblNom);
+            this.panelGrandConseils.Controls.Add(this.lblBvn);
+            this.panelGrandConseils.Location = new System.Drawing.Point(625, 105);
+            this.panelGrandConseils.Name = "panelGrandConseils";
+            this.panelGrandConseils.Size = new System.Drawing.Size(519, 548);
+            this.panelGrandConseils.TabIndex = 16;
             // 
             // lblConseil
             // 
@@ -304,14 +321,39 @@ namespace Maquette
             this.lblBvn.TabIndex = 0;
             this.lblBvn.Text = "Bienvenue";
             // 
-            // lblPageEmp
+            // panel1
             // 
-            this.lblPageEmp.AutoSize = true;
-            this.lblPageEmp.Location = new System.Drawing.Point(214, 525);
-            this.lblPageEmp.Name = "lblPageEmp";
-            this.lblPageEmp.Size = new System.Drawing.Size(32, 13);
-            this.lblPageEmp.TabIndex = 4;
-            this.lblPageEmp.Text = "Page";
+            this.panel1.Location = new System.Drawing.Point(4, 145);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(512, 369);
+            this.panel1.TabIndex = 4;
+            // 
+            // btnPreCon
+            // 
+            this.btnPreCon.Location = new System.Drawing.Point(13, 520);
+            this.btnPreCon.Name = "btnPreCon";
+            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
+            this.btnPreCon.TabIndex = 5;
+            this.btnPreCon.Text = "Précédent";
+            this.btnPreCon.UseVisualStyleBackColor = true;
+            // 
+            // btnSuiCon
+            // 
+            this.btnSuiCon.Location = new System.Drawing.Point(428, 520);
+            this.btnSuiCon.Name = "btnSuiCon";
+            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiCon.TabIndex = 5;
+            this.btnSuiCon.Text = "Suivant";
+            this.btnSuiCon.UseVisualStyleBackColor = true;
+            // 
+            // lblPageReco
+            // 
+            this.lblPageReco.AutoSize = true;
+            this.lblPageReco.Location = new System.Drawing.Point(265, 525);
+            this.lblPageReco.Name = "lblPageReco";
+            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
+            this.lblPageReco.TabIndex = 5;
+            this.lblPageReco.Text = "Page";
             // 
             // Abonné
             // 
@@ -320,8 +362,8 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1184, 681);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelGrandConseils);
+            this.Controls.Add(this.panelGrandEmprunt);
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.listBox3);
@@ -339,10 +381,10 @@ namespace Maquette
             this.Text = "Abonné";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelGrandEmprunt.ResumeLayout(false);
+            this.panelGrandEmprunt.PerformLayout();
+            this.panelGrandConseils.ResumeLayout(false);
+            this.panelGrandConseils.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -366,16 +408,20 @@ namespace Maquette
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelGrandEmprunt;
         private System.Windows.Forms.Label lblEmprunt;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelGrandConseils;
         private System.Windows.Forms.Label lblConseil;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblBvn;
         private System.Windows.Forms.FlowLayoutPanel panelEmprunts;
-        private System.Windows.Forms.Button btnPageSui;
-        private System.Windows.Forms.Button btnPagePre;
+        private System.Windows.Forms.Button btnSuiEmp;
+        private System.Windows.Forms.Button btnPreEmp;
         private System.Windows.Forms.Label lblPageEmp;
+        private System.Windows.Forms.Label lblPageReco;
+        private System.Windows.Forms.Button btnSuiCon;
+        private System.Windows.Forms.Button btnPreCon;
+        private System.Windows.Forms.Panel panel1;
     }
 }
