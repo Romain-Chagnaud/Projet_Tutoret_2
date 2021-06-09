@@ -10,6 +10,7 @@ namespace PTTests
     [TestClass]
     public class AdministrateurTest
     {
+        //US 4
         [TestMethod]
         public void testProlongés()
         {
@@ -36,15 +37,13 @@ namespace PTTests
             Assert.IsTrue(liste.Contains(e));
         }
 
+        //US 5
         [TestMethod]
         public void testRetardataires()
         {
             chargerMusiqueEntities();
+            //On créé un nouvel utilisateur qui n'aura donc pas de retard
             ABONNÉS ab = inscription("Jean","Reno","Leon","onimusha");
-            if (ab == null)
-            {
-                ab = connexion("Leon", "onimusha");
-            }
             ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
 
             //Cas d'un nouvel emprunt (pas de retard)
@@ -54,7 +53,7 @@ namespace PTTests
             rendreEmprunt(em);
 
 
-            //Cas d'un retard de moins de 10 jours
+            //Cas d'un retard de moins de 10 jours ( 5 jours )
             DateTime d = DateTime.Now.AddDays(-(a.GENRES.DÉLAI+5));
             em = nouvelEmpruntDaté(ab, a, d);
             listeRetards = getRetardataires();
@@ -68,18 +67,18 @@ namespace PTTests
             Assert.IsTrue(listeRetards.Contains(ab));
             rendreEmprunt(em);
 
+            //Restoration
             removeAbonné(ab);
         }
 
+        //US 6
         [TestMethod]
         public void testFantômes()
         {
             chargerMusiqueEntities();
+
+            //On créé un nouvel abonné
             ABONNÉS ab = inscription("Jean", "Reno", "Leon", "onimusha");
-            if (ab == null)
-            {
-                ab = connexion("Leon", "onimusha");
-            }
             ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
 
             //Cas nouvel abonné, n'est pas un fantôme
@@ -99,6 +98,7 @@ namespace PTTests
             fantomes = getFantomes();
             Assert.IsFalse(fantomes.Contains(ab));
 
+            //Restoration des emprunts
             rendreEmprunt(em);
             rendreEmprunt(em1);
 
@@ -112,6 +112,7 @@ namespace PTTests
             Assert.IsFalse(fantomes.Contains(ab));
         }
 
+        //US 7
         [TestMethod]
         public void testTop10()
         {
@@ -171,11 +172,13 @@ namespace PTTests
             removeAbonné(abo);
         }
 
+        //US 8
         [TestMethod]
         public void testAlbumsNonEmpruntés()
         {
             chargerMusiqueEntities();
             
+            //On efface les emprunts liés à un album
             ALBUMS a = getALBUMSs()[0];
             var emprunts = getEmpruntsSelonAlbum(a.CODE_ALBUM);
             List<EMPRUNTER> empruntsEffacés = new List<EMPRUNTER>();
@@ -212,6 +215,7 @@ namespace PTTests
             }
         }
 
+        //US 12
         [TestMethod]
         public void testAfficherAbonnés()
         {
@@ -225,6 +229,7 @@ namespace PTTests
             abonnés = getABONNÉSs();
             Assert.IsTrue(abonnés.Contains(ab));
 
+            //Restoration
             removeAbonné(ab);
         }
     }

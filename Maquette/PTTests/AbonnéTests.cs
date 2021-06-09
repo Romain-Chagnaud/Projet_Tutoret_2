@@ -9,86 +9,91 @@ namespace PTTests
     [TestClass]
     public class AbonnéTests
     {
+        //US 1
         [TestMethod]
         public void testInscription()
         {
             chargerMusiqueEntities();
+
+            //Cas 1 : nouvel abonné avec login original, Résultat : abonné créé
             string nom, prenom, login, mdp;
             nom = "Belmondo";
             prenom = "Jean-Paul";
             login = "Belmont";
             mdp = "belmont123";
             ABONNÉS abonnéTrue = inscription(prenom, nom, login, mdp);
-            Assert.IsTrue(abonnéTrue != null);
-            System.Console.WriteLine(abonnéTrue.ToString());
+            Assert.IsFalse(abonnéTrue == null);
+
+            //Cas 2 : nouvel abonné avec login existant, Résultat : abonné non créé
             nom = "Belmont";
             prenom = "Simon";
             login = "Belmont";
             mdp = "draculakiller";
             ABONNÉS abonnéFalse = inscription(prenom, nom, login, mdp);
             Assert.IsTrue(abonnéFalse == null);
-            System.Console.WriteLine("L'utilisateur Belmont Simon ne peut pas être créé (login Belmont déjà utilisé)");
+
+            //Cas 3 : nouvel abonné avec nom et prénom existant, Résultat : abonné créé
             nom = "Belmondo";
             prenom = "Jean-Paul";
             login = "Belmont2";
             mdp = "belmont123";
             ABONNÉS abonnéTrue2 = inscription(prenom, nom, login, mdp);
-            Assert.IsTrue(abonnéTrue2 != null);
-            System.Console.WriteLine(abonnéTrue2.ToString());
+            Assert.IsFalse(abonnéTrue2 == null);
+
+            //Restoration
             removeAbonné(abonnéTrue);
             removeAbonné(abonnéTrue2);
         }
 
+        //US 1
         [TestMethod]
         public void testConnexion()
         {
             chargerMusiqueEntities();
+
+            //Cas 1 : connexion d'un abonné existant, résultat : connexion réussi
             ABONNÉS abonnéTrue = connexion("lp", "lp");
-            Assert.IsTrue(abonnéTrue != null);
-            System.Console.WriteLine(abonnéTrue.ToString());
+            Assert.IsFalse(abonnéTrue == null);
+
+            //Cas 2 : connexion d'un abonné non-existant, résultat : connexion échoué
             ABONNÉS abonnéFalse = connexion("random1645551", "random165455");
             Assert.IsTrue(abonnéFalse == null);
-            System.Console.WriteLine("Aucun utilisateur s'appelant : random1645551");
+
         }
 
+        //US 1
         [TestMethod]
         public void testEmprunt()
         {
             chargerMusiqueEntities();
             //Emprunt numéro 1 pour lp
             ABONNÉS ab = connexion("lp", "lp");
-            Console.WriteLine(ab.ToString());
             ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
-            Console.WriteLine(a.ToString());
             EMPRUNTER e = nouvelEmprunt(ab, a);
-            Assert.IsTrue(e != null);
-            Console.WriteLine(e.ToString());
-            Console.WriteLine("Emprunt de " + a.TITRE_ALBUM.Trim() + " numéro 1");
+            Assert.IsFalse(e == null);
 
-            //Test d'emprunt de l'album par le même utilisateur sans l'avoir rendu
+            //Test d'emprunt du même album par le même utilisateur sans l'avoir rendu
             EMPRUNTER e1 = nouvelEmprunt(ab, a);
             Assert.IsTrue(e1 == null);
-            Console.WriteLine(e.ToString());
-            Console.WriteLine("Emprunt de " + a.TITRE_ALBUM.Trim() + " numéro 2");
 
             //Rendu de l'emprunt
             rendreEmprunt(e);
 
             //Emprunt numéro 2 du même album pour lp après l'avoir rendu
             e = nouvelEmprunt(ab, a);
-            Assert.IsTrue(e != null);
-            Console.WriteLine(e.ToString());
-            Console.WriteLine("Emprunt de " + a.TITRE_ALBUM.Trim() + " numéro 2");
+            Assert.IsFalse(e == null);
 
-            //Emprunt du même album par un utilisateur
+            //Emprunt du même album par un autre utilisateur
             ab = inscription("Fernand", "Constandin", "Fernaldin", "ferni");
             e1 = nouvelEmprunt(ab, a);
             Assert.IsTrue(e1 == null);
-            Console.WriteLine("Emprunt de " + a.TITRE_ALBUM.Trim() + " impossible, album déjà pris");
+            
+            //Restoration
             rendreEmprunt(e);
             removeAbonné(ab);
         }
 
+        //US 2
         [TestMethod]
         public void testEmpruntésEnCours()
         {
@@ -114,6 +119,7 @@ namespace PTTests
             Assert.IsTrue(!liste.Contains(e));
         }
 
+        //US 3 + 9
         [TestMethod]
         public void testProlongation()
         {
@@ -129,7 +135,9 @@ namespace PTTests
             Assert.IsTrue(estProlongeable(e));
             DateTime ancienne = e.DATE_RETOUR_ATTENDUE;
             prolongation(e);
-            Assert.IsTrue(e.DATE_RETOUR_ATTENDUE != ancienne);
+            Assert.IsFalse(e.DATE_RETOUR_ATTENDUE == ancienne);
+
+            //Tentative de re-prolongement
             ancienne = e.DATE_RETOUR_ATTENDUE;
             Assert.IsFalse(estProlongeable(e));
             prolongation(e);
@@ -149,6 +157,7 @@ namespace PTTests
 
         }
 
+        //US 10
         [TestMethod]
         public void testSuggestions()
         {
@@ -169,13 +178,10 @@ namespace PTTests
             }
 
             //On vérifie que les suggestions ne contient que des albums jamais empruntés et des genres déjà empruntés
-            foreach (var l in suggestion)
+            foreach (var a in suggestion)
             {
-                foreach (ALBUMS a in l)
-                {
                     Assert.IsTrue(genres.Contains(a.GENRES));
                     Assert.IsFalse(albumsEmpruntés.Contains(a));
-                }
             }
 
             //On ajoute un nouvel emprunt
@@ -191,13 +197,10 @@ namespace PTTests
             genres.Add(em.ALBUMS.GENRES);
             albumsEmpruntés.Add(em.ALBUMS);
             //Puis on revérifie
-            foreach (var l in suggestion)
+            foreach (var a in suggestion)
             {
-                foreach (ALBUMS a in l)
-                {
                     Assert.IsTrue(genres.Contains(a.GENRES));
                     Assert.IsFalse(albumsEmpruntés.Contains(a));
-                }
             }
         }
     }
