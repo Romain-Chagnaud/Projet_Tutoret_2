@@ -89,6 +89,8 @@ namespace Maquette
         {
             Abonné parent = (Abonné)Owner;
             parent.EmprunterAlbum(album);
+            ActualiserListes();
+            afficherAlbums();
         }
     }
 }
