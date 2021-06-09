@@ -38,6 +38,7 @@ namespace Maquette
             // 
             this.button2.BackColor = System.Drawing.Color.Teal;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Menu;
             this.button2.Location = new System.Drawing.Point(12, 23);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(169, 48);
@@ -49,8 +50,9 @@ namespace Maquette
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.Teal;
+            this.listBox1.ForeColor = System.Drawing.SystemColors.Menu;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(100, 139);
+            this.listBox1.Location = new System.Drawing.Point(99, 135);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(336, 355);
             this.listBox1.TabIndex = 3;
