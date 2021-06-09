@@ -210,7 +210,22 @@ namespace PTTests
             {
                 ajouterEmprunt(emp1);
             }
+        }
 
+        [TestMethod]
+        public void testAfficherAbonnés()
+        {
+            chargerMusiqueEntities();
+            var abonnés = getABONNÉSs();
+            ABONNÉS ab = inscription("abc", "abc", "abc", "abc");
+            //Le nouvel abonné n'est pas dans la liste pré-inscription
+            Assert.IsFalse(abonnés.Contains(ab));
+
+            //Le nouvel abonné est dans la liste
+            abonnés = getABONNÉSs();
+            Assert.IsTrue(abonnés.Contains(ab));
+
+            removeAbonné(ab);
         }
     }
 }
