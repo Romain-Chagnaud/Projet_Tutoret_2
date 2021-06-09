@@ -262,7 +262,7 @@ namespace Maquette
             var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
             var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList<dynamic>();
             List<ALBUMS> top10 = new List<ALBUMS>();
-            for (int i = 0; i<albumsTriés.Count(); i++)
+            for (int i = 0; i < albumsTriés.Count(); i++)
             {
                 top10.Add(getAlbumSelonID(albumsTriés[i].ALBUMS));
             }
@@ -333,7 +333,8 @@ namespace Maquette
             if (emprunts.Count > 0)
             {
                 return emprunts[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -426,5 +427,44 @@ namespace Maquette
             musique.SaveChanges();
         }
 
+        public static List<ALBUMS> getAlbumsNonEmpruntés()
+        {
+            var albums = getALBUMSs();
+            List<ALBUMS> albumsNonEmpruntés = new List<ALBUMS>();
+            foreach (ALBUMS al in albums)
+            {
+                var emprunts = getEmpruntsSelonAlbum(al.CODE_ALBUM);
+
+                if (emprunts.Count > 0)
+                {
+                    int compteur = 0;
+                    bool aEteEmprunte = false;
+
+                    while (compteur < emprunts.Count && !aEteEmprunte)
+                    {
+                        EMPRUNTER emp = emprunts[compteur];
+                        DateTime date = emp.DATE_EMPRUNT.AddYears(1);
+
+                        if (date.CompareTo(DateTime.Now) > 0)
+                        {
+                            aEteEmprunte = true;
+                        }
+                        compteur++;
+                    }
+
+                    if (!aEteEmprunte)
+                    {
+                        albumsNonEmpruntés.Add(al);
+                    }
+                }
+            }
+            return albumsNonEmpruntés;
+        }
+
+        public static void ajouterEmprunt(EMPRUNTER e)
+        {
+            musique.EMPRUNTER.Add(e);
+            musique.SaveChanges();
+        }
     }
 }
