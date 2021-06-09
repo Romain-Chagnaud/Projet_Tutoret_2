@@ -53,6 +53,7 @@ namespace Maquette
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(100, 20);
             this.nom.TabIndex = 0;
+            this.nom.TextChanged += new System.EventHandler(this.nom_TextChanged);
             // 
             // prenom
             // 
@@ -82,6 +83,7 @@ namespace Maquette
             this.log2.Name = "log2";
             this.log2.Size = new System.Drawing.Size(100, 20);
             this.log2.TabIndex = 4;
+            this.log2.TextChanged += new System.EventHandler(this.log2_TextChanged);
             // 
             // mdp2
             // 
@@ -90,6 +92,7 @@ namespace Maquette
             this.mdp2.PasswordChar = '*';
             this.mdp2.Size = new System.Drawing.Size(100, 20);
             this.mdp2.TabIndex = 5;
+            this.mdp2.TextChanged += new System.EventHandler(this.mdp2_TextChanged);
             // 
             // listBox1
             // 

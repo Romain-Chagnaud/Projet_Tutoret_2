@@ -8,6 +8,7 @@ namespace Maquette
 {
     static class Program
     {
+        static MusiqueEntities musique = new MusiqueEntities();
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -16,7 +17,7 @@ namespace Maquette
        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Connexion());
+           Application.Run(new ConnexionDisplay(musique));
         }
     }
 }

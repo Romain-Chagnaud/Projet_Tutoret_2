@@ -148,6 +148,7 @@ namespace Maquette
             this.Controls.Add(this.textBox1);
             this.Name = "Abonné";
             this.Text = "Abonné";
+            this.Load += new System.EventHandler(this.Abonné_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

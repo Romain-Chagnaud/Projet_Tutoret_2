@@ -73,6 +73,12 @@
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConnexionDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnexionDisplay.Designer.cs">
+      <DependentUpon>ConnexionDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DLLImportAttribute.cs" />
     <Compile Include="EDITEURS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -102,6 +109,12 @@
     </Compile>
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscription.Designer.cs">
+      <DependentUpon>Inscription.cs</DependentUpon>
     </Compile>
     <Compile Include="MyAbonne.cs" />
     <Compile Include="MyAlbum.cs" />
@@ -133,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnexionDisplay.resx">
+      <DependentUpon>ConnexionDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription.resx">
+      <DependentUpon>Inscription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

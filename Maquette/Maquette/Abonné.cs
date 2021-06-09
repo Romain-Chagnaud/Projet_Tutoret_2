@@ -206,5 +206,10 @@ namespace Maquette
                 listBox3.Items.Add("Aucun emprunt");
             }
         }
+
+        private void Abonné_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

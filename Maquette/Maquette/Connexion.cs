@@ -99,5 +99,20 @@ namespace Maquette
                 }
             }
         }
+
+        private void log2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mdp2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
