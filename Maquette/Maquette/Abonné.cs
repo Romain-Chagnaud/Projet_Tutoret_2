@@ -148,7 +148,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterEmprunt()
         {
-            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4) - 1)
+            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4))
             {
                 pageEmprunts++;
             }
@@ -220,7 +220,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3) - 1)
+            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3) )
             {
                 pageReco++;
             }
