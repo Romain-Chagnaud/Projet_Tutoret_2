@@ -14,8 +14,8 @@ namespace Maquette
     public partial class AlbumEmpruntable : UserControl
     {
         ALBUMS album;
-        Magasin magParent;
-        Abonné aboParent;
+        Magasin magParent = null;
+        Abonné aboParent = null;
 
 
         public AlbumEmpruntable(ALBUMS album, Magasin parent)
@@ -31,6 +31,7 @@ namespace Maquette
             InitializeComponent();
             this.album = album;
             this.aboParent = parent;
+            ChargerElements();
         }
 
         #region IHM
@@ -66,7 +67,22 @@ namespace Maquette
         /// </summary>
         private void AfficherDetails()
         {
+            DescriptionAlbum desc = new DescriptionAlbum(album);
+            if (desc.ShowDialog() == DialogResult.OK)
+            {
+                EmprunterAlbum();
+            }
+        }
 
+        private void EmprunterAlbum()
+        {
+            if (aboParent != null)
+            {
+                aboParent.EmprunterAlbum(album);
+            } else
+            {
+                magParent.EmprunterAlbum(album);
+            }
         }
 
 

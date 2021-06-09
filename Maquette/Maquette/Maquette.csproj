@@ -100,6 +100,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DescriptionAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescriptionAlbum.Designer.cs">
+      <DependentUpon>DescriptionAlbum.cs</DependentUpon>
+    </Compile>
     <Compile Include="EDITEURS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescriptionAlbum.resx">
+      <DependentUpon>DescriptionAlbum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Magasin.resx">
       <DependentUpon>Magasin.cs</DependentUpon>

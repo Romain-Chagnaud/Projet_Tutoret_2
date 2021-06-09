@@ -9,7 +9,7 @@ namespace Maquette
 {
     public partial class Abonné : Form
     {
-        ABONNÉS abonne;
+        public ABONNÉS abonne;
 
         List<EMPRUNTER> emprunts;
         int pageEmprunts = 0;
@@ -73,21 +73,37 @@ namespace Maquette
             OuvrirMagasin();
         }
 
+        private void btnPreCon_Click(object sender, EventArgs e)
+        {
+            DiminuerReco();
+        }
+
+        private void btnSuiCon_Click(object sender, EventArgs e)
+        {
+            AugmenterReco();
+        }
+
         #endregion
 
         #region Logique
 
+        /// <summary>
+        /// Initialise les éléments
+        /// </summary>
         void InitialiserElements()
         {
             ActualiserListes();
-            afficherEmprunts();
-            afficherSuggestions();
         }
 
+        /// <summary>
+        /// Actualise les listes
+        /// </summary>
         private void ActualiserListes()
         {
             emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
             recommendations = getSuggestions(abonne.CODE_ABONNÉ);
+            afficherEmprunts();
+            AfficherSuggestions();
         }
 
 
@@ -143,23 +159,14 @@ namespace Maquette
             }
             afficherEmprunts();
         }
-        #endregion
-
-
-
-
-
-
-
 
         /// <summary>
         /// Méthode ci-dessous : US 10
         /// Méthode pour afficher les suggestions
         /// </summary>
-        private void afficherSuggestions()
+        private void AfficherSuggestions()
         {
             panelConseil.Controls.Clear();
-
 
             if (recommendations.Count > 0)
             {
@@ -180,6 +187,9 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Affiche le label quand il n'y a aucun disque de recommandé
+        /// </summary>
         private void AfficherPasReco()
         {
             lblPasSugg.Visible = true;
@@ -188,9 +198,9 @@ namespace Maquette
             lblPasSugg.Size = panelConseil.Size;
         }
 
-
-
-
+        /// <summary>
+        /// Ouvre l'onglet de magasin
+        /// </summary>
         private void OuvrirMagasin()
         {
             Magasin magasin = new Magasin(this);
@@ -198,35 +208,40 @@ namespace Maquette
             InitialiserElements();
         }
 
-
-
-        private void btnPreCon_Click(object sender, EventArgs e)
-        {
-            DiminuerReco();
-        }
-
-        private void btnSuiCon_Click(object sender, EventArgs e)
-        {
-            AugmenterReco();
-        }
-
+        /// <summary>
+        /// Incrémente la page des recommandés
+        /// </summary>
         private void AugmenterReco()
         {
             if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3))
             {
                 pageReco++;
             }
-            afficherSuggestions();
+            AfficherSuggestions();
         }
 
+        /// <summary>
+        /// Décrémente la page des recommandés
+        /// </summary>
         private void DiminuerReco()
         {
             if (pageReco > 0)
             {
                 pageReco--;
             }
-            afficherSuggestions();
+            AfficherSuggestions();
         }
 
+        /// <summary>
+        /// Emprunte l'album
+        /// </summary>
+        /// <param name="album">L'album à emprunter</param>
+        public void EmprunterAlbum(ALBUMS album)
+        {
+            nouvelEmprunt(abonne, album);
+            ActualiserListes();
+        }
+
+        #endregion
     }
 }

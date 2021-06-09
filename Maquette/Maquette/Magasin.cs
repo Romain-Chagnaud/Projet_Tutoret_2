@@ -84,5 +84,11 @@ namespace Maquette
             }
             afficherAlbums();
         }
+
+        public void EmprunterAlbum(ALBUMS album)
+        {
+            Abonné parent = (Abonné)Owner;
+            parent.EmprunterAlbum(album);
+        }
     }
 }
