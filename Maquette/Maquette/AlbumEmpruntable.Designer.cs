@@ -29,19 +29,11 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            this.pochette = new System.Windows.Forms.PictureBox();
             this.lblTitre = new System.Windows.Forms.Label();
+            this.pochette = new System.Windows.Forms.PictureBox();
+            this.btnVoir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pochette
-            // 
-            this.pochette.Location = new System.Drawing.Point(3, 3);
-            this.pochette.Name = "pochette";
-            this.pochette.Size = new System.Drawing.Size(100, 100);
-            this.pochette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pochette.TabIndex = 0;
-            this.pochette.TabStop = false;
             // 
             // lblTitre
             // 
@@ -52,14 +44,39 @@ namespace Maquette
             this.lblTitre.TabIndex = 1;
             this.lblTitre.Text = "Titre";
             // 
+            // pochette
+            // 
+            this.pochette.Location = new System.Drawing.Point(3, 3);
+            this.pochette.Name = "pochette";
+            this.pochette.Size = new System.Drawing.Size(100, 100);
+            this.pochette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pochette.TabIndex = 0;
+            this.pochette.TabStop = false;
+            // 
+            // btnVoir
+            // 
+            this.btnVoir.BackColor = System.Drawing.Color.Teal;
+            this.btnVoir.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.btnVoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoir.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnVoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoir.Location = new System.Drawing.Point(394, 10);
+            this.btnVoir.Name = "btnVoir";
+            this.btnVoir.Size = new System.Drawing.Size(100, 100);
+            this.btnVoir.TabIndex = 2;
+            this.btnVoir.UseVisualStyleBackColor = false;
+            this.btnVoir.Click += new System.EventHandler(this.btnVoir_Click);
+            // 
             // AlbumEmpruntable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
+            this.Controls.Add(this.btnVoir);
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.pochette);
             this.Name = "AlbumEmpruntable";
-            this.Size = new System.Drawing.Size(851, 293);
+            this.Size = new System.Drawing.Size(528, 112);
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -70,5 +87,6 @@ namespace Maquette
 
         private System.Windows.Forms.PictureBox pochette;
         private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.Button btnVoir;
     }
 }

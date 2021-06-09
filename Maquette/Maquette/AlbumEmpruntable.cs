@@ -14,13 +14,40 @@ namespace Maquette
     public partial class AlbumEmpruntable : UserControl
     {
         ALBUMS album;
+        Magasin magParent;
+        Abonné aboParent;
 
-        public AlbumEmpruntable(ALBUMS album)
+
+        public AlbumEmpruntable(ALBUMS album, Magasin parent)
         {
             InitializeComponent();
             this.album = album;
+            this.magParent = parent;
             ChargerElements();
         }
+
+        public AlbumEmpruntable(ALBUMS album, Abonné parent)
+        {
+            InitializeComponent();
+            this.album = album;
+            this.aboParent = parent;
+        }
+
+        #region IHM
+
+        /// <summary>
+        /// Click sur le bouton Voir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVoir_Click(object sender, EventArgs e)
+        {
+            AfficherDetails();
+        }
+
+        #endregion
+
+        #region Logique
 
         /// <summary>
         /// Initialise l'affichage de l'emprunt
@@ -33,6 +60,23 @@ namespace Maquette
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));
             }
         }
+
+        /// <summary>
+        /// Affiche les détails d'un album
+        /// </summary>
+        private void AfficherDetails()
+        {
+
+        }
+
+
+        #endregion
+
+
+
+
+
+
 
         /// <summary>
         /// Méthode ci-dessous : US 1

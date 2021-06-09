@@ -7,7 +7,7 @@ namespace Maquette
     public static class Outil
     {
         public static MusiqueEntities musique { get; set; }
-
+        
         public static void chargerMusiqueEntities()
         {
             musique = new MusiqueEntities();
@@ -234,7 +234,7 @@ namespace Maquette
             return albumsTriés;
         }
 
-        public static List<List<ALBUMS>> getSuggestions(int id)
+        public static List<ALBUMS> getSuggestions(int id)
         {
             var albumsEmpruntés = getToutAlbumsEmpruntésParAbonné(id);
 
@@ -243,22 +243,22 @@ namespace Maquette
 
             var albums = getALBUMSs();
             var listeAlbum = albums.Except(albumsEmpruntés).ToList();
-            List<List<ALBUMS>> albumsRecommandés = new List<List<ALBUMS>>();
+            List<ALBUMS> albumsRecommandés = new List<ALBUMS>();
             if (genresTriés.Count >= 1)
             {
                 GENRES premierGenre = genresTriés[0].GENRES;
                 var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
-                albumsRecommandés.Add(albumsRecommandés1);
+                albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0,3));
                 if (genresTriés.Count >= 2)
                 {
                     GENRES deuxiemeGenre = genresTriés[1].GENRES;
                     var albumsRecommandés2 = getAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
-                    albumsRecommandés.Add(albumsRecommandés2);
+                    albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 3));
                     if (genresTriés.Count >= 3)
                     {
                         GENRES troisiemeGenre = genresTriés[2].GENRES;
                         var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
-                        albumsRecommandés.Add(albumsRecommandés3);
+                        albumsRecommandés.AddRange(albumsRecommandés3.GetRange(0, 3));
                     }
                 }
 

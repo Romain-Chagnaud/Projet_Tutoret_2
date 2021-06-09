@@ -115,6 +115,12 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Magasin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Magasin.Designer.cs">
+      <DependentUpon>Magasin.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyAbonne.cs" />
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEditeur.cs" />
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Magasin.resx">
+      <DependentUpon>Magasin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -191,6 +200,11 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\logo.ico" />
+    <None Include="Resources\fleche_gauche.png" />
+    <None Include="Resources\fleche_droite.png" />
+    <None Include="Resources\rendre_album_v2.png" />
+    <None Include="Resources\rendre_album_v1.png" />
     <None Include="Resources\visibility.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\timer.png" />

@@ -14,28 +14,17 @@ namespace Maquette
     public partial class AlbumARendre : UserControl
     {
         public EMPRUNTER emprunt;
+        Abonné parent;
 
-
-        public AlbumARendre(EMPRUNTER emprunt)
+        public AlbumARendre(EMPRUNTER emprunt, Abonné parent)
         {
             InitializeComponent();
             this.emprunt = emprunt;
+            this.parent = parent;
             ChargerElements();
         }
 
-        /// <summary>
-        /// Initialise l'affichage de l'emprunt
-        /// </summary>
-        private void ChargerElements()
-        {
-            ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
-            lblTitre.Text = album.TITRE_ALBUM;
-            lblDate.Text = emprunt.DATE_RETOUR_ATTENDUE.ToString();
-            if (album.POCHETTE != null)
-            {
-                pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));
-            }
-        }
+        #region IHM
 
         /// <summary>
         /// Méthode ci-dessous : US 3
@@ -59,13 +48,33 @@ namespace Maquette
             RendreAlbum();
         }
 
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Initialise l'affichage de l'emprunt
+        /// </summary>
+        private void ChargerElements()
+        {
+            ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
+            lblTitre.Text = album.TITRE_ALBUM;
+            lblDate.Text = emprunt.DATE_RETOUR_ATTENDUE.ToString();
+            if (album.POCHETTE != null)
+            {
+                pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));
+            }
+        }
+
         /// <summary>
         /// Étend la durée de l'emprunt
         /// </summary>
         private void EtendreDuree()
         {
-            if (Outil.estProlongeable(emprunt)) { 
+            if (Outil.estProlongeable(emprunt))
+            {
                 Outil.prolongation(emprunt);
+                parent.afficherEmprunts();
             }
             else
             {
@@ -80,6 +89,9 @@ namespace Maquette
         private void RendreAlbum()
         {
             Outil.rendreEmprunt(emprunt);
+            parent.afficherEmprunts();
         }
+
+        #endregion
     }
 }

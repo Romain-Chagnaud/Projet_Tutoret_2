@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,7 +11,11 @@ namespace Maquette
     {
         ABONNÉS abonne;
 
+        List<EMPRUNTER> emprunts;
         int pageEmprunts = 0;
+
+        List<ALBUMS> recommendations;
+        int pageReco = 0;
 
 
 
@@ -18,9 +23,12 @@ namespace Maquette
         {
             InitializeComponent();
             abonne = ab;
-            afficherEmprunts();
-            afficherSuggestions();
+            InitialiserElements();
+
         }
+
+
+
 
         #region IHM
 
@@ -55,9 +63,34 @@ namespace Maquette
             AugmenterEmprunt();
         }
 
+        /// <summary>
+        /// Appui sur le label magasin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblMagasin_Click(object sender, EventArgs e)
+        {
+            OuvrirMagasin();
+        }
+
         #endregion
 
         #region Logique
+
+        void InitialiserElements()
+        {
+            ActualiserListes();
+            afficherEmprunts();
+            afficherSuggestions();
+        }
+
+        private void ActualiserListes()
+        {
+            emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
+            recommendations = getSuggestions(abonne.CODE_ABONNÉ);
+        }
+
+
         /// <summary>
         /// Méthode ci-dessous : US 2 + 13
         /// Méthode pour afficher tous les emprunts (avec pagination)
@@ -65,25 +98,24 @@ namespace Maquette
         public void afficherEmprunts()
         {
             panelEmprunts.Controls.Clear();
-            var emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
             for (int i = 4 * pageEmprunts; i < 4 * (pageEmprunts + 1); i++)
             {
                 if (i < emprunts.Count)
                 {
-                    panelEmprunts.Controls.Add(new AlbumARendre(emprunts[i]));
+                    panelEmprunts.Controls.Add(new AlbumARendre(emprunts[i], this));
                 }
             }
 
-            lblPageEmp.Text = (pageEmprunts + 1).ToString();
+            lblPageEmp.Text = pageEmprunts + "";
         }
         /// <summary>
         /// Allonge le délai de tous les emprunts
         /// </summary>
         private void AllongerTousEmprunts()
         {
-            foreach (AlbumARendre alb in panelEmprunts.Controls)
+            foreach (EMPRUNTER emp in emprunts)
             {
-                prolongation(alb.emprunt);
+                prolongation(emp);
             }
             afficherEmprunts();
         }
@@ -113,30 +145,7 @@ namespace Maquette
         }
         #endregion
 
-        /// <summary>
-        /// A refaire !!!!
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// Méthode ci-dessous : US 1
-        /// Méthode pour afficher les albums non-empruntés
-        /// </summary>
-        /*private void afficherAlbums()
-        {
-            listBox2.Items.Clear();
-            var albums = getALBUMSs().OrderBy(a => a.TITRE_ALBUM);
 
-
-            var empruntés = getIndisponibles();
-
-            foreach (ALBUMS al in albums.Except(empruntés))
-            {
-                listBox2.Items.Add(al);
-            }
-        }*/
 
 
 
@@ -149,19 +158,20 @@ namespace Maquette
         /// </summary>
         private void afficherSuggestions()
         {
-            panelEmprunts.Controls.Clear();
-            var albumsRecommandés = getSuggestions(abonne.CODE_ABONNÉ);
+            panelConseil.Controls.Clear();
 
-            if (albumsRecommandés.Count > 0)
+
+            if (recommendations.Count > 0)
             {
                 lblPasSugg.Visible = false;
-                foreach (var l in albumsRecommandés)
+                for (int i = 3 * pageReco; i < 3 * (pageReco + 1); i++)
                 {
-                    for (int i = 0; i < 10 / albumsRecommandés.Count; i++)
+                    if (i < recommendations.Count)
                     {
-                        panelConseil.Controls.Add(new AlbumEmpruntable(l.ElementAt(i)));
+                        panelConseil.Controls.Add(new AlbumEmpruntable(recommendations[i], this));
                     }
                 }
+                lblPageReco.Text = pageReco + "";
 
             }
             else
@@ -178,17 +188,45 @@ namespace Maquette
             lblPasSugg.Size = panelConseil.Size;
         }
 
-        private void lblEspace_Click(object sender, EventArgs e)
-        {
 
+
+
+        private void OuvrirMagasin()
+        {
+            Magasin magasin = new Magasin(this);
+            magasin.Show();
+            InitialiserElements();
         }
 
-        private void lblMagasin_Click(object sender, EventArgs e)
-        {
 
+
+        private void btnPreCon_Click(object sender, EventArgs e)
+        {
+            DiminuerReco();
         }
 
+        private void btnSuiCon_Click(object sender, EventArgs e)
+        {
+            AugmenterReco();
+        }
 
+        private void AugmenterReco()
+        {
+            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3))
+            {
+                pageReco++;
+            }
+            afficherSuggestions();
+        }
+
+        private void DiminuerReco()
+        {
+            if (pageReco > 0)
+            {
+                pageReco--;
+            }
+            afficherSuggestions();
+        }
 
     }
 }
