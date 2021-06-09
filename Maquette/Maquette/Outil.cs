@@ -248,20 +248,25 @@ namespace Maquette
             return emprunts;
         }
 
-        public static List<dynamic> getTop10()
+        public static List<ALBUMS> getTop10()
         {
             var emprunts = getEMPRUNTERs();
             List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
             foreach (EMPRUNTER em in emprunts)
             {
-                if (em.DATE_EMPRUNT.AddYears(1).CompareTo(DateTime.Now) > 0)
+                if (em.DATE_EMPRUNT.Year == DateTime.Now.Year)
                 {
                     empruntsList.Add(em);
                 }
             }
             var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
             var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList<dynamic>();
-            return albumsTriés;
+            List<ALBUMS> top10 = new List<ALBUMS>();
+            for (int i = 0; i<albumsTriés.Count(); i++)
+            {
+                top10.Add(getAlbumSelonID(albumsTriés[i].ALBUMS));
+            }
+            return top10;
         }
 
         public static List<List<ALBUMS>> getSuggestions(int id)
@@ -317,6 +322,21 @@ namespace Maquette
                 musique.SaveChanges();
             }
             return emprunt;
+        }
+
+        public static EMPRUNTER getEmpruntAlbumEnCours(ALBUMS al)
+        {
+            var emprunts = (from e in musique.EMPRUNTER
+                            where e.CODE_ALBUM == al.CODE_ALBUM
+                            && e.DATE_RETOUR == null
+                            select e).ToList();
+            if (emprunts.Count > 0)
+            {
+                return emprunts[0];
+            } else
+            {
+                return null;
+            }
         }
 
         public static List<EMPRUNTER> getProlongés()
@@ -394,10 +414,16 @@ namespace Maquette
 
         public static void purgerFantomes()
         {
-            foreach(ABONNÉS a in getFantomes())
+            foreach (ABONNÉS a in getFantomes())
             {
                 purgerUnFantome(a);
             }
+        }
+
+        public static void supprimerEmprunt(EMPRUNTER e)
+        {
+            musique.EMPRUNTER.Remove(e);
+            musique.SaveChanges();
         }
 
     }
