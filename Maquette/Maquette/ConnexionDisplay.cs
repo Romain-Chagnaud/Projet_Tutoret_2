@@ -61,6 +61,8 @@ namespace Maquette
             if (textBoxId.Text != "" && textBoxPass.Text != "")
             {
                 ABONNÉS abo = Outil.connexion(textBoxId.Text, textBoxPass.Text);
+                textBoxId.Text = "";
+                textBoxPass.Text = "";
                 if (abo != null)
                 {
                     MessageBox.Show("Bienvenue, " + abo);
