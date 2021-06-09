@@ -43,7 +43,7 @@ namespace Maquette
         {
             AdminIHM2 add = new AdminIHM2(musique);
             add.Show();
-            this.Close();
+            
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
