@@ -100,6 +100,12 @@
     <Compile Include="AdminIHM2.Designer.cs">
       <DependentUpon>AdminIHM2.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbumEmpruntable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumEmpruntable.Designer.cs">
+      <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
+    </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -124,6 +130,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DescriptionAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescriptionAlbum.Designer.cs">
+      <DependentUpon>DescriptionAlbum.cs</DependentUpon>
+    </Compile>
     <Compile Include="DLLImportAttribute.cs" />
     <Compile Include="EDITEURS.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -139,6 +151,12 @@
     </Compile>
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Magasin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Magasin.Designer.cs">
+      <DependentUpon>Magasin.cs</DependentUpon>
     </Compile>
     <Compile Include="MyAbonne.cs" />
     <Compile Include="MyAlbum.cs" />
@@ -209,11 +227,20 @@
     <EmbeddedResource Include="AdminIHM2.resx">
       <DependentUpon>AdminIHM2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlbumEmpruntable.resx">
+      <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnexionDisplay.resx">
       <DependentUpon>ConnexionDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescriptionAlbum.resx">
+      <DependentUpon>DescriptionAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Magasin.resx">
+      <DependentUpon>Magasin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NonEmprunte.resx">
       <DependentUpon>NonEmprunte.cs</DependentUpon>
