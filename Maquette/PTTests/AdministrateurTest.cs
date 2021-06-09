@@ -35,5 +35,41 @@ namespace PTTests
             liste = getProlongés();
             Assert.IsTrue(liste.Contains(e));
         }
+
+        [TestMethod]
+        public void testRetardataires()
+        {
+            chargerMusiqueEntities();
+            ABONNÉS ab = inscription("Jean","Reno","Leon","onimusha");
+            if (ab == null)
+            {
+                ab = connexion("Leon", "onimusha");
+            }
+            ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
+
+            //Cas d'un nouvel emprunt (pas de retard)
+            EMPRUNTER em = nouvelEmpruntDaté(ab, a, DateTime.Now);
+            var listeRetards = getRetardataires();
+            Assert.IsFalse(listeRetards.Contains(ab));
+            rendreEmprunt(em);
+
+
+            //Cas d'un retard de moins de 10 jours
+            DateTime d = DateTime.Now.AddDays(-(a.GENRES.DÉLAI+5));
+            em = nouvelEmpruntDaté(ab, a, d);
+            listeRetards = getRetardataires();
+            Assert.IsFalse(listeRetards.Contains(ab));
+            rendreEmprunt(em);
+
+            //Cas d'un retard de 10 jours ou plus
+            d = DateTime.Now.AddDays(-(a.GENRES.DÉLAI + 10));
+            em = nouvelEmpruntDaté(ab, a, d);
+            listeRetards = getRetardataires();
+            Assert.IsTrue(listeRetards.Contains(ab));
+            rendreEmprunt(em);
+
+            removeAbonné(ab);
+        }
+
     }
 }

@@ -172,6 +172,36 @@ namespace Maquette
             return em;
         }
 
+        public static EMPRUNTER nouvelEmpruntDaté(ABONNÉS ab, ALBUMS al, DateTime dt)
+        {
+            EMPRUNTER em = null;
+            if (!getIndisponibles().Contains(al))
+            {
+                DateTime newDate = dt.AddDays(al.GENRES.DÉLAI);
+                em = new EMPRUNTER();
+                em.CODE_ABONNÉ = ab.CODE_ABONNÉ;
+                em.CODE_ALBUM = al.CODE_ALBUM;
+                em.DATE_EMPRUNT = dt;
+                em.DATE_RETOUR_ATTENDUE = newDate;
+                EMPRUNTER existant = null;
+                foreach (EMPRUNTER e in musique.EMPRUNTER)
+                {
+                    if (e.Equals(em))
+                    {
+                        existant = e;
+                    }
+                }
+                if (existant != null)
+                {
+                    musique.EMPRUNTER.Remove(existant);
+                    musique.SaveChanges();
+                }
+                musique.EMPRUNTER.Add(em);
+                musique.SaveChanges();
+            }
+            return em;
+        }
+
         public static void rendreEmprunt(EMPRUNTER em)
         {
             DateTime date = DateTime.Now;
@@ -298,6 +328,21 @@ namespace Maquette
                 if (!estProlongeable(em))
                 {
                     liste.Add(em);
+                }
+            }
+            return liste;
+        }
+
+        public static List<ABONNÉS> getRetardataires()
+        {
+            var emprunts = getEMPRUNTERs();
+            var liste = new List<ABONNÉS>();
+            foreach (EMPRUNTER em in emprunts)
+            {
+                DateTime date = em.DATE_RETOUR_ATTENDUE.AddDays(10);
+                if (date.CompareTo(DateTime.Now) < 0)
+                {
+                    liste.Add(em.ABONNÉS);
                 }
             }
             return liste;
