@@ -25,7 +25,7 @@ namespace Maquette
         {
             Sous_Admin ad = new Sous_Admin();
             ad.Show();
-         }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -43,6 +43,14 @@ namespace Maquette
         {
             AdminIHM2 add = new AdminIHM2(musique);
             add.Show();
+            this.Close();
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            AdminIHM add = new AdminIHM(musique);
+            add.Show();
+            this.Close();
         }
     }
 

@@ -72,7 +72,7 @@ namespace Maquette
             this.Controls.Add(this.Admin_Name);
             this.Controls.Add(this.pictureBox1);
             this.Name = "AbonneFantome";
-            this.Size = new System.Drawing.Size(1074, 141);
+            this.Size = new System.Drawing.Size(600, 141);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

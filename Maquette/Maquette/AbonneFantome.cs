@@ -12,21 +12,28 @@ namespace Maquette
 {
     public partial class AbonneFantome : UserControl
     {
+
+        public ABONNÉS abonne;
+
         public AbonneFantome(ABONNÉS abonne)
         {
             InitializeComponent();
-            this.abonne = abonne;         
-            abonneFantome();
+            this.abonne = abonne;
+            Admin_Name.Text = abonne.NOM_ABONNÉ.Trim();
+            Admin_Prenom.Text = abonne.PRÉNOM_ABONNÉ.Trim();
+
         }
 
-        private ABONNÉS abonne;
+        public void setAbonne(ABONNÉS abonneFantome)
+        {
+            this.abonne = abonneFantome;
+        }
 
         private void abonneFantome()
 
         {
-            //AbonneFantome aboss = new AbonneFantome(abonne);
-            //Admin_Name.Text = abonne.NOM_ABONNÉ;
-            //Admin_Prenom.Text = aboss;
+            AbonneFantome aboss = new AbonneFantome(abonne);
+            aboss.Show();
         }
 
 

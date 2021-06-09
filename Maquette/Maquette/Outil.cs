@@ -13,7 +13,7 @@ namespace Maquette
         public static List<ABONNÉS> getABONNÉSs()
         {
             var abonnés = (from a in musique.ABONNÉS
-             select a).ToList();
+                           select a).ToList();
             return abonnés;
         }
 
@@ -25,11 +25,12 @@ namespace Maquette
             if (abo.Count > 0)
             {
                 return abo[0];
-            } else
+            }
+            else
             {
                 return null;
             }
-        }      
+        }
 
         public static ABONNÉS connexion(string login, string mdp)
         {
@@ -39,7 +40,8 @@ namespace Maquette
             if (abo.Count > 0)
             {
                 return abo[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -49,8 +51,8 @@ namespace Maquette
         {
             ABONNÉS abo = null;
             var logins = (from a in musique.ABONNÉS
-                         where a.LOGIN_ABONNÉ==login
-                         select a).ToList();
+                          where a.LOGIN_ABONNÉ == login
+                          select a).ToList();
             if (logins.Count == 0)
             {
                 abo = new ABONNÉS();
@@ -60,7 +62,7 @@ namespace Maquette
                 abo.PASSWORD_ABONNÉ = mdp;
                 musique.ABONNÉS.Add(abo);
                 musique.SaveChanges();
-                
+
             }
             return abo;
         }
@@ -68,22 +70,23 @@ namespace Maquette
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
             var albumsEmpruntés = (from al2 in musique.ALBUMS
-                                  join em1 in musique.EMPRUNTER
-                                  on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                  where em1.CODE_ABONNÉ == id
-                                  select al2).ToList();
+                                   join em1 in musique.EMPRUNTER
+                                   on al2.CODE_ALBUM equals em1.CODE_ALBUM
+                                   where em1.CODE_ABONNÉ == id
+                                   select al2).ToList();
             return albumsEmpruntés;
         }
 
         public static ALBUMS getAlbumSelonTitre(string titre)
         {
             var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM==titre
+                       where al.TITRE_ALBUM == titre
                        select al).ToList();
             if (alb.Count > 0)
             {
                 return alb[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -109,12 +112,13 @@ namespace Maquette
         public static ALBUMS getAlbumSelonID(int id)
         {
             var album = (from al in musique.ALBUMS
-                          where al.CODE_ALBUM == id
-                          select al).ToList();
+                         where al.CODE_ALBUM == id
+                         select al).ToList();
             if (album.Count > 0)
             {
                 return album[0];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -123,8 +127,8 @@ namespace Maquette
         public static List<ALBUMS> getAlbumsSelonGenreDansListe(int id, List<ALBUMS> listeAlbum)
         {
             var albums = (from al in listeAlbum
-                                     where al.CODE_GENRE == id
-                                     select al).ToList();
+                          where al.CODE_GENRE == id
+                          select al).ToList();
             return albums;
         }
 
@@ -187,7 +191,7 @@ namespace Maquette
             var abos = getABONNÉSs();
 
             foreach (ABONNÉS abo in abos)
-            {               
+            {
                 var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
 
                 if (emprunts.Count > 0)
@@ -217,5 +221,40 @@ namespace Maquette
             return fantome;
         }
 
+
+        public static void purgerUnFantome(ABONNÉS ab)
+        {
+            if (getFantome().Contains(ab))
+            {
+                removeAbonné(ab);
+            }
+        }
+
+        public static void purgerFantomes()
+        {
+            foreach (ABONNÉS a in getFantome())
+            {
+                purgerUnFantome(a);
+            }
+        }
+        public static void removeAbonné(ABONNÉS a)
+        {
+            musique.ABONNÉS.Remove(a);
+            musique.SaveChanges();
+        }
+        public static List<ABONNÉS> getRetardataires()
+        {
+            var emprunts = getEMPRUNTERs();
+            var liste = new List<ABONNÉS>();
+            foreach (EMPRUNTER em in emprunts)
+            {
+                DateTime date = em.DATE_RETOUR_ATTENDUE.AddDays(10);
+                if (date.CompareTo(DateTime.Now) < 0)
+                {
+                    liste.Add(em.ABONNÉS);
+                }
+            }
+            return liste;
+        }
     }
 }

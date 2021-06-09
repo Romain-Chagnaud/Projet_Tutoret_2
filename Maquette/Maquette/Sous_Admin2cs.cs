@@ -20,17 +20,13 @@ namespace Maquette
         private void button3_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
+            var aboRe = Outil.getRetardataires();
 
-            var emprunts = Outil.getEMPRUNTERs();
-
-            foreach (EMPRUNTER em in emprunts)
+            foreach (ABONNÉS ab in aboRe)
             {
-                DateTime date = em.DATE_RETOUR_ATTENDUE.AddDays(10);
-                if (date.CompareTo(DateTime.Now) < 0)
-                {
-                    listBox2.Items.Add(em);
-                }
+                listBox2.Items.Add(ab); 
             }
+
         }
 
 

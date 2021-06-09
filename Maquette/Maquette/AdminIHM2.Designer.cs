@@ -76,6 +76,7 @@ namespace Maquette
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(148, 40);
             this.toolStripLabel1.Text = "Abonné";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripSeparator1
             // 
@@ -90,6 +91,7 @@ namespace Maquette
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(148, 40);
             this.toolStripLabel2.Text = "Album";
+            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
             // 
             // flowLayoutPanel1
             // 
