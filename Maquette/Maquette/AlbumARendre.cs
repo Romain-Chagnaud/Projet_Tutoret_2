@@ -13,15 +13,48 @@ namespace Maquette
 {
     public partial class AlbumARendre : UserControl
     {
-        private EMPRUNTER emprunt;
+        public EMPRUNTER emprunt;
+        Abonné parent;
 
-        public AlbumARendre(EMPRUNTER emprunt)
+        public AlbumARendre(EMPRUNTER emprunt, Abonné parent)
         {
             InitializeComponent();
             this.emprunt = emprunt;
+            this.parent = parent;
             ChargerElements();
         }
 
+        #region IHM
+
+        /// <summary>
+        /// Méthode ci-dessous : US 3
+        /// Méthode du bouton pour allonger le délai d'un emprunt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>        
+        private void btnEtendre_Click(object sender, EventArgs e)
+        {
+            EtendreDuree();
+        }
+
+        /// <summary>
+        /// Méthode ci-dessous : US 1-?
+        /// Méthode pour rendre un emprunt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRendre_Click(object sender, EventArgs e)
+        {
+            RendreAlbum();
+        }
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Initialise l'affichage de l'emprunt
+        /// </summary>
         private void ChargerElements()
         {
             ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
@@ -32,5 +65,33 @@ namespace Maquette
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));
             }
         }
+
+        /// <summary>
+        /// Étend la durée de l'emprunt
+        /// </summary>
+        private void EtendreDuree()
+        {
+            if (Outil.estProlongeable(emprunt))
+            {
+                Outil.prolongation(emprunt);
+                parent.afficherEmprunts();
+            }
+            else
+            {
+                MessageBox.Show("Emprunt déjà prolongé, prolongation supplémentaire impossible");
+            }
+
+        }
+
+        /// <summary>
+        /// Rend l'album
+        /// </summary>
+        private void RendreAlbum()
+        {
+            Outil.rendreEmprunt(emprunt);
+            parent.afficherEmprunts();
+        }
+
+        #endregion
     }
 }

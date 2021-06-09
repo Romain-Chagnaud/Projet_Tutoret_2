@@ -83,6 +83,26 @@ namespace Maquette.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fleche_droite {
+            get {
+                object obj = ResourceManager.GetObject("fleche_droite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fleche_gauche {
+            get {
+                object obj = ResourceManager.GetObject("fleche_gauche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flou {
             get {
                 object obj = ResourceManager.GetObject("flou", resourceCulture);
@@ -136,6 +156,26 @@ namespace Maquette.Properties {
         internal static System.Drawing.Bitmap quick_time {
             get {
                 object obj = ResourceManager.GetObject("quick-time", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rendre_album_v1 {
+            get {
+                object obj = ResourceManager.GetObject("rendre_album_v1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rendre_album_v2 {
+            get {
+                object obj = ResourceManager.GetObject("rendre_album_v2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
