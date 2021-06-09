@@ -220,7 +220,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3) )
+            if (pageReco < (recommendations.Count / 3) )
             {
                 pageReco++;
             }
