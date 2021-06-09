@@ -148,7 +148,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterEmprunt()
         {
-            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4))
+            if (pageEmprunts < (emprunts.Count / 4))
             {
                 pageEmprunts++;
             }
