@@ -323,7 +323,7 @@ namespace Maquette
         {
             List<EMPRUNTER> liste = new List<EMPRUNTER>();
             var listeEmpruntés = getEMPRUNTERNonRendus();
-            foreach(EMPRUNTER em in listeEmpruntés)
+            foreach (EMPRUNTER em in listeEmpruntés)
             {
                 if (!estProlongeable(em))
                 {
@@ -347,5 +347,58 @@ namespace Maquette
             }
             return liste;
         }
+
+        public static List<ABONNÉS> getFantomes()
+        {
+            List<ABONNÉS> fantome = new List<ABONNÉS>();
+            var abos = getABONNÉSs();
+
+            foreach (ABONNÉS abo in abos)
+            {
+                var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
+
+                if (emprunts.Count > 0)
+                {
+                    int compteur = 0;
+                    bool estActif = false;
+
+                    while (compteur < emprunts.Count && !estActif)
+                    {
+                        EMPRUNTER emp = emprunts[compteur];
+                        DateTime date = emp.DATE_EMPRUNT.AddYears(1);
+
+                        if (date.CompareTo(DateTime.Now) > 0)
+                        {
+                            estActif = true;
+                        }
+                        compteur++;
+                    }
+
+                    if (!estActif)
+                    {
+                        fantome.Add(abo);
+                    }
+                }
+
+            }
+            return fantome;
+        }
+
+        public static void purgerUnFantome(ABONNÉS ab)
+        {
+            if (getFantomes().Contains(ab))
+            {
+                removeAbonné(ab);
+            }
+        }
+
+        public static void purgerFantomes()
+        {
+            foreach(ABONNÉS a in getFantomes())
+            {
+                purgerUnFantome(a);
+            }
+        }
+
     }
 }

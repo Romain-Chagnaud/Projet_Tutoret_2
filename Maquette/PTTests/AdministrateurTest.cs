@@ -71,5 +71,46 @@ namespace PTTests
             removeAbonné(ab);
         }
 
+        [TestMethod]
+        public void testFantômes()
+        {
+            chargerMusiqueEntities();
+            ABONNÉS ab = inscription("Jean", "Reno", "Leon", "onimusha");
+            if (ab == null)
+            {
+                ab = connexion("Leon", "onimusha");
+            }
+            ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
+
+            //Cas nouvel abonné, n'est pas un fantôme
+            var fantomes = getFantomes();
+            Assert.IsFalse(fantomes.Contains(ab));
+
+            //Cas l'abonné a un emprunt de plus d'un an
+            DateTime d = DateTime.Now.AddDays(-366);
+            EMPRUNTER em = nouvelEmpruntDaté(ab, a, d);
+            fantomes = getFantomes();
+            Assert.IsTrue(fantomes.Contains(ab));
+
+            //Cas l'abonné fantôme a un emprunt plus récent
+            a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
+            d = DateTime.Now.AddDays(-128);
+            EMPRUNTER em1 = nouvelEmpruntDaté(ab, a, d);
+            fantomes = getFantomes();
+            Assert.IsFalse(fantomes.Contains(ab));
+
+            rendreEmprunt(em);
+            rendreEmprunt(em1);
+
+            //Cas l'abonné fantôme est purgé
+            d = DateTime.Now.AddDays(-366);
+            em = nouvelEmpruntDaté(ab, a, d);
+            fantomes = getFantomes();
+            Assert.IsTrue(fantomes.Contains(ab));
+            purgerFantomes();
+            fantomes = getFantomes();
+            Assert.IsFalse(fantomes.Contains(ab));
+        }
+
     }
 }
