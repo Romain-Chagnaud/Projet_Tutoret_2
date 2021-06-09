@@ -340,7 +340,7 @@ namespace Maquette
             foreach (EMPRUNTER em in emprunts)
             {
                 DateTime date = em.DATE_RETOUR_ATTENDUE.AddDays(10);
-                if (date.CompareTo(DateTime.Now) <= 0)
+                if (date.CompareTo(DateTime.Now) < 0)
                 {
                     liste.Add(em.ABONNÉS);
                 }
