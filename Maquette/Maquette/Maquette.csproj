@@ -162,6 +162,11 @@
       <DependentUpon>Prologation.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Sous_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,12 +190,6 @@
     </Compile>
     <Compile Include="TopAlbum.Designer.cs">
       <DependentUpon>TopAlbum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AbonneFantome.resx">
       <DependentUpon>AbonneFantome.cs</DependentUpon>
@@ -224,14 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Sous_Admin.resx">
       <DependentUpon>Sous_Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,9 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TopAlbum.resx">
       <DependentUpon>TopAlbum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -288,13 +279,9 @@
     <None Include="Resources\hourglass.png" />
     <None Include="Resources\fantome.png" />
     <None Include="Properties\backgrounds\flou.PNG" />
-    <None Include="Resources\user.png" />
     <None Include="Resources\bad-review.png" />
     <None Include="Resources\flou1.PNG" />
     <None Include="Resources\flou.PNG" />
-    <None Include="Resources\quick-time.png" />
-    <None Include="Resources\timer.png" />
-    <None Include="Resources\fantome.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

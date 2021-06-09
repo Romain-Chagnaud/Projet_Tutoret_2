@@ -12,11 +12,9 @@ namespace Maquette
 {
     public partial class AdminIHM2 : Form
     {
-        MusiqueEntities musique;
-        public AdminIHM2(MusiqueEntities musique)
+        public AdminIHM2()
         {
             InitializeComponent();
-            this.musique = musique;
         }
 
 
@@ -36,14 +34,14 @@ namespace Maquette
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
-            AdminIHM add = new AdminIHM(musique);
+            AdminIHM add = new AdminIHM();
             add.Show();
             this.Close();
         }
 
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
-            AdminIHM2 add = new AdminIHM2(musique);
+            AdminIHM2 add = new AdminIHM2();
             add.Show();
             this.Close();
         }

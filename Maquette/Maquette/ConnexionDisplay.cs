@@ -25,17 +25,13 @@ namespace Maquette
             int nHeightEllipse
             );
 
-        MusiqueEntities musique;
         ABONNÉS abonnéConnecté;
 
-        public ConnexionDisplay(MusiqueEntities musique)
+        public ConnexionDisplay()
         {
             InitializeComponent();
-
+            Outil.chargerMusiqueEntities();
             Panel.Visible = false;
-
-            musique = musique;
-            Outil.musique = musique;
 
             Abonne_Load();
 
@@ -71,12 +67,12 @@ namespace Maquette
                     abonnéConnecté = abo;
                     if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
                     {
-                        Admin admin = new Admin(musique);
+                        AdminIHM admin = new AdminIHM();
                         admin.ShowDialog();
                     }
                     else
                     {
-                        Abonné abonne = new Abonné(musique, abonnéConnecté);
+                        Abonné abonne = new Abonné(abonnéConnecté);
                         abonne.Show();              
                     }
                 }

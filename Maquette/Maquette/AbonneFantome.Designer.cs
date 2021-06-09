@@ -55,7 +55,6 @@ namespace Maquette
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.user;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Location = new System.Drawing.Point(33, 23);
             this.pictureBox1.Name = "pictureBox1";

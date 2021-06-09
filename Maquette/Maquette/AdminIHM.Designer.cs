@@ -79,7 +79,6 @@ namespace Maquette
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Teal;
-            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.fantome;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(884, 19);
             this.pictureBox1.Name = "pictureBox1";
@@ -114,7 +113,6 @@ namespace Maquette
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::Maquette.Properties.Resources.timer;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(884, 21);
             this.pictureBox2.Name = "pictureBox2";
@@ -149,7 +147,6 @@ namespace Maquette
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::Maquette.Properties.Resources.quick_time;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(884, 28);
             this.pictureBox3.Name = "pictureBox3";

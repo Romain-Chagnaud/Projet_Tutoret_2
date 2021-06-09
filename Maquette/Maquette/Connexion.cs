@@ -82,12 +82,12 @@ namespace Maquette
                     abonnéConnecté = abo;
                     if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
                     {
-                        AdminIHM admin = new AdminIHM(musique);
+                        AdminIHM admin = new AdminIHM();
                         admin.ShowDialog();
                     }
                     else
                     {
-                        Abonné abonne = new Abonné(musique, abonnéConnecté);
+                        Abonné abonne = new Abonné(abonnéConnecté);
                         abonne.ShowDialog();
                     }
                 }

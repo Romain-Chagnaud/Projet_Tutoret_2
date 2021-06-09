@@ -22,7 +22,7 @@ namespace Maquette
         private void SousAdmin(object sender, EventArgs e)
         {
 
-            var abos = Outil.getFantome();
+            var abos = Outil.getFantomes();
 
             flowLayoutPanel1.Controls.Clear();
             foreach (ABONNÉS ab in abos)

@@ -17,7 +17,7 @@ namespace Maquette
        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new ConnexionDisplay(musique));
+           Application.Run(new ConnexionDisplay());
         }
     }
 }

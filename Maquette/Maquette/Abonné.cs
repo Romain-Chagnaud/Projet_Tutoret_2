@@ -8,17 +8,15 @@ namespace Maquette
 {
     public partial class Abonné : Form
     {
-        MusiqueEntities musique;
         ABONNÉS abonne;
 
         int pageEmprunts = 0;
 
 
 
-        public Abonné(MusiqueEntities m, ABONNÉS ab)
+        public Abonné(ABONNÉS ab)
         {
             InitializeComponent();
-            musique = m;
             abonne = ab;
             textBox1.Text = ab.LOGIN_ABONNÉ.Trim();
             textBox2.Text = ab.PASSWORD_ABONNÉ;
