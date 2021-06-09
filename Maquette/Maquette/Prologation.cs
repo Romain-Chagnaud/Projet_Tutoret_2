@@ -20,15 +20,10 @@ namespace Maquette
         private void button2_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            var emprunts = Outil.getEMPRUNTERNonRendus();
-
+            var emprunts = Outil.getProlongés();
             foreach (EMPRUNTER em in emprunts)
             {
-                DateTime dateTime = new DateTime(em.DATE_EMPRUNT.Year, em.DATE_EMPRUNT.Month, em.DATE_EMPRUNT.Day);
-                if (dateTime.AddDays(em.ALBUMS.GENRES.DÉLAI).Date.CompareTo(em.DATE_RETOUR_ATTENDUE.Date) != 0)
-                {
-                    listBox1.Items.Add(em);
-                }
+                listBox1.Items.Add(em);
             }
         }
     }
