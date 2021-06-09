@@ -153,23 +153,19 @@ namespace Maquette
         private void button7_Click(object sender, EventArgs e)
         {
             listBox5.Items.Clear();
-            List<dynamic> albumsTriés = getTop10();
+            List<ALBUMS> albumsTriés = getTop10();
             if (albumsTriés.Count >= 10)
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    int id = albumsTriés[i].ALBUMS;
-                    ALBUMS ab = getAlbumSelonID(id);
-                    listBox5.Items.Add(ab);
+                    listBox5.Items.Add(albumsTriés[i]);
                 }
             }
             else if (albumsTriés.Count > 0)
             {
                 for (int i = 0; i < albumsTriés.Count; i++)
                 {
-                    int id = albumsTriés[i].ALBUMS;
-                    ALBUMS ab = getAlbumSelonID(id);
-                    listBox5.Items.Add(ab);
+                    listBox5.Items.Add(albumsTriés[i]);
                 }
             }
             else

@@ -112,5 +112,63 @@ namespace PTTests
             Assert.IsFalse(fantomes.Contains(ab));
         }
 
+        [TestMethod]
+        public void testTop10()
+        {
+            chargerMusiqueEntities();
+            List<ALBUMS> top10 = getTop10();
+
+            //Vérification un album devient plus populaire
+            List<ABONNÉS> abonnés = getABONNÉSs();
+            List<EMPRUNTER> empruntsTempo = new List<EMPRUNTER>();
+            
+            ALBUMS albumTop10 = top10[9];
+            //Ici on rend l'album numéro 10 dans le cas où il est emprunté
+            EMPRUNTER e = getEmpruntAlbumEnCours(albumTop10);
+            if (e != null)
+            {
+                rendreEmprunt(e);
+            }
+            //On le fait emprunter par tout les abonnés
+            foreach (ABONNÉS ab in abonnés)
+            {
+                e = nouvelEmprunt(ab, albumTop10);
+                empruntsTempo.Add(e);
+                rendreEmprunt(e);
+            }
+
+            //Et on crée un abonné qui va l'emprunter aussi pour être sûr qu'il n'y ait pas d'égalité
+            ABONNÉS abo = inscription("Changer", "Top", "topchanger", "top");
+            e = nouvelEmprunt(abo, albumTop10);
+            empruntsTempo.Add(e);
+            rendreEmprunt(e);
+
+            //On actualise le top 10
+            top10 = getTop10();
+            //On vérifie que l'album a changé de place
+            Assert.IsTrue(top10[9] != albumTop10);
+            //On vérifie que l'album est numéro 1
+            int place = 0;
+            bool albumTop10Trouvé = false;
+            while(place < 10 && !albumTop10Trouvé)
+            {
+                if (top10[place] == albumTop10)
+                {
+                    albumTop10Trouvé = true;
+                } else
+                {
+                    place++;
+                }
+            }
+            Assert.IsTrue(place == 0);
+
+            //On supprime l'abonné et on efface les emprunts pour la stabilité du test
+           
+            foreach(EMPRUNTER em in empruntsTempo)
+            {
+                supprimerEmprunt(em);
+            }
+            removeAbonné(abo);
+        }
     }
 }
