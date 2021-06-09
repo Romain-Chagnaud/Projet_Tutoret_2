@@ -79,10 +79,10 @@ namespace Maquette
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
             var albumsEmpruntés = (from al2 in musique.ALBUMS
-                                   join em1 in musique.EMPRUNTER
-                                   on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                   where em1.CODE_ABONNÉ == id
-                                   select al2).ToList();
+                                  join em1 in musique.EMPRUNTER
+                                  on al2.CODE_ALBUM equals em1.CODE_ALBUM
+                                  where em1.CODE_ABONNÉ == id
+                                  select al2).ToList();
             return albumsEmpruntés;
         }
 
