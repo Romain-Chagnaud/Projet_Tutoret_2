@@ -87,7 +87,7 @@ namespace Maquette
                     }
                     else
                     {
-                        Abonné abonne = new Abonné(musique, abonnéConnecté);
+                        Abonné abonne = new Abonné(abonnéConnecté);
                         abonne.ShowDialog();
                     }
                 }
