@@ -32,6 +32,8 @@ namespace Maquette
         {
             InitializeComponent();
 
+            Panel.Visible = false;
+
             musique = musique;
             Outil.musique = musique;
 
@@ -43,6 +45,12 @@ namespace Maquette
             this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             this.textBoxId.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxId.Width, textBoxId.Height, 3, 3));
             this.textBoxPass.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxPass.Width, textBoxPass.Height, 3, 3));
+                        this.Panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Panel.Width, Panel.Height, 10, 10));
+            this.SignButton.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, SignButton.Width, SignButton.Height, 10, 10));
+            this.nomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, nomBox.Width, nomBox.Height, 3, 3));
+            this.prenomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, prenomBox.Width, prenomBox.Height, 3, 3));
+            this.idBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, idBox.Width, idBox.Height, 3, 3));
+            this.passBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, passBox.Width, passBox.Height, 3, 3));
         }
 
 
@@ -85,8 +93,8 @@ namespace Maquette
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Inscription inscription = new Inscription();
-            inscription.Show();
+            ConnexionPanel.Visible = false;
+            Panel.Visible = true;
         }
 
         private void textBoxPass_TextChanged(object sender, EventArgs e)
@@ -102,6 +110,43 @@ namespace Maquette
         private void label1_MouseLeave(object sender, EventArgs e)
         {
             label1.ForeColor = Color.FromArgb(56, 24, 3, 1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ConnexionPanel.Visible = true;
+            Panel.Visible = false;
+        }
+
+        private void Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SignButton_Click(object sender, EventArgs e)
+        {
+            if (nomBox.Text != "" && prenomBox.Text != "" && idBox.Text != "" && passBox.Text != "")
+            {
+                ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text);
+                Panel.Visible = false;
+                ConnexionPanel.Visible = true;
+                if (a != null)
+                {
+                    Abonne_Load();
+                    nomBox.Text = "";
+                    prenomBox.Text = "";
+                    idBox.Text = "";
+                    passBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Client déjà existant");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez entrer des informations valides");
+            }
         }
     }
 }

@@ -110,12 +110,6 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Inscription.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inscription.Designer.cs">
-      <DependentUpon>Inscription.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyAbonne.cs" />
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEditeur.cs" />
@@ -149,9 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnexionDisplay.resx">
       <DependentUpon>ConnexionDisplay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inscription.resx">
-      <DependentUpon>Inscription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
