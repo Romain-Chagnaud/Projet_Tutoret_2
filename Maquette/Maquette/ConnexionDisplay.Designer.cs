@@ -86,7 +86,7 @@ namespace Maquette
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.PasswordChar = '●';
             this.textBoxPass.Size = new System.Drawing.Size(250, 23);
-            this.textBoxPass.TabIndex = 13;
+            this.textBoxPass.TabIndex = 1;
             // 
             // label2
             // 
@@ -171,7 +171,6 @@ namespace Maquette
             this.Panel.Name = "Panel";
             this.Panel.Size = new System.Drawing.Size(300, 400);
             this.Panel.TabIndex = 2;
-            this.Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Paint);
             // 
             // button2
             // 
@@ -183,7 +182,7 @@ namespace Maquette
             this.button2.Location = new System.Drawing.Point(225, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 47);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 9;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -236,7 +235,7 @@ namespace Maquette
             this.passBox.Location = new System.Drawing.Point(21, 256);
             this.passBox.Name = "passBox";
             this.passBox.Size = new System.Drawing.Size(250, 23);
-            this.passBox.TabIndex = 6;
+            this.passBox.TabIndex = 7;
             // 
             // idBox
             // 
@@ -247,7 +246,7 @@ namespace Maquette
             this.idBox.Location = new System.Drawing.Point(21, 191);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(250, 23);
-            this.idBox.TabIndex = 5;
+            this.idBox.TabIndex = 6;
             // 
             // prenomBox
             // 
@@ -258,7 +257,7 @@ namespace Maquette
             this.prenomBox.Location = new System.Drawing.Point(21, 127);
             this.prenomBox.Name = "prenomBox";
             this.prenomBox.Size = new System.Drawing.Size(250, 23);
-            this.prenomBox.TabIndex = 4;
+            this.prenomBox.TabIndex = 5;
             // 
             // nomBox
             // 
@@ -269,7 +268,7 @@ namespace Maquette
             this.nomBox.Location = new System.Drawing.Point(21, 62);
             this.nomBox.Name = "nomBox";
             this.nomBox.Size = new System.Drawing.Size(250, 23);
-            this.nomBox.TabIndex = 20;
+            this.nomBox.TabIndex = 4;
             // 
             // SignButton
             // 
@@ -283,7 +282,7 @@ namespace Maquette
             this.SignButton.Location = new System.Drawing.Point(65, 308);
             this.SignButton.Name = "SignButton";
             this.SignButton.Size = new System.Drawing.Size(150, 35);
-            this.SignButton.TabIndex = 2;
+            this.SignButton.TabIndex = 8;
             this.SignButton.Text = "S\'inscrire";
             this.SignButton.UseVisualStyleBackColor = false;
             this.SignButton.Click += new System.EventHandler(this.SignButton_Click);
@@ -297,6 +296,7 @@ namespace Maquette
             this.Controls.Add(this.Panel);
             this.Controls.Add(this.ConnexionPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConnexionDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConnexionDisplay";

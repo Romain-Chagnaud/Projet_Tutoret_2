@@ -110,9 +110,11 @@ namespace Maquette
             // lblPageDispo
             // 
             this.lblPageDispo.AutoSize = true;
+            this.lblPageDispo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPageDispo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.lblPageDispo.Location = new System.Drawing.Point(532, 525);
             this.lblPageDispo.Name = "lblPageDispo";
-            this.lblPageDispo.Size = new System.Drawing.Size(32, 13);
+            this.lblPageDispo.Size = new System.Drawing.Size(36, 13);
             this.lblPageDispo.TabIndex = 4;
             this.lblPageDispo.Text = "Page";
             // 
@@ -120,6 +122,7 @@ namespace Maquette
             // 
             this.btnSuiDis.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
             this.btnSuiDis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiDis.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.btnSuiDis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuiDis.Location = new System.Drawing.Point(1029, 520);
             this.btnSuiDis.Name = "btnSuiDis";
@@ -132,7 +135,7 @@ namespace Maquette
             // 
             this.btnPreDis.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
             this.btnPreDis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreDis.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnPreDis.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.btnPreDis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPreDis.Location = new System.Drawing.Point(3, 520);
             this.btnPreDis.Name = "btnPreDis";

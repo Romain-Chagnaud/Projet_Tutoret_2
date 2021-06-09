@@ -163,9 +163,9 @@ namespace Maquette.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rendre_album_v1 {
+        internal static System.Drawing.Bitmap ranking {
             get {
-                object obj = ResourceManager.GetObject("rendre_album_v1", resourceCulture);
+                object obj = ResourceManager.GetObject("ranking", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -154,10 +154,11 @@ namespace Maquette
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::Maquette.Properties.Resources.timer;
+            this.pictureBox2.BackgroundImage = global::Maquette.Properties.Resources.ranking;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(884, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(70, 80);
+            this.pictureBox2.Size = new System.Drawing.Size(80, 80);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 

@@ -79,10 +79,11 @@ namespace Maquette
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Teal;
+            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.fantome;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(884, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -113,10 +114,11 @@ namespace Maquette
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackgroundImage = global::Maquette.Properties.Resources.timer;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(884, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(70, 80);
+            this.pictureBox2.Size = new System.Drawing.Size(80, 80);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
@@ -147,10 +149,11 @@ namespace Maquette
             // 
             // pictureBox3
             // 
+            this.pictureBox3.BackgroundImage = global::Maquette.Properties.Resources.quick_time;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(884, 28);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(70, 80);
+            this.pictureBox3.Size = new System.Drawing.Size(80, 80);
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 

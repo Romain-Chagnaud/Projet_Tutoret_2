@@ -297,6 +297,10 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\rendre_album_v21.png" />
+    <None Include="Resources\ranking.png" />
+    <None Include="Resources\fleche_gauche1.png" />
+    <None Include="Resources\fleche_droite1.png" />
     <None Include="Resources\visibility.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\timer.png" />
