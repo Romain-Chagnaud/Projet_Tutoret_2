@@ -58,7 +58,7 @@ namespace PTTests
             //Emprunt numéro 1 pour lp
             ABONNÉS ab = connexion("lp", "lp");
             Console.WriteLine(ab.ToString());
-            ALBUMS a = getALBUMSs()[0];
+            ALBUMS a = getALBUMSs().Except(getIndisponibles()).ToList()[0];
             Console.WriteLine(a.ToString());
             EMPRUNTER e = nouvelEmprunt(ab, a);
             Assert.IsTrue(e != null);

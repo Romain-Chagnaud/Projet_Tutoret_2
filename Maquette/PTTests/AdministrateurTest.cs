@@ -170,5 +170,47 @@ namespace PTTests
             }
             removeAbonné(abo);
         }
+
+        [TestMethod]
+        public void testAlbumsNonEmpruntés()
+        {
+            chargerMusiqueEntities();
+            
+            ALBUMS a = getALBUMSs()[0];
+            var emprunts = getEmpruntsSelonAlbum(a.CODE_ALBUM);
+            List<EMPRUNTER> empruntsEffacés = new List<EMPRUNTER>();
+            foreach(EMPRUNTER emp in emprunts)
+            {
+                empruntsEffacés.Add(emp);
+                supprimerEmprunt(emp);
+            }
+
+            //Cas d'un album non empruntés
+            List<ALBUMS> nonEmpruntés = getAlbumsNonEmpruntés();
+            Assert.IsFalse(nonEmpruntés.Contains(a));
+
+            //Cas l'album a un emprunt d'il y a plus d'un an;
+            ABONNÉS ab = connexion("lp", "lp");
+            DateTime dateTime = DateTime.Now.AddDays(-366);
+            EMPRUNTER em = nouvelEmpruntDaté(ab, a, dateTime);
+            nonEmpruntés = getAlbumsNonEmpruntés();
+            Assert.IsTrue(nonEmpruntés.Contains(a));
+            rendreEmprunt(em);
+
+            //Cas l'album a un emprunt d'il y a moins d'un an
+            dateTime = DateTime.Now.AddDays(-128);
+            em = nouvelEmpruntDaté(ab, a, dateTime);
+            nonEmpruntés = getAlbumsNonEmpruntés();
+            Assert.IsFalse(nonEmpruntés.Contains(a));
+            rendreEmprunt(em);
+
+            //Restoration
+            supprimerEmprunt(em);
+            foreach(EMPRUNTER emp1 in empruntsEffacés)
+            {
+                ajouterEmprunt(emp1);
+            }
+
+        }
     }
 }
