@@ -89,7 +89,7 @@ namespace Maquette
         private void RendreAlbum()
         {
             Outil.rendreEmprunt(emprunt);
-            parent.afficherEmprunts();
+            parent.ActualiserEmprunts();
         }
 
         #endregion

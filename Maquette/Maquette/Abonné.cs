@@ -93,17 +93,23 @@ namespace Maquette
         /// </summary>
         void InitialiserElements()
         {
-            ActualiserListes();
+            ActualiserEmprunts();
+            ActualiserSuggestion();
         }
 
         /// <summary>
         /// Actualise les listes
         /// </summary>
-        private void ActualiserListes()
+        public void ActualiserEmprunts()
         {
             emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
-            recommendations = getSuggestions(abonne.CODE_ABONNÉ);
             afficherEmprunts();
+
+        }
+
+        public void ActualiserSuggestion()
+        {
+            recommendations = getSuggestions(abonne.CODE_ABONNÉ);
             AfficherSuggestions();
         }
 
@@ -142,7 +148,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterEmprunt()
         {
-            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4))
+            if (pageEmprunts < (getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ).Count / 4) - 1)
             {
                 pageEmprunts++;
             }
@@ -214,7 +220,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3))
+            if (pageReco < (getSuggestions(abonne.CODE_ABONNÉ).Count / 3) - 1)
             {
                 pageReco++;
             }
@@ -240,7 +246,7 @@ namespace Maquette
         public void EmprunterAlbum(ALBUMS album)
         {
             nouvelEmprunt(abonne, album);
-            ActualiserListes();
+            InitialiserElements();
         }
 
         #endregion
