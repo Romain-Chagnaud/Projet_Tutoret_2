@@ -44,6 +44,7 @@ namespace Maquette
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,7 +60,7 @@ namespace Maquette
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
             this.flowLayoutPanel1.Controls.Add(this.groupBox3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(87, 129);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(98, 79);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(993, 373);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -210,6 +211,14 @@ namespace Maquette
             this.toolStripLabel2.Text = "Album";
             this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(431, 478);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(296, 173);
+            this.listBox1.TabIndex = 3;
+            // 
             // AdminIHM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +227,7 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1184, 681);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.DoubleBuffered = true;
@@ -226,6 +236,7 @@ namespace Maquette
             this.Name = "AdminIHM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminIHM";
+            this.Load += new System.EventHandler(this.AdminIHM_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -255,5 +266,6 @@ namespace Maquette
         private System.Windows.Forms.Button Btn_Fantome;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
