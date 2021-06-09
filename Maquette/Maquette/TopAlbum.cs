@@ -20,33 +20,19 @@ namespace Maquette
         private void button7_Click(object sender, EventArgs e)
         {
             listBox5.Items.Clear();
-            var emprunts = Outil.getEMPRUNTERs();
-            List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
-            foreach (EMPRUNTER em in emprunts)
-            {
-                if (em.DATE_EMPRUNT.AddYears(1).CompareTo(DateTime.Now) > 0)
-                {
-                    empruntsList.Add(em);
-                }
-            }
-            var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
-            var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList();
+            List<ALBUMS> albumsTriés = Outil.getTop10();
             if (albumsTriés.Count >= 10)
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    int id = albumsTriés[i].ALBUMS;
-                    ALBUMS ab = Outil.getAlbumSelonID(id);
-                    listBox5.Items.Add(ab);
+                    listBox5.Items.Add(albumsTriés[i]);
                 }
             }
             else if (albumsTriés.Count > 0)
             {
                 for (int i = 0; i < albumsTriés.Count; i++)
                 {
-                    int id = albumsTriés[i].ALBUMS;
-                    ALBUMS ab = Outil.getAlbumSelonID(id);
-                    listBox5.Items.Add(ab);
+                    listBox5.Items.Add(albumsTriés[i]);
                 }
             }
             else
