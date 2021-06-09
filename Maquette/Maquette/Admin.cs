@@ -74,41 +74,12 @@ namespace Maquette
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-            var abos = getABONNÉSs();
-
-            foreach (ABONNÉS abo in abos)
+            var fantomes = getFantomes();
+            foreach (ABONNÉS a in fantomes)
             {
-                /*var emprunts = (from em in musique.EMPRUNTER
-                                join a in musique.ABONNÉS
-                                on em.CODE_ABONNÉ equals a.CODE_ABONNÉ
-                                select em).ToList();*/
-                button6.Enabled = true;
-                var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
-
-                if (emprunts.Count > 0)
-                {
-                    int compteur = 0;
-                    bool estActif = false;
-
-                    while (compteur < emprunts.Count && !estActif)
-                    {
-                        EMPRUNTER emp = emprunts[compteur];
-                        DateTime date = emp.DATE_EMPRUNT.AddYears(1);
-
-                        if (date.CompareTo(DateTime.Now) > 0)
-                        {
-                            estActif = true;
-                        }
-                        compteur++;
-                    }
-
-                    if (!estActif)
-                    {
-                        listBox3.Items.Add(abo);
-                    }
-                }
-
+                listBox3.Items.Add(a);
             }
+            button6.Enabled = true;
         }
 
         /// <summary>
