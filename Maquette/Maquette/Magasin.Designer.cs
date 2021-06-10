@@ -41,8 +41,11 @@ namespace Maquette
             this.btnPreDis = new System.Windows.Forms.Button();
             this.panelDispo = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDispo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.panelGrandEmprunt.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -89,9 +92,9 @@ namespace Maquette
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(951, 53);
+            this.textBox1.Location = new System.Drawing.Point(41, 16);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(236, 20);
             this.textBox1.TabIndex = 11;
             // 
             // panelGrandEmprunt
@@ -162,6 +165,31 @@ namespace Maquette
             this.lblDispo.TabIndex = 0;
             this.lblDispo.Text = "Albums disponibles :";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(660, 38);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(358, 48);
+            this.panel1.TabIndex = 17;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Teal;
+            this.button1.BackgroundImage = global::Maquette.Properties.Resources.loupe;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(303, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 25);
+            this.button1.TabIndex = 12;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Magasin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,8 +197,8 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1184, 681);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelGrandEmprunt);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.toolStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -182,6 +210,8 @@ namespace Maquette
             this.toolStrip1.PerformLayout();
             this.panelGrandEmprunt.ResumeLayout(false);
             this.panelGrandEmprunt.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +230,7 @@ namespace Maquette
         private System.Windows.Forms.Button btnPreDis;
         private System.Windows.Forms.FlowLayoutPanel panelDispo;
         private System.Windows.Forms.Label lblDispo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }
