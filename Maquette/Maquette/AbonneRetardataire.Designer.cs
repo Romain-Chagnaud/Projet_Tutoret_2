@@ -1,7 +1,7 @@
 ﻿
 namespace Maquette
 {
-    partial class AbonneFantome
+    partial class AbonneRetardataire
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,51 +29,49 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            this.Admin_Name = new System.Windows.Forms.Label();
-            this.Admin_Prenom = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Admin_Prenom = new System.Windows.Forms.Label();
+            this.Admin_Name = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // Admin_Name
+            // pictureBox1
             // 
-            this.Admin_Name.AutoSize = true;
-            this.Admin_Name.Location = new System.Drawing.Point(214, 23);
-            this.Admin_Name.Name = "Admin_Name";
-            this.Admin_Name.Size = new System.Drawing.Size(29, 13);
-            this.Admin_Name.TabIndex = 1;
-            this.Admin_Name.Text = "Nom";
+            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.user;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(84, 80);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Admin_Prenom
             // 
             this.Admin_Prenom.AutoSize = true;
-            this.Admin_Prenom.Location = new System.Drawing.Point(214, 84);
+            this.Admin_Prenom.Location = new System.Drawing.Point(209, 86);
             this.Admin_Prenom.Name = "Admin_Prenom";
             this.Admin_Prenom.Size = new System.Drawing.Size(43, 13);
-            this.Admin_Prenom.TabIndex = 2;
+            this.Admin_Prenom.TabIndex = 4;
             this.Admin_Prenom.Text = "Prénom";
             // 
-            // pictureBox1
+            // Admin_Name
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.user;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(33, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(84, 80);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.Admin_Name.AutoSize = true;
+            this.Admin_Name.Location = new System.Drawing.Point(209, 25);
+            this.Admin_Name.Name = "Admin_Name";
+            this.Admin_Name.Size = new System.Drawing.Size(29, 13);
+            this.Admin_Name.TabIndex = 3;
+            this.Admin_Name.Text = "Nom";
             // 
-            // AbonneFantome
+            // AbonneRetardataire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Admin_Prenom);
             this.Controls.Add(this.Admin_Name);
-            this.DoubleBuffered = true;
-            this.Name = "AbonneFantome";
+            this.Controls.Add(this.pictureBox1);
+            this.Name = "AbonneRetardataire";
             this.Size = new System.Drawing.Size(600, 141);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -84,7 +82,7 @@ namespace Maquette
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label Admin_Name;
         private System.Windows.Forms.Label Admin_Prenom;
+        private System.Windows.Forms.Label Admin_Name;
     }
 }

@@ -356,7 +356,7 @@ namespace Maquette
 
         public static List<ABONNÉS> getRetardataires()
         {
-            var emprunts = getEMPRUNTERs();
+            var emprunts = getEMPRUNTERNonRendus();
             var liste = new List<ABONNÉS>();
             foreach (EMPRUNTER em in emprunts)
             {

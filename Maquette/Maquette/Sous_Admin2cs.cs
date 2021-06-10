@@ -19,22 +19,31 @@ namespace Maquette
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
-            var aboRe = Outil.getRetardataires();
+            //listBox2.Items.Clear();
+            //var aboRe = Outil.getRetardataires();
 
-            foreach (ABONNÉS ab in aboRe)
-            {
-                listBox2.Items.Add(ab); 
-            }
+            //foreach (ABONNÉS ab in aboRe)
+            //{
+            //    listBox2.Items.Add(ab); 
+            //}
 
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Sous_Admin2cs_Load(object sender, EventArgs e)
         {
-            var abo = Outil.getAbonnéSelonLogin("Mijel");
-            var alb = Outil.getAlbumSelonTitre("Haendel: Saul");
-            Outil.nouvelEmprunt(abo, alb);
+            var abos = Outil.getRetardataires();
+
+            flowLayoutPanel1.Controls.Clear();
+            foreach (ABONNÉS ab in abos)
+            {
+                int i = 0;
+                AbonneRetardataire af = new AbonneRetardataire(ab);
+                af.Location = new Point(af.Location.Y + i);
+                flowLayoutPanel1.Controls.Add(af);
+                i = i + 10;
+
+            }
         }
     }
 }

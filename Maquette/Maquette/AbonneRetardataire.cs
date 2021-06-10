@@ -10,12 +10,10 @@ using System.Windows.Forms;
 
 namespace Maquette
 {
-    public partial class AbonneFantome : UserControl
+    public partial class AbonneRetardataire : UserControl
     {
-
         public ABONNÉS abonne;
-
-        public AbonneFantome(ABONNÉS abonne)
+        public AbonneRetardataire(ABONNÉS abonne)
         {
             InitializeComponent();
             this.abonne = abonne;

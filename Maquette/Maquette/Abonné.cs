@@ -28,9 +28,6 @@ namespace Maquette
 
         }
 
-
-
-
         #region IHM
 
         /// <summary>
