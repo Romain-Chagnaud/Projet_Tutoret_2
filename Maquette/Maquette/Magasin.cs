@@ -13,15 +13,15 @@ namespace Maquette
 {
     public partial class Magasin : Form
     {
+        Abonné parent;
 
-        List<ALBUMS> dispos;
         int pageDispo = 0;
 
         public Magasin(Abonné parent)
         {
             InitializeComponent();
-            this.Owner = parent;
-            InitialiserElements();
+            this.parent = parent;
+            afficherAlbums();
         }
         #region IHM
 
@@ -35,21 +35,15 @@ namespace Maquette
 
         private void Quitter()
         {
-            this.Close();
+            parent.ShowInTaskbar = true;
+            parent.WindowState = FormWindowState.Normal;
+
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
         }
 
         #endregion
 
-        private void InitialiserElements()
-        {
-            ActualiserListes();
-            afficherAlbums();
-        }
-
-        private void ActualiserListes()
-        {
-            dispos = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
-        }
 
         /// <summary>        
         /// Méthode ci-dessous : US 1
@@ -60,11 +54,12 @@ namespace Maquette
             panelDispo.Controls.Clear();
             for (int i = 8 * pageDispo; i < 8 * (pageDispo + 1); i++)
             {
-                if (i < dispos.Count)
+                if (i < parent.disponibles.Count)
                 {
-                    panelDispo.Controls.Add(new AlbumEmpruntable(dispos[i], this));
+                    panelDispo.Controls.Add(new AlbumEmpruntable(parent.disponibles[i], this));
                 }
             }
+            lblPageDispo.Text = pageDispo + "";
         }
 
         private void btnPreDis_Click(object sender, EventArgs e)
@@ -78,7 +73,7 @@ namespace Maquette
 
         private void btnSuiDis_Click(object sender, EventArgs e)
         {
-            if (pageDispo < (dispos.Count / 8))
+            if (pageDispo < (parent.disponibles.Count / 8))
             {
                 pageDispo++;
             }
@@ -87,9 +82,7 @@ namespace Maquette
 
         public void EmprunterAlbum(ALBUMS album)
         {
-            Abonné parent = (Abonné)Owner;
             parent.EmprunterAlbum(album);
-            ActualiserListes();
             afficherAlbums();
         }
     }
