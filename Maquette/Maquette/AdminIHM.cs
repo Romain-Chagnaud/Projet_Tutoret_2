@@ -49,17 +49,12 @@ namespace Maquette
             AdminIHM add = new AdminIHM();
             add.Show();
             this.Close();
-        }
+        }        
 
-        private void AdminIHM_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            var abonnes = Outil.getABONNÉSs();
-
-            foreach (ABONNÉS a in abonnes)
-            {
-                listBox1.Items.Add(a);
-            }
+            ListeAbonnes liste = new ListeAbonnes();
+            liste.Show();
         }
     }
 

@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,7 +49,7 @@ namespace Maquette
             this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             this.textBoxId.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxId.Width, textBoxId.Height, 3, 3));
             this.textBoxPass.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxPass.Width, textBoxPass.Height, 3, 3));
-                        this.Panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Panel.Width, Panel.Height, 10, 10));
+            this.Panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Panel.Width, Panel.Height, 10, 10));
             this.SignButton.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, SignButton.Width, SignButton.Height, 10, 10));
             this.nomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, nomBox.Width, nomBox.Height, 3, 3));
             this.prenomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, prenomBox.Width, prenomBox.Height, 3, 3));
@@ -74,7 +75,7 @@ namespace Maquette
                 {
                     MessageBox.Show("Bienvenue, " + abo);
                     abonnéConnecté = abo;
-                    if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
+                    if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "Admin")
                     {
                         AdminIHM admin = new AdminIHM();
                         admin.ShowDialog();
@@ -82,7 +83,7 @@ namespace Maquette
                     else
                     {
                         Abonné abonne = new Abonné(abonnéConnecté);
-                        abonne.Show();              
+                        abonne.Show();
                     }
                 }
                 else
@@ -210,6 +211,11 @@ namespace Maquette
                 }
             }
             return contient;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

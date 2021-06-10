@@ -12,34 +12,94 @@ namespace Maquette
 {
     public partial class Sous_Admin : Form
     {
-        private ABONNÉS abonne;
+        List<ABONNÉS> abo;
+        int pageAbo = 0;
+        int nbPagesAbo;
 
         public Sous_Admin()
         {
             InitializeComponent();
+            abo = Outil.getFantomes();
+            ActualiserNbPages();
         }
 
-        private void SousAdmin(object sender, EventArgs e)
+        private void SousAdmin_Load(object sender, EventArgs e)
         {
-
-            var abos = Outil.getFantomes();
-
-            flowLayoutPanel1.Controls.Clear();
-            foreach (ABONNÉS ab in abos)
-            {
-                int i = 0;
-                AbonneFantome af = new AbonneFantome(ab);
-                af.Location = new Point(af.Location.Y + i);
-                flowLayoutPanel1.Controls.Add(af);
-                i = i + 10;
-
-            }
-
+            ChargerListe();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Outil.purgerFantomes();
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void ActualiserNbPages()
+        {
+            if (abo.Count % 2 != 0)
+            {
+                nbPagesAbo = abo.Count / 2;
+            }
+            else
+            {
+                nbPagesAbo = (abo.Count / 2) - 1;
+            }
+        }
+
+        // <summary>
+        /// Décrémente la page des recommandés
+        /// </summary>
+        private void DiminuerReco()
+        {
+            if (pageAbo > 0)
+            {
+                pageAbo--;
+            }
+            else
+            {
+                pageAbo = nbPagesAbo;
+            }
+            ChargerListe();
+        }
+
+        /// <summary>
+        /// Incrémente la page des recommandés
+        /// </summary>
+        private void AugmenterReco()
+        {
+            if (pageAbo < nbPagesAbo)
+            {
+                pageAbo++;
+            }
+            else
+            {
+                pageAbo = 0;
+            }
+            ChargerListe();
+
+        }
+
+        private void ChargerListe()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            for (int i = 2 * pageAbo; i < 2 * (pageAbo + 1); i++)
+            {
+                if (i < abo.Count)
+                {
+                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(abo[i]));
+                }
+            }
+            lblPageReco.Text = pageAbo + 1 + "";
+        }
+
+        private void btnSuiCon_Click(object sender, EventArgs e)
+        {
+            AugmenterReco();
+        }
+
+        private void btnPreCon_Click(object sender, EventArgs e)
+        {
+            DiminuerReco();
         }
     }
 }

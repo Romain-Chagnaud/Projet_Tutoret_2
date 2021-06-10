@@ -38,9 +38,6 @@ namespace Maquette
             magasin.Show();
         }
 
-
-
-
         #region IHM
         public void ChargerDisponibles()
         {

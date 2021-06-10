@@ -13,38 +13,83 @@ namespace Maquette
 {
     public partial class TopAlbum : Form
     {
+
+        List<ALBUMS> albums;
+        List<int> count;
+        int page = 0;
+        int nbPage;
+
         public TopAlbum()
         {
             InitializeComponent();
+            albums = Outil.getTop10Albums();
+            count = Outil.getTop10Count();
+            ActualiserPage();
+            AfficherAlbums();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnPreCon_Click(object sender, EventArgs e)
         {
-            listBox5.Items.Clear();
-            List<ALBUMS> albumsTriés = getTop10Albums();
-            List<int> albumsCount = getTop10Count();
+            Decrementer();
+        }
 
-            if (albumsTriés.Count >= 10)
+        private void btnSuiCon_Click(object sender, EventArgs e)
+        {
+            Incrementer();
+        }
+
+        private void AfficherAlbums()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            for (int i = 3 * page; i < 3 * (page + 1); i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (i < albums.Count && i >= 0)
                 {
-                    listBox5.Items.Add(albumsTriés[i]);
-                    listBox1.Items.Add(albumsCount[i]);
+                    flowLayoutPanel1.Controls.Add(new AlbumClassement(albums[i], count[i]));
                 }
             }
-            else if (albumsTriés.Count > 0)
+            lblPageReco.Text = page + 1 + "";
+        }
+
+
+        private void ActualiserPage()
+        {
+            if (albums.Count % 4 != 0)
             {
-                for (int i = 0; i < albumsTriés.Count; i++)
-                {
-                    listBox5.Items.Add(albumsTriés[i]); 
-                    listBox1.Items.Add(albumsCount[i]);
-                }
+                nbPage = albums.Count / 4;
             }
             else
             {
-                listBox5.Items.Add("Aucun emprunt");
+                nbPage = (albums.Count / 4) - 1;
             }
+        }
+
+        private void Incrementer()
+        {
+            if (page < nbPage)
+            {
+                page++;
+            }
+            else
+            {
+                page = 0;
+            }
+            AfficherAlbums();
+        }
+
+
+
+        private void Decrementer()
+        {
+            if (page > 0)
+            {
+                page--;
+            }
+            else
+            {
+                page = nbPage;
+            }
+            AfficherAlbums();
         }
     }
 }
-
