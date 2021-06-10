@@ -103,6 +103,12 @@
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompteUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompteUtilisateur.Designer.cs">
+      <DependentUpon>CompteUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnexionDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,7 @@
     <Compile Include="MyAlbum.cs" />
     <Compile Include="MyEditeur.cs" />
     <Compile Include="MyEmprunt.cs" />
+    <Compile Include="MyPays.cs" />
     <Compile Include="NonEmprunte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumEmpruntable.resx">
       <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompteUtilisateur.resx">
+      <DependentUpon>CompteUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumNonEmprunte.resx">
       <DependentUpon>AlbumNonEmprunte.cs</DependentUpon>
@@ -296,6 +306,9 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\pas_image_tr.png" />
+    <None Include="Resources\quitter.png" />
+    <None Include="Resources\pas_photo.png" />
     <None Include="Resources\rendre_album_v21.png" />
     <None Include="Resources\ranking.png" />
     <None Include="Resources\fleche_gauche1.png" />

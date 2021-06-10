@@ -35,6 +35,13 @@ namespace Maquette
 
             Abonne_Load();
 
+            List<String> pays = Outil.GetPays();
+
+            foreach (var p in pays)
+            {
+                comboBoxP.Items.Add(p);
+            }
+
 
             this.ConnexionPanel.BorderStyle = BorderStyle.None;
             this.ConnexionPanel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, ConnexionPanel.Width, ConnexionPanel.Height, 10, 10));
@@ -121,30 +128,74 @@ namespace Maquette
 
         }
 
+        public static void mBox(string i)
+        {
+            MessageBox.Show(i);
+        }
+
         private void SignButton_Click(object sender, EventArgs e)
         {
             if (nomBox.Text != "" && prenomBox.Text != "" && idBox.Text != "" && passBox.Text != "")
             {
-                ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text);
-                Panel.Visible = false;
-                ConnexionPanel.Visible = true;
-                if (a != null)
+                string prenomTrim = prenomBox.Text.Trim();
+                string nomTrim = nomBox.Text.Trim();
+                if (prenomBox.Text == prenomTrim && nomBox.Text == nomTrim && !EstDansLaChaine(prenomBox.Text, charSpéciaux()) && !EstDansLaChaine(nomBox.Text, charSpéciaux()))
                 {
-                    Abonne_Load();
-                    nomBox.Text = "";
-                    prenomBox.Text = "";
-                    idBox.Text = "";
-                    passBox.Text = "";
-                }
-                else
+                    ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
+                    Panel.Visible = false;
+                    ConnexionPanel.Visible = true;
+                    if (a != null)
+                    {
+                        Abonne_Load();
+                        nomBox.Text = "";
+                        prenomBox.Text = "";
+                        idBox.Text = "";
+                        passBox.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Client déjà existant");
+                    }
+                } else
                 {
-                    MessageBox.Show("Client déjà existant");
+                    MessageBox.Show("Ecris bien gros batard");
                 }
             }
             else
             {
                 MessageBox.Show("Veuillez entrer des informations valides");
             }
+        }
+
+        private static String[] majMin()
+        {
+            String liste = "A a À à Â â Ä ä Ã ã B b C c ç D d E e é È è Ê ê Ë ë F f G g H h I i Ì ì Î î Ï ï J j K " +
+                "k L l M m N n Ñ ñ O o Ò ò Ô ô Ö ö Õ õ P p Q q R r S s T t U u Ù ù Û û Ü ü V v W w X x Y y ÿ Z z -";
+            return liste.Split(' ');
+        }
+
+        private static String[] charSpéciaux()
+        {
+            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > 0 1 2 3 4 5 6 7 8 9 * + = % µ € $ ¤ £";
+            return liste.Split(' ');
+        }
+
+        private static Boolean EstDansLaChaine(String chaine, String[] liste)
+        {
+            Boolean contient = false;
+            for (int i = 0; i < liste.Length; i++)
+            {
+                if (chaine.Contains(liste[i]))
+                {
+                    contient = true;
+                }
+            }
+            return contient;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

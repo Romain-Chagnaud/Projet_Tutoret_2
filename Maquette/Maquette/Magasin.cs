@@ -13,16 +13,33 @@ namespace Maquette
 {
     public partial class Magasin : Form
     {
+        Abonné parent;
+        List<ALBUMS> affichables;
+        int nombreDePages;
 
-        List<ALBUMS> dispos;
         int pageDispo = 0;
 
         public Magasin(Abonné parent)
         {
             InitializeComponent();
-            this.Owner = parent;
-            InitialiserElements();
+            this.parent = parent;
+            affichables = new List<ALBUMS>();            
+            affichables.AddRange(parent.disponibles);      
+            afficherAlbums();
+            actualiserNombreDepages();
         }
+
+        private void actualiserNombreDepages()
+        {
+            if (affichables.Count % 8 != 0)
+            {
+                nombreDePages = affichables.Count / 8;
+            } else
+            {
+                nombreDePages = (affichables.Count/8)-1;
+            }
+        }
+
         #region IHM
 
         private void lblEspace_Click(object sender, EventArgs e)
@@ -30,26 +47,56 @@ namespace Maquette
             Quitter();
         }
 
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            PreparerAffichage();
+        }
+
+        private void btnPreDis_Click(object sender, EventArgs e)
+        {
+            Incrementer();
+        }
+
+        private void Incrementer()
+        {
+            if (pageDispo > 0)
+            {
+                pageDispo--;
+            }
+            else
+            {
+                pageDispo = nombreDePages;
+            }
+            afficherAlbums();
+        }
+
+        private void btnSuiDis_Click(object sender, EventArgs e)
+        {
+            if (pageDispo < nombreDePages)
+            {
+                pageDispo++;
+            }
+            else
+            {
+                pageDispo = 0;
+            }
+            afficherAlbums();
+        }
+
         #endregion
         #region Logique
 
         private void Quitter()
         {
-            this.Close();
-        }
+            parent.ShowInTaskbar = true;
+            parent.WindowState = FormWindowState.Normal;
+
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+        }   
 
         #endregion
 
-        private void InitialiserElements()
-        {
-            ActualiserListes();
-            afficherAlbums();
-        }
-
-        private void ActualiserListes()
-        {
-            dispos = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
-        }
 
         /// <summary>        
         /// Méthode ci-dessous : US 1
@@ -60,37 +107,38 @@ namespace Maquette
             panelDispo.Controls.Clear();
             for (int i = 8 * pageDispo; i < 8 * (pageDispo + 1); i++)
             {
-                if (i < dispos.Count)
+                if (i < affichables.Count)
                 {
-                    panelDispo.Controls.Add(new AlbumEmpruntable(dispos[i], this));
+                    panelDispo.Controls.Add(new AlbumEmpruntable(affichables[i], this));
                 }
             }
+            lblPageDispo.Text = pageDispo + 1 + "";
         }
 
-        private void btnPreDis_Click(object sender, EventArgs e)
-        {
-            if (pageDispo > 0)
-            {
-                pageDispo--;
-            }
-            afficherAlbums();
-        }
-
-        private void btnSuiDis_Click(object sender, EventArgs e)
-        {
-            if (pageDispo < (dispos.Count / 8))
-            {
-                pageDispo++;
-            }
-            afficherAlbums();
-        }
+        
 
         public void EmprunterAlbum(ALBUMS album)
         {
-            Abonné parent = (Abonné)Owner;
-            parent.EmprunterAlbum(album);
-            ActualiserListes();
-            afficherAlbums();
+            parent.EmprunterAlbum(album);          
+            PreparerAffichage();
         }
+
+        
+
+        private void PreparerAffichage()
+        {
+            if (barreRecherche.Text.Trim().Length != 0)
+            {
+                affichables = parent.disponibles.FindAll(a => a.TITRE_ALBUM.StartsWith(barreRecherche.Text));               
+            }
+            else
+            {
+                affichables = parent.disponibles;
+            }
+            pageDispo = 0;
+            actualiserNombreDepages();
+            afficherAlbums();
+        }        
+
     }
 }
