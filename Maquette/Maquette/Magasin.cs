@@ -54,33 +54,11 @@ namespace Maquette
 
         private void btnPreDis_Click(object sender, EventArgs e)
         {
-            Incrementer();
+            Decrementer();
         }
-
-        private void Incrementer()
-        {
-            if (pageDispo > 0)
-            {
-                pageDispo--;
-            }
-            else
-            {
-                pageDispo = nombreDePages;
-            }
-            afficherAlbums();
-        }
-
         private void btnSuiDis_Click(object sender, EventArgs e)
         {
-            if (pageDispo < nombreDePages)
-            {
-                pageDispo++;
-            }
-            else
-            {
-                pageDispo = 0;
-            }
-            afficherAlbums();
+            Incrementer();
         }
 
         #endregion
@@ -93,7 +71,35 @@ namespace Maquette
 
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
-        }   
+        }
+
+        private void Decrementer()
+        {
+            if (pageDispo > 0)
+            {
+                pageDispo--;
+            }
+            else
+            {
+                pageDispo = nombreDePages;
+            }
+            afficherAlbums();
+        }
+
+        
+
+        private void Incrementer()
+        {
+            if (pageDispo < nombreDePages)
+            {
+                pageDispo++;
+            }
+            else
+            {
+                pageDispo = 0;
+            }
+            afficherAlbums();
+        }
 
         #endregion
 

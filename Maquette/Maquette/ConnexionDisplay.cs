@@ -74,7 +74,7 @@ namespace Maquette
                 {
                     MessageBox.Show("Bienvenue, " + abo);
                     abonnéConnecté = abo;
-                    if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "admin")
+                    if (abonnéConnecté.LOGIN_ABONNÉ.Trim() == "Admin")
                     {
                         AdminIHM admin = new AdminIHM();
                         admin.ShowDialog();

@@ -88,6 +88,12 @@
     <Compile Include="AdminIHM2.Designer.cs">
       <DependentUpon>AdminIHM2.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlbumClassement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumClassement.Designer.cs">
+      <DependentUpon>AlbumClassement.cs</DependentUpon>
+    </Compile>
     <Compile Include="AlbumEmpruntable.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminIHM2.resx">
       <DependentUpon>AdminIHM2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlbumClassement.resx">
+      <DependentUpon>AlbumClassement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumEmpruntable.resx">
       <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
