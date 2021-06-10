@@ -32,6 +32,8 @@ namespace Maquette
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopAlbum));
             this.button7 = new System.Windows.Forms.Button();
             this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.SuspendLayout();
             // 
             // button7
@@ -52,16 +54,35 @@ namespace Maquette
             this.listBox5.BackColor = System.Drawing.Color.Teal;
             this.listBox5.ForeColor = System.Drawing.SystemColors.Menu;
             this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(100, 139);
+            this.listBox5.Location = new System.Drawing.Point(12, 135);
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(336, 355);
             this.listBox5.TabIndex = 12;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.Teal;
+            this.listBox1.ForeColor = System.Drawing.SystemColors.Menu;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(354, 135);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(54, 355);
+            this.listBox1.TabIndex = 14;
+            // 
+            // entityCommand1
+            // 
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
             // 
             // TopAlbum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.listBox5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -75,5 +96,7 @@ namespace Maquette
 
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }
