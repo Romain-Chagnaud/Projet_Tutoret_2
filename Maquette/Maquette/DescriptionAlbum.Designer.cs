@@ -149,6 +149,7 @@ namespace Maquette
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DescriptionAlbum";
             this.Text = "DescriptionAlbum";
+            this.TopMost = true;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();

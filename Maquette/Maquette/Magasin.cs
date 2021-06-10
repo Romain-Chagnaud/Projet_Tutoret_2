@@ -15,7 +15,7 @@ namespace Maquette
     {
         Abonné parent;
         List<ALBUMS> affichables;
-        List<ALBUMS> disponibles;
+        int nombreDePages;
 
         int pageDispo = 0;
 
@@ -23,10 +23,21 @@ namespace Maquette
         {
             InitializeComponent();
             this.parent = parent;
-            affichables = new List<ALBUMS>();
-            disponibles = parent.disponibles;
-            affichables.AddRange(disponibles);
+            affichables = new List<ALBUMS>();            
+            affichables.AddRange(parent.disponibles);      
             afficherAlbums();
+            actualiserNombreDepages();
+        }
+
+        private void actualiserNombreDepages()
+        {
+            if (affichables.Count % 8 != 0)
+            {
+                nombreDePages = affichables.Count / 8;
+            } else
+            {
+                nombreDePages = (affichables.Count/8)-1;
+            }
         }
 
         #region IHM
@@ -34,6 +45,42 @@ namespace Maquette
         private void lblEspace_Click(object sender, EventArgs e)
         {
             Quitter();
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            PreparerAffichage();
+        }
+
+        private void btnPreDis_Click(object sender, EventArgs e)
+        {
+            Incrementer();
+        }
+
+        private void Incrementer()
+        {
+            if (pageDispo > 0)
+            {
+                pageDispo--;
+            }
+            else
+            {
+                pageDispo = nombreDePages;
+            }
+            afficherAlbums();
+        }
+
+        private void btnSuiDis_Click(object sender, EventArgs e)
+        {
+            if (pageDispo < nombreDePages)
+            {
+                pageDispo++;
+            }
+            else
+            {
+                pageDispo = 0;
+            }
+            afficherAlbums();
         }
 
         #endregion
@@ -46,12 +93,7 @@ namespace Maquette
 
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            Focus();
-        }
+        }   
 
         #endregion
 
@@ -73,44 +115,30 @@ namespace Maquette
             lblPageDispo.Text = pageDispo + 1 + "";
         }
 
-        private void btnPreDis_Click(object sender, EventArgs e)
-        {
-            if (pageDispo > 0)
-            {
-                pageDispo--;
-            } else
-            {
-                pageDispo = (affichables.Count / 8) - 1;
-            }
-            afficherAlbums();
-        }
-
-        private void btnSuiDis_Click(object sender, EventArgs e)
-        {
-            if (pageDispo < (affichables.Count/ 8)-1)
-            {
-                pageDispo++;
-            } else
-            {
-                pageDispo = 0;
-            }
-            afficherAlbums();
-        }
+        
 
         public void EmprunterAlbum(ALBUMS album)
         {
-            parent.EmprunterAlbum(album);
-            afficherAlbums();
+            parent.EmprunterAlbum(album);          
+            PreparerAffichage();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        private void PreparerAffichage()
         {
-            if (textBox1.Text.Trim().Length != 0)
+            if (barreRecherche.Text.Trim().Length != 0)
             {
-                affichables = disponibles.FindAll(a => a.TITRE_ALBUM.StartsWith(textBox1.Text));
-                pageDispo = 0;
-                afficherAlbums();
+                affichables = parent.disponibles.FindAll(a => a.TITRE_ALBUM.StartsWith(barreRecherche.Text));               
             }
-        }
+            else
+            {
+                affichables = parent.disponibles;
+            }
+            pageDispo = 0;
+            actualiserNombreDepages();
+            afficherAlbums();
+        }        
+
     }
 }

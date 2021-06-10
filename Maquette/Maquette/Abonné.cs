@@ -16,9 +16,11 @@ namespace Maquette
 
         List<EMPRUNTER> emprunts;
         int pageEmprunts = 0;
+        int nbPagesEmp;
 
         List<ALBUMS> recommendations;
         int pageReco = 0;
+        int nbPagesReco;
 
         Magasin magasin;
 
@@ -33,7 +35,7 @@ namespace Maquette
             ChargerDisponibles();
 
             magasin = new Magasin(this);
-            magasin.Show();            
+            magasin.Show();
         }
 
 
@@ -116,6 +118,7 @@ namespace Maquette
         public void ActualiserEmprunts()
         {
             emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
+            ActualiserPagesEmprunts();
             afficherEmprunts();
 
         }
@@ -123,6 +126,7 @@ namespace Maquette
         public void ActualiserSuggestion()
         {
             recommendations = getSuggestions(abonne.CODE_ABONNÉ);
+            ActualiserPagesReco();
             AfficherSuggestions();
         }
 
@@ -142,8 +146,9 @@ namespace Maquette
                 }
             }
 
-            lblPageEmp.Text = pageEmprunts +1+ "";
+            lblPageEmp.Text = pageEmprunts + 1 + "";
         }
+
         /// <summary>
         /// Allonge le délai de tous les emprunts
         /// </summary>
@@ -161,9 +166,13 @@ namespace Maquette
         /// </summary>
         private void AugmenterEmprunt()
         {
-            if (pageEmprunts < (emprunts.Count / 4))
+            if (pageEmprunts < nbPagesEmp)
             {
                 pageEmprunts++;
+            }
+            else
+            {
+                pageEmprunts = 0;
             }
             afficherEmprunts();
         }
@@ -176,6 +185,14 @@ namespace Maquette
             if (pageEmprunts > 0)
             {
                 pageEmprunts--;
+            }
+            else
+            {
+                if ((nbPagesEmp) > 0)
+                {
+                    pageEmprunts = nbPagesEmp;
+                }
+
             }
             afficherEmprunts();
         }
@@ -198,7 +215,7 @@ namespace Maquette
                         panelConseil.Controls.Add(new AlbumEmpruntable(recommendations[i], this));
                     }
                 }
-                lblPageReco.Text = pageReco +1+ "";
+                lblPageReco.Text = pageReco + 1 + "";
 
             }
             else
@@ -222,9 +239,9 @@ namespace Maquette
         /// Ouvre l'onglet de magasin
         /// </summary>
         private void OuvrirMagasin()
-        {            
+        {
             magasin.ShowInTaskbar = true;
-            magasin.WindowState = FormWindowState.Normal;            
+            magasin.WindowState = FormWindowState.Normal;
 
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
@@ -235,9 +252,14 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageReco < (recommendations.Count / 3))
+            if (pageReco < nbPagesReco)
             {
                 pageReco++;
+            }
+            else
+            {
+                pageReco = 0;
+
             }
             AfficherSuggestions();
         }
@@ -250,6 +272,13 @@ namespace Maquette
             if (pageReco > 0)
             {
                 pageReco--;
+            }
+            else
+            {
+                if (nbPagesReco > 0)
+                {
+                    pageReco = nbPagesReco;
+                }
             }
             AfficherSuggestions();
         }
@@ -272,6 +301,30 @@ namespace Maquette
 
         #endregion
 
+
+        private void ActualiserPagesEmprunts()
+        {
+            if (emprunts.Count % 4 != 0)
+            {
+                nbPagesEmp = emprunts.Count / 4;
+            }
+            else
+            {
+                nbPagesEmp = (emprunts.Count / 4) - 1;
+            }
+        }
+
+        private void ActualiserPagesReco()
+        {
+            if (recommendations.Count % 4 != 0)
+            {
+                nbPagesReco = recommendations.Count / 4;
+            }
+            else
+            {
+                nbPagesReco = (recommendations.Count / 4) - 1;
+            }
+        }
 
     }
 }
