@@ -264,6 +264,14 @@ namespace Maquette
             InitialiserElements();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CompteUtilisateur cu = new CompteUtilisateur(abonne);
+            cu.ShowDialog();
+        }
+
         #endregion
+
+
     }
 }

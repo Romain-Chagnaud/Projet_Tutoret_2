@@ -37,8 +37,9 @@ namespace Maquette
 
         public static ABONNÉS connexion(string login, string mdp)
         {
+            string crypted = Crypter(mdp);
             var abo = (from a in musique.ABONNÉS
-                       where a.LOGIN_ABONNÉ == login && a.PASSWORD_ABONNÉ == mdp
+                       where a.LOGIN_ABONNÉ == login && a.PASSWORD_ABONNÉ == crypted
                        select a).ToList();
             if (abo.Count > 0)
             {
@@ -62,7 +63,7 @@ namespace Maquette
                 abo.PRÉNOM_ABONNÉ = prenom;
                 abo.NOM_ABONNÉ = nom;
                 abo.LOGIN_ABONNÉ = login;
-                abo.PASSWORD_ABONNÉ = mdp;
+                abo.PASSWORD_ABONNÉ = Crypter(mdp);
                 musique.ABONNÉS.Add(abo);
                 musique.SaveChanges();
 
@@ -483,6 +484,66 @@ namespace Maquette
         {
             musique.EMPRUNTER.Add(e);
             musique.SaveChanges();
+        }
+
+        public static string Crypter(String mdp)
+        {
+            char[] crypted = new char[mdp.Length];
+            int i = 0;
+            foreach(char c in mdp.ToCharArray())
+            {
+                crypted[i] = (char)((int)c+1);
+                i++;
+            }
+            return new string(crypted);
+        }
+
+        public static string decrypter(String mdp)
+        {
+            char[] crypted = new char[mdp.Length];
+            int i = 0;
+            foreach (char c in mdp.ToCharArray())
+            {
+                crypted[i] = (char)((int)c - 1);
+                i++;
+            }
+            return new string(crypted);
+        }
+
+        public static bool vérificationMDP(string mdp, ABONNÉS abo)
+        {
+            if (mdp.Length > 0 && mdp.Length <= 32)
+            {
+                string crypted = Crypter(mdp);
+                var mdpTest = (from a in musique.ABONNÉS
+                               where a.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                               && a.PASSWORD_ABONNÉ == crypted
+                               select a).ToList();
+                if (mdpTest.Count ==1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }else
+            {
+                return false;
+            }
+        }
+
+        public static string changerMDP(string mdp, ABONNÉS abo)
+        {
+            if (mdp.Length > 0 && mdp.Length <= 32)
+            {
+                abo.PASSWORD_ABONNÉ = Crypter(mdp);
+                musique.SaveChanges();
+                return mdp;
+            } else
+            {
+                return null;
+            }
         }
     }
 }
