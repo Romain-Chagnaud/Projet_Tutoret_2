@@ -83,7 +83,7 @@ namespace Maquette
             this.lblMagasin});
             this.toolStrip1.Location = new System.Drawing.Point(41, 38);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(333, 48);
+            this.toolStrip1.Size = new System.Drawing.Size(364, 48);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
