@@ -76,12 +76,6 @@
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="AlbumARendre.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,18 +130,11 @@
     <Compile Include="DescriptionAlbum.Designer.cs">
       <DependentUpon>DescriptionAlbum.cs</DependentUpon>
     </Compile>
-    <Compile Include="DLLImportAttribute.cs" />
     <Compile Include="EDITEURS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPRUNTER.cs">
       <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Connexion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Connexion.Designer.cs">
-      <DependentUpon>Connexion.cs</DependentUpon>
     </Compile>
     <Compile Include="GENRES.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -197,12 +184,6 @@
     <Compile Include="Sous_Admin2cs.Designer.cs">
       <DependentUpon>Sous_Admin2cs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Interface.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test_Interface.Designer.cs">
-      <DependentUpon>Test_Interface.cs</DependentUpon>
-    </Compile>
     <Compile Include="TopAlbum.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,9 +196,6 @@
     <EmbeddedResource Include="Abonné.resx">
       <DependentUpon>Abonné.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AlbumARendre.resx">
       <DependentUpon>AlbumARendre.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,9 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumEmpruntable.resx">
       <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Connexion.resx">
-      <DependentUpon>Connexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnexionDisplay.resx">
       <DependentUpon>ConnexionDisplay.cs</DependentUpon>
@@ -258,9 +233,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sous_Admin2cs.resx">
       <DependentUpon>Sous_Admin2cs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test_Interface.resx">
-      <DependentUpon>Test_Interface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TopAlbum.resx">
       <DependentUpon>TopAlbum.cs</DependentUpon>
