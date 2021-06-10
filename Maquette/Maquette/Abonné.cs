@@ -142,7 +142,7 @@ namespace Maquette
                 }
             }
 
-            lblPageEmp.Text = pageEmprunts + "";
+            lblPageEmp.Text = pageEmprunts +1+ "";
         }
         /// <summary>
         /// Allonge le délai de tous les emprunts
@@ -198,7 +198,7 @@ namespace Maquette
                         panelConseil.Controls.Add(new AlbumEmpruntable(recommendations[i], this));
                     }
                 }
-                lblPageReco.Text = pageReco + "";
+                lblPageReco.Text = pageReco +1+ "";
 
             }
             else
