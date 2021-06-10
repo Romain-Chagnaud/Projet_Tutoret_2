@@ -224,10 +224,7 @@ namespace Maquette
         private void OuvrirMagasin()
         {            
             magasin.ShowInTaskbar = true;
-            magasin.WindowState = FormWindowState.Normal;
-            magasin.BringToFront();
-            magasin.Activate();
-            
+            magasin.WindowState = FormWindowState.Normal;            
 
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;

@@ -14,10 +14,10 @@ namespace Maquette
         /// </summary>
         [STAThread]
         static void Main()
-       {
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new ConnexionDisplay());
+            Application.Run(new ConnexionDisplay());
         }
     }
 }

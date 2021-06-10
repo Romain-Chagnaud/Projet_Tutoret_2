@@ -48,6 +48,11 @@ namespace Maquette
             this.ShowInTaskbar = false;
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            Focus();
+        }
+
         #endregion
 
 
