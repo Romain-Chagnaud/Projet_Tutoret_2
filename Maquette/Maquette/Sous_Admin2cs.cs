@@ -14,7 +14,7 @@ namespace Maquette
     {
 
         List<ABONNÉS> retards;
-        int pageRetard;
+        int pageRetard = 0;
         int nbPageRetard;
 
         public Sous_Admin2cs()
@@ -48,7 +48,10 @@ namespace Maquette
             flowLayoutPanel1.Controls.Clear();
             for (int i = 2 * pageRetard; i < 2 * (pageRetard + 1); i++)
             {
-                flowLayoutPanel1.Controls.Add(new PresentationAbonne(retards[i]));
+                if (i < retards.Count)
+                {
+                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(retards[i]));
+                }
             }
             lblPageReco.Text = pageRetard + 1 + "";
         }
