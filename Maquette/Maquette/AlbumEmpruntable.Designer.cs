@@ -30,8 +30,8 @@ namespace Maquette
         private void InitializeComponent()
         {
             this.lblTitre = new System.Windows.Forms.Label();
-            this.pochette = new System.Windows.Forms.PictureBox();
             this.btnVoir = new System.Windows.Forms.Button();
+            this.pochette = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,15 +43,6 @@ namespace Maquette
             this.lblTitre.Size = new System.Drawing.Size(28, 13);
             this.lblTitre.TabIndex = 1;
             this.lblTitre.Text = "Titre";
-            // 
-            // pochette
-            // 
-            this.pochette.Location = new System.Drawing.Point(3, 3);
-            this.pochette.Name = "pochette";
-            this.pochette.Size = new System.Drawing.Size(100, 100);
-            this.pochette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pochette.TabIndex = 0;
-            this.pochette.TabStop = false;
             // 
             // btnVoir
             // 
@@ -66,6 +57,16 @@ namespace Maquette
             this.btnVoir.TabIndex = 2;
             this.btnVoir.UseVisualStyleBackColor = false;
             this.btnVoir.Click += new System.EventHandler(this.btnVoir_Click);
+            // 
+            // pochette
+            // 
+            this.pochette.Image = global::Maquette.Properties.Resources.pas_image_tr;
+            this.pochette.Location = new System.Drawing.Point(3, 3);
+            this.pochette.Name = "pochette";
+            this.pochette.Size = new System.Drawing.Size(100, 100);
+            this.pochette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pochette.TabIndex = 0;
+            this.pochette.TabStop = false;
             // 
             // AlbumEmpruntable
             // 
