@@ -269,6 +269,9 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\pas_image_tr.png" />
+    <None Include="Resources\quitter.png" />
+    <None Include="Resources\pas_photo.png" />
     <None Include="Resources\rendre_album_v21.png" />
     <None Include="Resources\ranking.png" />
     <None Include="Resources\fleche_gauche1.png" />

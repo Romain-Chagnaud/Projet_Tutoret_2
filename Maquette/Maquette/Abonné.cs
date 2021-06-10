@@ -12,11 +12,15 @@ namespace Maquette
     {
         public ABONNÉS abonne;
 
+        public List<ALBUMS> disponibles;
+
         List<EMPRUNTER> emprunts;
         int pageEmprunts = 0;
 
         List<ALBUMS> recommendations;
         int pageReco = 0;
+
+        Magasin magasin;
 
 
 
@@ -24,14 +28,22 @@ namespace Maquette
         {
             InitializeComponent();
             abonne = ab;
+            lblNom.Text = ab.PRÉNOM_ABONNÉ;
             InitialiserElements();
+            ChargerDisponibles();
 
+            magasin = new Magasin(this);
+            magasin.Show();            
         }
 
 
 
 
         #region IHM
+        public void ChargerDisponibles()
+        {
+            disponibles = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
+        }
 
         /// <summary>
         /// Méthode ci-dessous : US 9
@@ -95,6 +107,7 @@ namespace Maquette
         {
             ActualiserEmprunts();
             ActualiserSuggestion();
+            ChargerDisponibles();
         }
 
         /// <summary>
@@ -209,10 +222,15 @@ namespace Maquette
         /// Ouvre l'onglet de magasin
         /// </summary>
         private void OuvrirMagasin()
-        {
-            Magasin magasin = new Magasin(this);
-            magasin.Show();
-            InitialiserElements();
+        {            
+            magasin.ShowInTaskbar = true;
+            magasin.WindowState = FormWindowState.Normal;
+            magasin.BringToFront();
+            magasin.Activate();
+            
+
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
         }
 
         /// <summary>
@@ -220,7 +238,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageReco < (recommendations.Count / 3) )
+            if (pageReco < (recommendations.Count / 3))
             {
                 pageReco++;
             }
@@ -250,6 +268,5 @@ namespace Maquette
         }
 
         #endregion
-        //commentaire 2
     }
 }

@@ -153,9 +153,39 @@ namespace Maquette.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pas_image_tr {
+            get {
+                object obj = ResourceManager.GetObject("pas_image_tr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pas_photo {
+            get {
+                object obj = ResourceManager.GetObject("pas_photo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quick_time {
             get {
                 object obj = ResourceManager.GetObject("quick-time", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap quitter {
+            get {
+                object obj = ResourceManager.GetObject("quitter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

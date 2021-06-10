@@ -203,9 +203,14 @@ namespace Maquette
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1200, 720);
+            this.MinimumSize = new System.Drawing.Size(1200, 720);
             this.Name = "Magasin";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Magasin";
+            this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panelGrandEmprunt.ResumeLayout(false);
