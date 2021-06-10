@@ -11,26 +11,15 @@ using System.Windows.Forms;
 
 namespace Maquette
 {
-    public partial class AlbumEmpruntable : UserControl
+    public partial class AlbumNonEmprunte : UserControl
     {
         ALBUMS album;
-        Magasin magParent = null;
-        Abonné aboParent = null;
 
 
-        public AlbumEmpruntable(ALBUMS album, Magasin parent)
+        public AlbumNonEmprunte(ALBUMS album)
         {
             InitializeComponent();
             this.album = album;
-            this.magParent = parent;
-            ChargerElements();
-        }
-
-        public AlbumEmpruntable(ALBUMS album, Abonné parent)
-        {
-            InitializeComponent();
-            this.album = album;
-            this.aboParent = parent;
             ChargerElements();
         }
 
@@ -68,22 +57,10 @@ namespace Maquette
         private void AfficherDetails()
         {
             DescriptionAlbum desc = new DescriptionAlbum(album);
-            if (desc.ShowDialog() == DialogResult.OK)
-            {
-                EmprunterAlbum();
-            }
+            
         }
 
-        private void EmprunterAlbum()
-        {
-            if (aboParent != null)
-            {
-                aboParent.EmprunterAlbum(album);
-            } else
-            {
-                magParent.EmprunterAlbum(album);
-            }
-        }
+        
 
 
         #endregion

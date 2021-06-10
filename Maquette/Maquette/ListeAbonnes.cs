@@ -10,17 +10,32 @@ using System.Windows.Forms;
 
 namespace Maquette
 {
-    public partial class NonEmprunte : Form
+    public partial class ListeAbonnes : Form
     {
-        List<ALBUMS> albums;
+        List<ABONNÉS> abos;
         int page = 0;
         int nbPage;
 
-        public NonEmprunte()
+
+        public ListeAbonnes()
         {
             InitializeComponent();
-            albums = Outil.getAlbumsNonEmpruntés();
-            AfficherAlbums();
+            abos = Outil.getABONNÉSs();
+            ActualiserPage();
+            AfficherAbos();
+        }
+
+        private void AfficherAbos()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            for (int i = page * 4; i < (page + 1) * 4; i++)
+            {
+                if (i < abos.Count)
+                {
+                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(abos[i]));
+                }
+            }
+            lblPageReco.Text = page + 1 + "";
         }
 
         private void btnPreCon_Click(object sender, EventArgs e)
@@ -33,29 +48,15 @@ namespace Maquette
             Incrementer();
         }
 
-        private void AfficherAlbums()
-        {
-            flowLayoutPanel1.Controls.Clear();
-            for (int i = 3 * page; i < 3 * (page + 1); i++)
-            {
-                if (i < albums.Count)
-                {
-                    flowLayoutPanel1.Controls.Add(new AlbumNonEmprunte(albums[i]));
-                }
-            }
-            lblPageReco.Text = page + 1 + "";
-        }
-
-
         private void ActualiserPage()
         {
-            if (albums.Count % 4 != 0)
+            if (abos.Count % 4 != 0)
             {
-                nbPage = albums.Count / 4;
+                nbPage = abos.Count / 4;
             }
             else
             {
-                nbPage = (albums.Count / 4) - 1;
+                nbPage = (abos.Count / 4) - 1;
             }
         }
 
@@ -69,11 +70,8 @@ namespace Maquette
             {
                 page = 0;
             }
-            AfficherAlbums();
+            AfficherAbos();
         }
-
-
-
         private void Decrementer()
         {
             if (page > 0)
@@ -84,7 +82,7 @@ namespace Maquette
             {
                 page = nbPage;
             }
-            AfficherAlbums();
+            AfficherAbos();
         }
     }
 }

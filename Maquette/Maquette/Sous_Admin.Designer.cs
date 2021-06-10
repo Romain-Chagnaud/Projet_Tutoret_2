@@ -126,7 +126,7 @@ namespace Maquette
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Sous_Admin";
             this.Text = "Sous_Admin";
-            this.Load += new System.EventHandler(this.SousAdmin);
+            this.Load += new System.EventHandler(this.SousAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,37 +12,38 @@ namespace Maquette
 {
     public partial class Sous_Admin : Form
     {
-        private ABONNÉS abonne;
         List<ABONNÉS> abo;
         int pageAbo = 0;
+        int nbPagesAbo;
 
         public Sous_Admin()
         {
             InitializeComponent();
             abo = Outil.getFantomes();
+            ActualiserNbPages();
         }
 
-        private void SousAdmin(object sender, EventArgs e)
+        private void SousAdmin_Load(object sender, EventArgs e)
         {
             ChargerListe();
-            //var abos = Outil.getFantomes();
-
-            //flowLayoutPanel1.Controls.Clear();
-            //foreach (ABONNÉS ab in abos)
-            //{
-            //    int i = 0;
-            //    AbonneFantome af = new AbonneFantome(ab);
-            //    af.Location = new Point(af.Location.Y + i);
-            //    flowLayoutPanel1.Controls.Add(af);
-            //    i = i + 10;
-
-            //}
-
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Outil.purgerFantomes();
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void ActualiserNbPages()
+        {
+            if (abo.Count % 2 != 0)
+            {
+                nbPagesAbo = abo.Count / 2;
+            }
+            else
+            {
+                nbPagesAbo = (abo.Count / 2) - 1;
+            }
         }
 
         // <summary>
@@ -56,9 +57,7 @@ namespace Maquette
             }
             else
             {
-                if ((abo.Count / 2) > 0) { 
-                pageAbo = (abo.Count / 2) - 1;
-                }
+                pageAbo = nbPagesAbo;
             }
             ChargerListe();
         }
@@ -68,7 +67,7 @@ namespace Maquette
         /// </summary>
         private void AugmenterReco()
         {
-            if (pageAbo < (abo.Count / 2))
+            if (pageAbo < nbPagesAbo)
             {
                 pageAbo++;
             }
@@ -87,7 +86,7 @@ namespace Maquette
             {
                 if (i < abo.Count)
                 {
-                    flowLayoutPanel1.Controls.Add(new AbonneFantome(abo[i]));
+                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(abo[i]));
                 }
             }
             lblPageReco.Text = pageAbo + 1 + "";

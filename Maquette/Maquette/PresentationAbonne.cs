@@ -10,17 +10,15 @@ using System.Windows.Forms;
 
 namespace Maquette
 {
-    public partial class AbonneRetardataire : UserControl
+    public partial class PresentationAbonne : UserControl
     {
-        public ABONNÉS abonne;
-        public AbonneRetardataire(ABONNÉS abonne)
+        ABONNÉS abo;
+        public PresentationAbonne(ABONNÉS abo)
         {
             InitializeComponent();
-            this.abonne = abonne;
-            Admin_Name.Text = abonne.NOM_ABONNÉ.Trim();
-            Admin_Prenom.Text = abonne.PRÉNOM_ABONNÉ.Trim();
-
+            this.abo = abo;
+            lblNom.Text = abo.NOM_ABONNÉ;
+            lblPrenom.Text = abo.PRÉNOM_ABONNÉ;
         }
     }
 }
-
