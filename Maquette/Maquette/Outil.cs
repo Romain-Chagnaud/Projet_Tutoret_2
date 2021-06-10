@@ -7,7 +7,7 @@ namespace Maquette
     public static class Outil
     {
         public static MusiqueEntities musique { get; set; }
-        
+
         public static void chargerMusiqueEntities()
         {
             musique = new MusiqueEntities();
@@ -67,6 +67,7 @@ namespace Maquette
                 musique.SaveChanges();
 
             }
+
             return abo;
         }
 
@@ -79,10 +80,10 @@ namespace Maquette
         public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
         {
             var albumsEmpruntés = (from al2 in musique.ALBUMS
-                                  join em1 in musique.EMPRUNTER
-                                  on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                  where em1.CODE_ABONNÉ == id
-                                  select al2).ToList();
+                                   join em1 in musique.EMPRUNTER
+                                   on al2.CODE_ALBUM equals em1.CODE_ALBUM
+                                   where em1.CODE_ABONNÉ == id
+                                   select al2).ToList();
             return albumsEmpruntés;
         }
 
@@ -248,7 +249,7 @@ namespace Maquette
             return emprunts;
         }
 
-        public static List<ALBUMS> getTop10()
+        public static List<dynamic> getTop10()
         {
             var emprunts = getEMPRUNTERs();
             List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
@@ -261,10 +262,27 @@ namespace Maquette
             }
             var albumsParEmprunt = empruntsList.GroupBy(em => em.CODE_ALBUM, (key, values) => new { ALBUMS = key, Count = values.Count() });
             var albumsTriés = albumsParEmprunt.OrderByDescending(em => em.Count).ToList<dynamic>();
+            return albumsTriés;
+        }
+
+        public static List<ALBUMS> getTop10Albums()
+        {
             List<ALBUMS> top10 = new List<ALBUMS>();
-            for (int i = 0; i < albumsTriés.Count(); i++)
+            var liste = getTop10();
+            for (int i = 0; i < liste.Count(); i++)
             {
-                top10.Add(getAlbumSelonID(albumsTriés[i].ALBUMS));
+                top10.Add(getAlbumSelonID(liste[i].ALBUMS));
+            }
+            return top10;
+        }
+
+        public static List<int> getTop10Count()
+        {
+            List<int> top10 = new List<int>();
+            var liste = getTop10();
+            for (int i = 0; i < liste.Count(); i++)
+            {
+                top10.Add(liste[i].Count);
             }
             return top10;
         }
@@ -283,7 +301,7 @@ namespace Maquette
             {
                 GENRES premierGenre = genresTriés[0].GENRES;
                 var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
-                albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0,3));
+                albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 3));
                 if (genresTriés.Count >= 2)
                 {
                     GENRES deuxiemeGenre = genresTriés[1].GENRES;
@@ -356,7 +374,7 @@ namespace Maquette
 
         public static List<ABONNÉS> getRetardataires()
         {
-            var emprunts = getEMPRUNTERs();
+            var emprunts = getEMPRUNTERNonRendus();
             var liste = new List<ABONNÉS>();
             foreach (EMPRUNTER em in emprunts)
             {
