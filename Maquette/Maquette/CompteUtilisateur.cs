@@ -39,6 +39,9 @@ namespace Maquette
                     if (mdp == null)
                     {
                         MessageBox.Show("Nouveau mot de passe trop long.");
+                    } else
+                    {
+                        MessageBox.Show("Mot de passe changé.");
                     }
                 } else
                 {
@@ -55,7 +58,11 @@ namespace Maquette
 
         private void changerPays_Click(object sender, EventArgs e)
         {
-
+            if (comboPays.SelectedItem != null)
+            {
+                changerPays((PAYS)comboPays.SelectedItem, abonné);
+                MessageBox.Show("Pays changé.");
+            }
         }
     }
 }

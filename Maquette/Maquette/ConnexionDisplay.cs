@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,7 +49,7 @@ namespace Maquette
             this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             this.textBoxId.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxId.Width, textBoxId.Height, 3, 3));
             this.textBoxPass.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxPass.Width, textBoxPass.Height, 3, 3));
-                        this.Panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Panel.Width, Panel.Height, 10, 10));
+            this.Panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Panel.Width, Panel.Height, 10, 10));
             this.SignButton.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, SignButton.Width, SignButton.Height, 10, 10));
             this.nomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, nomBox.Width, nomBox.Height, 3, 3));
             this.prenomBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, prenomBox.Width, prenomBox.Height, 3, 3));
@@ -82,7 +83,7 @@ namespace Maquette
                     else
                     {
                         Abonné abonne = new Abonné(abonnéConnecté);
-                        abonne.Show();              
+                        abonne.Show();
                     }
                 }
                 else
@@ -139,27 +140,39 @@ namespace Maquette
             {
                 string prenomTrim = prenomBox.Text.Trim();
                 string nomTrim = nomBox.Text.Trim();
-                if (prenomBox.Text == prenomTrim && nomBox.Text == nomTrim && !EstDansLaChaine(prenomBox.Text, charSpéciaux()) && !EstDansLaChaine(nomBox.Text, charSpéciaux()))
+                if (prenomBox.Text == prenomTrim && nomBox.Text == nomTrim && !EstDansLaChaine(prenomBox.Text, charSpéciaux())
+                    && !EstDansLaChaine(nomBox.Text, charSpéciaux()) && !LoginContientCaractèresSpéciaux(idBox.Text)
+                    && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && idBox.Text.Length > 0 && idBox.Text.Length <= 32
+                && passBox.Text.Length > 0 && passBox.Text.Length <= 32 && Regex.IsMatch(passBox.Text, "\\S\\w*\\S") && Regex.IsMatch(idBox.Text, "\\S[a-zA-Z0-9]*\\S"))
                 {
-                    ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
-                    Panel.Visible = false;
-                    ConnexionPanel.Visible = true;
-                    if (a != null)
+                    if (passBox.Text == PassConfirm.Text)
                     {
-                        Abonne_Load();
-                        nomBox.Text = "";
-                        prenomBox.Text = "";
-                        idBox.Text = "";
-                        passBox.Text = "";
+                        ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
+                        Panel.Visible = false;
+                        ConnexionPanel.Visible = true;
+                        if (a != null)
+                        {
+                            Abonne_Load();
+                            nomBox.Text = "";
+                            prenomBox.Text = "";
+                            idBox.Text = "";
+                            passBox.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Client déjà existant");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Client déjà existant");
+                        MessageBox.Show("Confirmation du mot de passe différente du mot de passe");
                     }
-                } else
-                {
-                    MessageBox.Show("Ecris bien gros batard");
                 }
+                else
+                {
+                    MessageBox.Show("Erreur de saisie, caractères spéciaux autorisés uniquement pour le mot de passe. Pas d'espace dans le login et le mot de passe. Pas de caractères spéciaux dans le login. Nombre max de caractères : 32.");
+                }
+
             }
             else
             {
@@ -176,7 +189,7 @@ namespace Maquette
 
         private static String[] charSpéciaux()
         {
-            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > 0 1 2 3 4 5 6 7 8 9 * + = % µ € $ ¤ £";
+            String liste = "0 1 2 3 4 5 6 7 8 9 _ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
             return liste.Split(' ');
         }
 
@@ -186,6 +199,21 @@ namespace Maquette
             for (int i = 0; i < liste.Length; i++)
             {
                 if (chaine.Contains(liste[i]))
+                {
+                    contient = true;
+                }
+            }
+            return contient;
+        }
+
+        private static Boolean LoginContientCaractèresSpéciaux(String chaine)
+        {
+            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
+            String[] listeTab = liste.Split(' ');
+            Boolean contient = false;
+            for (int i = 0; i < listeTab.Length; i++)
+            {
+                if (chaine.Contains(listeTab[i]))
                 {
                     contient = true;
                 }

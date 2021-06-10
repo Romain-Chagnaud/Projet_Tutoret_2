@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Maquette
 {
@@ -58,12 +59,30 @@ namespace Maquette
             }
         }
 
+        private static Boolean LoginContientCaractèresSpéciaux(String chaine)
+        {
+            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
+            String[] listeTab = liste.Split(' ');
+            Boolean contient = false;
+            for (int i = 0; i < listeTab.Length; i++)
+            {
+                if (chaine.Contains(listeTab[i]))
+                {
+                    contient = true;
+                }
+            }
+            return contient;
+        }
+
         public static ABONNÉS inscription(string prenom, string nom, string login, string mdp, string pays)
         {
             ABONNÉS abo = null;
             string prenomTrim = prenom.Trim();
             string nomTrim = nom.Trim();
-            if (prenom == prenomTrim && nomTrim == nom && !EstDansLaChaine(prenom, charSpéciaux()) && !EstDansLaChaine(nom, charSpéciaux())){
+            if (prenom == prenomTrim && nomTrim == nom && !EstDansLaChaine(prenom, charSpéciaux()) && !EstDansLaChaine(nom, charSpéciaux())
+                && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && login.Length > 0 && login.Length<=32
+                && mdp.Length>0 && mdp.Length<=32 && Regex.IsMatch(mdp,"\\S\\w*\\S") && Regex.IsMatch(login,"\\S[a-zA-Z0-9]*\\S"))
+            {
                 var logins = (from a in musique.ABONNÉS
                               where a.LOGIN_ABONNÉ == login
                               select a).ToList();
@@ -73,7 +92,7 @@ namespace Maquette
                     abo.PRÉNOM_ABONNÉ = prenom;
                     abo.NOM_ABONNÉ = nom;
                     abo.LOGIN_ABONNÉ = login;
-                    abo.PASSWORD_ABONNÉ = mdp;
+                    abo.PASSWORD_ABONNÉ = Crypter(mdp);
                     if (pays.Length != 0)
                     {
                         if (paysExiste(pays) != null)
@@ -93,12 +112,13 @@ namespace Maquette
         public static PAYS paysExiste(string nom)
         {
             var pays = (from p in musique.PAYS
-                where p.NOM_PAYS==nom
-                select p).ToList();
+                        where p.NOM_PAYS == nom
+                        select p).ToList();
             if (pays.Count != 0)
             {
                 return pays[0];
-            }else
+            }
+            else
             {
                 return null;
             }
@@ -557,25 +577,14 @@ namespace Maquette
         {
             char[] crypted = new char[mdp.Length];
             int i = 0;
-            foreach(char c in mdp.ToCharArray())
+            foreach (char c in mdp.ToCharArray())
             {
-                crypted[i] = (char)((int)c+1);
+                crypted[i] = (char)((int)c + 1);
                 i++;
             }
             return new string(crypted);
         }
 
-        public static string decrypter(String mdp)
-        {
-            char[] crypted = new char[mdp.Length];
-            int i = 0;
-            foreach (char c in mdp.ToCharArray())
-            {
-                crypted[i] = (char)((int)c - 1);
-                i++;
-            }
-            return new string(crypted);
-        }
 
         public static bool vérificationMDP(string mdp, ABONNÉS abo)
         {
@@ -586,7 +595,7 @@ namespace Maquette
                                where a.CODE_ABONNÉ == abo.CODE_ABONNÉ
                                && a.PASSWORD_ABONNÉ == crypted
                                select a).ToList();
-                if (mdpTest.Count ==1)
+                if (mdpTest.Count == 1)
                 {
                     return true;
                 }
@@ -594,7 +603,8 @@ namespace Maquette
                 {
                     return false;
                 }
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -607,10 +617,18 @@ namespace Maquette
                 abo.PASSWORD_ABONNÉ = Crypter(mdp);
                 musique.SaveChanges();
                 return mdp;
-            } else
+            }
+            else
             {
                 return null;
             }
+        }
+
+        public static PAYS changerPays(PAYS p, ABONNÉS abo)
+        {
+            abo.PAYS = p;
+            musique.SaveChanges();
+            return p;
         }
     }
 }
