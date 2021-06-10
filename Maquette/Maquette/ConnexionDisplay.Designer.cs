@@ -49,6 +49,8 @@ namespace Maquette
             this.prenomBox = new System.Windows.Forms.TextBox();
             this.nomBox = new System.Windows.Forms.TextBox();
             this.SignButton = new System.Windows.Forms.Button();
+            this.comboBoxP = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.ConnexionPanel.SuspendLayout();
             this.Panel.SuspendLayout();
             this.SuspendLayout();
@@ -157,12 +159,14 @@ namespace Maquette
             // Panel
             // 
             this.Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
+            this.Panel.Controls.Add(this.label8);
+            this.Panel.Controls.Add(this.comboBoxP);
             this.Panel.Controls.Add(this.button2);
+            this.Panel.Controls.Add(this.passBox);
             this.Panel.Controls.Add(this.label3);
+            this.Panel.Controls.Add(this.label7);
             this.Panel.Controls.Add(this.label5);
             this.Panel.Controls.Add(this.label6);
-            this.Panel.Controls.Add(this.label7);
-            this.Panel.Controls.Add(this.passBox);
             this.Panel.Controls.Add(this.idBox);
             this.Panel.Controls.Add(this.prenomBox);
             this.Panel.Controls.Add(this.nomBox);
@@ -179,9 +183,9 @@ namespace Maquette
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Coral;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(225, 0);
+            this.button2.Location = new System.Drawing.Point(250, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 47);
+            this.button2.Size = new System.Drawing.Size(50, 35);
             this.button2.TabIndex = 9;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -190,7 +194,7 @@ namespace Maquette
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 39);
+            this.label3.Location = new System.Drawing.Point(17, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 20);
             this.label3.TabIndex = 10;
@@ -200,7 +204,7 @@ namespace Maquette
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 104);
+            this.label5.Location = new System.Drawing.Point(17, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 20);
             this.label5.TabIndex = 9;
@@ -210,7 +214,7 @@ namespace Maquette
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 168);
+            this.label6.Location = new System.Drawing.Point(17, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 20);
             this.label6.TabIndex = 8;
@@ -220,7 +224,7 @@ namespace Maquette
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 233);
+            this.label7.Location = new System.Drawing.Point(17, 266);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(172, 20);
             this.label7.TabIndex = 7;
@@ -232,7 +236,7 @@ namespace Maquette
             this.passBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.passBox.Location = new System.Drawing.Point(21, 256);
+            this.passBox.Location = new System.Drawing.Point(21, 289);
             this.passBox.Name = "passBox";
             this.passBox.Size = new System.Drawing.Size(250, 23);
             this.passBox.TabIndex = 7;
@@ -243,7 +247,7 @@ namespace Maquette
             this.idBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.idBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.idBox.Location = new System.Drawing.Point(21, 191);
+            this.idBox.Location = new System.Drawing.Point(21, 163);
             this.idBox.Name = "idBox";
             this.idBox.Size = new System.Drawing.Size(250, 23);
             this.idBox.TabIndex = 6;
@@ -254,7 +258,7 @@ namespace Maquette
             this.prenomBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.prenomBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prenomBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.prenomBox.Location = new System.Drawing.Point(21, 127);
+            this.prenomBox.Location = new System.Drawing.Point(21, 106);
             this.prenomBox.Name = "prenomBox";
             this.prenomBox.Size = new System.Drawing.Size(250, 23);
             this.prenomBox.TabIndex = 5;
@@ -265,7 +269,7 @@ namespace Maquette
             this.nomBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nomBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.nomBox.Location = new System.Drawing.Point(21, 62);
+            this.nomBox.Location = new System.Drawing.Point(21, 41);
             this.nomBox.Name = "nomBox";
             this.nomBox.Size = new System.Drawing.Size(250, 23);
             this.nomBox.TabIndex = 4;
@@ -279,13 +283,35 @@ namespace Maquette
             this.SignButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.SignButton.Location = new System.Drawing.Point(65, 308);
+            this.SignButton.Location = new System.Drawing.Point(52, 340);
             this.SignButton.Name = "SignButton";
             this.SignButton.Size = new System.Drawing.Size(150, 35);
             this.SignButton.TabIndex = 8;
             this.SignButton.Text = "S\'inscrire";
             this.SignButton.UseVisualStyleBackColor = false;
             this.SignButton.Click += new System.EventHandler(this.SignButton_Click);
+            // 
+            // comboBoxP
+            // 
+            this.comboBoxP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboBoxP.FormattingEnabled = true;
+            this.comboBoxP.ItemHeight = 13;
+            this.comboBoxP.Location = new System.Drawing.Point(23, 228);
+            this.comboBoxP.MaxDropDownItems = 5;
+            this.comboBoxP.Name = "comboBoxP";
+            this.comboBoxP.Size = new System.Drawing.Size(179, 21);
+            this.comboBoxP.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(19, 205);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 20);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Pays";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // ConnexionDisplay
             // 
@@ -329,5 +355,7 @@ namespace Maquette
         private System.Windows.Forms.TextBox prenomBox;
         private System.Windows.Forms.TextBox nomBox;
         private System.Windows.Forms.Button SignButton;
+        private System.Windows.Forms.ComboBox comboBoxP;
+        private System.Windows.Forms.Label label8;
     }
 }
