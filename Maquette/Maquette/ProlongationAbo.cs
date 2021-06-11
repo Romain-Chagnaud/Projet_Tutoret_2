@@ -13,28 +13,22 @@ namespace Maquette
 {
     public partial class ProlongationAbo : UserControl
     {
-        public ABONNÉS abos;
-        public EMPRUNTER emprunt;
-        public ALBUMS al;
+
         public ProlongationAbo(EMPRUNTER emprunt)
         {
             InitializeComponent();
-            this.abos = emprunt.ABONNÉS;
-            this.emprunt = emprunt;
-            this.al = emprunt.ALBUMS;
-            Admin_Name.Text = abos.NOM_ABONNÉ.Trim();
-            Admin_Prenom.Text = abos.PRÉNOM_ABONNÉ.Trim();
-            TitreAlbum.Text = emprunt.ALBUMS.TITRE_ALBUM.Trim();
-            ChargerElements();
+            ChargerElements(emprunt.ABONNÉS, emprunt.ALBUMS);
         }
 
         /// <summary>
         /// Initialise l'affichage de l'emprunt
         /// </summary>
-        private void ChargerElements()
+        private void ChargerElements(ABONNÉS abos, ALBUMS album)
         {
-            ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
-            TitreAlbum.Text = album.TITRE_ALBUM;
+            Admin_Name.Text = abos.NOM_ABONNÉ.Trim();
+            Admin_Prenom.Text = abos.PRÉNOM_ABONNÉ.Trim();
+
+            TitreAlbum.Text = album.TITRE_ALBUM.Trim();
             if (album.POCHETTE != null)
             {
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));

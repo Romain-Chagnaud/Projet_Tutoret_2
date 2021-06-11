@@ -29,24 +29,24 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.portrait = new System.Windows.Forms.PictureBox();
             this.Admin_Prenom = new System.Windows.Forms.Label();
             this.Admin_Name = new System.Windows.Forms.Label();
             this.pochette = new System.Windows.Forms.PictureBox();
             this.TitreAlbum = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portrait)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // portrait
             // 
-            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.user;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(84, 80);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.portrait.BackgroundImage = global::Maquette.Properties.Resources.user;
+            this.portrait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.portrait.Location = new System.Drawing.Point(27, 34);
+            this.portrait.Name = "portrait";
+            this.portrait.Size = new System.Drawing.Size(84, 80);
+            this.portrait.TabIndex = 2;
+            this.portrait.TabStop = false;
             // 
             // Admin_Prenom
             // 
@@ -94,10 +94,10 @@ namespace Maquette
             this.Controls.Add(this.pochette);
             this.Controls.Add(this.Admin_Prenom);
             this.Controls.Add(this.Admin_Name);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.portrait);
             this.Name = "ProlongationAbo";
             this.Size = new System.Drawing.Size(590, 161);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portrait)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,7 +106,7 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox portrait;
         private System.Windows.Forms.Label Admin_Prenom;
         private System.Windows.Forms.Label Admin_Name;
         private System.Windows.Forms.PictureBox pochette;

@@ -79,7 +79,7 @@ namespace Maquette
             this.btnRendre.Size = new System.Drawing.Size(100, 100);
             this.btnRendre.TabIndex = 5;
             this.btnRendre.UseVisualStyleBackColor = false;
-            this.btnRendre.Click += new System.EventHandler(this.btnRendre_Click);
+            this.btnRendre.Click += new System.EventHandler(this.BtnRendre_Click);
             // 
             // btnEtendre
             // 
@@ -94,7 +94,7 @@ namespace Maquette
             this.btnEtendre.Size = new System.Drawing.Size(100, 100);
             this.btnEtendre.TabIndex = 4;
             this.btnEtendre.UseVisualStyleBackColor = false;
-            this.btnEtendre.Click += new System.EventHandler(this.btnEtendre_Click);
+            this.btnEtendre.Click += new System.EventHandler(this.BtnEtendre_Click);
             // 
             // pochette
             // 

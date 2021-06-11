@@ -17,45 +17,125 @@ namespace Maquette
         {
             InitializeComponent();
         }
+        #region IHM
 
-
-        private void Btn_Fantome_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton des abonnés fantômes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnFantome_Click(object sender, EventArgs e)
         {
-            Sous_Admin ad = new Sous_Admin();
-            ad.Show();
+            AfficherFantomes();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton des abonnés retardataires
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRetard_Click(object sender, EventArgs e)
         {
-            Sous_Admin2cs ad = new Sous_Admin2cs();
-            ad.Show();
+            AfficherRetardataires();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton des albums prolongés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnProlo_Click(object sender, EventArgs e)
+        {
+            AfficherProlongations();
+        }
+
+        /// <summary>
+        /// Clic sur le label Album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LblAlbum_Click(object sender, EventArgs e)
+        {
+            AfficherDeuxiemeFenetre();
+        }
+
+        /// <summary>
+        /// Clic sur le bouton Liste des Abonnés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAbo_Click(object sender, EventArgs e)
+        {
+            AfficherAbonnes();
+        }
+
+
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Affiche la fenêtre principale des albums
+        /// </summary>
+        private void AfficherDeuxiemeFenetre()
+        {
+            AdminIHM2 add = new AdminIHM2();
+            add.Show();
+            this.Close();
+        }
+
+        /// <summary>
+        /// Affiche la fenêtre des prolongations
+        /// </summary>
+        private void AfficherProlongations()
         {
             Prologation pl = new Prologation();
             pl.Show();
         }
 
-        private void toolStripLabel2_Click(object sender, EventArgs e)
-        {
-            AdminIHM2 add = new AdminIHM2();
-            add.Show();
-            
-        }
-
-        private void toolStripLabel1_Click(object sender, EventArgs e)
-        {
-            AdminIHM add = new AdminIHM();
-            add.Show();
-            this.Close();
-        }        
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Affiche la fenêtre qui liste tout les abonnés
+        /// </summary>
+        private static void AfficherAbonnes()
         {
             ListeAbonnes liste = new ListeAbonnes();
             liste.Show();
         }
-    }
+
+        /// <summary>
+        /// Lance la fenêtre des abonnés fantômes
+        /// </summary>
+        private static void AfficherFantomes()
+        {
+            Sous_Admin ad = new Sous_Admin();
+            ad.Show();
+        }
+
+        /// <summary>
+        /// Affiche la fenêtre des retardataires
+        /// </summary>
+        private static void AfficherRetardataires()
+        {
+            Sous_Admin2cs ad = new Sous_Admin2cs();
+            ad.Show();
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
+
+}

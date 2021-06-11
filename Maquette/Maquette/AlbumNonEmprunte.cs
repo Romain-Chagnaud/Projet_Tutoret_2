@@ -30,7 +30,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnVoir_Click(object sender, EventArgs e)
+        private void BtnVoir_Click(object sender, EventArgs e)
         {
             AfficherDetails();
         }
@@ -56,12 +56,9 @@ namespace Maquette
         /// </summary>
         private void AfficherDetails()
         {
-            DescriptionAlbum desc = new DescriptionAlbum(album);
-            
+            DescriptionAlbumAdmin desc = new DescriptionAlbumAdmin(album);
+            desc.ShowDialog();
         }
-
-        
-
 
         #endregion
     }
