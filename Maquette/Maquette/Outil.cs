@@ -651,5 +651,17 @@ namespace Maquette
 
             return empruntés;
         }
+
+        public static string Decrypter(String mdp)
+        {
+            char[] crypted = new char[mdp.Length];
+            int i = 0;
+            foreach (char c in mdp.ToCharArray())
+            {
+                crypted[i] = (char)((int)c - 1);
+                i++;
+            }
+            return new string(crypted);
+        }
     }
 }

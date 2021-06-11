@@ -18,5 +18,16 @@ namespace Maquette
             lblNom.Text = abo.NOM_ABONNÉ;
             lblPrenom.Text = abo.PRÉNOM_ABONNÉ;
         }
+
+        private void btnVoir_Click(object sender, EventArgs e)
+        {
+            AfficherDetail();         
+        }
+
+        private void AfficherDetail()
+        {
+            CompteUtilisateurPourAdmin ca = new CompteUtilisateurPourAdmin(abo);
+            ca.ShowDialog();
+        }
     }
 }
