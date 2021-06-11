@@ -139,6 +139,11 @@ namespace Maquette
         /// <param name="e"></param>
         private void RetourPgConnexion_Click(object sender, EventArgs e)
         {
+            DirectionPgCon();
+        }
+
+        private void DirectionPgCon()
+        {
             ConnexionPanel.Visible = true;
             InscriptionPannel.Visible = false;
         }
@@ -230,6 +235,11 @@ namespace Maquette
         /// <param name="e"></param>
         private void AfficherCoMdp_Click(object sender, EventArgs e)
         {
+            AfficherMdpCon();
+        }
+
+        private void AfficherMdpCon()
+        {
             if (textBoxPass.PasswordChar == '●')
             {
                 textBoxPass.PasswordChar = '\0';
@@ -247,6 +257,11 @@ namespace Maquette
         /// <param name="e"></param>
         private void AfficherInsNvMdp_Click(object sender, EventArgs e)
         {
+            AfficherMdpIns();
+        }
+
+        private void AfficherMdpIns()
+        {
             if (passBox.PasswordChar == '●')
             {
                 passBox.PasswordChar = '\0';
@@ -263,6 +278,11 @@ namespace Maquette
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AfficherInsConfMdp_Click(object sender, EventArgs e)
+        {
+            AfficherMdpConf();
+        }
+
+        private void AfficherMdpConf()
         {
             if (PassConfirm.PasswordChar == '●')
             {
