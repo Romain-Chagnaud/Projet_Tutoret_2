@@ -18,6 +18,8 @@
 
 Projet de Boutique de Musique.
 Le but de ce projet était de concevoir et réaliser une application pour une boutique de location d'albums de musique.
+![alt text](https://github.com/elemos/pt2_b/blob/master/capture.PNG?raw=true)
+
 
 # User Stories
 
