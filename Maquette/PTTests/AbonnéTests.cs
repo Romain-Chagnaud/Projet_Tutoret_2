@@ -93,24 +93,35 @@ namespace PTTests
         public void TestConnexion()
         {
             ChargerMusiqueEntities();
-
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS abonnéTrue = Inscription(prenom, nom, login, mdp, "France");
             //Cas 1 : connexion d'un abonné existant, résultat : connexion réussi
-            ABONNÉS abonnéTrue = Connexion("lp", "lp");
+            abonnéTrue = Connexion("Belmont", "belmont123");
             Assert.IsFalse(abonnéTrue == null);
 
             //Cas 2 : connexion d'un abonné non-existant, résultat : connexion échoué
             ABONNÉS abonnéFalse = Connexion("random1645551", "random165455");
             Assert.IsTrue(abonnéFalse == null);
-
+            RemoveAbonné(abonnéTrue);
         }
 
         //US 1
         [TestMethod]
         public void TestEmprunt()
         {
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS ab = Inscription(prenom, nom, login, mdp, "France");
             ChargerMusiqueEntities();
             //Emprunt numéro 1 pour lp
-            ABONNÉS ab = Connexion("lp", "lp");
+            ab = Connexion("Belmont", "belmont123");
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
             EMPRUNTER e = NouvelEmprunt(ab, a);
             Assert.IsFalse(e == null);
@@ -141,8 +152,14 @@ namespace PTTests
         public void TestEmpruntésEnCours()
         {
             ChargerMusiqueEntities();
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS ab = Inscription(prenom, nom, login, mdp, "France");
             //Vérification que les emprunts sont tous liés à l'utilisateurs et qu'ils ne sont tous pas rendus
-            ABONNÉS ab = Connexion("lp", "lp");
+            ab = Connexion("Belmont", "belmont123");
 
             var liste = GetEmpruntsEnCoursAbonné(ab);
             foreach (EMPRUNTER em in liste)
@@ -160,6 +177,7 @@ namespace PTTests
             RendreEmprunt(e);
             liste = GetEmpruntsEnCoursAbonné(ab);
             Assert.IsTrue(!liste.Contains(e));
+            RemoveAbonné(ab);
         }
 
         //US 3 + 9
@@ -167,7 +185,13 @@ namespace PTTests
         public void TestProlongation()
         {
             ChargerMusiqueEntities();
-            ABONNÉS ab = Connexion("lp", "lp");
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS ab = Inscription(prenom, nom, login, mdp, "France");
+            ab = Connexion("Belmont", "belmont123");
 
             //Nouvel emprunt
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
@@ -197,7 +221,7 @@ namespace PTTests
             }
 
             RendreEmprunt(e);
-
+            RemoveAbonné(ab);
         }
 
         //US 10
@@ -205,7 +229,13 @@ namespace PTTests
         public void TestSuggestions()
         {
             ChargerMusiqueEntities();
-            ABONNÉS ab = Connexion("lp", "lp");
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS ab = Inscription(prenom, nom, login, mdp, "France");
+            ab = Connexion("Belmont", "belmont123");
 
             //On récupère la liste de tous les emprunts déjà réalisés de l'abonné, et des suggestions qui lui sont proposés
             var liste = GetEmpruntsAbonné(ab);
@@ -245,6 +275,7 @@ namespace PTTests
                     Assert.IsTrue(genres.Contains(a.GENRES));
                     Assert.IsFalse(albumsEmpruntés.Contains(a));
             }
+            RemoveAbonné(ab);
         }
     }
 }

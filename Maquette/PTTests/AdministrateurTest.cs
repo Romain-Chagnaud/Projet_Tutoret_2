@@ -21,9 +21,15 @@ namespace PTTests
             {
                 Assert.IsFalse(EstProlongeable(em));
             }
-            
+
             //On rajoute un nouvel emprunt
-            ABONNÉS ab = Connexion("lp", "lp");
+            string nom, prenom, login, mdp;
+            nom = "Belmondo";
+            prenom = "Jean-Paul";
+            login = "Belmont";
+            mdp = "belmont123";
+            ABONNÉS ab = Inscription(prenom, nom, login, mdp, "France");
+            ab = Connexion("Belmont", "belmont123");
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
             EMPRUNTER e = NouvelEmprunt(ab, a);
             
@@ -35,6 +41,8 @@ namespace PTTests
             Prolongation(e);
             liste = GetProlongés();
             Assert.IsTrue(liste.Contains(e));
+
+            RemoveAbonné(ab);
         }
 
         //US 5
@@ -100,11 +108,14 @@ namespace PTTests
 
             //Restoration des emprunts
             RendreEmprunt(em);
+            RendreEmprunt(em1);
 
 
             //Cas l'abonné fantôme est purgé
+            d = DateTime.Now.AddDays(-366);
+            em = NouvelEmpruntDaté(ab, a, d);
             fantomes = GetFantomes();
-            Assert.IsFalse(fantomes.Contains(ab));
+            Assert.IsTrue(fantomes.Contains(ab));
             PurgerFantomes();
             fantomes = GetFantomes();
             Assert.IsFalse(fantomes.Contains(ab));
