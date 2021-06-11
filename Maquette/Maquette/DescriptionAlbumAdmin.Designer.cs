@@ -1,7 +1,7 @@
 ﻿
 namespace Maquette
 {
-    partial class DescriptionAlbum
+    partial class DescriptionAlbumAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,10 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DescriptionAlbum));
             this.pnlElement = new System.Windows.Forms.Panel();
             this.lblPrix = new System.Windows.Forms.Label();
             this.lblAnnée = new System.Windows.Forms.Label();
             this.lblEdit = new System.Windows.Forms.Label();
-            this.btnEmprunt = new System.Windows.Forms.Button();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblTitre = new System.Windows.Forms.Label();
             this.pochette = new System.Windows.Forms.PictureBox();
@@ -49,7 +47,6 @@ namespace Maquette
             this.pnlElement.Controls.Add(this.lblPrix);
             this.pnlElement.Controls.Add(this.lblAnnée);
             this.pnlElement.Controls.Add(this.lblEdit);
-            this.pnlElement.Controls.Add(this.btnEmprunt);
             this.pnlElement.Controls.Add(this.lblGenre);
             this.pnlElement.Controls.Add(this.lblTitre);
             this.pnlElement.Controls.Add(this.pochette);
@@ -57,8 +54,8 @@ namespace Maquette
             this.pnlElement.Location = new System.Drawing.Point(10, 10);
             this.pnlElement.Margin = new System.Windows.Forms.Padding(1);
             this.pnlElement.Name = "pnlElement";
-            this.pnlElement.Size = new System.Drawing.Size(616, 575);
-            this.pnlElement.TabIndex = 3;
+            this.pnlElement.Size = new System.Drawing.Size(616, 577);
+            this.pnlElement.TabIndex = 4;
             // 
             // lblPrix
             // 
@@ -86,16 +83,6 @@ namespace Maquette
             this.lblEdit.Size = new System.Drawing.Size(46, 13);
             this.lblEdit.TabIndex = 6;
             this.lblEdit.Text = "Éditeur :";
-            // 
-            // btnEmprunt
-            // 
-            this.btnEmprunt.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnEmprunt.Location = new System.Drawing.Point(464, 546);
-            this.btnEmprunt.Name = "btnEmprunt";
-            this.btnEmprunt.Size = new System.Drawing.Size(75, 23);
-            this.btnEmprunt.TabIndex = 5;
-            this.btnEmprunt.Text = "Emprunter";
-            this.btnEmprunt.UseVisualStyleBackColor = true;
             // 
             // lblGenre
             // 
@@ -138,7 +125,7 @@ namespace Maquette
             this.btnQuitter.TabIndex = 2;
             this.btnQuitter.UseVisualStyleBackColor = true;
             // 
-            // DescriptionAlbum
+            // DescriptionAlbumAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,10 +133,8 @@ namespace Maquette
             this.ClientSize = new System.Drawing.Size(636, 597);
             this.Controls.Add(this.pnlElement);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "DescriptionAlbum";
-            this.Text = "DescriptionAlbum";
-            this.TopMost = true;
+            this.Name = "DescriptionAlbumAdmin";
+            this.Text = "DescriptionAlbumAdmin";
             this.pnlElement.ResumeLayout(false);
             this.pnlElement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();
@@ -158,14 +143,14 @@ namespace Maquette
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pochette;
-        private System.Windows.Forms.Button btnQuitter;
+
         private System.Windows.Forms.Panel pnlElement;
-        private System.Windows.Forms.Button btnEmprunt;
-        private System.Windows.Forms.Label lblGenre;
-        private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.Label lblAnnée;
         private System.Windows.Forms.Label lblEdit;
+        private System.Windows.Forms.Label lblGenre;
+        private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.PictureBox pochette;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }

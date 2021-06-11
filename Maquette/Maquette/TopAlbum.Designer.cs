@@ -30,25 +30,25 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopAlbum));
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnStyle = new System.Windows.Forms.Button();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblPageReco = new System.Windows.Forms.Label();
-            this.btnSuiCon = new System.Windows.Forms.Button();
-            this.btnPreCon = new System.Windows.Forms.Button();
+            this.pnlElemEmprunt = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblPageEmp = new System.Windows.Forms.Label();
+            this.btnSuiEmp = new System.Windows.Forms.Button();
+            this.btnPreEmp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button7
+            // btnStyle
             // 
-            this.button7.BackColor = System.Drawing.Color.Teal;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button7.Location = new System.Drawing.Point(12, 23);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(171, 76);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "Les plus empruntés cette année";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnStyle.BackColor = System.Drawing.Color.Teal;
+            this.btnStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStyle.ForeColor = System.Drawing.SystemColors.Menu;
+            this.btnStyle.Location = new System.Drawing.Point(12, 23);
+            this.btnStyle.Name = "btnStyle";
+            this.btnStyle.Size = new System.Drawing.Size(171, 76);
+            this.btnStyle.TabIndex = 13;
+            this.btnStyle.Text = "Les plus empruntés cette année";
+            this.btnStyle.UseVisualStyleBackColor = false;
             // 
             // entityCommand1
             // 
@@ -58,52 +58,52 @@ namespace Maquette
             this.entityCommand1.EnablePlanCaching = true;
             this.entityCommand1.Transaction = null;
             // 
-            // flowLayoutPanel1
+            // pnlElemEmprunt
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Teal;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 118);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(560, 389);
-            this.flowLayoutPanel1.TabIndex = 14;
+            this.pnlElemEmprunt.BackColor = System.Drawing.Color.Teal;
+            this.pnlElemEmprunt.Location = new System.Drawing.Point(12, 118);
+            this.pnlElemEmprunt.Name = "pnlElemEmprunt";
+            this.pnlElemEmprunt.Size = new System.Drawing.Size(560, 389);
+            this.pnlElemEmprunt.TabIndex = 14;
             // 
-            // lblPageReco
+            // lblPageEmp
             // 
-            this.lblPageReco.AutoSize = true;
-            this.lblPageReco.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageReco.ForeColor = System.Drawing.Color.White;
-            this.lblPageReco.Location = new System.Drawing.Point(266, 523);
-            this.lblPageReco.Name = "lblPageReco";
-            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
-            this.lblPageReco.TabIndex = 17;
-            this.lblPageReco.Text = "Page";
+            this.lblPageEmp.AutoSize = true;
+            this.lblPageEmp.BackColor = System.Drawing.Color.Transparent;
+            this.lblPageEmp.ForeColor = System.Drawing.Color.White;
+            this.lblPageEmp.Location = new System.Drawing.Point(266, 523);
+            this.lblPageEmp.Name = "lblPageEmp";
+            this.lblPageEmp.Size = new System.Drawing.Size(32, 13);
+            this.lblPageEmp.TabIndex = 17;
+            this.lblPageEmp.Text = "Page";
             // 
-            // btnSuiCon
+            // btnSuiEmp
             // 
-            this.btnSuiCon.BackColor = System.Drawing.Color.Teal;
-            this.btnSuiCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
-            this.btnSuiCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSuiCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnSuiCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuiCon.Location = new System.Drawing.Point(497, 513);
-            this.btnSuiCon.Name = "btnSuiCon";
-            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
-            this.btnSuiCon.TabIndex = 16;
-            this.btnSuiCon.UseVisualStyleBackColor = false;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiEmp.BackColor = System.Drawing.Color.Teal;
+            this.btnSuiEmp.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
+            this.btnSuiEmp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiEmp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnSuiEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuiEmp.Location = new System.Drawing.Point(497, 513);
+            this.btnSuiEmp.Name = "btnSuiEmp";
+            this.btnSuiEmp.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiEmp.TabIndex = 16;
+            this.btnSuiEmp.UseVisualStyleBackColor = false;
+            this.btnSuiEmp.Click += new System.EventHandler(this.BtnSuiEmp_Click);
             // 
-            // btnPreCon
+            // btnPreEmp
             // 
-            this.btnPreCon.BackColor = System.Drawing.Color.Teal;
-            this.btnPreCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
-            this.btnPreCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnPreCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreCon.Location = new System.Drawing.Point(12, 513);
-            this.btnPreCon.Name = "btnPreCon";
-            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
-            this.btnPreCon.TabIndex = 15;
-            this.btnPreCon.UseVisualStyleBackColor = false;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPreEmp.BackColor = System.Drawing.Color.Teal;
+            this.btnPreEmp.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
+            this.btnPreEmp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPreEmp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnPreEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreEmp.Location = new System.Drawing.Point(12, 513);
+            this.btnPreEmp.Name = "btnPreEmp";
+            this.btnPreEmp.Size = new System.Drawing.Size(75, 23);
+            this.btnPreEmp.TabIndex = 15;
+            this.btnPreEmp.UseVisualStyleBackColor = false;
+            this.btnPreEmp.Click += new System.EventHandler(this.BtnPreEmp_Click);
             // 
             // TopAlbum
             // 
@@ -112,11 +112,11 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 561);
-            this.Controls.Add(this.lblPageReco);
-            this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.btnPreCon);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.lblPageEmp);
+            this.Controls.Add(this.btnSuiEmp);
+            this.Controls.Add(this.btnPreEmp);
+            this.Controls.Add(this.pnlElemEmprunt);
+            this.Controls.Add(this.btnStyle);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TopAlbum";
@@ -128,11 +128,11 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnStyle;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label lblPageReco;
-        private System.Windows.Forms.Button btnSuiCon;
-        private System.Windows.Forms.Button btnPreCon;
+        private System.Windows.Forms.FlowLayoutPanel pnlElemEmprunt;
+        private System.Windows.Forms.Label lblPageEmp;
+        private System.Windows.Forms.Button btnSuiEmp;
+        private System.Windows.Forms.Button btnPreEmp;
     }
 }

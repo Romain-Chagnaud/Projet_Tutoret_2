@@ -47,6 +47,7 @@ namespace Maquette
             this.btnVoir.Size = new System.Drawing.Size(100, 100);
             this.btnVoir.TabIndex = 5;
             this.btnVoir.UseVisualStyleBackColor = false;
+            this.btnVoir.Click += new System.EventHandler(this.BtnVoir_Click);
             // 
             // lblTitre
             // 
