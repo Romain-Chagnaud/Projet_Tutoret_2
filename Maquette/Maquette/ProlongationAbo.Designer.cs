@@ -34,6 +34,9 @@ namespace Maquette
             this.Admin_Name = new System.Windows.Forms.Label();
             this.pochette = new System.Windows.Forms.PictureBox();
             this.TitreAlbum = new System.Windows.Forms.Label();
+            this.btnDescription = new System.Windows.Forms.Button();
+            this.lblDateE = new System.Windows.Forms.Label();
+            this.lblDateA = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.portrait)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
@@ -79,17 +82,50 @@ namespace Maquette
             // TitreAlbum
             // 
             this.TitreAlbum.AutoSize = true;
-            this.TitreAlbum.Location = new System.Drawing.Point(385, 66);
+            this.TitreAlbum.Location = new System.Drawing.Point(396, 55);
             this.TitreAlbum.Name = "TitreAlbum";
             this.TitreAlbum.Size = new System.Drawing.Size(60, 13);
             this.TitreAlbum.TabIndex = 9;
             this.TitreAlbum.Text = "Titre Album";
+            // 
+            // btnDescription
+            // 
+            this.btnDescription.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.btnDescription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescription.Location = new System.Drawing.Point(510, 19);
+            this.btnDescription.Name = "btnDescription";
+            this.btnDescription.Size = new System.Drawing.Size(55, 28);
+            this.btnDescription.TabIndex = 10;
+            this.btnDescription.UseVisualStyleBackColor = true;
+            this.btnDescription.Click += new System.EventHandler(this.btnDescription_Click);
+            // 
+            // lblDateE
+            // 
+            this.lblDateE.AutoSize = true;
+            this.lblDateE.Location = new System.Drawing.Point(396, 81);
+            this.lblDateE.Name = "lblDateE";
+            this.lblDateE.Size = new System.Drawing.Size(30, 13);
+            this.lblDateE.TabIndex = 11;
+            this.lblDateE.Text = "Date";
+            // 
+            // lblDateA
+            // 
+            this.lblDateA.AutoSize = true;
+            this.lblDateA.Location = new System.Drawing.Point(396, 101);
+            this.lblDateA.Name = "lblDateA";
+            this.lblDateA.Size = new System.Drawing.Size(37, 13);
+            this.lblDateA.TabIndex = 12;
+            this.lblDateA.Text = "DateA";
             // 
             // ProlongationAbo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
+            this.Controls.Add(this.lblDateA);
+            this.Controls.Add(this.lblDateE);
+            this.Controls.Add(this.btnDescription);
             this.Controls.Add(this.TitreAlbum);
             this.Controls.Add(this.pochette);
             this.Controls.Add(this.Admin_Prenom);
@@ -111,5 +147,8 @@ namespace Maquette
         private System.Windows.Forms.Label Admin_Name;
         private System.Windows.Forms.PictureBox pochette;
         private System.Windows.Forms.Label TitreAlbum;
+        private System.Windows.Forms.Button btnDescription;
+        private System.Windows.Forms.Label lblDateE;
+        private System.Windows.Forms.Label lblDateA;
     }
 }

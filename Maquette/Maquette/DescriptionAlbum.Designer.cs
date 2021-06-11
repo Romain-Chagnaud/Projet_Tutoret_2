@@ -39,6 +39,8 @@ namespace Maquette
             this.lblTitre = new System.Windows.Forms.Label();
             this.pochette = new System.Windows.Forms.PictureBox();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.lblCasier = new System.Windows.Forms.Label();
+            this.lblAllee = new System.Windows.Forms.Label();
             this.pnlElement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +48,8 @@ namespace Maquette
             // pnlElement
             // 
             this.pnlElement.BackColor = System.Drawing.Color.Teal;
+            this.pnlElement.Controls.Add(this.lblAllee);
+            this.pnlElement.Controls.Add(this.lblCasier);
             this.pnlElement.Controls.Add(this.lblPrix);
             this.pnlElement.Controls.Add(this.lblAnnée);
             this.pnlElement.Controls.Add(this.lblEdit);
@@ -138,6 +142,24 @@ namespace Maquette
             this.btnQuitter.TabIndex = 2;
             this.btnQuitter.UseVisualStyleBackColor = true;
             // 
+            // lblCasier
+            // 
+            this.lblCasier.AutoSize = true;
+            this.lblCasier.Location = new System.Drawing.Point(402, 263);
+            this.lblCasier.Name = "lblCasier";
+            this.lblCasier.Size = new System.Drawing.Size(36, 13);
+            this.lblCasier.TabIndex = 9;
+            this.lblCasier.Text = "Casier";
+            // 
+            // lblAllee
+            // 
+            this.lblAllee.AutoSize = true;
+            this.lblAllee.Location = new System.Drawing.Point(402, 182);
+            this.lblAllee.Name = "lblAllee";
+            this.lblAllee.Size = new System.Drawing.Size(30, 13);
+            this.lblAllee.TabIndex = 10;
+            this.lblAllee.Text = "Allee";
+            // 
             // DescriptionAlbum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,5 +189,7 @@ namespace Maquette
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.Label lblAnnée;
         private System.Windows.Forms.Label lblEdit;
+        private System.Windows.Forms.Label lblAllee;
+        private System.Windows.Forms.Label lblCasier;
     }
 }

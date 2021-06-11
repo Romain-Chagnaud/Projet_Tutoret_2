@@ -30,6 +30,8 @@ namespace Maquette
             lblEdit.Text = album.EDITEURS.ToString();
             lblAnnée.Text = album.ANNÉE_ALBUM.ToString();
             lblPrix.Text = album.PRIX_ALBUM.ToString();
+            lblAllee.Text = album.ALLÉE_ALBUM.ToString();
+            lblCasier.Text = album.CASIER_ALBUM.ToString();
             if (album.POCHETTE != null)
             {
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));

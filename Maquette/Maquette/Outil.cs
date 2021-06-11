@@ -539,7 +539,7 @@ namespace Maquette
                     liste.Add(em);
                 }
             }
-            return liste;
+            return liste.OrderBy(em => em.DATE_EMPRUNT).ToList();
         }
 
         /// <summary>

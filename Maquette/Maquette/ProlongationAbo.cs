@@ -13,10 +13,13 @@ namespace Maquette
 {
     public partial class ProlongationAbo : UserControl
     {
-
+        readonly ALBUMS al;
+        readonly EMPRUNTER em;
         public ProlongationAbo(EMPRUNTER emprunt)
         {
             InitializeComponent();
+            al = emprunt.ALBUMS;
+            em = emprunt;
             ChargerElements(emprunt.ABONNÉS, emprunt.ALBUMS);
         }
 
@@ -29,7 +32,8 @@ namespace Maquette
         {
             Admin_Name.Text = abos.NOM_ABONNÉ.Trim();
             Admin_Prenom.Text = abos.PRÉNOM_ABONNÉ.Trim();
-
+            lblDateA.Text = em.DATE_RETOUR_ATTENDUE.ToString();
+            lblDateE.Text = em.DATE_EMPRUNT.ToString();
             TitreAlbum.Text = album.TITRE_ALBUM.Trim();
             if (album.POCHETTE != null)
             {
@@ -38,5 +42,11 @@ namespace Maquette
         }
 
         #endregion
+
+        private void btnDescription_Click(object sender, EventArgs e)
+        {
+            DescriptionAlbum da = new DescriptionAlbum(al);
+            da.ShowDialog();
+        }
     }
 }
