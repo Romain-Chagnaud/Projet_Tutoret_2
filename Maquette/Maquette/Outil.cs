@@ -5,48 +5,56 @@ using System.Text.RegularExpressions;
 
 namespace Maquette
 {
+    /// <summary>
+    /// Classe Outil qui a pour rôle de gérer les communications avec la base
+    /// </summary>
     public static class Outil
     {
-        public static MusiqueEntities musique { get; set; }
+        /// <summary>
+        /// Attribut permettant de communiquer avec la database
+        /// </summary>
+        public static MusiqueEntities Musique { get; set; }
 
-        public static void chargerMusiqueEntities()
+        /// <summary>
+        /// Permet de générer le mappage objet-relationnel à la base
+        /// </summary>
+        public static void ChargerMusiqueEntities()
         {
-            musique = new MusiqueEntities();
+            Musique = new MusiqueEntities();
         }
 
-        public static List<ABONNÉS> getABONNÉSs()
+        /// <summary>
+        /// Méthode pour récupérer tout les abonnés
+        /// </summary>
+        /// <returns>Retourne une liste d'ABONNÉS</returns>
+        public static List<ABONNÉS> GetABONNÉSs()
         {
-            var abonnés = (from a in musique.ABONNÉS
+            var abonnés = (from a in Musique.ABONNÉS
                            select a).ToList();
             return abonnés;
         }
 
-        public static ABONNÉS getAbonnéSelonLogin(string login)
-        {
-            var abo = (from a in musique.ABONNÉS
-                       where a.LOGIN_ABONNÉ == login
-                       select a).ToList();
-            if (abo.Count > 0)
-            {
-                return abo[0];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
+        /// <summary>
+        /// Méthode pour récupérer tout les pays
+        /// </summary>
+        /// <returns>Retourne une liste de PAYS</returns>
         public static List<String> GetPays()
         {
-            var pays = (from p in musique.PAYS
+            var pays = (from p in Musique.PAYS
                         select p.NOM_PAYS).ToList();
             return pays;
         }
 
-        public static ABONNÉS connexion(string login, string mdp)
+        /// <summary>
+        /// Méthode permettant de se connecter, à partir d'un login et d'un mot de passe
+        /// </summary>
+        /// <param name="login">Identifiant de l'utilisateur</param>
+        /// <param name="mdp">Mot de passe de l'utilisateur</param>
+        /// <returns>Retourne un ABONNÉS si la connexion est réussi, null sinon</returns>
+        public static ABONNÉS Connexion(string login, string mdp)
         {
             string crypted = Crypter(mdp);
-            var abo = (from a in musique.ABONNÉS
+            var abo = (from a in Musique.ABONNÉS
                        where a.LOGIN_ABONNÉ == login && a.PASSWORD_ABONNÉ == crypted
                        select a).ToList();
             if (abo.Count > 0)
@@ -59,31 +67,28 @@ namespace Maquette
             }
         }
 
-        private static Boolean LoginContientCaractèresSpéciaux(String chaine)
-        {
-            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
-            String[] listeTab = liste.Split(' ');
-            Boolean contient = false;
-            for (int i = 0; i < listeTab.Length; i++)
-            {
-                if (chaine.Contains(listeTab[i]))
-                {
-                    contient = true;
-                }
-            }
-            return contient;
-        }
-
-        public static ABONNÉS inscription(string prenom, string nom, string login, string mdp, string pays)
+        /// <summary>
+        /// Méthode pour inscrire un utilisateur.
+        /// Chaque attribut "texte" ne doit pas dépasser 32 caractères et respecter des conditions.
+        /// Le prénom, et le nom peuvent contenir des espaces et des tirets pour séparer différents différents éléments( commençant par des majuscules).
+        /// Le login est libre mais ne doit pas contenir de caractères spéciaux ou d'espace.
+        /// Le mot de passe est libre mais ne peut pas contenir d'espace.
+        /// Le pays peut-être vide, on vérifiera qu'il s'agit d'un pays appartenant à la base.
+        /// </summary>
+        /// <param name="prenom">Le prénom</param>
+        /// <param name="nom">Le nom</param>
+        /// <param name="login">L'identifiant</param>
+        /// <param name="mdp">Le mot de passe</param>
+        /// <param name="pays">Le pays</param>
+        /// <returns>Retourne un ABONNÉS s'il a été créé, null sinon</returns>
+        public static ABONNÉS Inscription(string prenom, string nom, string login, string mdp, string pays)
         {
             ABONNÉS abo = null;
-            string prenomTrim = prenom.Trim();
-            string nomTrim = nom.Trim();
-            if (prenom == prenomTrim && nomTrim == nom && !EstDansLaChaine(prenom, charSpéciaux()) && !EstDansLaChaine(nom, charSpéciaux())
-                && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && login.Length > 0 && login.Length<=32
+            if (Regex.IsMatch(prenom, "^([A-Z][a-z]*( |-)?)*$") && Regex.IsMatch(nom, "^([A-Z][a-z]*( |-)?)*$")
+                && prenom.Length > 0 && prenom.Length <= 32 && nom.Length > 0 && nom.Length <= 32 && login.Length > 0 && login.Length<=32
                 && mdp.Length>0 && mdp.Length<=32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$") && Regex.IsMatch(login, "^\\S[a-zA-Z0-9]*\\S$"))
             {
-                var logins = (from a in musique.ABONNÉS
+                var logins = (from a in Musique.ABONNÉS
                               where a.LOGIN_ABONNÉ == login
                               select a).ToList();
                 if (logins.Count == 0)
@@ -95,13 +100,13 @@ namespace Maquette
                     abo.PASSWORD_ABONNÉ = Crypter(mdp);
                     if (pays.Length != 0)
                     {
-                        if (paysExiste(pays) != null)
+                        if (PaysExiste(pays) != null)
                         {
-                            abo.PAYS = paysExiste(pays);
+                            abo.PAYS = PaysExiste(pays);
                         }
                     }
-                    musique.ABONNÉS.Add(abo);
-                    musique.SaveChanges();
+                    Musique.ABONNÉS.Add(abo);
+                    Musique.SaveChanges();
 
                 }
             }
@@ -109,9 +114,14 @@ namespace Maquette
             return abo;
         }
 
-        public static PAYS paysExiste(string nom)
+        /// <summary>
+        /// Méthode qui retourne un PAYS à partir d'un nom si celui-ci correspond à un pays dans la base.
+        /// </summary>
+        /// <param name="nom">Le nom du pays</param>
+        /// <returns>Retourne un pays s'il existe dans la base, null sinon</returns>
+        public static PAYS PaysExiste(string nom)
         {
-            var pays = (from p in musique.PAYS
+            var pays = (from p in Musique.PAYS
                         where p.NOM_PAYS == nom
                         select p).ToList();
             if (pays.Count != 0)
@@ -125,91 +135,67 @@ namespace Maquette
 
         }
 
-        private static String[] majMin()
+        /// <summary>
+        /// Méthode pour retirer un abonné de la base
+        /// </summary>
+        /// <param name="a">L'abonné que l'on veut supprimer</param>
+        public static void RemoveAbonné(ABONNÉS a)
         {
-            String liste = "A a À à Â â Ä ä Ã ã B b C c ç D d E e é È è Ê ê Ë ë F f G g H h I i Ì ì Î î Ï ï J j K " +
-                "k L l M m N n Ñ ñ O o Ò ò Ô ô Ö ö Õ õ P p Q q R r S s T t U u Ù ù Û û Ü ü V v W w X x Y y ÿ Z z -";
-            return liste.Split(' ');
-        }
-
-        private static String[] charSpéciaux()
-        {
-            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > 0 1 2 3 4 5 6 7 8 9 * + = % µ € $ ¤ £";
-            return liste.Split(' ');
-        }
-
-        private static Boolean EstDansLaChaine(String chaine, String[] liste)
-        {
-            Boolean contient = false;
-            for (int i = 0; i < liste.Length; i++)
+            if (Musique.ABONNÉS.Contains(a))
             {
-                if (chaine.Contains(liste[i]))
-                {
-                    contient = true;
-                }
+                Musique.ABONNÉS.Remove(a);
+                Musique.SaveChanges();
             }
-            return contient;
         }
 
-        public static int getPays(String pays)
+        /// <summary>
+        /// Méthode pour récupérer tout les albums déjà empruntés par un abonné.
+        /// </summary>
+        /// <param name="id">L'id de l'abonné</param>
+        /// <returns>Retourne une liste d'ALBUMS</returns>
+        public static List<ALBUMS> GetToutAlbumsEmpruntésParAbonné(int id)
         {
-            var pa = (from all in musique.PAYS
-                      where all.NOM_PAYS == pays
-                      select all.CODE_PAYS).ToList();
-            return pa[0];
-        }
-
-        public static void removeAbonné(ABONNÉS a)
-        {
-            musique.ABONNÉS.Remove(a);
-            musique.SaveChanges();
-        }
-
-        public static List<ALBUMS> getToutAlbumsEmpruntésParAbonné(int id)
-        {
-            var albumsEmpruntés = (from al2 in musique.ALBUMS
-                                   join em1 in musique.EMPRUNTER
+            var albumsEmpruntés = (from al2 in Musique.ALBUMS
+                                   join em1 in Musique.EMPRUNTER
                                    on al2.CODE_ALBUM equals em1.CODE_ALBUM
                                    where em1.CODE_ABONNÉ == id
                                    select al2).ToList();
             return albumsEmpruntés;
         }
 
-        public static ALBUMS getAlbumSelonTitre(string titre)
+        /// <summary>
+        /// Méthode pour récupérer tout les albums en cours d'emprunts.
+        /// </summary>
+        /// <returns>Retourne une liste d'ALBUMS empruntés</returns>
+        public static List<ALBUMS> GetIndisponibles()
         {
-            var alb = (from al in musique.ALBUMS
-                       where al.TITRE_ALBUM == titre
-                       select al).ToList();
-            if (alb.Count > 0)
-            {
-                return alb[0];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static List<ALBUMS> getIndisponibles()
-        {
-            var empruntés = (from al in musique.ALBUMS
-                             join e in musique.EMPRUNTER
+            var empruntés = (from al in Musique.ALBUMS
+                             join e in Musique.EMPRUNTER
                              on al.CODE_ALBUM equals e.CODE_ALBUM
                              where e.DATE_RETOUR == null
                              select al).ToList();
             return empruntés;
         }
 
-        public static List<ALBUMS> getALBUMSs()
+        /// <summary>
+        /// Méthode pour récupérer tout les albums.
+        /// </summary>
+        /// <returns>Retourne la liste de tout les ALBUMS</returns>
+        public static List<ALBUMS> GetALBUMSs()
         {
-            var albums = (from al in musique.ALBUMS
+            var albums = (from al in Musique.ALBUMS
                           select al).ToList();
             return albums;
         }
 
-        public static ALBUMS getAlbumSelonID(int id)
+        /// <summary>
+        /// Méthode pour récupérer un album selon son id dans la base.
+        /// </summary>
+        /// <param name="id">L'id de l'album</param>
+        /// <returns>Retourne un ALBUMS si l'id trouve une correspondance dans la base, null sinon</returns>
+        public static ALBUMS GetAlbumSelonID(int id)
         {
-            var album = (from al in musique.ALBUMS
+            var album = (from al in Musique.ALBUMS
                          where al.CODE_ALBUM == id
                          select al).ToList();
             if (album.Count > 0)
@@ -222,7 +208,13 @@ namespace Maquette
             }
         }
 
-        public static List<ALBUMS> getAlbumsSelonGenreDansListe(int id, List<ALBUMS> listeAlbum)
+        /// <summary>
+        /// Récupère les albums correspondant à un genre (selon son id) dans une liste.
+        /// </summary>
+        /// <param name="id">L'id du genre</param>
+        /// <param name="listeAlbum">La liste d'albums</param>
+        /// <returns>Retourne une liste d'ALBUMS correspondant au genre voulu</returns>
+        public static List<ALBUMS> GetAlbumsSelonGenreDansListe(int id, List<ALBUMS> listeAlbum)
         {
             var albums = (from al in listeAlbum
                           where al.CODE_GENRE == id
@@ -230,10 +222,17 @@ namespace Maquette
             return albums;
         }
 
-        public static EMPRUNTER nouvelEmprunt(ABONNÉS ab, ALBUMS al)
+        /// <summary>
+        /// Permet de créer un nouvel emprunt à partir d'un album et d'un abonné.
+        /// Si l'album a déjà été emprunté par l'abonné, la ligne de l'ancien emprunt dans la base sera supprimée.
+        /// </summary>
+        /// <param name="ab">L'abonné</param>
+        /// <param name="al">L'album</param>
+        /// <returns>Retourne une instance d'EMPRUNTER si l'emprunt a été réussi</returns>
+        public static EMPRUNTER NouvelEmprunt(ABONNÉS ab, ALBUMS al)
         {
             EMPRUNTER em = null;
-            if (!getIndisponibles().Contains(al))
+            if (!GetIndisponibles().Contains(al))
             {
                 DateTime date = DateTime.Now;
                 DateTime newDate = date.AddDays(al.GENRES.DÉLAI);
@@ -243,7 +242,7 @@ namespace Maquette
                 em.DATE_EMPRUNT = date;
                 em.DATE_RETOUR_ATTENDUE = newDate;
                 EMPRUNTER existant = null;
-                foreach (EMPRUNTER e in musique.EMPRUNTER)
+                foreach (EMPRUNTER e in Musique.EMPRUNTER)
                 {
                     if (e.Equals(em))
                     {
@@ -252,19 +251,27 @@ namespace Maquette
                 }
                 if (existant != null)
                 {
-                    musique.EMPRUNTER.Remove(existant);
-                    musique.SaveChanges();
+                    Musique.EMPRUNTER.Remove(existant);
+                    Musique.SaveChanges();
                 }
-                musique.EMPRUNTER.Add(em);
-                musique.SaveChanges();
+                Musique.EMPRUNTER.Add(em);
+                Musique.SaveChanges();
             }
             return em;
         }
 
-        public static EMPRUNTER nouvelEmpruntDaté(ABONNÉS ab, ALBUMS al, DateTime dt)
+        /// <summary>
+        /// Même méthode que NouvelEmprunt(ABONNÉS,ALBUMS) sauf qu'ici on peut daté l'emprunt.
+        /// Méthode utilisée uniquement dans les tests, pour créer des retards et des abonnés inactifs.
+        /// </summary>
+        /// <param name="ab">L'abonné</param>
+        /// <param name="al">L'album</param>
+        /// <param name="dt">La date</param>
+        /// <returns></returns>
+        public static EMPRUNTER NouvelEmpruntDaté(ABONNÉS ab, ALBUMS al, DateTime dt)
         {
             EMPRUNTER em = null;
-            if (!getIndisponibles().Contains(al))
+            if (!GetIndisponibles().Contains(al))
             {
                 DateTime newDate = dt.AddDays(al.GENRES.DÉLAI);
                 em = new EMPRUNTER();
@@ -273,7 +280,7 @@ namespace Maquette
                 em.DATE_EMPRUNT = dt;
                 em.DATE_RETOUR_ATTENDUE = newDate;
                 EMPRUNTER existant = null;
-                foreach (EMPRUNTER e in musique.EMPRUNTER)
+                foreach (EMPRUNTER e in Musique.EMPRUNTER)
                 {
                     if (e.Equals(em))
                     {
@@ -282,64 +289,100 @@ namespace Maquette
                 }
                 if (existant != null)
                 {
-                    musique.EMPRUNTER.Remove(existant);
-                    musique.SaveChanges();
+                    Musique.EMPRUNTER.Remove(existant);
+                    Musique.SaveChanges();
                 }
-                musique.EMPRUNTER.Add(em);
-                musique.SaveChanges();
+                Musique.EMPRUNTER.Add(em);
+                Musique.SaveChanges();
             }
             return em;
         }
 
-        public static void rendreEmprunt(EMPRUNTER em)
+        /// <summary>
+        /// Méthode pour rendre un emprunt.
+        /// </summary>
+        /// <param name="em">L'emprunt à rendre</param>
+        public static void RendreEmprunt(EMPRUNTER em)
         {
-            DateTime date = DateTime.Now;
-            em.DATE_RETOUR = date;
-            musique.SaveChanges();
+            if (Musique.EMPRUNTER.Contains(em))
+            {
+                DateTime date = DateTime.Now;
+                em.DATE_RETOUR = date;
+                Musique.SaveChanges();
+            }
         }
 
-        public static List<EMPRUNTER> getEMPRUNTERs()
+        /// <summary>
+        /// Méthode pour récupérer tout les emprunts de la base.
+        /// </summary>
+        /// <returns>Retourne la liste des EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetEMPRUNTERs()
         {
-            var emprunts = (from em in musique.EMPRUNTER
+            var emprunts = (from em in Musique.EMPRUNTER
                             select em).ToList();
             return emprunts;
         }
 
-        public static List<EMPRUNTER> getEMPRUNTERNonRendus()
+        /// <summary>
+        /// Même méthode que GetEMPRUNTERs() mais cela ne retourne que les emprunts non rendus.
+        /// </summary>
+        /// <returns>Retourne une liste d'EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetEMPRUNTERNonRendus()
         {
-            var emprunts = (from em in musique.EMPRUNTER
+            var emprunts = (from em in Musique.EMPRUNTER
                             where em.DATE_RETOUR == null
                             select em).ToList();
             return emprunts;
         }
 
-        public static List<EMPRUNTER> getEmpruntsAbonné(int id)
+
+        /// <summary>
+        /// Méthode pour récupérer tout les emprunts d'un abonné
+        /// </summary>
+        /// <param name="id">L'id de l'abonné</param>
+        /// <returns>Retourne une liste d'EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetEmpruntsAbonné(int id)
         {
-            var emprunts = (from e in musique.EMPRUNTER
+            var emprunts = (from e in Musique.EMPRUNTER
                             where e.CODE_ABONNÉ == id
                             select e).ToList();
             return emprunts;
         }
 
-        public static List<EMPRUNTER> getEmpruntsEnCoursAbonné(int id)
+        /// <summary>
+        /// Même méthode que GetEmpruntsAbonné(int), mais ne retourne que les emprunts en cours.
+        /// </summary>
+        /// <param name="id">L'id de l'abonné</param>
+        /// <returns>Retourne une liste d'EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetEmpruntsEnCoursAbonné(int id)
         {
-            var emprunts = (from e in musique.EMPRUNTER
+            var emprunts = (from e in Musique.EMPRUNTER
                             where e.CODE_ABONNÉ == id && e.DATE_RETOUR == null
                             select e).ToList();
             return emprunts;
         }
 
-        public static List<EMPRUNTER> getEmpruntsSelonAlbum(int id)
+        /// <summary>
+        /// Retourne tout les emprunts associés à un album.
+        /// </summary>
+        /// <param name="id">L'id de l'album</param>
+        /// <returns>Retourne une liste d'EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetEmpruntsSelonAlbum(int id)
         {
-            var emprunts = (from e in musique.EMPRUNTER
+            var emprunts = (from e in Musique.EMPRUNTER
                             where e.CODE_ALBUM == id
                             select e).ToList();
             return emprunts;
         }
 
-        public static List<dynamic> getTop10()
+        /// <summary>
+        /// Méthode qui permet de récupérer le top 10 des albums les plus empruntés depuis le début de l'année dans l'ordre.
+        /// Cette méthode n'est utilisée que pour les méthodes GetTop10Albums() et GetTop10Count().
+        /// </summary>
+        /// <returns>Retourne une liste dynamique, ayant un type anonyme int,int; le premier étant l'id d'un album et le deuxième son nombre d'apparition</returns>
+        public static List<dynamic> GetTop10()
         {
-            var emprunts = getEMPRUNTERs();
+            var emprunts = GetEMPRUNTERs();
             List<EMPRUNTER> empruntsList = new List<EMPRUNTER>();
             foreach (EMPRUNTER em in emprunts)
             {
@@ -353,21 +396,29 @@ namespace Maquette
             return albumsTriés;
         }
 
-        public static List<ALBUMS> getTop10Albums()
+        /// <summary>
+        /// Méthode dépendante de GetTop10(), qui extrait les albums de cette dernière.
+        /// </summary>
+        /// <returns>Retourne une liste d'ALBUMS</returns>
+        public static List<ALBUMS> GetTop10Albums()
         {
             List<ALBUMS> top10 = new List<ALBUMS>();
-            var liste = getTop10();
+            var liste = GetTop10();
             for (int i = 0; i < liste.Count(); i++)
             {
-                top10.Add(getAlbumSelonID(liste[i].ALBUMS));
+                top10.Add(GetAlbumSelonID(liste[i].ALBUMS));
             }
             return top10;
         }
 
-        public static List<int> getTop10Count()
+        /// <summary>
+        /// Méthode dépendante de GetTop10(), qui extrait le nombre d'appartition de chaque album de cette dernière.
+        /// </summary>
+        /// <returns>Retourne une liste d'entiers</returns>
+        public static List<int> GetTop10Count()
         {
             List<int> top10 = new List<int>();
-            var liste = getTop10();
+            var liste = GetTop10();
             for (int i = 0; i < liste.Count(); i++)
             {
                 top10.Add(liste[i].Count);
@@ -375,39 +426,62 @@ namespace Maquette
             return top10;
         }
 
-        public static List<ALBUMS> getSuggestions(int id)
+        /// <summary>
+        /// Méthode pour retourner des suggestions à un abonnés.
+        /// Les suggestions consistent en une liste de 9 albums, ayant le/les genres (jusqu'au 3 premiers) le/les plus emprunté/s par l'abonné.
+        /// </summary>
+        /// <param name="id">L'id de l'abonné</param>
+        /// <returns>Retourne une liste d'ALBUMS</returns>
+        public static List<ALBUMS> GetSuggestions(int id)
         {
-            var albumsEmpruntés = getToutAlbumsEmpruntésParAbonné(id);
+            var albumsEmpruntés = GetToutAlbumsEmpruntésParAbonné(id);
 
             var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
             var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
 
-            var albums = getALBUMSs();
+            var albums = GetALBUMSs();
             var listeAlbum = albums.Except(albumsEmpruntés).ToList();
             List<ALBUMS> albumsRecommandés = new List<ALBUMS>();
             if (genresTriés.Count >= 1)
             {
                 GENRES premierGenre = genresTriés[0].GENRES;
-                var albumsRecommandés1 = getAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
-                albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 3));
+                
                 if (genresTriés.Count >= 2)
                 {
                     GENRES deuxiemeGenre = genresTriés[1].GENRES;
-                    var albumsRecommandés2 = getAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
-                    albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 3));
+                    
                     if (genresTriés.Count >= 3)
                     {
                         GENRES troisiemeGenre = genresTriés[2].GENRES;
-                        var albumsRecommandés3 = getAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                        albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 3));
+                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
+                        albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 3));
+                        var albumsRecommandés3 = GetAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés3.GetRange(0, 3));
+                    } else
+                    {
+                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                        albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 5));
+                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
+                        albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 4));
                     }
+                } else
+                {
+                    var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                    albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 9));
                 }
 
             }
             return albumsRecommandés;
         }
 
-        public static bool estProlongeable(EMPRUNTER emprunt)
+        /// <summary>
+        /// Vérifie qu'un emprunt n'est pas déjà été prolongé
+        /// </summary>
+        /// <param name="emprunt">L'emprunt à vérifier</param>
+        /// <returns>Retourne true s'il n'a pas été prolongé, false sinon </returns>
+        public static bool EstProlongeable(EMPRUNTER emprunt)
         {
             DateTime dateTime = new DateTime(emprunt.DATE_EMPRUNT.Year, emprunt.DATE_EMPRUNT.Month, emprunt.DATE_EMPRUNT.Day);
             if (dateTime.AddDays(emprunt.ALBUMS.GENRES.DÉLAI).Date.CompareTo(emprunt.DATE_RETOUR_ATTENDUE.Date) != 0)
@@ -420,19 +494,29 @@ namespace Maquette
             }
         }
 
-        public static EMPRUNTER prolongation(EMPRUNTER emprunt)
+        /// <summary>
+        /// Prolonge un emprunt s'il est prolongeable.
+        /// </summary>
+        /// <param name="emprunt">L'emprunt à prolonger</param>
+        /// <returns>Retourne l'EMPRUNTER passé en argument</returns>
+        public static EMPRUNTER Prolongation(EMPRUNTER emprunt)
         {
-            if (estProlongeable(emprunt))
+            if (EstProlongeable(emprunt))
             {
                 emprunt.DATE_RETOUR_ATTENDUE = emprunt.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                musique.SaveChanges();
+                Musique.SaveChanges();
             }
             return emprunt;
         }
 
-        public static EMPRUNTER getEmpruntAlbumEnCours(ALBUMS al)
+        /// <summary>
+        /// Récupère l'emprunt en cours associé à un album s'il y en a un.
+        /// </summary>
+        /// <param name="al">L'album dont on veut récupérer l'emprunt</param>
+        /// <returns>Retourne l'EMPRUNTER en cours lié à l'album s'il existe, null sinon</returns>
+        public static EMPRUNTER GetEmpruntAlbumEnCours(ALBUMS al)
         {
-            var emprunts = (from e in musique.EMPRUNTER
+            var emprunts = (from e in Musique.EMPRUNTER
                             where e.CODE_ALBUM == al.CODE_ALBUM
                             && e.DATE_RETOUR == null
                             select e).ToList();
@@ -446,13 +530,17 @@ namespace Maquette
             }
         }
 
-        public static List<EMPRUNTER> getProlongés()
+        /// <summary>
+        /// Méthode pour récupérer la liste des emprunts en cours prolongés.
+        /// </summary>
+        /// <returns>Retourne une liste d'EMPRUNTER</returns>
+        public static List<EMPRUNTER> GetProlongés()
         {
             List<EMPRUNTER> liste = new List<EMPRUNTER>();
-            var listeEmpruntés = getEMPRUNTERNonRendus();
+            var listeEmpruntés = GetEMPRUNTERNonRendus();
             foreach (EMPRUNTER em in listeEmpruntés)
             {
-                if (!estProlongeable(em))
+                if (!EstProlongeable(em))
                 {
                     liste.Add(em);
                 }
@@ -460,9 +548,13 @@ namespace Maquette
             return liste;
         }
 
-        public static List<ABONNÉS> getRetardataires()
+        /// <summary>
+        /// Méthode pour récupérer les abonnés ayant un retarde d'au moins 10 jours sur le rendu d'un emprunt.
+        /// </summary>
+        /// <returns>Retourne une liste d'ABONNÉS</returns>
+        public static List<ABONNÉS> GetRetardataires()
         {
-            var emprunts = getEMPRUNTERNonRendus();
+            var emprunts = GetEMPRUNTERNonRendus();
             var liste = new List<ABONNÉS>();
             foreach (EMPRUNTER em in emprunts)
             {
@@ -475,14 +567,18 @@ namespace Maquette
             return liste;
         }
 
-        public static List<ABONNÉS> getFantomes()
+        /// <summary>
+        /// Méthode pour récupérer la liste des abonnés n'ayant pas fait d'emprunts depuis au moins un an.
+        /// </summary>
+        /// <returns>Retourne une liste d'ABONNÉS inactifs</returns>
+        public static List<ABONNÉS> GetFantomes()
         {
             List<ABONNÉS> fantome = new List<ABONNÉS>();
-            var abos = getABONNÉSs();
+            var abos = GetABONNÉSs();
 
             foreach (ABONNÉS abo in abos)
             {
-                var emprunts = getEmpruntsAbonné(abo.CODE_ABONNÉ);
+                var emprunts = GetEmpruntsAbonné(abo.CODE_ABONNÉ);
 
                 if (emprunts.Count > 0)
                 {
@@ -511,35 +607,53 @@ namespace Maquette
             return fantome;
         }
 
-        public static void purgerUnFantome(ABONNÉS ab)
+        /// <summary>
+        /// Méthode pour supprimer un abonné inactif.
+        /// </summary>
+        /// <param name="ab">L'abonné à supprimer</param>
+        public static void PurgerUnFantome(ABONNÉS ab)
         {
-            if (getFantomes().Contains(ab))
+            if (GetFantomes().Contains(ab))
             {
-                removeAbonné(ab);
+                RemoveAbonné(ab);
             }
         }
 
-        public static void purgerFantomes()
+        /// <summary>
+        /// Méthode pour supprimer tout les inactifs.
+        /// </summary>
+        public static void PurgerFantomes()
         {
-            foreach (ABONNÉS a in getFantomes())
+            foreach (ABONNÉS a in GetFantomes())
             {
-                purgerUnFantome(a);
+                PurgerUnFantome(a);
             }
         }
 
-        public static void supprimerEmprunt(EMPRUNTER e)
+        /// <summary>
+        /// Méthode pour supprimer un emprunt de la base.
+        /// </summary>
+        /// <param name="e">L'emprunt à supprimer</param>
+        public static void SupprimerEmprunt(EMPRUNTER e)
         {
-            musique.EMPRUNTER.Remove(e);
-            musique.SaveChanges();
+            if (Musique.EMPRUNTER.Contains(e))
+            {
+                Musique.EMPRUNTER.Remove(e);
+                Musique.SaveChanges();
+            }
         }
 
-        public static List<ALBUMS> getAlbumsNonEmpruntés()
+        /// <summary>
+        /// Méthode pour récupérer la liste des albums n'ayant pas été empruntés depuis un an ou plus.
+        /// </summary>
+        /// <returns>Une liste d'ALBUMS non-empruntés récemment</returns>
+        public static List<ALBUMS> GetAlbumsNonEmpruntés()
         {
-            var albums = getALBUMSs();
+            var albums = GetALBUMSs();
             List<ALBUMS> albumsNonEmpruntés = new List<ALBUMS>();
             foreach (ALBUMS al in albums)
             {
-                var emprunts = getEmpruntsSelonAlbum(al.CODE_ALBUM);
+                var emprunts = GetEmpruntsSelonAlbum(al.CODE_ALBUM);
 
                 if (emprunts.Count > 0)
                 {
@@ -567,12 +681,21 @@ namespace Maquette
             return albumsNonEmpruntés;
         }
 
-        public static void ajouterEmprunt(EMPRUNTER e)
+        /// <summary>
+        /// Ajoute un emprunt dans la base
+        /// </summary>
+        /// <param name="e">L'emprunt à ajouter</param>
+        public static void AjouterEmprunt(EMPRUNTER e)
         {
-            musique.EMPRUNTER.Add(e);
-            musique.SaveChanges();
+            Musique.EMPRUNTER.Add(e);
+            Musique.SaveChanges();
         }
 
+        /// <summary>
+        /// Crypte un mot de passe avec un code césar de 1.
+        /// </summary>
+        /// <param name="mdp">Le mot de passe à crypter</param>
+        /// <returns>Le mot de passe crypté</returns>
         public static string Crypter(String mdp)
         {
             char[] crypted = new char[mdp.Length];
@@ -585,13 +708,18 @@ namespace Maquette
             return new string(crypted);
         }
 
-
-        public static bool vérificationMDP(string mdp, ABONNÉS abo)
+        /// <summary>
+        /// Méthode vérifiant qu'un mot de passe est bien celui d'un abonné.
+        /// </summary>
+        /// <param name="mdp">Le mot de passe</param>
+        /// <param name="abo">L'abonné</param>
+        /// <returns>Retourne true si le mot de passe est celui de l'abonné, false sinon</returns>
+        public static bool VerificationMDP(string mdp, ABONNÉS abo)
         {
             if (mdp.Length > 0 && mdp.Length <= 32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$"))
             {
                 string crypted = Crypter(mdp);
-                var mdpTest = (from a in musique.ABONNÉS
+                var mdpTest = (from a in Musique.ABONNÉS
                                where a.CODE_ABONNÉ == abo.CODE_ABONNÉ
                                && a.PASSWORD_ABONNÉ == crypted
                                select a).ToList();
@@ -610,12 +738,18 @@ namespace Maquette
             }
         }
 
-        public static string changerMDP(string mdp, ABONNÉS abo)
+        /// <summary>
+        /// Méthode pour changer le mot de passe d'un abonné.
+        /// </summary>
+        /// <param name="mdp">Le nouveau mot de passe</param>
+        /// <param name="abo">L'abonné</param>
+        /// <returns>Retourne le nouveau mot de passe s'il a été changé, null sinon</returns>
+        public static string ChangerMDP(string mdp, ABONNÉS abo)
         {
             if (mdp.Length > 0 && mdp.Length <= 32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$"))
             {
                 abo.PASSWORD_ABONNÉ = Crypter(mdp);
-                musique.SaveChanges();
+                Musique.SaveChanges();
                 return mdp;
             }
             else
@@ -624,12 +758,18 @@ namespace Maquette
             }
         }
 
-        public static PAYS changerPays(PAYS p, ABONNÉS abo)
+        /// <summary>
+        /// Changer le pays d'un abonné
+        /// </summary>
+        /// <param name="p">Le pays</param>
+        /// <param name="abo">L'abonné</param>
+        /// <returns>Retourne le PAYS s'il a été changé, null sinon</returns>
+        public static PAYS ChangerPays(PAYS p, ABONNÉS abo)
         {
-            if (paysExiste(p.NOM_PAYS) != null)
+            if (PaysExiste(p.NOM_PAYS) != null)
             {
                 abo.PAYS = p;
-                musique.SaveChanges();
+                Musique.SaveChanges();
                 return p;
             } else
             {
@@ -637,21 +777,29 @@ namespace Maquette
             }
         }
 
-
-        public static  List<ALBUMS> GetAlbumManquantCasier(string allee, int casier)
+        /// <summary>
+        /// Récupère la liste des albums manquant à un casier dans une allée.
+        /// </summary>
+        /// <param name="allee">L'allée</param>
+        /// <param name="casier">Le casier</param>
+        /// <returns>La liste des ALBUMS manquants</returns>
+        public static List<ALBUMS> GetAlbumManquantCasier(string allee, int casier)
         {          
 
-            var empruntés = (from al in musique.ALBUMS
-                             join e in musique.EMPRUNTER
+            var empruntés = (from al in Musique.ALBUMS
+                             join e in Musique.EMPRUNTER
                              on al.CODE_ALBUM equals e.CODE_ALBUM
                              where al.ALLÉE_ALBUM == allee && al.CASIER_ALBUM == casier 
                              && e.DATE_RETOUR == null 
                              select al).ToList();
-
-
             return empruntés;
         }
 
+        /// <summary>
+        /// Méthode pour décrypter un mot de passe selon un code césar 1.
+        /// </summary>
+        /// <param name="mdp">Le mot de passe à décrypter</param>
+        /// <returns>Le mot de passe décrypté</returns>
         public static string Decrypter(String mdp)
         {
             char[] crypted = new char[mdp.Length];

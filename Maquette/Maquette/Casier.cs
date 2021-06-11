@@ -23,7 +23,7 @@ namespace Maquette
         public Casier()
         {
             InitializeComponent();
-            tout = Outil.getALBUMSs();
+            tout = Outil.GetALBUMSs();
             afficher = tout;
         }
 

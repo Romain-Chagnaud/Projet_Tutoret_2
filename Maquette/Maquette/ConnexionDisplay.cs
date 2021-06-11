@@ -29,7 +29,7 @@ namespace Maquette
         public ConnexionDisplay()
         {
             InitializeComponent();
-            Outil.chargerMusiqueEntities();
+            Outil.ChargerMusiqueEntities();
             InscriptionPannel.Visible = false;
             Abonne_Load();
             List<String> pays = Outil.GetPays();
@@ -38,6 +38,7 @@ namespace Maquette
             {
                 comboBoxP.Items.Add(p);
             }
+
             this.ConnexionPanel.BorderStyle = BorderStyle.None;
             this.ConnexionPanel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, ConnexionPanel.Width, ConnexionPanel.Height, 10, 10));
             this.lblConnexion.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, lblConnexion.Width, lblConnexion.Height, 10, 10));
@@ -57,7 +58,7 @@ namespace Maquette
         /// </summary>
         private void Abonne_Load()
         {
-            var abonnes = Outil.getABONNÉSs();
+            var abonnes = Outil.GetABONNÉSs();
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Maquette
         {
             if (textBoxId.Text != "" && textBoxPass.Text != "")
             {
-                ABONNÉS abo = Outil.connexion(textBoxId.Text, textBoxPass.Text);
+                ABONNÉS abo = Outil.Connexion(textBoxId.Text, textBoxPass.Text);
                 textBoxId.Text = "";
                 textBoxPass.Text = "";
                 if (abo != null)
@@ -152,7 +153,7 @@ namespace Maquette
                 {
                     if (passBox.Text == PassConfirm.Text)
                     {
-                        ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
+                        ABONNÉS a = Outil.Inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
                         InscriptionPannel.Visible = false;
                         ConnexionPanel.Visible = true;
                         if (a != null)

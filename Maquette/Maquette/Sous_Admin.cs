@@ -19,7 +19,7 @@ namespace Maquette
         public Sous_Admin()
         {
             InitializeComponent();
-            abo = Outil.getFantomes();
+            abo = Outil.GetFantomes();
             ActualiserNbPages();
         }
 
