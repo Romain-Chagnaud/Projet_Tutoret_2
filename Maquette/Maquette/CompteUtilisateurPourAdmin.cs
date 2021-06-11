@@ -112,7 +112,7 @@ namespace Maquette
         {
             if (comboPays.SelectedItem != null)
             {
-                Outil.ChangerPays((PAYS)comboPays.SelectedItem, abonné);
+                ChangerPays((PAYS)comboPays.SelectedItem, abonné);
                 MessageBox.Show("Pays changé.");
             }
         }

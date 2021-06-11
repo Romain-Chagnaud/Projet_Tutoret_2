@@ -47,7 +47,6 @@ namespace Maquette
             this.lblAbo = new System.Windows.Forms.ToolStripLabel();
             this.barreMenu = new System.Windows.Forms.ToolStripSeparator();
             this.lblAlbum = new System.Windows.Forms.ToolStripLabel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlBtn.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAbo)).BeginInit();
@@ -298,7 +297,6 @@ namespace Maquette
         private System.Windows.Forms.Button btnFantome;
         private System.Windows.Forms.Button btnRetard;
         private System.Windows.Forms.Button btnProlo;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox imgAbo;
         private System.Windows.Forms.Button btnAbo;

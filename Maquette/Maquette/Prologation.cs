@@ -22,8 +22,8 @@ namespace Maquette
         public Prologation()
         {
             InitializeComponent();
-            ActualiserPages();
             prolo = GetProlongés();
+            ActualiserPages();
         }
 
 
@@ -69,7 +69,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPages()
         {
-            if (prolo.Count % 3 != 0)
+            if (prolo.Count % 3 != 0 || prolo.Count == 0)
             {
                 nbPage = prolo.Count / 3;
             }

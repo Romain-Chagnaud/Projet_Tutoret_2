@@ -22,8 +22,8 @@ namespace Maquette
         public TopAlbum()
         {
             InitializeComponent();
-            albums = Outil.GetTop10Albums();
-            count = Outil.GetTop10Count();
+            albums = GetTop10Albums();
+            count = GetTop10Count();
             ActualiserPage();
             AfficherAlbums();
         }
@@ -74,7 +74,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPage()
         {
-            if (albums.Count % 4 != 0)
+            if (albums.Count % 4 != 0 || albums.Count == 0)
             {
                 nbPage = albums.Count / 4;
             }

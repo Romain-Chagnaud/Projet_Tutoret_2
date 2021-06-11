@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
     public partial class NonEmprunte : Form
     {
-        List<ALBUMS> albums;
+
         int page = 0;
         int nbPage;
+        List<ALBUMS> nonEmprunte;
 
         public NonEmprunte()
         {
             InitializeComponent();
-            albums = Outil.GetAlbumsNonEmpruntés();
+            nonEmprunte = GetAlbumsNonEmpruntés();
             ActualiserPage();
             AfficherAlbums();
         }
@@ -55,13 +57,13 @@ namespace Maquette
         /// </summary>
         private void ActualiserPage()
         {
-            if (albums.Count % 4 != 0)
+            if (nonEmprunte.Count % 4 != 0 || nonEmprunte.Count == 0)
             {
-                nbPage = albums.Count / 4;
+                nbPage = nonEmprunte.Count / 4;
             }
             else
             {
-                nbPage = (albums.Count / 4) - 1;
+                nbPage = (nonEmprunte.Count / 4) - 1;
             }
         }
 
@@ -73,9 +75,9 @@ namespace Maquette
             pnlNonEmp.Controls.Clear();
             for (int i = 3 * page; i < 3 * (page + 1); i++)
             {
-                if (i < albums.Count)
+                if (i < nonEmprunte.Count)
                 {
-                    pnlNonEmp.Controls.Add(new AlbumNonEmprunte(albums[i]));
+                    pnlNonEmp.Controls.Add(new AlbumNonEmprunte(nonEmprunte[i]));
                 }
             }
             lblPageReco.Text = page + 1 + "";

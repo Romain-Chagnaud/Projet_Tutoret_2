@@ -21,7 +21,7 @@ namespace Maquette
         public ListeAbonnes()
         {
             InitializeComponent();
-            abos = Outil.GetABONNÉSs();
+            abos = GetABONNÉSs();
             ActualiserPage();
             AfficherAbos();
         }
@@ -73,7 +73,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPage()
         {
-            if (abos.Count % 4 != 0)
+            if (abos.Count % 4 != 0 || abos.Count == 0)
             {
                 nbPage = abos.Count / 4;
             }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -68,7 +69,7 @@ namespace Maquette
         /// <summary>
         /// Affiche la fenêtre des albums non empruntés
         /// </summary>
-        private static void AfficherNonEmprunt()
+        private void AfficherNonEmprunt()
         {
             NonEmprunte ne = new NonEmprunte();
             ne.Show();
@@ -77,7 +78,7 @@ namespace Maquette
         /// <summary>
         /// Affiche la fenêtre du top 10 des albums
         /// </summary>
-        private static void AfficherTop()
+        private void AfficherTop()
         {
             TopAlbum ta = new TopAlbum();
             ta.Show();
@@ -88,8 +89,8 @@ namespace Maquette
         /// </summary>
         private void AfficherPremiereFenetre()
         {
-            AdminIHM add = new AdminIHM();
-            add.Show();
+            AdminIHM ad = new AdminIHM();
+            ad.Show();
             this.Close();
         }
 
@@ -103,6 +104,5 @@ namespace Maquette
         }
 
         #endregion
-
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -23,7 +24,7 @@ namespace Maquette
         public Casier()
         {
             InitializeComponent();
-            tout = Outil.GetALBUMSs();
+            tout = GetALBUMSs();
             afficher = tout;
         }
 
@@ -69,7 +70,7 @@ namespace Maquette
         /// </summary>
         private void ChargerAlbums()
         {
-            afficher = Outil.GetAlbumManquantCasier(txtAllee.Text, (int)numCasier.Value);
+            afficher = GetAlbumManquantCasier(txtAllee.Text, (int)numCasier.Value);
             ActualiserPage();
         }
 
@@ -94,7 +95,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPage()
         {
-            if (afficher.Count % 4 != 0)
+            if (afficher.Count % 4 != 0 || afficher.Count == 0)
             {
                 nbPage = afficher.Count / 4;
             }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -71,9 +72,9 @@ namespace Maquette
         /// </summary>
         private void EtendreDuree()
         {
-            if (Outil.EstProlongeable(emprunt))
+            if (EstProlongeable(emprunt))
             {
-                Outil.Prolongation(emprunt);
+                Prolongation(emprunt);
                 parent.AfficherEmprunts();
             }
             else
@@ -88,7 +89,7 @@ namespace Maquette
         /// </summary>
         private void RendreAlbum()
         {
-            Outil.RendreEmprunt(emprunt);
+            RendreEmprunt(emprunt);
             parent.ActualiserEmprunts();
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -20,7 +21,7 @@ namespace Maquette
         public Sous_Admin2cs()
         {
             InitializeComponent();
-            retards = Outil.GetRetardataires();
+            retards = GetRetardataires();
             ActualiserPage();
 
         }
@@ -66,7 +67,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPage()
         {
-            if (retards.Count % 2 != 0)
+            if (retards.Count % 2 != 0 || retards.Count==0)
             {
                 nbPageRetard = retards.Count / 2;
             }

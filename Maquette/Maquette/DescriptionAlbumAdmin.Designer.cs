@@ -135,6 +135,7 @@ namespace Maquette
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DescriptionAlbumAdmin";
             this.Text = "DescriptionAlbumAdmin";
+            this.TopMost = true;
             this.pnlElement.ResumeLayout(false);
             this.pnlElement.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -19,7 +20,7 @@ namespace Maquette
         public Sous_Admin()
         {
             InitializeComponent();
-            abo = Outil.GetFantomes();
+            abo = GetFantomes();
             ActualiserNbPages();
         }
 
@@ -74,7 +75,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserNbPages()
         {
-            if (abo.Count % 2 != 0)
+            if (abo.Count % 2 != 0 || abo.Count==0)
             {
                 nbPagesAbo = abo.Count / 2;
             }
@@ -138,7 +139,7 @@ namespace Maquette
         /// </summary>
         private void Purge()
         {
-            Outil.PurgerFantomes();
+            PurgerFantomes();
             pnlFanto.Controls.Clear();
         }
 

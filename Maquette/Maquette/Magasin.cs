@@ -32,7 +32,7 @@ namespace Maquette
 
         private void actualiserNombreDepages()
         {
-            if (affichables.Count % 8 != 0)
+            if (affichables.Count % 8 != 0 || affichables.Count == 0)
             {
                 nombreDePages = affichables.Count / 8;
             }

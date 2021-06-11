@@ -143,7 +143,7 @@ namespace Maquette
                 {
                     if (passBox.Text == PassConfirm.Text)
                     {
-                        ABONNÉS a = Outil.Inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
+                        ABONNÉS a = Inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
                         InscriptionPannel.Visible = false;
                         ConnexionPanel.Visible = true;
                         if (a != null)

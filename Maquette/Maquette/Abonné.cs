@@ -341,7 +341,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPagesEmprunts()
         {
-            if (emprunts.Count % 4 != 0)
+            if (emprunts.Count % 4 != 0 || emprunts.Count == 0)
             {
                 nbPagesEmp = emprunts.Count / 4;
             }
@@ -356,7 +356,7 @@ namespace Maquette
         /// </summary>
         private void ActualiserPagesReco()
         {
-            if (recommendations.Count % 4 != 0)
+            if (recommendations.Count % 4 != 0 || recommendations.Count == 0)
             {
                 nbPagesReco = recommendations.Count / 4;
             }

@@ -80,8 +80,8 @@ namespace Maquette
         /// </summary>
         private void AfficherDeuxiemeFenetre()
         {
-            AdminIHM2 add = new AdminIHM2();
-            add.Show();
+            AdminIHM2 ad = new AdminIHM2();
+            ad.Show();
             this.Close();
         }
 
