@@ -43,7 +43,7 @@ namespace PTTests
         {
             ChargerMusiqueEntities();
             //On créé un nouvel utilisateur qui n'aura donc pas de retard
-            ABONNÉS ab = Inscription("Jean","Reno","Leon","onimusha",null);
+            ABONNÉS ab = Inscription("Jean","Reno","Leon","onimusha","");
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
 
             //Cas d'un nouvel emprunt (pas de retard)
@@ -78,7 +78,7 @@ namespace PTTests
             ChargerMusiqueEntities();
 
             //On créé un nouvel abonné
-            ABONNÉS ab = Inscription("Jean", "Reno", "Leon", "onimusha",null);
+            ABONNÉS ab = Inscription("Jean", "Reno", "Leon", "onimusha","");
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
 
             //Cas nouvel abonné, n'est pas un fantôme
@@ -139,7 +139,7 @@ namespace PTTests
             }
 
             //Et on crée un abonné qui va l'emprunter aussi pour être sûr qu'il n'y ait pas d'égalité
-            ABONNÉS abo = Inscription("Changer", "Top", "topchanger", "top",null);
+            ABONNÉS abo = Inscription("Changer", "Top", "topchanger", "top","");
             e = NouvelEmprunt(abo, albumTop10);
             empruntsTempo.Add(e);
             RendreEmprunt(e);
@@ -221,7 +221,7 @@ namespace PTTests
         {
             ChargerMusiqueEntities();
             var abonnés = GetABONNÉSs();
-            ABONNÉS ab = Inscription("abc", "abc", "abc", "abc",null);
+            ABONNÉS ab = Inscription("Abc", "Abc", "abc", "abc","");
             //Le nouvel abonné n'est pas dans la liste pré-inscription
             Assert.IsFalse(abonnés.Contains(ab));
 

@@ -141,11 +141,8 @@ namespace Maquette
         /// <param name="a">L'abonné que l'on veut supprimer</param>
         public static void RemoveAbonné(ABONNÉS a)
         {
-            if (Musique.ABONNÉS.Contains(a))
-            {
                 Musique.ABONNÉS.Remove(a);
                 Musique.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -304,12 +301,9 @@ namespace Maquette
         /// <param name="em">L'emprunt à rendre</param>
         public static void RendreEmprunt(EMPRUNTER em)
         {
-            if (Musique.EMPRUNTER.Contains(em))
-            {
                 DateTime date = DateTime.Now;
                 em.DATE_RETOUR = date;
                 Musique.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -636,11 +630,8 @@ namespace Maquette
         /// <param name="e">L'emprunt à supprimer</param>
         public static void SupprimerEmprunt(EMPRUNTER e)
         {
-            if (Musique.EMPRUNTER.Contains(e))
-            {
                 Musique.EMPRUNTER.Remove(e);
                 Musique.SaveChanges();
-            }
         }
 
         /// <summary>

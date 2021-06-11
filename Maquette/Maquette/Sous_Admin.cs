@@ -138,7 +138,7 @@ namespace Maquette
         /// </summary>
         private void Purge()
         {
-            Outil.purgerFantomes();
+            Outil.PurgerFantomes();
             pnlFanto.Controls.Clear();
         }
 
