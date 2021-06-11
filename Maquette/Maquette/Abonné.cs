@@ -22,8 +22,7 @@ namespace Maquette
         int pageReco = 0;
         int nbPagesReco;
 
-        Magasin magasin;
-
+        readonly Magasin magasin;
 
 
         public Abonné(ABONNÉS ab)
@@ -31,18 +30,14 @@ namespace Maquette
             InitializeComponent();
             abonne = ab;
             lblNom.Text = ab.PRÉNOM_ABONNÉ;
-            InitialiserElements();
-            ChargerDisponibles();
+
+            InitialiserTout();
 
             magasin = new Magasin(this);
             magasin.Show();
         }
 
-        #region IHM
-        public void ChargerDisponibles()
-        {
-            disponibles = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
-        }
+        #region IHM        
 
         /// <summary>
         /// Méthode ci-dessous : US 9
@@ -50,7 +45,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnToutAlg_Click(object sender, EventArgs e)
+        private void BtnToutAlg_Click(object sender, EventArgs e)
         {
             AllongerTousEmprunts();
         }
@@ -60,7 +55,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnPagePre_Click(object sender, EventArgs e)
+        private void BtnPagePre_Click(object sender, EventArgs e)
         {
             DiminuerEmprunt();
         }
@@ -70,7 +65,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnPageSui_Click(object sender, EventArgs e)
+        private void BtnPageSui_Click(object sender, EventArgs e)
         {
             AugmenterEmprunt();
         }
@@ -80,47 +75,88 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lblMagasin_Click(object sender, EventArgs e)
+        private void LblMagasin_Click(object sender, EventArgs e)
         {
             OuvrirMagasin();
         }
 
-        private void btnPreCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton Page Précédente des conseils
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreCon_Click(object sender, EventArgs e)
         {
             DiminuerReco();
         }
 
-        private void btnSuiCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton Page Suivante des conseils
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuiCon_Click(object sender, EventArgs e)
         {
             AugmenterReco();
         }
+
+        /// <summary>
+        /// Gère le clic sur le bouton de paramètres
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCompte_Click(object sender, EventArgs e)
+        {
+            AfficherParamCompte();
+        }
+
 
         #endregion
 
         #region Logique
 
         /// <summary>
-        /// Initialise les éléments
+        /// Récupère les albums disponibles
         /// </summary>
-        void InitialiserElements()
+        public void ChargerDisponibles()
         {
-            ActualiserEmprunts();
-            ActualiserSuggestion();
+            disponibles = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
+        }
+
+        /// <summary>
+        /// Initialise les éléments au démarage
+        /// </summary>
+        void InitialiserTout()
+        {
+            InitialiserEmprunts();
+            InitialiserSuggestion();
             ChargerDisponibles();
         }
 
         /// <summary>
-        /// Actualise les listes
+        /// Met à jour la liste de livres empruntés et les affiche
         /// </summary>
-        public void ActualiserEmprunts()
+        private void InitialiserEmprunts()
         {
             emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
             ActualiserPagesEmprunts();
-            afficherEmprunts();
-
+            AfficherEmprunts();
         }
 
-        public void ActualiserSuggestion()
+        /// <summary>
+        /// Actualise les emprunts et change l'affichage du magasin
+        /// </summary>
+        public void ActualiserEmprunts()
+        {
+            InitialiserEmprunts();
+            ChargerDisponibles();
+            magasin.PreparerAffichage();
+        }
+
+        /// <summary>
+        /// Met à jour la liste de livres recommandés et les affiche
+        /// </summary>
+        public void InitialiserSuggestion()
         {
             recommendations = getSuggestions(abonne.CODE_ABONNÉ);
             ActualiserPagesReco();
@@ -132,7 +168,7 @@ namespace Maquette
         /// Méthode ci-dessous : US 2 + 13
         /// Méthode pour afficher tous les emprunts (avec pagination)
         /// </summary>
-        public void afficherEmprunts()
+        public void AfficherEmprunts()
         {
             panelEmprunts.Controls.Clear();
             for (int i = 4 * pageEmprunts; i < 4 * (pageEmprunts + 1); i++)
@@ -155,7 +191,7 @@ namespace Maquette
             {
                 prolongation(emp);
             }
-            afficherEmprunts();
+            AfficherEmprunts();
         }
 
         /// <summary>
@@ -171,7 +207,7 @@ namespace Maquette
             {
                 pageEmprunts = 0;
             }
-            afficherEmprunts();
+            AfficherEmprunts();
         }
 
         /// <summary>
@@ -191,7 +227,7 @@ namespace Maquette
                 }
 
             }
-            afficherEmprunts();
+            AfficherEmprunts();
         }
 
         /// <summary>
@@ -287,18 +323,22 @@ namespace Maquette
         public void EmprunterAlbum(ALBUMS album)
         {
             nouvelEmprunt(abonne, album);
-            InitialiserElements();
+            InitialiserTout();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Affiche la fenêtre de paramètres de compte
+        /// </summary>
+        private void AfficherParamCompte()
         {
             CompteUtilisateur cu = new CompteUtilisateur(abonne);
             cu.ShowDialog();
         }
 
-        #endregion
 
-
+        /// <summary>
+        /// Actualise le nombre de pages pour les albums empruntés
+        /// </summary>
         private void ActualiserPagesEmprunts()
         {
             if (emprunts.Count % 4 != 0)
@@ -311,6 +351,9 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Acualise le nombre de pages pour les albums recommandés
+        /// </summary>
         private void ActualiserPagesReco()
         {
             if (recommendations.Count % 4 != 0)
@@ -322,6 +365,11 @@ namespace Maquette
                 nbPagesReco = (recommendations.Count / 4) - 1;
             }
         }
+
+
+        #endregion
+
+
 
     }
 }

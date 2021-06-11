@@ -74,7 +74,7 @@ namespace Maquette
             if (Outil.estProlongeable(emprunt))
             {
                 Outil.prolongation(emprunt);
-                parent.afficherEmprunts();
+                parent.AfficherEmprunts();
             }
             else
             {

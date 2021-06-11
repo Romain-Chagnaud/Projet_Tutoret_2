@@ -30,37 +30,37 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Magasin));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.menu = new System.Windows.Forms.ToolStrip();
             this.lblEspace = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.barreMenu = new System.Windows.Forms.ToolStripSeparator();
             this.lblMagasin = new System.Windows.Forms.ToolStripLabel();
             this.barreRecherche = new System.Windows.Forms.TextBox();
-            this.panelGrandEmprunt = new System.Windows.Forms.Panel();
+            this.panelGrandDispo = new System.Windows.Forms.Panel();
             this.lblPageDispo = new System.Windows.Forms.Label();
             this.btnSuiDis = new System.Windows.Forms.Button();
             this.btnPreDis = new System.Windows.Forms.Button();
             this.panelDispo = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDispo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlRecherche = new System.Windows.Forms.Panel();
             this.btnRecherche = new System.Windows.Forms.Button();
-            this.toolStrip1.SuspendLayout();
-            this.panelGrandEmprunt.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.menu.SuspendLayout();
+            this.panelGrandDispo.SuspendLayout();
+            this.pnlRecherche.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // menu
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Teal;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu.BackColor = System.Drawing.Color.Teal;
+            this.menu.Dock = System.Windows.Forms.DockStyle.None;
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEspace,
-            this.toolStripSeparator1,
+            this.barreMenu,
             this.lblMagasin});
-            this.toolStrip1.Location = new System.Drawing.Point(41, 38);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(333, 48);
-            this.toolStrip1.TabIndex = 10;
-            this.toolStrip1.Text = "toolStrip1";
+            this.menu.Location = new System.Drawing.Point(41, 38);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(333, 48);
+            this.menu.TabIndex = 10;
+            this.menu.Text = "toolStrip1";
             // 
             // lblEspace
             // 
@@ -71,14 +71,14 @@ namespace Maquette
             this.lblEspace.Padding = new System.Windows.Forms.Padding(75, 25, 0, 0);
             this.lblEspace.Size = new System.Drawing.Size(167, 45);
             this.lblEspace.Text = "Mon espace";
-            this.lblEspace.Click += new System.EventHandler(this.lblEspace_Click);
+            this.lblEspace.Click += new System.EventHandler(this.LblEspace_Click);
             // 
-            // toolStripSeparator1
+            // barreMenu
             // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.Yellow;
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.Maroon;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 48);
+            this.barreMenu.BackColor = System.Drawing.Color.Yellow;
+            this.barreMenu.ForeColor = System.Drawing.Color.Maroon;
+            this.barreMenu.Name = "barreMenu";
+            this.barreMenu.Size = new System.Drawing.Size(6, 48);
             // 
             // lblMagasin
             // 
@@ -97,18 +97,18 @@ namespace Maquette
             this.barreRecherche.Size = new System.Drawing.Size(236, 20);
             this.barreRecherche.TabIndex = 11;
             // 
-            // panelGrandEmprunt
+            // panelGrandDispo
             // 
-            this.panelGrandEmprunt.BackColor = System.Drawing.Color.Teal;
-            this.panelGrandEmprunt.Controls.Add(this.lblPageDispo);
-            this.panelGrandEmprunt.Controls.Add(this.btnSuiDis);
-            this.panelGrandEmprunt.Controls.Add(this.btnPreDis);
-            this.panelGrandEmprunt.Controls.Add(this.panelDispo);
-            this.panelGrandEmprunt.Controls.Add(this.lblDispo);
-            this.panelGrandEmprunt.Location = new System.Drawing.Point(41, 104);
-            this.panelGrandEmprunt.Name = "panelGrandEmprunt";
-            this.panelGrandEmprunt.Size = new System.Drawing.Size(1107, 548);
-            this.panelGrandEmprunt.TabIndex = 16;
+            this.panelGrandDispo.BackColor = System.Drawing.Color.Teal;
+            this.panelGrandDispo.Controls.Add(this.lblPageDispo);
+            this.panelGrandDispo.Controls.Add(this.btnSuiDis);
+            this.panelGrandDispo.Controls.Add(this.btnPreDis);
+            this.panelGrandDispo.Controls.Add(this.panelDispo);
+            this.panelGrandDispo.Controls.Add(this.lblDispo);
+            this.panelGrandDispo.Location = new System.Drawing.Point(41, 104);
+            this.panelGrandDispo.Name = "panelGrandDispo";
+            this.panelGrandDispo.Size = new System.Drawing.Size(1107, 548);
+            this.panelGrandDispo.TabIndex = 16;
             // 
             // lblPageDispo
             // 
@@ -132,7 +132,7 @@ namespace Maquette
             this.btnSuiDis.Size = new System.Drawing.Size(75, 23);
             this.btnSuiDis.TabIndex = 3;
             this.btnSuiDis.UseVisualStyleBackColor = true;
-            this.btnSuiDis.Click += new System.EventHandler(this.btnSuiDis_Click);
+            this.btnSuiDis.Click += new System.EventHandler(this.BtnSuiDis_Click);
             // 
             // btnPreDis
             // 
@@ -145,7 +145,7 @@ namespace Maquette
             this.btnPreDis.Size = new System.Drawing.Size(75, 23);
             this.btnPreDis.TabIndex = 2;
             this.btnPreDis.UseVisualStyleBackColor = true;
-            this.btnPreDis.Click += new System.EventHandler(this.btnPreDis_Click);
+            this.btnPreDis.Click += new System.EventHandler(this.BtnPreDis_Click);
             // 
             // panelDispo
             // 
@@ -165,16 +165,16 @@ namespace Maquette
             this.lblDispo.TabIndex = 0;
             this.lblDispo.Text = "Albums disponibles :";
             // 
-            // panel1
+            // pnlRecherche
             // 
-            this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.btnRecherche);
-            this.panel1.Controls.Add(this.barreRecherche);
-            this.panel1.Location = new System.Drawing.Point(660, 38);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 48);
-            this.panel1.TabIndex = 17;
+            this.pnlRecherche.BackColor = System.Drawing.Color.Teal;
+            this.pnlRecherche.Controls.Add(this.btnRecherche);
+            this.pnlRecherche.Controls.Add(this.barreRecherche);
+            this.pnlRecherche.Location = new System.Drawing.Point(660, 38);
+            this.pnlRecherche.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlRecherche.Name = "pnlRecherche";
+            this.pnlRecherche.Size = new System.Drawing.Size(358, 48);
+            this.pnlRecherche.TabIndex = 17;
             // 
             // btnRecherche
             // 
@@ -188,7 +188,7 @@ namespace Maquette
             this.btnRecherche.Size = new System.Drawing.Size(26, 25);
             this.btnRecherche.TabIndex = 12;
             this.btnRecherche.UseVisualStyleBackColor = false;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            this.btnRecherche.Click += new System.EventHandler(this.BtnRecherche_Click);
             // 
             // Magasin
             // 
@@ -197,9 +197,9 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1184, 681);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelGrandEmprunt);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.pnlRecherche);
+            this.Controls.Add(this.panelGrandDispo);
+            this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -211,12 +211,12 @@ namespace Maquette
             this.Text = "Magasin";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.panelGrandEmprunt.ResumeLayout(false);
-            this.panelGrandEmprunt.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            this.panelGrandDispo.ResumeLayout(false);
+            this.panelGrandDispo.PerformLayout();
+            this.pnlRecherche.ResumeLayout(false);
+            this.pnlRecherche.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,18 +224,18 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip menu;
         private System.Windows.Forms.ToolStripLabel lblEspace;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator barreMenu;
         private System.Windows.Forms.ToolStripLabel lblMagasin;
         private System.Windows.Forms.TextBox barreRecherche;
-        private System.Windows.Forms.Panel panelGrandEmprunt;
+        private System.Windows.Forms.Panel panelGrandDispo;
         private System.Windows.Forms.Label lblPageDispo;
         private System.Windows.Forms.Button btnSuiDis;
         private System.Windows.Forms.Button btnPreDis;
         private System.Windows.Forms.FlowLayoutPanel panelDispo;
         private System.Windows.Forms.Label lblDispo;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlRecherche;
         private System.Windows.Forms.Button btnRecherche;
     }
 }

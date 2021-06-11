@@ -31,9 +31,9 @@ namespace Maquette
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Abonné));
             this.btnToutAlg = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.menu = new System.Windows.Forms.ToolStrip();
             this.lblEspace = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.separeMenu = new System.Windows.Forms.ToolStripSeparator();
             this.lblMagasin = new System.Windows.Forms.ToolStripLabel();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -49,17 +49,17 @@ namespace Maquette
             this.btnSuiCon = new System.Windows.Forms.Button();
             this.btnPreCon = new System.Windows.Forms.Button();
             this.lblConseil = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblBvn = new System.Windows.Forms.Label();
             this.lblPasSugg = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.toolStrip1.SuspendLayout();
+            this.btnCompte = new System.Windows.Forms.Button();
+            this.lblCompte = new System.Windows.Forms.Label();
+            this.menu.SuspendLayout();
             this.panelGrandEmprunt.SuspendLayout();
             this.panelGrandConseils.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,21 +75,21 @@ namespace Maquette
             this.btnToutAlg.TabIndex = 5;
             this.btnToutAlg.Text = "Allonger tous";
             this.btnToutAlg.UseVisualStyleBackColor = false;
-            this.btnToutAlg.Click += new System.EventHandler(this.btnToutAlg_Click);
+            this.btnToutAlg.Click += new System.EventHandler(this.BtnToutAlg_Click);
             // 
-            // toolStrip1
+            // menu
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Teal;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu.BackColor = System.Drawing.Color.Teal;
+            this.menu.Dock = System.Windows.Forms.DockStyle.None;
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEspace,
-            this.toolStripSeparator1,
+            this.separeMenu,
             this.lblMagasin});
-            this.toolStrip1.Location = new System.Drawing.Point(41, 38);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(333, 48);
-            this.toolStrip1.TabIndex = 9;
-            this.toolStrip1.Text = "toolStrip1";
+            this.menu.Location = new System.Drawing.Point(41, 38);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(333, 48);
+            this.menu.TabIndex = 9;
+            this.menu.Text = "toolStrip1";
             // 
             // lblEspace
             // 
@@ -101,12 +101,12 @@ namespace Maquette
             this.lblEspace.Size = new System.Drawing.Size(167, 45);
             this.lblEspace.Text = "Mon espace";
             // 
-            // toolStripSeparator1
+            // separeMenu
             // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.Yellow;
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.Maroon;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 48);
+            this.separeMenu.BackColor = System.Drawing.Color.Yellow;
+            this.separeMenu.ForeColor = System.Drawing.Color.Maroon;
+            this.separeMenu.Name = "separeMenu";
+            this.separeMenu.Size = new System.Drawing.Size(6, 48);
             // 
             // lblMagasin
             // 
@@ -117,7 +117,7 @@ namespace Maquette
             this.lblMagasin.Padding = new System.Windows.Forms.Padding(75, 25, 0, 0);
             this.lblMagasin.Size = new System.Drawing.Size(148, 40);
             this.lblMagasin.Text = "Magasin";
-            this.lblMagasin.Click += new System.EventHandler(this.lblMagasin_Click);
+            this.lblMagasin.Click += new System.EventHandler(this.LblMagasin_Click);
             // 
             // splitter1
             // 
@@ -169,7 +169,7 @@ namespace Maquette
             this.btnSuiEmp.Size = new System.Drawing.Size(75, 23);
             this.btnSuiEmp.TabIndex = 3;
             this.btnSuiEmp.UseVisualStyleBackColor = true;
-            this.btnSuiEmp.Click += new System.EventHandler(this.btnPageSui_Click);
+            this.btnSuiEmp.Click += new System.EventHandler(this.BtnPageSui_Click);
             // 
             // btnPreEmp
             // 
@@ -182,7 +182,7 @@ namespace Maquette
             this.btnPreEmp.Size = new System.Drawing.Size(75, 23);
             this.btnPreEmp.TabIndex = 2;
             this.btnPreEmp.UseVisualStyleBackColor = true;
-            this.btnPreEmp.Click += new System.EventHandler(this.btnPagePre_Click);
+            this.btnPreEmp.Click += new System.EventHandler(this.BtnPagePre_Click);
             // 
             // panelEmprunts
             // 
@@ -210,7 +210,7 @@ namespace Maquette
             this.panelGrandConseils.Controls.Add(this.btnSuiCon);
             this.panelGrandConseils.Controls.Add(this.btnPreCon);
             this.panelGrandConseils.Controls.Add(this.lblConseil);
-            this.panelGrandConseils.Controls.Add(this.pictureBox1);
+            this.panelGrandConseils.Controls.Add(this.imgLogo);
             this.panelGrandConseils.Controls.Add(this.lblNom);
             this.panelGrandConseils.Controls.Add(this.lblBvn);
             this.panelGrandConseils.Location = new System.Drawing.Point(625, 105);
@@ -245,7 +245,7 @@ namespace Maquette
             this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
             this.btnSuiCon.TabIndex = 5;
             this.btnSuiCon.UseVisualStyleBackColor = true;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiCon.Click += new System.EventHandler(this.BtnSuiCon_Click);
             // 
             // btnPreCon
             // 
@@ -258,7 +258,7 @@ namespace Maquette
             this.btnPreCon.Size = new System.Drawing.Size(75, 23);
             this.btnPreCon.TabIndex = 5;
             this.btnPreCon.UseVisualStyleBackColor = true;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPreCon.Click += new System.EventHandler(this.BtnPreCon_Click);
             // 
             // lblConseil
             // 
@@ -269,16 +269,16 @@ namespace Maquette
             this.lblConseil.TabIndex = 3;
             this.lblConseil.Text = "Conseils de la maison :";
             // 
-            // pictureBox1
+            // imgLogo
             // 
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::Maquette.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(284, -6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(175, 147);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.imgLogo.ErrorImage = null;
+            this.imgLogo.Image = global::Maquette.Properties.Resources.logo;
+            this.imgLogo.Location = new System.Drawing.Point(284, -6);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Size = new System.Drawing.Size(175, 147);
+            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgLogo.TabIndex = 2;
+            this.imgLogo.TabStop = false;
             // 
             // lblNom
             // 
@@ -317,35 +317,35 @@ namespace Maquette
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnCompte);
+            this.panel1.Controls.Add(this.lblCompte);
             this.panel1.Location = new System.Drawing.Point(865, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(276, 55);
             this.panel1.TabIndex = 17;
             // 
-            // label1
+            // btnCompte
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(24, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mon compte :";
+            this.btnCompte.BackgroundImage = global::Maquette.Properties.Resources.user;
+            this.btnCompte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCompte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompte.ForeColor = System.Drawing.Color.Teal;
+            this.btnCompte.Location = new System.Drawing.Point(177, 4);
+            this.btnCompte.Name = "btnCompte";
+            this.btnCompte.Size = new System.Drawing.Size(42, 49);
+            this.btnCompte.TabIndex = 1;
+            this.btnCompte.UseVisualStyleBackColor = true;
+            this.btnCompte.Click += new System.EventHandler(this.BtnCompte_Click);
             // 
-            // button1
+            // lblCompte
             // 
-            this.button1.BackgroundImage = global::Maquette.Properties.Resources.user;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Teal;
-            this.button1.Location = new System.Drawing.Point(177, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 49);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblCompte.AutoSize = true;
+            this.lblCompte.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblCompte.Location = new System.Drawing.Point(24, 17);
+            this.lblCompte.Name = "lblCompte";
+            this.lblCompte.Size = new System.Drawing.Size(106, 20);
+            this.lblCompte.TabIndex = 0;
+            this.lblCompte.Text = "Mon compte :";
             // 
             // Abonné
             // 
@@ -360,20 +360,20 @@ namespace Maquette
             this.Controls.Add(this.panelGrandEmprunt);
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Abonné";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abonné";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.panelGrandEmprunt.ResumeLayout(false);
             this.panelGrandEmprunt.PerformLayout();
             this.panelGrandConseils.ResumeLayout(false);
             this.panelGrandConseils.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -383,9 +383,9 @@ namespace Maquette
 
         #endregion
         private System.Windows.Forms.Button btnToutAlg;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip menu;
         private System.Windows.Forms.ToolStripLabel lblEspace;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator separeMenu;
         private System.Windows.Forms.ToolStripLabel lblMagasin;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
@@ -393,7 +393,7 @@ namespace Maquette
         private System.Windows.Forms.Label lblEmprunt;
         private System.Windows.Forms.Panel panelGrandConseils;
         private System.Windows.Forms.Label lblConseil;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblBvn;
         private System.Windows.Forms.FlowLayoutPanel panelEmprunts;
@@ -406,7 +406,7 @@ namespace Maquette
         private System.Windows.Forms.Label lblPasSugg;
         private System.Windows.Forms.FlowLayoutPanel panelConseil;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblCompte;
+        private System.Windows.Forms.Button btnCompte;
     }
 }
