@@ -51,6 +51,7 @@ namespace Maquette
             this.passBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, passBox.Width, passBox.Height, 3, 3));
         }
 
+        #region IHM
         /// <summary>
         /// Méthode qui permet d'avoir la liste des abonnés figurants dans la base
         /// </summary>
@@ -104,15 +105,6 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Méthode qui permet d'afficher l'incription
-        /// </summary>
-        private void LancerInscription()
-        {
-            ConnexionPanel.Visible = false;
-            InscriptionPannel.Visible = true;
-        }
-
-        /// <summary>
         /// Méthode qui colorie le fond du texte de l'inscription
         /// </summary>
         /// <param name="sender"></param>
@@ -141,13 +133,7 @@ namespace Maquette
         {
             DirectionPgCon();
         }
-
-        private void DirectionPgCon()
-        {
-            ConnexionPanel.Visible = true;
-            InscriptionPannel.Visible = false;
-        }
-
+        
         /// <summary>
         /// Méthode qui permet de s'inscrire dans la base de donnée
         /// </summary>
@@ -198,6 +184,56 @@ namespace Maquette
                 MessageBox.Show("Veuillez entrer des informations valides");
             }
         }
+       
+        /// <summary>
+        /// Méthode qui permet de visualiser le mot de passe durant la connexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AfficherCoMdp_Click(object sender, EventArgs e)
+        {
+            AfficherMdpCon();
+        }
+       
+        /// <summary>
+        /// Méthode qui permet de visualiser le mot de passe de la rubrique nouveau mdp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AfficherInsNvMdp_Click(object sender, EventArgs e)
+        {
+            AfficherMdpIns();
+        }
+       
+        /// <summary>
+        /// Méthode qui permet de visualiser le mot de passe de la rubrique confirmer mdp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AfficherInsConfMdp_Click(object sender, EventArgs e)
+        {
+            AfficherMdpConf();
+        }
+        #endregion
+
+        #region Logique
+        /// <summary>
+        /// Méthode qui permet d'afficher l'incription
+        /// </summary>
+        private void LancerInscription()
+        {
+            ConnexionPanel.Visible = false;
+            InscriptionPannel.Visible = true;
+        }
+        
+        /// <summary>
+        /// Méthode qui permet de re trouver sur la page de connexion
+        /// </summary>
+        private void DirectionPgCon()
+        {
+            ConnexionPanel.Visible = true;
+            InscriptionPannel.Visible = false;
+        }
 
         /// <summary>
         /// Méthode qui donne accès aux caractères spéciaux
@@ -227,17 +263,10 @@ namespace Maquette
             }
             return contient;
         }
-
+       
         /// <summary>
-        /// Méthode qui permet de visualiser le mot de passe durant la connexion
+        /// Méthode qui permet d'afficher le mot de passe lors de la connexion
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AfficherCoMdp_Click(object sender, EventArgs e)
-        {
-            AfficherMdpCon();
-        }
-
         private void AfficherMdpCon()
         {
             if (textBoxPass.PasswordChar == '●')
@@ -249,17 +278,10 @@ namespace Maquette
                 textBoxPass.PasswordChar = '●';
             }
         }
-
+        
         /// <summary>
-        /// Méthode qui permet de visualiser le mot de passe de la rubrique nouveau mdp
+        /// Méthode qui permet d'afficher le mot de passe lors de l'inscription
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AfficherInsNvMdp_Click(object sender, EventArgs e)
-        {
-            AfficherMdpIns();
-        }
-
         private void AfficherMdpIns()
         {
             if (passBox.PasswordChar == '●')
@@ -271,17 +293,10 @@ namespace Maquette
                 passBox.PasswordChar = '●';
             }
         }
-
+        
         /// <summary>
-        /// Méthode qui permet de visualiser le mot de passe de la rubrique confirmer mdp
+        /// Méthode qui permet de visualiser le mot de passe lors de la confirmation
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AfficherInsConfMdp_Click(object sender, EventArgs e)
-        {
-            AfficherMdpConf();
-        }
-
         private void AfficherMdpConf()
         {
             if (PassConfirm.PasswordChar == '●')
@@ -293,5 +308,6 @@ namespace Maquette
                 PassConfirm.PasswordChar = '●';
             }
         }
+        #endregion
     }
 }
