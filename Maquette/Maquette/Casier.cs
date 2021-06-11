@@ -22,7 +22,7 @@ namespace Maquette
         public Casier()
         {
             InitializeComponent();
-            tout = Outil.GetALBUMSs();
+            tout = GetALBUMSs();
         }
 
 
