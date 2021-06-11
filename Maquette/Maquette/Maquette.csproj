@@ -333,6 +333,8 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\emojidansbulle.png" />
+    <None Include="Resources\lockers.png" />
     <None Include="Resources\pas_image_tr.png" />
     <None Include="Resources\quitter.png" />
     <None Include="Resources\pas_photo.png" />

@@ -34,7 +34,7 @@ namespace Maquette
         {
             if (vérificationMDP(ancienMDP.Text, abonné))
             {
-                if (nouveauMDP.Text == confirmedMDP.Text)
+                if (nouveauMDP.Text == confirmedMDP.Text && Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
                 {
                     if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$")) {
                         String mdp = changerMDP(nouveauMDP.Text, abonné);

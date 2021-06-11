@@ -636,5 +636,20 @@ namespace Maquette
                 return null;
             }
         }
+
+
+        public static  List<ALBUMS> GetAlbumManquantCasier(string allee, int casier)
+        {          
+
+            var empruntés = (from al in musique.ALBUMS
+                             join e in musique.EMPRUNTER
+                             on al.CODE_ALBUM equals e.CODE_ALBUM
+                             where al.ALLÉE_ALBUM == allee && al.CASIER_ALBUM == casier 
+                             && e.DATE_RETOUR == null 
+                             select al).ToList();
+
+
+            return empruntés;
+        }
     }
 }
