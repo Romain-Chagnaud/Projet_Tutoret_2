@@ -46,6 +46,9 @@ namespace Maquette
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.changeMDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,7 +149,7 @@ namespace Maquette
             this.ancienMDP.Location = new System.Drawing.Point(19, 208);
             this.ancienMDP.MaxLength = 32;
             this.ancienMDP.Name = "ancienMDP";
-            this.ancienMDP.PasswordChar = '*';
+            this.ancienMDP.PasswordChar = '●';
             this.ancienMDP.Size = new System.Drawing.Size(162, 20);
             this.ancienMDP.TabIndex = 8;
             // 
@@ -157,7 +160,7 @@ namespace Maquette
             this.nouveauMDP.Location = new System.Drawing.Point(19, 274);
             this.nouveauMDP.MaxLength = 32;
             this.nouveauMDP.Name = "nouveauMDP";
-            this.nouveauMDP.PasswordChar = '*';
+            this.nouveauMDP.PasswordChar = '●';
             this.nouveauMDP.Size = new System.Drawing.Size(162, 20);
             this.nouveauMDP.TabIndex = 9;
             // 
@@ -168,7 +171,7 @@ namespace Maquette
             this.confirmedMDP.Location = new System.Drawing.Point(19, 343);
             this.confirmedMDP.MaxLength = 32;
             this.confirmedMDP.Name = "confirmedMDP";
-            this.confirmedMDP.PasswordChar = '*';
+            this.confirmedMDP.PasswordChar = '●';
             this.confirmedMDP.Size = new System.Drawing.Size(162, 20);
             this.confirmedMDP.TabIndex = 10;
             // 
@@ -210,6 +213,9 @@ namespace Maquette
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Teal;
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.changeMDP);
             this.groupBox1.Controls.Add(this.changerPays);
@@ -245,6 +251,42 @@ namespace Maquette
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(187, 200);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(26, 23);
+            this.button3.TabIndex = 17;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(187, 266);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(26, 23);
+            this.button2.TabIndex = 18;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(187, 334);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(26, 23);
+            this.button4.TabIndex = 19;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // CompteUtilisateur
             // 
@@ -294,5 +336,8 @@ namespace Maquette
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button changeMDP;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
