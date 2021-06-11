@@ -12,11 +12,9 @@ using static Maquette.Outil;
 namespace Maquette
 {
     public partial class Casier : Form
-
-
     {
         List<ALBUMS> tout;
-        List<ALBUMS> afficher;
+        List<ALBUMS> afficher = null;
 
         int page = 0;
         int nbPage;
@@ -24,8 +22,7 @@ namespace Maquette
         public Casier()
         {
             InitializeComponent();
-            tout = GetALBUMSs();
-            afficher = tout;
+            tout = Outil.GetALBUMSs();
         }
 
 
@@ -49,7 +46,10 @@ namespace Maquette
         /// <param name="e"></param>
         private void btnPreCas_Click(object sender, EventArgs e)
         {
-            Decrementer();
+            if (afficher != null)
+            {
+                Decrementer();
+            }
         }
 
         /// <summary>
@@ -59,7 +59,10 @@ namespace Maquette
         /// <param name="e"></param>
         private void btnSuiCas_Click(object sender, EventArgs e)
         {
-            Incrementer();
+            if (afficher != null)
+            {
+                Incrementer();
+            }
         }
         #endregion
 
