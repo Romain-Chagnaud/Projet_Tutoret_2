@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Maquette.Outil;
@@ -33,7 +34,7 @@ namespace Maquette
         {
             if (vérificationMDP(ancienMDP.Text, abonné))
             {
-                if (nouveauMDP.Text == confirmedMDP.Text)
+                if (nouveauMDP.Text == confirmedMDP.Text && Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
                 {
                     String mdp=changerMDP(nouveauMDP.Text, abonné);
                     if (mdp == null)
@@ -62,6 +63,42 @@ namespace Maquette
             {
                 changerPays((PAYS)comboPays.SelectedItem, abonné);
                 MessageBox.Show("Pays changé.");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (ancienMDP.PasswordChar == '●')
+            {
+                ancienMDP.PasswordChar = '\0';
+            }
+            else
+            {
+                ancienMDP.PasswordChar = '●';
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (nouveauMDP.PasswordChar == '●')
+            {
+                nouveauMDP.PasswordChar = '\0';
+            }
+            else
+            {
+                nouveauMDP.PasswordChar = '●';
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (confirmedMDP.PasswordChar == '●')
+            {
+                confirmedMDP.PasswordChar = '\0';
+            }
+            else
+            {
+                confirmedMDP.PasswordChar = '●';
             }
         }
     }
