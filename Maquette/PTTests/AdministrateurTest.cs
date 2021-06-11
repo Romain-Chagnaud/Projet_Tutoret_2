@@ -100,11 +100,11 @@ namespace PTTests
 
             //Restoration des emprunts
             RendreEmprunt(em);
-            RendreEmprunt(em1);
+
 
             //Cas l'abonné fantôme est purgé
             fantomes = GetFantomes();
-            Assert.IsTrue(fantomes.Contains(ab));
+            Assert.IsFalse(fantomes.Contains(ab));
             PurgerFantomes();
             fantomes = GetFantomes();
             Assert.IsFalse(fantomes.Contains(ab));
@@ -188,7 +188,7 @@ namespace PTTests
 
             //Cas d'un album non empruntés
             List<ALBUMS> nonEmpruntés = GetAlbumsNonEmpruntés();
-            Assert.IsFalse(nonEmpruntés.Contains(a));
+            Assert.IsTrue(nonEmpruntés.Contains(a));
 
             //Cas l'album a un emprunt d'il y a plus d'un an;
             ABONNÉS ab = Connexion("lp", "lp");
