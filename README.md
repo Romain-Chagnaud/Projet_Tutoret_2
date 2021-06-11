@@ -61,7 +61,7 @@ Cas limite et détails:
 - [x] US implémentée
 
 Cas limite et détails:
-- [ ] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
+- [x] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
 - [x] Est-ce qu'ils sont triés par date ?
 
 ## US5: En tant qu’administrateur de la discothèque en ligne, je souhaite lister les abonnés ayant des emprunts non rapportés en retard de 10 jours.
@@ -79,55 +79,55 @@ Cas limite et détails:
 - [ ] Vérifier que les utilisateurs qui ont des emprunts en cours ne sont de toutes façons pas purgés
 
 ## US7: En tant qu’administrateur de la discothèque, je souhaite connaître les 10 albums les plus empruntés dans l'année.
-- [ ] US implémentée
+- [X] US implémentée
 
 Cas limite et détails:
-- [ ] Bien vérifier que c’est ceux de l’année et pas de toute la base de données
+- [X] Bien vérifier que c’est ceux de l’année et pas de toute la base de données
 
 ## US8: En tant qu’administrateur de la discothèque en ligne, je souhaite connaître les albums qui n’ont pas été empruntés depuis plus d’un an.
-- [ ] US implémentée
+- [X] US implémentée
 
 Cas limite et détails:
-- [ ] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
+- [X] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
 - [ ] On a demandé également de trier par date décroissante d’emprunt (les empruntés le plus récemment doivent apparaître en premier)
 
 ## US9: En tant qu’abonné, je souhaite prolonger l'emprunt de tous mes emprunts.
-- [ ] US implémentée
+- [X] US implémentée
 
 Cas limite et détails:
-- [ ] Vérifier que les emprunts rendus ne sont pas prolongés
-- [ ] Vérifier que les déjà prolongés ne sont pas prolongés
+- [X] Vérifier que les emprunts rendus ne sont pas prolongés
+- [X] Vérifier que les déjà prolongés ne sont pas prolongés
 
 ## US10: En tant qu’abonné, je souhaite que le logiciel me suggère des albums à emprunter qui peuvent me plaire.
-- [ ] US implémentée
+- [X] US implémentée
 
 Cas limite et détails:
-- [ ] Est-ce que la suggestion exploite la popularité (exemple: genre similaire aux albums que j'ai empruntés, et trié par nombre de fois que les albums ont été empruntés)
+- [X] Est-ce que la suggestion exploite la popularité (exemple: genre similaire aux albums que j'ai empruntés, et trié par nombre de fois que les albums ont été empruntés) **pas par ordre de popularité**
 - [ ] Affiche les bonnes infos ? (où sont-ils… empruntés ou rangée/casier)
 
 ## US-TU1: Tests unitaires
 
 À ce stade, la priorité est d'avoir des tests unitaires fonctionnels pour US1 & US2
 
-- [ ] Les tests ou une procédure documentée permet de remettre la base de données dans un état connu (on ne se base pas sur l'état de la base de données au moment de lancer les tests)
-- [ ] US1
-- [ ] US2
+- [x] Les tests ou une procédure documentée permet de remettre la base de données dans un état connu (on ne se base pas sur l'état de la base de données au moment de lancer les tests)
+- [x] US1
+- [x] US2
 
 # US12: En tant qu'administrateur, je veux pouvoir lister tous les abonnés
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
-- [ ] Est-ce qu'on affiche bien toutes les informations ?
-- [ ] Quel critère de tri ?
+- [x] Est-ce qu'on affiche bien toutes les informations ?
+- [x] Quel critère de tri ? **Date d'inscription**
 
 # US13: En tant qu’utilisateur du logiciel, je souhaite que les résultats soient paginés dès que la liste est trop longue pour un meilleur confort d’utilisation.
-- [ ] US Implémentée
+- [x] US Implémentée
 
 Cas limite et détails:
-- [ ] Est-ce que la pagination est bien performante ? C'est-à-dire est-ce que les données sont bien récupérées uniquement au besoin et pas toutes dans le C#
+- [] Est-ce que la pagination est bien performante ? C'est-à-dire est-ce que les données sont bien récupérées uniquement au besoin et pas toutes dans le C#
 
 # US14: En tant qu'utilisateur, je souhaite pouvoir rechercher un album par son nom
-- [ ] US Implémentée
+- [x] US Implémentée
 
 Cas limite et détails:
 - [ ]  Qu’est-ce qui se passe si on tape "mozart requiem"
@@ -138,37 +138,37 @@ Cas limite et détails:
   - On s’attend à voir “Bach: Suites pour violoncelles” (les mots ne sont pas dans l’ordre)
 
 # US15: En tant qu'abonné et administrateur, on souhaite voir les pochettes d'album dans l'IHM lorsqu'ils sont mentionnés
-- [ ] US Implémentée
+- [x] US Implémentée
 
 # US16: Nous souhaitons améliorer la gestion des mots de passe
 
-- [ ] Au moment de l'inscription, je fournis le mot de passe deux fois (pour m'assurer que je ne me suis pas trompé)
-- [ ] S'assurer qu'ils ne soient pas stockés en clair dans la base de données
-- [ ] Un administrateur peut changer le mot de passe de n'importe quel utilisateur
-- [ ] Un utilisateur peut changer son mot de passe, il fournit son mot de passe actuel et le nouveau mot de passe (2 fois)
-- [ ] Tous les champs qui contiennent des mots de passe ne sont pas visible à l'écran (mais des *** à la place), mais avec possibilité des les révéler (bouton "oeil")
+- [x] Au moment de l'inscription, je fournis le mot de passe deux fois (pour m'assurer que je ne me suis pas trompé)
+- [x] S'assurer qu'ils ne soient pas stockés en clair dans la base de données
+- [x] Un administrateur peut changer le mot de passe de n'importe quel utilisateur
+- [x] Un utilisateur peut changer son mot de passe, il fournit son mot de passe actuel et le nouveau mot de passe (2 fois)
+- [x] Tous les champs qui contiennent des mots de passe ne sont pas visible à l'écran (mais des *** à la place), mais avec possibilité des les révéler (bouton "oeil")
 
 # US17: En tant qu'administrateur, je souhaite voir les albums manquants (empruntés) d'un casier (note pour nous : ce peut-être simplement rajouter un filtre au bon endroit)
 
-- [ ] US Implémentée
+- [x] US Implémentée
 
 # US18: En tant que mainteneur, je souhaite m'assurer que le code correspond aux normes d'architecture logicielle, de qualité et de documentation en vigueur
 
-- [ ] Le code est bien factorisé (réduire les duplications)
-- [ ] Commentaires des fonctions
-- [ ] Règles de codage homogène (libre)
+- [x] Le code est bien factorisé (réduire les duplications)
+- [x] Commentaires des fonctions
+- [x] Règles de codage homogène (libre)
 
 ## US-TU2: Tests unitaires extra
 
-- [ ] US3
-- [ ] US4
-- [ ] US5
-- [ ] US6
-- [ ] US7
-- [ ] US8
-- [ ] US9
-- [ ] US10
-- [ ] US12
+- [x] US3
+- [x] US4
+- [x] US5
+- [x] US6
+- [x] US7
+- [x] US8
+- [x] US9
+- [x] US10
+- [x] US12
 - [ ] US13
 - [ ] US14
 - [ ] US16
