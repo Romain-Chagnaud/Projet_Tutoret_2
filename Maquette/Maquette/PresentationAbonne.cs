@@ -16,6 +16,7 @@ namespace Maquette
         public PresentationAbonne(ABONNÉS abo)
         {
             InitializeComponent();
+            this.abo = abo;
             lblNom.Text = abo.NOM_ABONNÉ;
             lblPrenom.Text = abo.PRÉNOM_ABONNÉ;
             abonnés = abo;

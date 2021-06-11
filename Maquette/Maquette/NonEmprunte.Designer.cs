@@ -112,6 +112,7 @@ namespace Maquette
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NonEmprunte";
             this.Text = "NonEmprunte";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

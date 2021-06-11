@@ -119,12 +119,15 @@ namespace Maquette
             // 
             // btnChargement
             // 
+            this.btnChargement.BackColor = System.Drawing.Color.Teal;
+            this.btnChargement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnChargement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChargement.Location = new System.Drawing.Point(741, 15);
             this.btnChargement.Name = "btnChargement";
             this.btnChargement.Size = new System.Drawing.Size(75, 23);
             this.btnChargement.TabIndex = 21;
             this.btnChargement.Text = "Charger";
-            this.btnChargement.UseVisualStyleBackColor = true;
+            this.btnChargement.UseVisualStyleBackColor = false;
             this.btnChargement.Click += new System.EventHandler(this.btnChargement_Click);
             // 
             // numCasier
@@ -158,6 +161,7 @@ namespace Maquette
             this.DoubleBuffered = true;
             this.Name = "Casier";
             this.Text = "Casier";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.numCasier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
