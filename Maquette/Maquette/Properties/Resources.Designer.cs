@@ -73,6 +73,16 @@ namespace Maquette.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap emojidansbulle {
+            get {
+                object obj = ResourceManager.GetObject("emojidansbulle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fantome {
             get {
                 object obj = ResourceManager.GetObject("fantome", resourceCulture);
@@ -126,6 +136,16 @@ namespace Maquette.Properties {
         internal static System.Drawing.Bitmap hourglass {
             get {
                 object obj = ResourceManager.GetObject("hourglass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lockers {
+            get {
+                object obj = ResourceManager.GetObject("lockers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
