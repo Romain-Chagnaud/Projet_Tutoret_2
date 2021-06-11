@@ -29,7 +29,7 @@ namespace Maquette
         public ConnexionDisplay()
         {
             InitializeComponent();
-            Outil.chargerMusiqueEntities();
+            Outil.ChargerMusiqueEntities();
             InscriptionPannel.Visible = false;
             Abonne_Load();
             List<String> pays = Outil.GetPays();
@@ -153,7 +153,7 @@ namespace Maquette
                 {
                     if (passBox.Text == PassConfirm.Text)
                     {
-                        ABONNÉS a = Outil.inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
+                        ABONNÉS a = Outil.Inscription(prenomBox.Text, nomBox.Text, idBox.Text, passBox.Text, comboBoxP.Text.Trim());
                         InscriptionPannel.Visible = false;
                         ConnexionPanel.Visible = true;
                         if (a != null)
