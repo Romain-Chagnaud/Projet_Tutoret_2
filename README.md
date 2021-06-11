@@ -4,75 +4,75 @@
 
 ## Equipe
 
-- Numéro d'équipe : [x].[y]
-- Nom de la base de données : [z]_MusiquePT2
+- Numéro d'équipe : 2.3
+- Nom de la base de données : B_MusiquePT2
 - Composition de l'équipe :
-  - prénom nom (éventuellement rôle)
-  - ...
+  - Léo PUYASTIER
+  - Mattéo CAMIN
+  - Emma LEMOS
+  - Romain CHAGNAUD
+  - Sébastien CANDAU
+  - Mathieu MASANTE
 
 ## Projet
 
-Donner ici le nom et une description courte du projet avec un screenshot représentatif de l'application.
-
-Vous pouvez également préciser ici quelques éléments qui pourraient nous aider à compiler/déployer ou tester votre application :
-- l'éventuelles bibliothèques externes à installer (donner la procédure)
-- des jeux de données à appliquer sur la base avant de lancer l'application ou les tests
-- ...
+Projet de Boutique de Musique.
+Le but de ce projet était de concevoir et réaliser une application pour une boutique de location d'albums de musique.
 
 # User Stories
 
 ## US1: En tant que futur client de la discothèque, je souhaite pouvoir être abonné afin de pouvoir emprunter des albums.
 
-- [ ] US implémentée (on peut emprunter et rendre un album)
+- [x] US implémentée (on peut emprunter et rendre un album)
 
 Cas limite et détails:
-- [ ] Qu’est-ce qui se passe si on essaie de s’inscrire avec un login déjà existant ?
-- [ ] Est-ce que le choix du pays est bien un menu déroulant ?
-- [ ] Est-ce que les champs sont bien limités à 32 caractères ?
-- [ ] Peut-on s'inscrire avec un nom vide ?
-- [ ] Peut-on s'inscrire avec un nom qui ne contient qu'un espace ?
-- [ ] Est-ce qu'il est bien possible de s'inscrire sans pays (car c'est facultatif) ?
-- [ ] L'ordre des champs est correct lorsqu'on appuie sur "TAB"
+- [x] Qu’est-ce qui se passe si on essaie de s’inscrire avec un login déjà existant ?
+- [x] Est-ce que le choix du pays est bien un menu déroulant ?
+- [x] Est-ce que les champs sont bien limités à 32 caractères ?
+- [x] Peut-on s'inscrire avec un nom vide ? **On ne peut pas s'inscrire avec un nom vide**
+- [x] Peut-on s'inscrire avec un nom qui ne contient qu'un espace ? **On ne peut pas s'inscrire avec un nom contenant que des espaces**
+- [x] Est-ce qu'il est bien possible de s'inscrire sans pays (car c'est facultatif) ?
+- [x] L'ordre des champs est correct lorsqu'on appuie sur "TAB"
 
 ## US2: En tant qu’abonné, je souhaite pouvoir consulter les albums que j'ai empruntés.
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
-- [ ] Qu’est-ce qui se passe si j’essaie d’emprunter un album déjà emprunté ? (Penser à essayer tous les cas, comme cliquer 2 fois sur le bouton “emprunter”)
-- [ ] Qu’est-ce qui se passe si j’emprunte, je retourne, et que je ré-emprunte le même album ?
-- [ ] Est-ce que la date de retour est bien basée sur les délais de la table "Genre" ?
-- [ ] Est-ce que je distingue bien les albums disponibles des empruntés dans l'affichage ?
-- [ ] Est-ce que je vois bien toutes les informations sur les albums (casier, rangée, année d'édition...)
+- [x] Qu’est-ce qui se passe si j’essaie d’emprunter un album déjà emprunté ? (Penser à essayer tous les cas, comme cliquer 2 fois sur le bouton “emprunter”) **Un album déjà emp ne peut pas être réemprunté**
+- [x] Qu’est-ce qui se passe si j’emprunte, je retourne, et que je ré-emprunte le même album ? **Ca marche**
+- [x] Est-ce que la date de retour est bien basée sur les délais de la table "Genre" ?
+- [x] Est-ce que je distingue bien les albums disponibles des empruntés dans l'affichage ? **Les empruntés n'apparaissent pas**
+- [x] Est-ce que je vois bien toutes les informations sur les albums (casier, rangée, année d'édition...)
 
 ## US3: En tant qu’abonné, je souhaite prolonger l'emprunt d'un album pour un mois supplémentaire (cette opération n’est possible qu’une fois par emprunt).
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
-- [ ] Qu’est-ce qui se passe si on essaie de re-prolonger ? (Penser à essayer un peu tous les cas, comme cliquer 2 fois sur le bouton “prolonger”)
-- [ ] Est-ce que je ne peux prolonger que les non rendus ?
+- [x] Qu’est-ce qui se passe si on essaie de re-prolonger ? (Penser à essayer un peu tous les cas, comme cliquer 2 fois sur le bouton “prolonger”) **On ne peut emprunter qu'une seule fois**
+- [x] Est-ce que je ne peux prolonger que les non rendus ?
 
 ## US11: En tant que client du projet, je souhaite une proposition de maquette d’IHM qui après validation pourra donner lieu à un développement.
 
-- [ ] L'interface est fonctionnelle
-- [ ] L'interface est ergonomique (UX)
-- [ ] L'interface est esthétique (UI)
+- [x] L'interface est fonctionnelle
+- [x] L'interface est ergonomique (UX)
+- [x] L'interface est esthétique (UI)
 
 ## US4: En tant qu’administrateur je souhaite connaître les emprunts qui ont été prolongés.
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
 - [ ] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
-- [ ] Est-ce qu'ils sont triés par date ?
+- [x] Est-ce qu'ils sont triés par date ?
 
 ## US5: En tant qu’administrateur de la discothèque en ligne, je souhaite lister les abonnés ayant des emprunts non rapportés en retard de 10 jours.
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
 - [ ] Vois-je suffisamment d’infos par emprunt (nom de l'emprunteur, dates, album...) ?
 - [ ] Est-ce qu'ils sont triés par date ?
 
 ## US6: En tant qu'administrateur de la discothèque en ligne, j'aimerais pouvoir purger les abonnés n'ayant pas emprunté depuis plus d'un an.
-- [ ] US implémentée
+- [x] US implémentée
 
 Cas limite et détails:
 - [ ] Vérifier qu’on a bien une confirmation qui nous indique quels utilisateurs vont être purgés
