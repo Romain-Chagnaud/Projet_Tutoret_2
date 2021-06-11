@@ -31,58 +31,70 @@ namespace Maquette
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnexionDisplay));
             this.ConnexionPanel = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.afficherCoMdp = new System.Windows.Forms.Button();
+            this.logoBoutique = new System.Windows.Forms.FlowLayoutPanel();
             this.textBoxPass = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblInsIdentifiant = new System.Windows.Forms.Label();
+            this.lblCoIdentifiant = new System.Windows.Forms.Label();
+            this.inscription = new System.Windows.Forms.Label();
+            this.lblConnexion = new System.Windows.Forms.Button();
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.Panel = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.InscriptionPannel = new System.Windows.Forms.Panel();
+            this.afficherInsConfMdp = new System.Windows.Forms.Button();
+            this.afficherInsNvMdp = new System.Windows.Forms.Button();
+            this.lblInsConfMdp = new System.Windows.Forms.Label();
             this.PassConfirm = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblInsPays = new System.Windows.Forms.Label();
             this.comboBoxP = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.passBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblInsNom = new System.Windows.Forms.Label();
+            this.lblInsNvMdp = new System.Windows.Forms.Label();
+            this.lblInsPrenom = new System.Windows.Forms.Label();
+            this.lblInsId = new System.Windows.Forms.Label();
             this.idBox = new System.Windows.Forms.TextBox();
             this.prenomBox = new System.Windows.Forms.TextBox();
             this.nomBox = new System.Windows.Forms.TextBox();
             this.SignButton = new System.Windows.Forms.Button();
-            this.afficherButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.ConnexionPanel.SuspendLayout();
-            this.Panel.SuspendLayout();
+            this.InscriptionPannel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ConnexionPanel
             // 
             this.ConnexionPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.ConnexionPanel.Controls.Add(this.afficherButton);
-            this.ConnexionPanel.Controls.Add(this.flowLayoutPanel1);
+            this.ConnexionPanel.Controls.Add(this.afficherCoMdp);
+            this.ConnexionPanel.Controls.Add(this.logoBoutique);
             this.ConnexionPanel.Controls.Add(this.textBoxPass);
-            this.ConnexionPanel.Controls.Add(this.label2);
-            this.ConnexionPanel.Controls.Add(this.label4);
-            this.ConnexionPanel.Controls.Add(this.label1);
-            this.ConnexionPanel.Controls.Add(this.button1);
+            this.ConnexionPanel.Controls.Add(this.lblInsIdentifiant);
+            this.ConnexionPanel.Controls.Add(this.lblCoIdentifiant);
+            this.ConnexionPanel.Controls.Add(this.inscription);
+            this.ConnexionPanel.Controls.Add(this.lblConnexion);
             this.ConnexionPanel.Controls.Add(this.textBoxId);
             this.ConnexionPanel.Location = new System.Drawing.Point(437, 150);
             this.ConnexionPanel.Name = "ConnexionPanel";
             this.ConnexionPanel.Size = new System.Drawing.Size(349, 400);
             this.ConnexionPanel.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // afficherCoMdp
             // 
-            this.flowLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flowLayoutPanel1.BackgroundImage")));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(131, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(100, 100);
-            this.flowLayoutPanel1.TabIndex = 14;
+            this.afficherCoMdp.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.afficherCoMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.afficherCoMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherCoMdp.Location = new System.Drawing.Point(279, 183);
+            this.afficherCoMdp.Name = "afficherCoMdp";
+            this.afficherCoMdp.Size = new System.Drawing.Size(26, 23);
+            this.afficherCoMdp.TabIndex = 15;
+            this.afficherCoMdp.UseVisualStyleBackColor = true;
+            this.afficherCoMdp.Click += new System.EventHandler(this.AfficherCoMdp_Click);
+            // 
+            // logoBoutique
+            // 
+            this.logoBoutique.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoBoutique.BackgroundImage")));
+            this.logoBoutique.Location = new System.Drawing.Point(131, 0);
+            this.logoBoutique.Name = "logoBoutique";
+            this.logoBoutique.Size = new System.Drawing.Size(100, 100);
+            this.logoBoutique.TabIndex = 14;
             // 
             // textBoxPass
             // 
@@ -96,59 +108,59 @@ namespace Maquette
             this.textBoxPass.Size = new System.Drawing.Size(250, 23);
             this.textBoxPass.TabIndex = 1;
             // 
-            // label2
+            // lblInsIdentifiant
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.label2.Location = new System.Drawing.Point(19, 160);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 20);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Mot de passe";
+            this.lblInsIdentifiant.AutoSize = true;
+            this.lblInsIdentifiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsIdentifiant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.lblInsIdentifiant.Location = new System.Drawing.Point(19, 160);
+            this.lblInsIdentifiant.Name = "lblInsIdentifiant";
+            this.lblInsIdentifiant.Size = new System.Drawing.Size(105, 20);
+            this.lblInsIdentifiant.TabIndex = 12;
+            this.lblInsIdentifiant.Text = "Mot de passe";
             // 
-            // label4
+            // lblCoIdentifiant
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.label4.Location = new System.Drawing.Point(19, 102);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Identifiant";
+            this.lblCoIdentifiant.AutoSize = true;
+            this.lblCoIdentifiant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoIdentifiant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.lblCoIdentifiant.Location = new System.Drawing.Point(19, 102);
+            this.lblCoIdentifiant.Name = "lblCoIdentifiant";
+            this.lblCoIdentifiant.Size = new System.Drawing.Size(80, 20);
+            this.lblCoIdentifiant.TabIndex = 11;
+            this.lblCoIdentifiant.Text = "Identifiant";
             // 
-            // label1
+            // inscription
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.label1.Location = new System.Drawing.Point(20, 209);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Pas encore inscrit ? S\'inscrire";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
-            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
+            this.inscription.AutoSize = true;
+            this.inscription.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inscription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.inscription.Location = new System.Drawing.Point(20, 209);
+            this.inscription.Name = "inscription";
+            this.inscription.Size = new System.Drawing.Size(182, 16);
+            this.inscription.TabIndex = 3;
+            this.inscription.Text = "Pas encore inscrit ? S\'inscrire";
+            this.inscription.Click += new System.EventHandler(this.Inscription_Click);
+            this.inscription.MouseLeave += new System.EventHandler(this.Inscription_MouseLeave);
+            this.inscription.MouseHover += new System.EventHandler(this.Inscription_MouseHover);
             // 
-            // button1
+            // lblConnexion
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.button1.Location = new System.Drawing.Point(102, 252);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Connexion";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblConnexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
+            this.lblConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblConnexion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
+            this.lblConnexion.FlatAppearance.BorderSize = 0;
+            this.lblConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnexion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.lblConnexion.Location = new System.Drawing.Point(102, 252);
+            this.lblConnexion.Name = "lblConnexion";
+            this.lblConnexion.Size = new System.Drawing.Size(150, 35);
+            this.lblConnexion.TabIndex = 2;
+            this.lblConnexion.Text = "Connexion";
+            this.lblConnexion.UseVisualStyleBackColor = false;
+            this.lblConnexion.Click += new System.EventHandler(this.LblConnexion_Click);
             // 
             // textBoxId
             // 
@@ -161,39 +173,63 @@ namespace Maquette
             this.textBoxId.Size = new System.Drawing.Size(250, 23);
             this.textBoxId.TabIndex = 0;
             // 
-            // Panel
+            // InscriptionPannel
             // 
-            this.Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.Panel.Controls.Add(this.button4);
-            this.Panel.Controls.Add(this.button3);
-            this.Panel.Controls.Add(this.label9);
-            this.Panel.Controls.Add(this.PassConfirm);
-            this.Panel.Controls.Add(this.label8);
-            this.Panel.Controls.Add(this.comboBoxP);
-            this.Panel.Controls.Add(this.button2);
-            this.Panel.Controls.Add(this.passBox);
-            this.Panel.Controls.Add(this.label3);
-            this.Panel.Controls.Add(this.label7);
-            this.Panel.Controls.Add(this.label5);
-            this.Panel.Controls.Add(this.label6);
-            this.Panel.Controls.Add(this.idBox);
-            this.Panel.Controls.Add(this.prenomBox);
-            this.Panel.Controls.Add(this.nomBox);
-            this.Panel.Controls.Add(this.SignButton);
-            this.Panel.Location = new System.Drawing.Point(437, 125);
-            this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(380, 452);
-            this.Panel.TabIndex = 2;
+            this.InscriptionPannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
+            this.InscriptionPannel.Controls.Add(this.afficherInsConfMdp);
+            this.InscriptionPannel.Controls.Add(this.afficherInsNvMdp);
+            this.InscriptionPannel.Controls.Add(this.lblInsConfMdp);
+            this.InscriptionPannel.Controls.Add(this.PassConfirm);
+            this.InscriptionPannel.Controls.Add(this.lblInsPays);
+            this.InscriptionPannel.Controls.Add(this.comboBoxP);
+            this.InscriptionPannel.Controls.Add(this.button2);
+            this.InscriptionPannel.Controls.Add(this.passBox);
+            this.InscriptionPannel.Controls.Add(this.lblInsNom);
+            this.InscriptionPannel.Controls.Add(this.lblInsNvMdp);
+            this.InscriptionPannel.Controls.Add(this.lblInsPrenom);
+            this.InscriptionPannel.Controls.Add(this.lblInsId);
+            this.InscriptionPannel.Controls.Add(this.idBox);
+            this.InscriptionPannel.Controls.Add(this.prenomBox);
+            this.InscriptionPannel.Controls.Add(this.nomBox);
+            this.InscriptionPannel.Controls.Add(this.SignButton);
+            this.InscriptionPannel.Location = new System.Drawing.Point(415, 124);
+            this.InscriptionPannel.Name = "InscriptionPannel";
+            this.InscriptionPannel.Size = new System.Drawing.Size(380, 452);
+            this.InscriptionPannel.TabIndex = 2;
             // 
-            // label9
+            // afficherInsConfMdp
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(19, 333);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(194, 20);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Confirmer le mot de passe";
+            this.afficherInsConfMdp.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.afficherInsConfMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.afficherInsConfMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherInsConfMdp.Location = new System.Drawing.Point(324, 356);
+            this.afficherInsConfMdp.Name = "afficherInsConfMdp";
+            this.afficherInsConfMdp.Size = new System.Drawing.Size(26, 23);
+            this.afficherInsConfMdp.TabIndex = 17;
+            this.afficherInsConfMdp.UseVisualStyleBackColor = true;
+            this.afficherInsConfMdp.Click += new System.EventHandler(this.AfficherInsConfMdp_Click);
+            // 
+            // afficherInsNvMdp
+            // 
+            this.afficherInsNvMdp.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.afficherInsNvMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.afficherInsNvMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherInsNvMdp.Location = new System.Drawing.Point(324, 289);
+            this.afficherInsNvMdp.Name = "afficherInsNvMdp";
+            this.afficherInsNvMdp.Size = new System.Drawing.Size(26, 23);
+            this.afficherInsNvMdp.TabIndex = 16;
+            this.afficherInsNvMdp.UseVisualStyleBackColor = true;
+            this.afficherInsNvMdp.Click += new System.EventHandler(this.AfficherInsNvMdp_Click);
+            // 
+            // lblInsConfMdp
+            // 
+            this.lblInsConfMdp.AutoSize = true;
+            this.lblInsConfMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsConfMdp.Location = new System.Drawing.Point(19, 333);
+            this.lblInsConfMdp.Name = "lblInsConfMdp";
+            this.lblInsConfMdp.Size = new System.Drawing.Size(194, 20);
+            this.lblInsConfMdp.TabIndex = 13;
+            this.lblInsConfMdp.Text = "Confirmer le mot de passe";
             // 
             // PassConfirm
             // 
@@ -207,15 +243,15 @@ namespace Maquette
             this.PassConfirm.Size = new System.Drawing.Size(297, 23);
             this.PassConfirm.TabIndex = 12;
             // 
-            // label8
+            // lblInsPays
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 205);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 20);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Pays";
+            this.lblInsPays.AutoSize = true;
+            this.lblInsPays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsPays.Location = new System.Drawing.Point(19, 205);
+            this.lblInsPays.Name = "lblInsPays";
+            this.lblInsPays.Size = new System.Drawing.Size(43, 20);
+            this.lblInsPays.TabIndex = 11;
+            this.lblInsPays.Text = "Pays";
             // 
             // comboBoxP
             // 
@@ -240,7 +276,7 @@ namespace Maquette
             this.button2.Size = new System.Drawing.Size(50, 35);
             this.button2.TabIndex = 9;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.RetourPgConnexion_Click);
             // 
             // passBox
             // 
@@ -254,45 +290,45 @@ namespace Maquette
             this.passBox.Size = new System.Drawing.Size(297, 23);
             this.passBox.TabIndex = 7;
             // 
-            // label3
+            // lblInsNom
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Nom";
+            this.lblInsNom.AutoSize = true;
+            this.lblInsNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsNom.Location = new System.Drawing.Point(17, 15);
+            this.lblInsNom.Name = "lblInsNom";
+            this.lblInsNom.Size = new System.Drawing.Size(42, 20);
+            this.lblInsNom.TabIndex = 10;
+            this.lblInsNom.Text = "Nom";
             // 
-            // label7
+            // lblInsNvMdp
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 266);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(172, 20);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Nouveau mot de passe";
+            this.lblInsNvMdp.AutoSize = true;
+            this.lblInsNvMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsNvMdp.Location = new System.Drawing.Point(17, 266);
+            this.lblInsNvMdp.Name = "lblInsNvMdp";
+            this.lblInsNvMdp.Size = new System.Drawing.Size(172, 20);
+            this.lblInsNvMdp.TabIndex = 7;
+            this.lblInsNvMdp.Text = "Nouveau mot de passe";
             // 
-            // label5
+            // lblInsPrenom
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Prénom";
+            this.lblInsPrenom.AutoSize = true;
+            this.lblInsPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsPrenom.Location = new System.Drawing.Point(17, 80);
+            this.lblInsPrenom.Name = "lblInsPrenom";
+            this.lblInsPrenom.Size = new System.Drawing.Size(64, 20);
+            this.lblInsPrenom.TabIndex = 9;
+            this.lblInsPrenom.Text = "Prénom";
             // 
-            // label6
+            // lblInsId
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 140);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 20);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Identifiant";
+            this.lblInsId.AutoSize = true;
+            this.lblInsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInsId.Location = new System.Drawing.Point(17, 140);
+            this.lblInsId.Name = "lblInsId";
+            this.lblInsId.Size = new System.Drawing.Size(80, 20);
+            this.lblInsId.TabIndex = 8;
+            this.lblInsId.Text = "Identifiant";
             // 
             // idBox
             // 
@@ -344,49 +380,13 @@ namespace Maquette
             this.SignButton.UseVisualStyleBackColor = false;
             this.SignButton.Click += new System.EventHandler(this.SignButton_Click);
             // 
-            // afficherButton
-            // 
-            this.afficherButton.BackgroundImage = global::Maquette.Properties.Resources.visibility;
-            this.afficherButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.afficherButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherButton.Location = new System.Drawing.Point(279, 183);
-            this.afficherButton.Name = "afficherButton";
-            this.afficherButton.Size = new System.Drawing.Size(26, 23);
-            this.afficherButton.TabIndex = 15;
-            this.afficherButton.UseVisualStyleBackColor = true;
-            this.afficherButton.Click += new System.EventHandler(this.afficherButton_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::Maquette.Properties.Resources.visibility;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(324, 289);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(26, 23);
-            this.button3.TabIndex = 16;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::Maquette.Properties.Resources.visibility;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(324, 356);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(26, 23);
-            this.button4.TabIndex = 17;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // ConnexionDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1184, 681);
-            this.Controls.Add(this.Panel);
+            this.Controls.Add(this.InscriptionPannel);
             this.Controls.Add(this.ConnexionPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -395,8 +395,8 @@ namespace Maquette
             this.Text = "ConnexionDisplay";
             this.ConnexionPanel.ResumeLayout(false);
             this.ConnexionPanel.PerformLayout();
-            this.Panel.ResumeLayout(false);
-            this.Panel.PerformLayout();
+            this.InscriptionPannel.ResumeLayout(false);
+            this.InscriptionPannel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -405,29 +405,29 @@ namespace Maquette
 
         private System.Windows.Forms.Panel ConnexionPanel;
         private System.Windows.Forms.TextBox textBoxId;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button lblConnexion;
+        private System.Windows.Forms.Label inscription;
+        private System.Windows.Forms.Label lblInsIdentifiant;
+        private System.Windows.Forms.Label lblCoIdentifiant;
         private System.Windows.Forms.TextBox textBoxPass;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel Panel;
+        private System.Windows.Forms.FlowLayoutPanel logoBoutique;
+        private System.Windows.Forms.Panel InscriptionPannel;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblInsNom;
+        private System.Windows.Forms.Label lblInsPrenom;
+        private System.Windows.Forms.Label lblInsId;
+        private System.Windows.Forms.Label lblInsNvMdp;
         private System.Windows.Forms.TextBox passBox;
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.TextBox prenomBox;
         private System.Windows.Forms.TextBox nomBox;
         private System.Windows.Forms.Button SignButton;
         private System.Windows.Forms.ComboBox comboBoxP;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblInsPays;
+        private System.Windows.Forms.Label lblInsConfMdp;
         private System.Windows.Forms.TextBox PassConfirm;
-        private System.Windows.Forms.Button afficherButton;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button afficherCoMdp;
+        private System.Windows.Forms.Button afficherInsConfMdp;
+        private System.Windows.Forms.Button afficherInsNvMdp;
     }
 }
