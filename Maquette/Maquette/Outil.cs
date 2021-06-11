@@ -81,7 +81,7 @@ namespace Maquette
             string nomTrim = nom.Trim();
             if (prenom == prenomTrim && nomTrim == nom && !EstDansLaChaine(prenom, charSpéciaux()) && !EstDansLaChaine(nom, charSpéciaux())
                 && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && login.Length > 0 && login.Length<=32
-                && mdp.Length>0 && mdp.Length<=32 && Regex.IsMatch(mdp,"\\S\\w*\\S") && Regex.IsMatch(login,"\\S[a-zA-Z0-9]*\\S"))
+                && mdp.Length>0 && mdp.Length<=32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$") && Regex.IsMatch(login, "^\\S[a-zA-Z0-9]*\\S$"))
             {
                 var logins = (from a in musique.ABONNÉS
                               where a.LOGIN_ABONNÉ == login
@@ -588,7 +588,7 @@ namespace Maquette
 
         public static bool vérificationMDP(string mdp, ABONNÉS abo)
         {
-            if (mdp.Length > 0 && mdp.Length <= 32)
+            if (mdp.Length > 0 && mdp.Length <= 32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$"))
             {
                 string crypted = Crypter(mdp);
                 var mdpTest = (from a in musique.ABONNÉS
@@ -612,7 +612,7 @@ namespace Maquette
 
         public static string changerMDP(string mdp, ABONNÉS abo)
         {
-            if (mdp.Length > 0 && mdp.Length <= 32)
+            if (mdp.Length > 0 && mdp.Length <= 32 && Regex.IsMatch(mdp, "^\\S\\w*\\S$"))
             {
                 abo.PASSWORD_ABONNÉ = Crypter(mdp);
                 musique.SaveChanges();
@@ -626,9 +626,15 @@ namespace Maquette
 
         public static PAYS changerPays(PAYS p, ABONNÉS abo)
         {
-            abo.PAYS = p;
-            musique.SaveChanges();
-            return p;
+            if (paysExiste(p.NOM_PAYS) != null)
+            {
+                abo.PAYS = p;
+                musique.SaveChanges();
+                return p;
+            } else
+            {
+                return null;
+            }
         }
     }
 }
