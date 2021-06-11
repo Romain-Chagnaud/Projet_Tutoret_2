@@ -30,68 +30,68 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prologation));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnPreCon = new System.Windows.Forms.Button();
-            this.btnSuiCon = new System.Windows.Forms.Button();
-            this.lblPageReco = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pnlEmp = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrePro = new System.Windows.Forms.Button();
+            this.btnSuiPro = new System.Windows.Forms.Button();
+            this.lblPagePro = new System.Windows.Forms.Label();
+            this.lblProlo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // pnlEmp
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(21, 135);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(579, 375);
-            this.flowLayoutPanel1.TabIndex = 5;
+            this.pnlEmp.Location = new System.Drawing.Point(21, 135);
+            this.pnlEmp.Name = "pnlEmp";
+            this.pnlEmp.Size = new System.Drawing.Size(579, 375);
+            this.pnlEmp.TabIndex = 5;
             // 
-            // btnPreCon
+            // btnPrePro
             // 
-            this.btnPreCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
-            this.btnPreCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnPreCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreCon.Location = new System.Drawing.Point(21, 516);
-            this.btnPreCon.Name = "btnPreCon";
-            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
-            this.btnPreCon.TabIndex = 6;
-            this.btnPreCon.UseVisualStyleBackColor = true;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPrePro.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
+            this.btnPrePro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrePro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnPrePro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrePro.Location = new System.Drawing.Point(21, 516);
+            this.btnPrePro.Name = "btnPrePro";
+            this.btnPrePro.Size = new System.Drawing.Size(75, 23);
+            this.btnPrePro.TabIndex = 6;
+            this.btnPrePro.UseVisualStyleBackColor = true;
+            this.btnPrePro.Click += new System.EventHandler(this.btnPreCon_Click);
             // 
-            // btnSuiCon
+            // btnSuiPro
             // 
-            this.btnSuiCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
-            this.btnSuiCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSuiCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnSuiCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuiCon.Location = new System.Drawing.Point(525, 516);
-            this.btnSuiCon.Name = "btnSuiCon";
-            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
-            this.btnSuiCon.TabIndex = 7;
-            this.btnSuiCon.UseVisualStyleBackColor = true;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiPro.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
+            this.btnSuiPro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiPro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnSuiPro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuiPro.Location = new System.Drawing.Point(525, 516);
+            this.btnSuiPro.Name = "btnSuiPro";
+            this.btnSuiPro.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiPro.TabIndex = 7;
+            this.btnSuiPro.UseVisualStyleBackColor = true;
+            this.btnSuiPro.Click += new System.EventHandler(this.btnSuiCon_Click);
             // 
-            // lblPageReco
+            // lblPagePro
             // 
-            this.lblPageReco.AutoSize = true;
-            this.lblPageReco.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageReco.ForeColor = System.Drawing.Color.White;
-            this.lblPageReco.Location = new System.Drawing.Point(283, 521);
-            this.lblPageReco.Name = "lblPageReco";
-            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
-            this.lblPageReco.TabIndex = 8;
-            this.lblPageReco.Text = "Page";
+            this.lblPagePro.AutoSize = true;
+            this.lblPagePro.BackColor = System.Drawing.Color.Transparent;
+            this.lblPagePro.ForeColor = System.Drawing.Color.White;
+            this.lblPagePro.Location = new System.Drawing.Point(283, 521);
+            this.lblPagePro.Name = "lblPagePro";
+            this.lblPagePro.Size = new System.Drawing.Size(32, 13);
+            this.lblPagePro.TabIndex = 8;
+            this.lblPagePro.Text = "Page";
             // 
-            // label1
+            // lblProlo
             // 
-            this.label1.BackColor = System.Drawing.Color.Teal;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label1.Location = new System.Drawing.Point(156, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 61);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Vérifier prolongation";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProlo.BackColor = System.Drawing.Color.Teal;
+            this.lblProlo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProlo.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lblProlo.Location = new System.Drawing.Point(156, 33);
+            this.lblProlo.Name = "lblProlo";
+            this.lblProlo.Size = new System.Drawing.Size(289, 61);
+            this.lblProlo.TabIndex = 9;
+            this.lblProlo.Text = "Vérifier prolongation";
+            this.lblProlo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Prologation
             // 
@@ -101,11 +101,11 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(612, 561);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblPageReco);
-            this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.btnPreCon);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.lblProlo);
+            this.Controls.Add(this.lblPagePro);
+            this.Controls.Add(this.btnSuiPro);
+            this.Controls.Add(this.btnPrePro);
+            this.Controls.Add(this.pnlEmp);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Prologation";
@@ -117,10 +117,10 @@ namespace Maquette
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnPreCon;
-        private System.Windows.Forms.Button btnSuiCon;
-        private System.Windows.Forms.Label lblPageReco;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel pnlEmp;
+        private System.Windows.Forms.Button btnPrePro;
+        private System.Windows.Forms.Button btnSuiPro;
+        private System.Windows.Forms.Label lblPagePro;
+        private System.Windows.Forms.Label lblProlo;
     }
 }

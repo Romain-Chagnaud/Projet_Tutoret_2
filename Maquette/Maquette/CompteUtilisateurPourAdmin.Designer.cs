@@ -29,50 +29,42 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.labelNom = new System.Windows.Forms.Label();
             this.labelPrénom = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblMdpActuel = new System.Windows.Forms.Label();
+            this.lblNvMdp = new System.Windows.Forms.Label();
+            this.lblCoNvMdp = new System.Windows.Forms.Label();
             this.nouveauMDP = new System.Windows.Forms.TextBox();
             this.confirmedMDP = new System.Windows.Forms.TextBox();
             this.comboPays = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblPays = new System.Windows.Forms.Label();
             this.changerPays = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mdpLabel = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCoNvMdp = new System.Windows.Forms.Button();
+            this.btnNvMdp = new System.Windows.Forms.Button();
             this.changeMDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.imgPortrait = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPortrait)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnQuitter
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.BackgroundImage = global::Maquette.Properties.Resources.quitter;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Teal;
-            this.button1.Location = new System.Drawing.Point(559, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 35);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::Maquette.Properties.Resources.user;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(12, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(81, 102);
-            this.panel1.TabIndex = 1;
+            this.btnQuitter.BackColor = System.Drawing.Color.Teal;
+            this.btnQuitter.BackgroundImage = global::Maquette.Properties.Resources.quitter;
+            this.btnQuitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnQuitter.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitter.ForeColor = System.Drawing.Color.Teal;
+            this.btnQuitter.Location = new System.Drawing.Point(559, 8);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(41, 35);
+            this.btnQuitter.TabIndex = 0;
+            this.btnQuitter.UseVisualStyleBackColor = false;
             // 
             // labelNom
             // 
@@ -107,39 +99,39 @@ namespace Maquette
             this.labelLogin.TabIndex = 4;
             this.labelLogin.Text = "Login";
             // 
-            // label4
+            // lblMdpActuel
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Teal;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(11, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Mot de passe actuel :";
+            this.lblMdpActuel.AutoSize = true;
+            this.lblMdpActuel.BackColor = System.Drawing.Color.Teal;
+            this.lblMdpActuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblMdpActuel.ForeColor = System.Drawing.Color.Black;
+            this.lblMdpActuel.Location = new System.Drawing.Point(11, 150);
+            this.lblMdpActuel.Name = "lblMdpActuel";
+            this.lblMdpActuel.Size = new System.Drawing.Size(181, 20);
+            this.lblMdpActuel.TabIndex = 5;
+            this.lblMdpActuel.Text = "Mot de passe actuel :";
             // 
-            // label5
+            // lblNvMdp
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Teal;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(15, 239);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Nouveau mot de passe :";
+            this.lblNvMdp.AutoSize = true;
+            this.lblNvMdp.BackColor = System.Drawing.Color.Teal;
+            this.lblNvMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblNvMdp.Location = new System.Drawing.Point(15, 239);
+            this.lblNvMdp.Name = "lblNvMdp";
+            this.lblNvMdp.Size = new System.Drawing.Size(202, 20);
+            this.lblNvMdp.TabIndex = 6;
+            this.lblNvMdp.Text = "Nouveau mot de passe :";
             // 
-            // label6
+            // lblCoNvMdp
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Teal;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(15, 309);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(332, 20);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Confirmation du nouveau mot de passe :";
+            this.lblCoNvMdp.AutoSize = true;
+            this.lblCoNvMdp.BackColor = System.Drawing.Color.Teal;
+            this.lblCoNvMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCoNvMdp.Location = new System.Drawing.Point(15, 309);
+            this.lblCoNvMdp.Name = "lblCoNvMdp";
+            this.lblCoNvMdp.Size = new System.Drawing.Size(332, 20);
+            this.lblCoNvMdp.TabIndex = 7;
+            this.lblCoNvMdp.Text = "Confirmation du nouveau mot de passe :";
             // 
             // nouveauMDP
             // 
@@ -173,16 +165,16 @@ namespace Maquette
             this.comboPays.Size = new System.Drawing.Size(162, 21);
             this.comboPays.TabIndex = 12;
             // 
-            // label7
+            // lblPays
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Teal;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(372, 173);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Pays :";
+            this.lblPays.AutoSize = true;
+            this.lblPays.BackColor = System.Drawing.Color.Teal;
+            this.lblPays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPays.Location = new System.Drawing.Point(372, 173);
+            this.lblPays.Name = "lblPays";
+            this.lblPays.Size = new System.Drawing.Size(57, 20);
+            this.lblPays.TabIndex = 13;
+            this.lblPays.Text = "Pays :";
             // 
             // changerPays
             // 
@@ -196,19 +188,20 @@ namespace Maquette
             this.changerPays.TabIndex = 14;
             this.changerPays.Text = "Changer";
             this.changerPays.UseVisualStyleBackColor = false;
-            this.changerPays.Click += new System.EventHandler(this.changerPays_Click);
+            this.changerPays.Click += new System.EventHandler(this.ChangerPays_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Teal;
+            this.groupBox1.Controls.Add(this.imgPortrait);
             this.groupBox1.Controls.Add(this.mdpLabel);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnCoNvMdp);
+            this.groupBox1.Controls.Add(this.btnNvMdp);
+            this.groupBox1.Controls.Add(this.btnQuitter);
             this.groupBox1.Controls.Add(this.changeMDP);
             this.groupBox1.Controls.Add(this.changerPays);
             this.groupBox1.Controls.Add(this.labelLogin);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblMdpActuel);
             this.groupBox1.Location = new System.Drawing.Point(4, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(626, 434);
@@ -226,29 +219,29 @@ namespace Maquette
             this.mdpLabel.TabIndex = 20;
             this.mdpLabel.Text = "Mdp";
             // 
-            // button4
+            // btnCoNvMdp
             // 
-            this.button4.BackgroundImage = global::Maquette.Properties.Resources.visibility;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(187, 334);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(26, 23);
-            this.button4.TabIndex = 19;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnCoNvMdp.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.btnCoNvMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCoNvMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCoNvMdp.Location = new System.Drawing.Point(187, 334);
+            this.btnCoNvMdp.Name = "btnCoNvMdp";
+            this.btnCoNvMdp.Size = new System.Drawing.Size(26, 23);
+            this.btnCoNvMdp.TabIndex = 19;
+            this.btnCoNvMdp.UseVisualStyleBackColor = true;
+            this.btnCoNvMdp.Click += new System.EventHandler(this.BtnCoNvMdp_Click);
             // 
-            // button2
+            // btnNvMdp
             // 
-            this.button2.BackgroundImage = global::Maquette.Properties.Resources.visibility;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(187, 266);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 23);
-            this.button2.TabIndex = 18;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnNvMdp.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.btnNvMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNvMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNvMdp.Location = new System.Drawing.Point(187, 266);
+            this.btnNvMdp.Name = "btnNvMdp";
+            this.btnNvMdp.Size = new System.Drawing.Size(26, 23);
+            this.btnNvMdp.TabIndex = 18;
+            this.btnNvMdp.UseVisualStyleBackColor = true;
+            this.btnNvMdp.Click += new System.EventHandler(this.BtnNvMdp_Click);
             // 
             // changeMDP
             // 
@@ -262,7 +255,7 @@ namespace Maquette
             this.changeMDP.TabIndex = 11;
             this.changeMDP.Text = "Changer";
             this.changeMDP.UseVisualStyleBackColor = false;
-            this.changeMDP.Click += new System.EventHandler(this.changeMDP_Click);
+            this.changeMDP.Click += new System.EventHandler(this.ChangeMDP_Click);
             // 
             // groupBox2
             // 
@@ -276,21 +269,30 @@ namespace Maquette
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // imgPortrait
+            // 
+            this.imgPortrait.Image = global::Maquette.Properties.Resources.user;
+            this.imgPortrait.Location = new System.Drawing.Point(9, 20);
+            this.imgPortrait.Name = "imgPortrait";
+            this.imgPortrait.Size = new System.Drawing.Size(100, 105);
+            this.imgPortrait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgPortrait.TabIndex = 21;
+            this.imgPortrait.TabStop = false;
+            // 
             // CompteUtilisateurPourAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(633, 445);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelNom);
             this.Controls.Add(this.labelPrénom);
             this.Controls.Add(this.confirmedMDP);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblCoNvMdp);
             this.Controls.Add(this.nouveauMDP);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblNvMdp);
             this.Controls.Add(this.comboPays);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblPays);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -298,6 +300,7 @@ namespace Maquette
             this.Text = "CompteUtilisateur";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPortrait)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,24 +308,24 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Label labelNom;
         private System.Windows.Forms.Label labelPrénom;
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblMdpActuel;
+        private System.Windows.Forms.Label lblNvMdp;
+        private System.Windows.Forms.Label lblCoNvMdp;
         private System.Windows.Forms.TextBox nouveauMDP;
         private System.Windows.Forms.TextBox confirmedMDP;
         private System.Windows.Forms.ComboBox comboPays;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblPays;
         private System.Windows.Forms.Button changerPays;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button changeMDP;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCoNvMdp;
+        private System.Windows.Forms.Button btnNvMdp;
         private System.Windows.Forms.Label mdpLabel;
+        private System.Windows.Forms.PictureBox imgPortrait;
     }
 }

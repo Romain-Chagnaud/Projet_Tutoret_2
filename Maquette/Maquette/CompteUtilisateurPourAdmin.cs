@@ -26,10 +26,58 @@ namespace Maquette
             comboPays.SelectedItem = a.PAYS;
         }
 
-        private void changeMDP_Click(object sender, EventArgs e)
-        {
+        #region IHM
 
-            if (nouveauMDP.Text == confirmedMDP.Text )
+        /// <summary>
+        /// Clic sur le bouton Changer Mot de Passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeMDP_Click(object sender, EventArgs e)
+        {
+            ChangerMdp();
+        }
+
+        /// <summary>
+        /// Clic sur le bouton Changer de Pays
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangerPays_Click(object sender, EventArgs e)
+        {
+            ChangerPays();
+        }
+
+        /// <summary>
+        /// Clic sur l'oeil à coôté du nouveau MDP
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnNvMdp_Click(object sender, EventArgs e)
+        {
+            AfficherNvMDP();
+        }
+
+        /// <summary>
+        /// Clic sur l'oeil à coté de la confirmation du nouveau mot de passe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCoNvMdp_Click(object sender, EventArgs e)
+        {
+            AfficherCoNvMDP();
+        }
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Change le mot de passe
+        /// </summary>
+        private void ChangerMdp()
+        {
+            if (nouveauMDP.Text == confirmedMDP.Text)
             {
                 if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
                 {
@@ -43,7 +91,8 @@ namespace Maquette
                         MessageBox.Show("Mot de passe changé.");
                         mdpLabel.Text = Decrypter(abonné.PASSWORD_ABONNÉ);
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Nouveau mot de passene respecte pas les règles de nommages : 32 caractères, caractères spéciaux et alphanumériques autorisés. Pas d'espaces.");
                 }
@@ -56,21 +105,22 @@ namespace Maquette
             confirmedMDP.Text = "";
         }
 
-        private void changerPays_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Change le pays de l'utilisateur
+        /// </summary>
+        private void ChangerPays()
         {
             if (comboPays.SelectedItem != null)
             {
-                ChangerPays((PAYS)comboPays.SelectedItem, abonné);
+                Outil.ChangerPays((PAYS)comboPays.SelectedItem, abonné);
                 MessageBox.Show("Pays changé.");
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Révèle le nouveau MDP
+        /// </summary>
+        private void AfficherNvMDP()
         {
             if (nouveauMDP.PasswordChar == '●')
             {
@@ -82,7 +132,10 @@ namespace Maquette
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Révèle la confirmation du nouveau MDP
+        /// </summary>
+        private void AfficherCoNvMDP()
         {
             if (confirmedMDP.PasswordChar == '●')
             {
@@ -93,5 +146,8 @@ namespace Maquette
                 confirmedMDP.PasswordChar = '●';
             }
         }
+        #endregion
+
+
     }
 }

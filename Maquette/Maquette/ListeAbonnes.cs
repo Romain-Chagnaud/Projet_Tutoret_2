@@ -25,29 +25,51 @@ namespace Maquette
             AfficherAbos();
         }
 
-        private void AfficherAbos()
-        {
-            flowLayoutPanel1.Controls.Clear();
-            for (int i = page * 4; i < (page + 1) * 4; i++)
-            {
-                if (i < abos.Count)
-                {
-                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(abos[i]));
-                }
-            }
-            lblPageReco.Text = page + 1 + "";
-        }
+        #region IHM
 
-        private void btnPreCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton Page Précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreAbo_Click(object sender, EventArgs e)
         {
             Decrementer();
         }
 
-        private void btnSuiCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton Page Suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuiAbo_Click(object sender, EventArgs e)
         {
             Incrementer();
         }
 
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Affiche les abonnés de la page actuelle
+        /// </summary>
+        private void AfficherAbos()
+        {
+            pnlAbo.Controls.Clear();
+            for (int i = page * 4; i < (page + 1) * 4; i++)
+            {
+                if (i < abos.Count)
+                {
+                    pnlAbo.Controls.Add(new PresentationAbonne(abos[i]));
+                }
+            }
+            lblPageAbo.Text = page + 1 + "";
+        }
+
+        /// <summary>
+        /// Actualise le nombre de pages
+        /// </summary>
         private void ActualiserPage()
         {
             if (abos.Count % 4 != 0)
@@ -60,6 +82,9 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Incrémente la page
+        /// </summary>
         private void Incrementer()
         {
             if (page < nbPage)
@@ -72,6 +97,10 @@ namespace Maquette
             }
             AfficherAbos();
         }
+
+        /// <summary>
+        /// Décrémente la page
+        /// </summary>
         private void Decrementer()
         {
             if (page > 0)
@@ -84,5 +113,13 @@ namespace Maquette
             }
             AfficherAbos();
         }
+
+        #endregion
+
+
+
+
+
+
     }
 }

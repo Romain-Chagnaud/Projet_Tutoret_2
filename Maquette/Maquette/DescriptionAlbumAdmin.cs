@@ -21,7 +21,7 @@ namespace Maquette
             this.album = album;
             InitialiserContenu();
         }
-
+        #region Logique
         private void InitialiserContenu()
         {
             lblTitre.Text = album.TITRE_ALBUM.Trim();
@@ -34,5 +34,6 @@ namespace Maquette
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));
             }
         }
+        #endregion
     }
 }

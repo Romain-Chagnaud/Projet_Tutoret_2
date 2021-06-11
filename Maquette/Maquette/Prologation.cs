@@ -17,28 +17,83 @@ namespace Maquette
 
         List<EMPRUNTER> prolo;
         int pageProlo = 0;
+        int nbPage;
 
         public Prologation()
         {
             InitializeComponent();
-
+            ActualiserPages();
             prolo = GetProlongés();
         }
 
-        private void ChargerListe()
+
+        #region IHM
+
+        /// <summary>
+        /// Clic sur le bouton Page Précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPreCon_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Controls.Clear();
+            DiminuerReco();
+        }
+
+        /// <summary>
+        /// Clic sur le bouton Page Suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSuiCon_Click(object sender, EventArgs e)
+        {
+            AugmenterReco();
+
+        }
+
+        /// <summary>
+        /// Affichage dès le chargement de la fenêtre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Prologation_Load(object sender, EventArgs e)
+        {
+            AfficherEmprunts();
+        }
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Actualise le nombre de pages
+        /// </summary>
+        private void ActualiserPages()
+        {
+            if (prolo.Count % 3 != 0)
+            {
+                nbPage = prolo.Count / 3;
+            }
+            else
+            {
+                nbPage = (prolo.Count / 3) - 1;
+            }
+        }
+
+        /// <summary>
+        /// Affiche tous les emprunts
+        /// </summary>
+        private void AfficherEmprunts()
+        {
+            pnlEmp.Controls.Clear();
             for (int i = 2 * pageProlo; i < 2 * (pageProlo + 1); i++)
             {
                 if (i < prolo.Count)
                 {
-                    flowLayoutPanel1.Controls.Add(new ProlongationAbo(prolo[i]));
+                    pnlEmp.Controls.Add(new ProlongationAbo(prolo[i]));
                 }
             }
-            lblPageReco.Text = pageProlo + 1 + "";
+            lblPagePro.Text = pageProlo + 1 + "";
         }
-
-
 
         /// <summary>
         /// Décrémente la page des recommandés
@@ -56,18 +111,9 @@ namespace Maquette
                     pageProlo = (prolo.Count / 2) - 1;
                 }
             }
-            ChargerListe();
+            AfficherEmprunts();
         }
 
-        private void btnPreCon_Click(object sender, EventArgs e)
-        {
-            DiminuerReco();
-        }
-        private void btnSuiCon_Click(object sender, EventArgs e)
-        {
-            AugmenterReco();
-
-        }
         /// <summary>
         /// Incrémente la page des recommandés
         /// </summary>
@@ -81,13 +127,11 @@ namespace Maquette
             {
                 pageProlo = 0;
             }
-            ChargerListe();
+            AfficherEmprunts();
 
         }
 
-        private void Prologation_Load(object sender, EventArgs e)
-        {
-            ChargerListe();
-        }
+        #endregion
+
     }
 }

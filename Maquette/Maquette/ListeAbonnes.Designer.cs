@@ -30,69 +30,69 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListeAbonnes));
-            this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblPageReco = new System.Windows.Forms.Label();
-            this.btnSuiCon = new System.Windows.Forms.Button();
-            this.btnPreCon = new System.Windows.Forms.Button();
+            this.lblListe = new System.Windows.Forms.Label();
+            this.pnlAbo = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblPageAbo = new System.Windows.Forms.Label();
+            this.btnSuiAbo = new System.Windows.Forms.Button();
+            this.btnPreAbo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label2
+            // lblListe
             // 
-            this.label2.BackColor = System.Drawing.Color.Teal;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label2.Location = new System.Drawing.Point(129, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(289, 61);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Liste des abonnés";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblListe.BackColor = System.Drawing.Color.Teal;
+            this.lblListe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListe.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lblListe.Location = new System.Drawing.Point(129, 9);
+            this.lblListe.Name = "lblListe";
+            this.lblListe.Size = new System.Drawing.Size(289, 61);
+            this.lblListe.TabIndex = 10;
+            this.lblListe.Text = "Liste des abonnés";
+            this.lblListe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel1
+            // pnlAbo
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Teal;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 84);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(560, 636);
-            this.flowLayoutPanel1.TabIndex = 11;
+            this.pnlAbo.BackColor = System.Drawing.Color.Teal;
+            this.pnlAbo.Location = new System.Drawing.Point(12, 84);
+            this.pnlAbo.Name = "pnlAbo";
+            this.pnlAbo.Size = new System.Drawing.Size(560, 636);
+            this.pnlAbo.TabIndex = 11;
             // 
-            // lblPageReco
+            // lblPageAbo
             // 
-            this.lblPageReco.AutoSize = true;
-            this.lblPageReco.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageReco.ForeColor = System.Drawing.Color.White;
-            this.lblPageReco.Location = new System.Drawing.Point(272, 736);
-            this.lblPageReco.Name = "lblPageReco";
-            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
-            this.lblPageReco.TabIndex = 18;
-            this.lblPageReco.Text = "Page";
+            this.lblPageAbo.AutoSize = true;
+            this.lblPageAbo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPageAbo.ForeColor = System.Drawing.Color.White;
+            this.lblPageAbo.Location = new System.Drawing.Point(272, 736);
+            this.lblPageAbo.Name = "lblPageAbo";
+            this.lblPageAbo.Size = new System.Drawing.Size(32, 13);
+            this.lblPageAbo.TabIndex = 18;
+            this.lblPageAbo.Text = "Page";
             // 
-            // btnSuiCon
+            // btnSuiAbo
             // 
-            this.btnSuiCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
-            this.btnSuiCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSuiCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnSuiCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuiCon.Location = new System.Drawing.Point(497, 726);
-            this.btnSuiCon.Name = "btnSuiCon";
-            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
-            this.btnSuiCon.TabIndex = 17;
-            this.btnSuiCon.UseVisualStyleBackColor = true;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiAbo.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
+            this.btnSuiAbo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiAbo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnSuiAbo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuiAbo.Location = new System.Drawing.Point(497, 726);
+            this.btnSuiAbo.Name = "btnSuiAbo";
+            this.btnSuiAbo.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiAbo.TabIndex = 17;
+            this.btnSuiAbo.UseVisualStyleBackColor = true;
+            this.btnSuiAbo.Click += new System.EventHandler(this.BtnSuiAbo_Click);
             // 
-            // btnPreCon
+            // btnPreAbo
             // 
-            this.btnPreCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
-            this.btnPreCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnPreCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreCon.Location = new System.Drawing.Point(12, 726);
-            this.btnPreCon.Name = "btnPreCon";
-            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
-            this.btnPreCon.TabIndex = 16;
-            this.btnPreCon.UseVisualStyleBackColor = true;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPreAbo.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
+            this.btnPreAbo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPreAbo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnPreAbo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreAbo.Location = new System.Drawing.Point(12, 726);
+            this.btnPreAbo.Name = "btnPreAbo";
+            this.btnPreAbo.Size = new System.Drawing.Size(75, 23);
+            this.btnPreAbo.TabIndex = 16;
+            this.btnPreAbo.UseVisualStyleBackColor = true;
+            this.btnPreAbo.Click += new System.EventHandler(this.BtnPreAbo_Click);
             // 
             // ListeAbonnes
             // 
@@ -101,11 +101,11 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 761);
-            this.Controls.Add(this.lblPageReco);
-            this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.btnPreCon);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblPageAbo);
+            this.Controls.Add(this.btnSuiAbo);
+            this.Controls.Add(this.btnPreAbo);
+            this.Controls.Add(this.pnlAbo);
+            this.Controls.Add(this.lblListe);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListeAbonnes";
@@ -117,10 +117,10 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label lblPageReco;
-        private System.Windows.Forms.Button btnSuiCon;
-        private System.Windows.Forms.Button btnPreCon;
+        private System.Windows.Forms.Label lblListe;
+        private System.Windows.Forms.FlowLayoutPanel pnlAbo;
+        private System.Windows.Forms.Label lblPageAbo;
+        private System.Windows.Forms.Button btnSuiAbo;
+        private System.Windows.Forms.Button btnPreAbo;
     }
 }

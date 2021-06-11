@@ -20,33 +20,39 @@ namespace Maquette
         {
             InitializeComponent();
             albums = Outil.GetAlbumsNonEmpruntés();
+            ActualiserPage();
             AfficherAlbums();
         }
 
+        #region IHM
+
+        /// <summary>
+        /// Clic sur le bouton Page Précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPreCon_Click(object sender, EventArgs e)
         {
             Decrementer();
         }
 
+        /// <summary>
+        /// Clic sur le bouton Page Suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSuiCon_Click(object sender, EventArgs e)
         {
             Incrementer();
         }
 
-        private void AfficherAlbums()
-        {
-            flowLayoutPanel1.Controls.Clear();
-            for (int i = 3 * page; i < 3 * (page + 1); i++)
-            {
-                if (i < albums.Count)
-                {
-                    flowLayoutPanel1.Controls.Add(new AlbumNonEmprunte(albums[i]));
-                }
-            }
-            lblPageReco.Text = page + 1 + "";
-        }
+        #endregion
 
+        #region Logique
 
+        /// <summary>
+        /// Actualise le nombre de pages
+        /// </summary>
         private void ActualiserPage()
         {
             if (albums.Count % 4 != 0)
@@ -59,6 +65,25 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Affiche les albums de la page courante
+        /// </summary>
+        private void AfficherAlbums()
+        {
+            pnlNonEmp.Controls.Clear();
+            for (int i = 3 * page; i < 3 * (page + 1); i++)
+            {
+                if (i < albums.Count)
+                {
+                    pnlNonEmp.Controls.Add(new AlbumNonEmprunte(albums[i]));
+                }
+            }
+            lblPageReco.Text = page + 1 + "";
+        }
+
+        /// <summary>
+        /// Incrémente la page
+        /// </summary>
         private void Incrementer()
         {
             if (page < nbPage)
@@ -72,8 +97,9 @@ namespace Maquette
             AfficherAlbums();
         }
 
-
-
+        /// <summary>
+        /// Décrémente la page
+        /// </summary>
         private void Decrementer()
         {
             if (page > 0)
@@ -86,5 +112,14 @@ namespace Maquette
             }
             AfficherAlbums();
         }
+
+        #endregion
+
+
+
+
+
+
+
     }
 }

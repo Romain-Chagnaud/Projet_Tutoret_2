@@ -20,6 +20,8 @@ namespace Maquette
             ChargerElements(emprunt.ABONNÉS, emprunt.ALBUMS);
         }
 
+        #region Logique
+
         /// <summary>
         /// Initialise l'affichage de l'emprunt
         /// </summary>
@@ -35,6 +37,6 @@ namespace Maquette
             }
         }
 
-
+        #endregion
     }
 }

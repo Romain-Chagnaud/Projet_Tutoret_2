@@ -30,32 +30,32 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NonEmprunte));
-            this.button5 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDeco = new System.Windows.Forms.Button();
+            this.pnlNonEmp = new System.Windows.Forms.FlowLayoutPanel();
             this.lblPageReco = new System.Windows.Forms.Label();
             this.btnPreCon = new System.Windows.Forms.Button();
             this.btnSuiCon = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button5
+            // btnDeco
             // 
-            this.button5.BackColor = System.Drawing.Color.Teal;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button5.Location = new System.Drawing.Point(12, 23);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(258, 67);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Non emprunté depuis + d\'1 an";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnDeco.BackColor = System.Drawing.Color.Teal;
+            this.btnDeco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeco.ForeColor = System.Drawing.SystemColors.Menu;
+            this.btnDeco.Location = new System.Drawing.Point(12, 23);
+            this.btnDeco.Name = "btnDeco";
+            this.btnDeco.Size = new System.Drawing.Size(258, 67);
+            this.btnDeco.TabIndex = 8;
+            this.btnDeco.Text = "Non emprunté depuis + d\'1 an";
+            this.btnDeco.UseVisualStyleBackColor = false;
             // 
-            // flowLayoutPanel1
+            // pnlNonEmp
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Teal;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 97);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(559, 402);
-            this.flowLayoutPanel1.TabIndex = 9;
+            this.pnlNonEmp.BackColor = System.Drawing.Color.Teal;
+            this.pnlNonEmp.Location = new System.Drawing.Point(13, 97);
+            this.pnlNonEmp.Name = "pnlNonEmp";
+            this.pnlNonEmp.Size = new System.Drawing.Size(559, 402);
+            this.pnlNonEmp.TabIndex = 9;
             // 
             // lblPageReco
             // 
@@ -106,8 +106,8 @@ namespace Maquette
             this.Controls.Add(this.lblPageReco);
             this.Controls.Add(this.btnPreCon);
             this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.pnlNonEmp);
+            this.Controls.Add(this.btnDeco);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NonEmprunte";
@@ -120,8 +120,8 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnDeco;
+        private System.Windows.Forms.FlowLayoutPanel pnlNonEmp;
         private System.Windows.Forms.Label lblPageReco;
         private System.Windows.Forms.Button btnPreCon;
         private System.Windows.Forms.Button btnSuiCon;
