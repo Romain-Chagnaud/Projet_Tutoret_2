@@ -645,7 +645,10 @@ namespace Maquette
             foreach (ALBUMS al in albums)
             {
                 var emprunts = GetEmpruntsSelonAlbum(al);
-
+                if (emprunts.Count == 0)
+                {
+                    albumsNonEmpruntés.Add(al);
+                }
                 if (emprunts.Count > 0)
                 {
                     int compteur = 0;
