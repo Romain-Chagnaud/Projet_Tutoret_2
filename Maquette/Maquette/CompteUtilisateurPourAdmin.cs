@@ -18,7 +18,7 @@ namespace Maquette
             labelPrénom.Text = a.PRÉNOM_ABONNÉ;
             labelLogin.Text = a.LOGIN_ABONNÉ;
             mdpLabel.Text = Decrypter(a.PASSWORD_ABONNÉ);
-            List<PAYS> pays = musique.PAYS.ToList();
+            List<PAYS> pays = Musique.PAYS.ToList();
             foreach (PAYS p in pays)
             {
                 comboPays.Items.Add(p);
@@ -33,7 +33,7 @@ namespace Maquette
             {
                 if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
                 {
-                    String mdp = changerMDP(nouveauMDP.Text, abonné);
+                    String mdp = ChangerMDP(nouveauMDP.Text, abonné);
                     if (mdp == null)
                     {
                         MessageBox.Show("Nouveau mot de passe trop long.");
@@ -60,7 +60,7 @@ namespace Maquette
         {
             if (comboPays.SelectedItem != null)
             {
-                changerPays((PAYS)comboPays.SelectedItem, abonné);
+                ChangerPays((PAYS)comboPays.SelectedItem, abonné);
                 MessageBox.Show("Pays changé.");
             }
         }

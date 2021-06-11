@@ -22,8 +22,8 @@ namespace Maquette
         public TopAlbum()
         {
             InitializeComponent();
-            albums = Outil.getTop10Albums();
-            count = Outil.getTop10Count();
+            albums = Outil.GetTop10Albums();
+            count = Outil.GetTop10Count();
             ActualiserPage();
             AfficherAlbums();
         }

@@ -19,7 +19,7 @@ namespace Maquette
         public NonEmprunte()
         {
             InitializeComponent();
-            albums = Outil.getAlbumsNonEmpruntés();
+            albums = Outil.GetAlbumsNonEmpruntés();
             AfficherAlbums();
         }
 

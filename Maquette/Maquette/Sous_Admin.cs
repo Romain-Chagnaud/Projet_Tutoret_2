@@ -19,7 +19,7 @@ namespace Maquette
         public Sous_Admin()
         {
             InitializeComponent();
-            abo = Outil.getFantomes();
+            abo = Outil.GetFantomes();
             ActualiserNbPages();
         }
 
@@ -85,7 +85,7 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Décrémente la page des recommandés
+        /// Décrémente la page 
         /// </summary>
         private void DiminuerReco()
         {
@@ -101,7 +101,7 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Incrémente la page des recommandés
+        /// Incrémente la page 
         /// </summary>
         private void AugmenterReco()
         {

@@ -20,36 +20,62 @@ namespace Maquette
         int page = 0;
         int nbPage;
 
-
         public Casier()
         {
             InitializeComponent();
-            tout = Outil.getALBUMSs();
+            tout = Outil.GetALBUMSs();
             afficher = tout;
         }
 
+
+        #region IHM
+
+        /// <summary>
+        /// Permet de charger les albums dans les casiers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChargement_Click(object sender, EventArgs e)
         {
             ChargerAlbums();
             AfficherAlbums();
         }
 
+        /// <summary>
+        /// Clique sur la page précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPreCas_Click(object sender, EventArgs e)
         {
             Decrementer();
         }
 
+        /// <summary>
+        /// Clique sur la page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSuiCas_Click(object sender, EventArgs e)
         {
             Incrementer();
         }
+        #endregion
 
+        #region Logique
+
+        /// <summary>
+        /// Charge un album
+        /// </summary>
         private void ChargerAlbums()
         {
             afficher = Outil.GetAlbumManquantCasier(txtAllee.Text, (int)numCasier.Value);
             ActualiserPage();
         }
 
+        /// <summary>
+        /// Affiche les albums 
+        /// </summary>
         private void AfficherAlbums()
         {
             pnlAlbums.Controls.Clear();
@@ -63,7 +89,9 @@ namespace Maquette
             lblPageCas.Text = page + 1 + "";
         }
 
-
+        /// <summary>
+        /// Actualise le nombre de page 
+        /// </summary>
         private void ActualiserPage()
         {
             if (afficher.Count % 4 != 0)
@@ -76,6 +104,9 @@ namespace Maquette
             }
         }
 
+        /// <summary>
+        /// Incrémente la page
+        /// </summary>
         private void Incrementer()
         {
             if (page < nbPage)
@@ -89,8 +120,9 @@ namespace Maquette
             AfficherAlbums();
         }
 
-
-
+        /// <summary>
+        /// Décrémente la page 
+        /// </summary>
         private void Decrementer()
         {
             if (page > 0)
@@ -103,5 +135,9 @@ namespace Maquette
             }
             AfficherAlbums();
         }
+
+        #endregion
+
+
     }
 }
