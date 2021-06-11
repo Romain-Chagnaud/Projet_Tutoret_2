@@ -33,7 +33,7 @@ namespace Maquette
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.btnVoir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portrait)).BeginInit();
             this.SuspendLayout();
             // 
             // portrait

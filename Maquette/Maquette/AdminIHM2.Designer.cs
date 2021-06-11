@@ -231,6 +231,7 @@ namespace Maquette
             this.Name = "AdminIHM2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminIHM2";
+            this.TopMost = true;
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.pnlElement.ResumeLayout(false);

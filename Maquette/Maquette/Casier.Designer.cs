@@ -158,6 +158,7 @@ namespace Maquette
             this.DoubleBuffered = true;
             this.Name = "Casier";
             this.Text = "Casier";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.numCasier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

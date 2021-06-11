@@ -121,6 +121,7 @@ namespace Maquette
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TopAlbum";
             this.Text = "TopAlbum";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
