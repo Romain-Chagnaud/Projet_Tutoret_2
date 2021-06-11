@@ -12,11 +12,13 @@ namespace Maquette
 {
     public partial class PresentationAbonne : UserControl
     {
+        private ABONNÉS abonnés;
         public PresentationAbonne(ABONNÉS abo)
         {
             InitializeComponent();
             lblNom.Text = abo.NOM_ABONNÉ;
             lblPrenom.Text = abo.PRÉNOM_ABONNÉ;
+            abonnés = abo;
         }
 
         private void btnVoir_Click(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace Maquette
 
         private void AfficherDetail()
         {
-            CompteUtilisateurPourAdmin ca = new CompteUtilisateurPourAdmin(abo);
+            CompteUtilisateurPourAdmin ca = new CompteUtilisateurPourAdmin(abonnés);
             ca.ShowDialog();
         }
     }

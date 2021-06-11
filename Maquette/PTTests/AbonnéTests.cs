@@ -21,7 +21,7 @@ namespace PTTests
             prenom = "Jean-Paul";
             login = "Belmont";
             mdp = "belmont123";
-            ABONNÉS abonnéTrue = inscription(prenom, nom, login, mdp);
+            ABONNÉS abonnéTrue = Inscription(prenom, nom, login, mdp, "");
             Assert.IsFalse(abonnéTrue == null);
 
             //Cas 2 : nouvel abonné avec login existant, Résultat : abonné non créé
@@ -29,7 +29,7 @@ namespace PTTests
             prenom = "Simon";
             login = "Belmont";
             mdp = "draculakiller";
-            ABONNÉS abonnéFalse = inscription(prenom, nom, login, mdp);
+            ABONNÉS abonnéFalse = Inscription(prenom, nom, login, mdp, "");
             Assert.IsTrue(abonnéFalse == null);
 
             //Cas 3 : nouvel abonné avec nom et prénom existant, Résultat : abonné créé
@@ -37,7 +37,7 @@ namespace PTTests
             prenom = "Jean-Paul";
             login = "Belmont2";
             mdp = "belmont123";
-            ABONNÉS abonnéTrue2 = inscription(prenom, nom, login, mdp);
+            ABONNÉS abonnéTrue2 = Inscription(prenom, nom, login, mdp, "");
             Assert.IsFalse(abonnéTrue2 == null);
 
             //Restoration
@@ -84,7 +84,7 @@ namespace PTTests
             Assert.IsFalse(e == null);
 
             //Emprunt du même album par un autre utilisateur
-            ab = inscription("Fernand", "Constandin", "Fernaldin", "ferni");
+            ab = Inscription("Fernand", "Constandin", "Fernaldin", "ferni","");
             e1 = NouvelEmprunt(ab, a);
             Assert.IsTrue(e1 == null);
             
