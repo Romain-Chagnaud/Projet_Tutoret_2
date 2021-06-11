@@ -30,68 +30,68 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sous_Admin2cs));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPreCon = new System.Windows.Forms.Button();
-            this.btnSuiCon = new System.Windows.Forms.Button();
-            this.lblPageReco = new System.Windows.Forms.Label();
+            this.pnlRetards = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblRetard = new System.Windows.Forms.Label();
+            this.btnPreRe = new System.Windows.Forms.Button();
+            this.btnSuiRe = new System.Windows.Forms.Button();
+            this.lblPageRe = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // pnlRetards
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 124);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(560, 335);
-            this.flowLayoutPanel1.TabIndex = 8;
+            this.pnlRetards.Location = new System.Drawing.Point(12, 124);
+            this.pnlRetards.Name = "pnlRetards";
+            this.pnlRetards.Size = new System.Drawing.Size(560, 335);
+            this.pnlRetards.TabIndex = 8;
             // 
-            // label1
+            // lblRetard
             // 
-            this.label1.BackColor = System.Drawing.Color.Teal;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label1.Location = new System.Drawing.Point(150, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 61);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Retards supérieurs à 10 jours";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRetard.BackColor = System.Drawing.Color.Teal;
+            this.lblRetard.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRetard.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lblRetard.Location = new System.Drawing.Point(150, 47);
+            this.lblRetard.Name = "lblRetard";
+            this.lblRetard.Size = new System.Drawing.Size(289, 61);
+            this.lblRetard.TabIndex = 9;
+            this.lblRetard.Text = "Retards supérieurs à 10 jours";
+            this.lblRetard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnPreCon
+            // btnPreRe
             // 
-            this.btnPreCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
-            this.btnPreCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnPreCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreCon.Location = new System.Drawing.Point(12, 480);
-            this.btnPreCon.Name = "btnPreCon";
-            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
-            this.btnPreCon.TabIndex = 13;
-            this.btnPreCon.UseVisualStyleBackColor = true;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPreRe.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
+            this.btnPreRe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPreRe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnPreRe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreRe.Location = new System.Drawing.Point(12, 480);
+            this.btnPreRe.Name = "btnPreRe";
+            this.btnPreRe.Size = new System.Drawing.Size(75, 23);
+            this.btnPreRe.TabIndex = 13;
+            this.btnPreRe.UseVisualStyleBackColor = true;
+            this.btnPreRe.Click += new System.EventHandler(this.BtnPreRe_Click);
             // 
-            // btnSuiCon
+            // btnSuiRe
             // 
-            this.btnSuiCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
-            this.btnSuiCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSuiCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnSuiCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuiCon.Location = new System.Drawing.Point(497, 480);
-            this.btnSuiCon.Name = "btnSuiCon";
-            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
-            this.btnSuiCon.TabIndex = 14;
-            this.btnSuiCon.UseVisualStyleBackColor = true;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiRe.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
+            this.btnSuiRe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiRe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnSuiRe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuiRe.Location = new System.Drawing.Point(497, 480);
+            this.btnSuiRe.Name = "btnSuiRe";
+            this.btnSuiRe.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiRe.TabIndex = 14;
+            this.btnSuiRe.UseVisualStyleBackColor = true;
+            this.btnSuiRe.Click += new System.EventHandler(this.BtnSuiRe_Click);
             // 
-            // lblPageReco
+            // lblPageRe
             // 
-            this.lblPageReco.AutoSize = true;
-            this.lblPageReco.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageReco.ForeColor = System.Drawing.Color.White;
-            this.lblPageReco.Location = new System.Drawing.Point(272, 490);
-            this.lblPageReco.Name = "lblPageReco";
-            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
-            this.lblPageReco.TabIndex = 15;
-            this.lblPageReco.Text = "Page";
+            this.lblPageRe.AutoSize = true;
+            this.lblPageRe.BackColor = System.Drawing.Color.Transparent;
+            this.lblPageRe.ForeColor = System.Drawing.Color.White;
+            this.lblPageRe.Location = new System.Drawing.Point(272, 490);
+            this.lblPageRe.Name = "lblPageRe";
+            this.lblPageRe.Size = new System.Drawing.Size(32, 13);
+            this.lblPageRe.TabIndex = 15;
+            this.lblPageRe.Text = "Page";
             // 
             // Sous_Admin2cs
             // 
@@ -101,11 +101,11 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 527);
-            this.Controls.Add(this.lblPageReco);
-            this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.btnPreCon);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.lblPageRe);
+            this.Controls.Add(this.btnSuiRe);
+            this.Controls.Add(this.btnPreRe);
+            this.Controls.Add(this.lblRetard);
+            this.Controls.Add(this.pnlRetards);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Sous_Admin2cs";
@@ -117,10 +117,10 @@ namespace Maquette
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnPreCon;
-        private System.Windows.Forms.Button btnSuiCon;
-        private System.Windows.Forms.Label lblPageReco;
+        private System.Windows.Forms.FlowLayoutPanel pnlRetards;
+        private System.Windows.Forms.Label lblRetard;
+        private System.Windows.Forms.Button btnPreRe;
+        private System.Windows.Forms.Button btnSuiRe;
+        private System.Windows.Forms.Label lblPageRe;
     }
 }

@@ -25,7 +25,45 @@ namespace Maquette
 
         }
 
+        #region IHM
 
+        /// <summary>
+        /// Clique sur page précédédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreRe_Click(object sender, EventArgs e)
+        {
+            DecrementerPage();
+        }
+
+         /// <summary>
+         /// Permet d'afficher les retardataire
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
+        private void Sous_Admin2cs_Load(object sender, EventArgs e)
+        {
+            ChargerRetard();
+        }
+
+        /// <summary>
+        /// Clique sur page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuiRe_Click(object sender, EventArgs e)
+        {
+            IncrementerPage();
+        }
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Actualiser le nombre de pages
+        /// </summary>
         private void ActualiserPage()
         {
             if (retards.Count % 2 != 0)
@@ -37,30 +75,26 @@ namespace Maquette
                 nbPageRetard = (retards.Count / 2) - 1;
             }
         }
-
-        private void Sous_Admin2cs_Load(object sender, EventArgs e)
-        {
-            ChargerRetard();
-        }
-
+                
+        /// <summary>
+        /// Affiche les retardataires
+        /// </summary>
         private void ChargerRetard()
         {
-            flowLayoutPanel1.Controls.Clear();
+            pnlRetards.Controls.Clear();
             for (int i = 2 * pageRetard; i < 2 * (pageRetard + 1); i++)
             {
                 if (i < retards.Count)
                 {
-                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(retards[i]));
+                    pnlRetards.Controls.Add(new PresentationAbonne(retards[i]));
                 }
             }
-            lblPageReco.Text = pageRetard + 1 + "";
+            lblPageRe.Text = pageRetard + 1 + "";
         }
 
-        private void btnPreCon_Click(object sender, EventArgs e)
-        {
-            DecrementerPage();
-        }
-
+        /// <summary>
+        /// Permet de décrémenter la page 
+        /// </summary>
         private void DecrementerPage()
         {
             if (pageRetard > 0)
@@ -74,11 +108,9 @@ namespace Maquette
             ChargerRetard();
         }
 
-        private void btnSuiCon_Click(object sender, EventArgs e)
-        {
-            IncrementerPage();
-        }
-
+        /// <summary>
+        /// Permet de d'incrémenter la page 
+        /// </summary>
         private void IncrementerPage()
         {
             if (pageRetard < nbPageRetard)
@@ -91,5 +123,7 @@ namespace Maquette
             }
             ChargerRetard();
         }
+
+        #endregion
     }
 }
