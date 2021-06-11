@@ -42,7 +42,7 @@ namespace Maquette
             this.btnVoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnVoir.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
             this.btnVoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoir.Location = new System.Drawing.Point(410, 10);
+            this.btnVoir.Location = new System.Drawing.Point(231, 3);
             this.btnVoir.Name = "btnVoir";
             this.btnVoir.Size = new System.Drawing.Size(100, 100);
             this.btnVoir.TabIndex = 5;
@@ -51,7 +51,8 @@ namespace Maquette
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
-            this.lblTitre.Location = new System.Drawing.Point(140, 3);
+            this.lblTitre.Location = new System.Drawing.Point(125, 3);
+            this.lblTitre.MaximumSize = new System.Drawing.Size(100, 0);
             this.lblTitre.Name = "lblTitre";
             this.lblTitre.Size = new System.Drawing.Size(28, 13);
             this.lblTitre.TabIndex = 4;
@@ -75,7 +76,7 @@ namespace Maquette
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.pochette);
             this.Name = "AlbumNonEmprunte";
-            this.Size = new System.Drawing.Size(528, 112);
+            this.Size = new System.Drawing.Size(331, 112);
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

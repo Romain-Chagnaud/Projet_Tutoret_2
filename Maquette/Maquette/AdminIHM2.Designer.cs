@@ -43,6 +43,7 @@ namespace Maquette
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnCasier = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -91,7 +92,6 @@ namespace Maquette
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(148, 40);
             this.toolStripLabel2.Text = "Album";
-            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -101,7 +101,7 @@ namespace Maquette
             this.flowLayoutPanel1.Controls.Add(this.groupBox3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(89, 188);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(993, 254);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(993, 394);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // groupBox1
@@ -118,11 +118,12 @@ namespace Maquette
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Teal;
-            this.pictureBox1.BackgroundImage = global::Maquette.Properties.Resources.bad_review;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::Maquette.Properties.Resources.emojidansbulle;
             this.pictureBox1.Location = new System.Drawing.Point(884, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -154,6 +155,7 @@ namespace Maquette
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::Maquette.Properties.Resources.ranking;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(884, 21);
@@ -180,20 +182,38 @@ namespace Maquette
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Teal;
             this.groupBox3.Controls.Add(this.pictureBox3);
+            this.groupBox3.Controls.Add(this.btnCasier);
             this.groupBox3.Location = new System.Drawing.Point(3, 253);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(990, 10);
+            this.groupBox3.Size = new System.Drawing.Size(990, 120);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::Maquette.Properties.Resources.quick_time;
-            this.pictureBox3.Location = new System.Drawing.Point(884, 28);
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Image = global::Maquette.Properties.Resources.lockers;
+            this.pictureBox3.Location = new System.Drawing.Point(884, 21);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(77, 79);
-            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
+            // 
+            // btnCasier
+            // 
+            this.btnCasier.BackColor = System.Drawing.Color.Teal;
+            this.btnCasier.FlatAppearance.BorderSize = 5;
+            this.btnCasier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCasier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnCasier.Location = new System.Drawing.Point(6, 11);
+            this.btnCasier.Name = "btnCasier";
+            this.btnCasier.Size = new System.Drawing.Size(978, 98);
+            this.btnCasier.TabIndex = 4;
+            this.btnCasier.Text = "Album manquant des casiers";
+            this.btnCasier.UseVisualStyleBackColor = false;
+            this.btnCasier.Click += new System.EventHandler(this.btnCasier_Click);
             // 
             // AdminIHM2
             // 
@@ -236,8 +256,9 @@ namespace Maquette
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnCasier;
     }
 }

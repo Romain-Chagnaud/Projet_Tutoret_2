@@ -37,13 +37,17 @@ namespace Maquette
             AdminIHM add = new AdminIHM();
             add.Show();
             this.Close();
+        }        
+
+        private void btnCasier_Click(object sender, EventArgs e)
+        {
+            AfficherCasier();
         }
 
-        private void toolStripLabel2_Click(object sender, EventArgs e)
+        private void AfficherCasier()
         {
-            AdminIHM2 add = new AdminIHM2();
-            add.Show();
-            this.Close();
+            Casier casier = new Casier();
+            casier.Show();
         }
     }
 }
