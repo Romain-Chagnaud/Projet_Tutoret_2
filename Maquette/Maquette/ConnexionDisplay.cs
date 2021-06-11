@@ -144,11 +144,8 @@ namespace Maquette
         {
             if (nomBox.Text != "" && prenomBox.Text != "" && idBox.Text != "" && passBox.Text != "")
             {
-                string prenomTrim = prenomBox.Text.Trim();
-                string nomTrim = nomBox.Text.Trim();
-                if (prenomBox.Text == prenomTrim && nomBox.Text == nomTrim && !EstDansLaChaine(prenomBox.Text, CharSpeciaux())
-                    && !EstDansLaChaine(nomBox.Text, CharSpeciaux())
-                    && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && idBox.Text.Length > 0 && idBox.Text.Length <= 32
+                if (Regex.IsMatch(prenomBox.Text, "^([A-Z][a-z]*( |-)?)*$") && Regex.IsMatch(nomBox.Text, "^([A-Z][a-z]*( |-)?)*$")
+                    && prenomBox.Text.Length > 0 && prenomBox.Text.Length <= 32 && nomBox.Text.Length > 0 && nomBox.Text.Length <= 32 && idBox.Text.Length > 0 && idBox.Text.Length <= 32
                 && passBox.Text.Length > 0 && passBox.Text.Length <= 32 && Regex.IsMatch(passBox.Text, "^\\S\\w*\\S$") && Regex.IsMatch(idBox.Text, "^\\S[a-zA-Z0-9]*\\S$"))
                 {
                     if (passBox.Text == PassConfirm.Text)
@@ -176,7 +173,9 @@ namespace Maquette
                 }
                 else
                 {
-                    MessageBox.Show("Erreur de saisie, caractères spéciaux autorisés uniquement pour le mot de passe. Pas d'espace dans le login et le mot de passe. Pas de caractères spéciaux dans le login. Nombre max de caractères : 32.");
+                    MessageBox.Show("Erreur de saisie, caractères spéciaux autorisés uniquement pour le mot de passe. Pas d'espace dans le login et le mot de passe." +
+                        "/n Pas de caractères spéciaux dans le login. Nombre max de caractères : 32./n" +
+                        "Le nom et le prénom peuvent être composés (liaison avec un espace ou tiret), première lettre de chaque partie en majuscule, le reste en minuscule.");
                 }
 
             }
@@ -234,35 +233,6 @@ namespace Maquette
         {
             ConnexionPanel.Visible = true;
             InscriptionPannel.Visible = false;
-        }
-
-        /// <summary>
-        /// Méthode qui donne accès aux caractères spéciaux
-        /// </summary>
-        /// <returns></returns>
-        private static String[] CharSpeciaux()
-        {
-            String liste = "0 1 2 3 4 5 6 7 8 9 _ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
-            return liste.Split(' ');
-        }
-
-        /// <summary>
-        /// Méthode qui permet de savoir si le prénom et le nom sont dans la chaine
-        /// </summary>
-        /// <param name="chaine"> chaine de caractere</param>
-        /// <param name="liste"> tableau de string </param>
-        /// <returns></returns>
-        private static Boolean EstDansLaChaine(String chaine, String[] liste)
-        {
-            Boolean contient = false;
-            for (int i = 0; i < liste.Length; i++)
-            {
-                if (chaine.Contains(liste[i]))
-                {
-                    contient = true;
-                }
-            }
-            return contient;
         }
        
         /// <summary>
