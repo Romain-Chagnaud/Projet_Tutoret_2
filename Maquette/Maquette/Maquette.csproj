@@ -109,6 +109,18 @@
     <Compile Include="ALBUMS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Casier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Casier.Designer.cs">
+      <DependentUpon>Casier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompteUtilisateurPourAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompteUtilisateurPourAdmin.Designer.cs">
+      <DependentUpon>CompteUtilisateurPourAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompteUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +250,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlbumEmpruntable.resx">
       <DependentUpon>AlbumEmpruntable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Casier.resx">
+      <DependentUpon>Casier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompteUtilisateurPourAdmin.resx">
+      <DependentUpon>CompteUtilisateurPourAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompteUtilisateur.resx">
       <DependentUpon>CompteUtilisateur.cs</DependentUpon>

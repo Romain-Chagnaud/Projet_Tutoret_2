@@ -32,6 +32,7 @@ namespace Maquette
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
+            this.btnVoir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,11 +64,26 @@ namespace Maquette
             this.lblPrenom.TabIndex = 2;
             this.lblPrenom.Text = "Prénom";
             // 
+            // btnVoir
+            // 
+            this.btnVoir.BackColor = System.Drawing.Color.Teal;
+            this.btnVoir.BackgroundImage = global::Maquette.Properties.Resources.visibility;
+            this.btnVoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVoir.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnVoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoir.Location = new System.Drawing.Point(451, 27);
+            this.btnVoir.Name = "btnVoir";
+            this.btnVoir.Size = new System.Drawing.Size(100, 100);
+            this.btnVoir.TabIndex = 3;
+            this.btnVoir.UseVisualStyleBackColor = false;
+            this.btnVoir.Click += new System.EventHandler(this.btnVoir_Click);
+            // 
             // PresentationAbonne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
+            this.Controls.Add(this.btnVoir);
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.pictureBox1);
@@ -84,5 +100,6 @@ namespace Maquette
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.Button btnVoir;
     }
 }

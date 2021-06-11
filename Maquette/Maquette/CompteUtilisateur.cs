@@ -34,15 +34,20 @@ namespace Maquette
         {
             if (vérificationMDP(ancienMDP.Text, abonné))
             {
-                if (nouveauMDP.Text == confirmedMDP.Text && Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
+                if (nouveauMDP.Text == confirmedMDP.Text)
                 {
-                    String mdp=changerMDP(nouveauMDP.Text, abonné);
-                    if (mdp == null)
-                    {
-                        MessageBox.Show("Nouveau mot de passe trop long.");
+                    if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$")) {
+                        String mdp = changerMDP(nouveauMDP.Text, abonné);
+                        if (mdp == null)
+                        {
+                            MessageBox.Show("Nouveau mot de passe trop long.");
+                        } else
+                        {
+                            MessageBox.Show("Mot de passe changé.");
+                        }
                     } else
                     {
-                        MessageBox.Show("Mot de passe changé.");
+                        MessageBox.Show("Nouveau mot de passene respecte pas les règles de nommages : 32 caractères, caractères spéciaux et alphanumériques autorisés. Pas d'espaces.");
                     }
                 } else
                 {
