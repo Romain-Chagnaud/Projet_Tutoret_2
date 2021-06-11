@@ -29,22 +29,22 @@ namespace Maquette
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.portrait = new System.Windows.Forms.PictureBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.btnVoir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // portrait
             // 
-            this.pictureBox1.Image = global::Maquette.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(39, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.portrait.Image = global::Maquette.Properties.Resources.user;
+            this.portrait.Location = new System.Drawing.Point(39, 37);
+            this.portrait.Name = "portrait";
+            this.portrait.Size = new System.Drawing.Size(80, 80);
+            this.portrait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.portrait.TabIndex = 0;
+            this.portrait.TabStop = false;
             // 
             // lblNom
             // 
@@ -86,10 +86,10 @@ namespace Maquette
             this.Controls.Add(this.btnVoir);
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.portrait);
             this.Name = "PresentationAbonne";
             this.Size = new System.Drawing.Size(586, 166);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.portrait)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,7 +97,7 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox portrait;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Button btnVoir;

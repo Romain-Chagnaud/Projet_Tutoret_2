@@ -19,21 +19,59 @@ namespace Maquette
         public Sous_Admin()
         {
             InitializeComponent();
-            abo = Outil.getFantomes();
+            abo = Outil.GetFantomes();
             ActualiserNbPages();
         }
 
+        #region IHM
+
+        /// <summary>
+        /// Permet d'afficher les abos Fantômes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SousAdmin_Load(object sender, EventArgs e)
         {
             ChargerListe();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Suprime tous les abonnées fantômes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuppr_Click(object sender, EventArgs e)
         {
-            Outil.purgerFantomes();
-            flowLayoutPanel1.Controls.Clear();
+            Purge();
         }
 
+        /// <summary>
+        /// Clique sur la page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuiFan_Click(object sender, EventArgs e)
+        {
+            AugmenterReco();
+        }
+
+        /// <summary>
+        /// Clique sur la page précendente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPreFan_Click(object sender, EventArgs e)
+        {
+            DiminuerReco();
+        }
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Actualiser le nombre de page
+        /// </summary>
         private void ActualiserNbPages()
         {
             if (abo.Count % 2 != 0)
@@ -46,7 +84,7 @@ namespace Maquette
             }
         }
 
-        // <summary>
+        /// <summary>
         /// Décrémente la page des recommandés
         /// </summary>
         private void DiminuerReco()
@@ -79,28 +117,33 @@ namespace Maquette
 
         }
 
+        /// <summary>
+        /// Permet d'afficher les abos Fantômes
+        /// </summary>
         private void ChargerListe()
         {
-            flowLayoutPanel1.Controls.Clear();
+            pnlFanto.Controls.Clear();
             for (int i = 2 * pageAbo; i < 2 * (pageAbo + 1); i++)
             {
                 if (i < abo.Count)
                 {
-                    flowLayoutPanel1.Controls.Add(new PresentationAbonne(abo[i]));
+                    pnlFanto.Controls.Add(new PresentationAbonne(abo[i]));
                 }
             }
-            lblPageReco.Text = pageAbo + 1 + "";
+            lblPageFan.Text = pageAbo + 1 + "";
         }
 
-        private void btnSuiCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Supprime les abos Fantômes
+        /// </summary>
+        private void Purge()
         {
-            AugmenterReco();
+            Outil.purgerFantomes();
+            pnlFanto.Controls.Clear();
         }
 
-        private void btnPreCon_Click(object sender, EventArgs e)
-        {
-            DiminuerReco();
-        }
+        #endregion
+
     }
 }
 

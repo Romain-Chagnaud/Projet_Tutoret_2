@@ -13,16 +13,12 @@ namespace Maquette
 {
     public partial class AlbumClassement : UserControl
     {
-        ALBUMS album;
-        int value;
 
         public AlbumClassement(ALBUMS album, int value)
         {
             InitializeComponent();
-            this.album = album;
-            this.value = value;
             lblTitre.Text = album.TITRE_ALBUM;
-            label1.Text = value + "";
+            lblPos.Text = value + "";
             if (album.POCHETTE != null)
             {
                 pochette.Image = Image.FromStream(new MemoryStream(album.POCHETTE));

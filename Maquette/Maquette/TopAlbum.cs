@@ -22,36 +22,56 @@ namespace Maquette
         public TopAlbum()
         {
             InitializeComponent();
-            albums = Outil.getTop10Albums();
-            count = Outil.getTop10Count();
+            albums = Outil.GetTop10Albums();
+            count = Outil.GetTop10Count();
             ActualiserPage();
             AfficherAlbums();
         }
 
-        private void btnPreCon_Click(object sender, EventArgs e)
+
+        #region IHM
+        /// <summary>
+        /// Clique sur page précédente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreEmp_Click(object sender, EventArgs e)
         {
             Decrementer();
         }
 
-        private void btnSuiCon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clique sur page suivante
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSuiEmp_Click(object sender, EventArgs e)
         {
             Incrementer();
         }
+        #endregion
 
+        #region Logique
+        /// <summary>
+        /// Permet d'afficher les albums
+        /// </summary>
         private void AfficherAlbums()
         {
-            flowLayoutPanel1.Controls.Clear();
+            pnlElemEmprunt.Controls.Clear();
             for (int i = 3 * page; i < 3 * (page + 1); i++)
             {
                 if (i < albums.Count && i >= 0)
                 {
-                    flowLayoutPanel1.Controls.Add(new AlbumClassement(albums[i], count[i]));
+                    pnlElemEmprunt.Controls.Add(new AlbumClassement(albums[i], count[i]));
                 }
             }
-            lblPageReco.Text = page + 1 + "";
+            lblPageEmp.Text = page + 1 + "";
         }
 
 
+        /// <summary>
+        /// Actualiser le nombre de pages 
+        /// </summary>
         private void ActualiserPage()
         {
             if (albums.Count % 4 != 0)
@@ -64,6 +84,10 @@ namespace Maquette
             }
         }
 
+
+        /// <summary>
+        /// Permet d'incrémenter la page 
+        /// </summary>
         private void Incrementer()
         {
             if (page < nbPage)
@@ -78,7 +102,9 @@ namespace Maquette
         }
 
 
-
+        /// <summary>
+        /// Permet de décrémenter la page 
+        /// </summary>
         private void Decrementer()
         {
             if (page > 0)
@@ -91,5 +117,9 @@ namespace Maquette
             }
             AfficherAlbums();
         }
+        #endregion
+
+
+
     }
 }

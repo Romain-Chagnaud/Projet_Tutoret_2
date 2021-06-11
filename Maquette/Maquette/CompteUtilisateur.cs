@@ -26,7 +26,7 @@ namespace Maquette
             labelNom.Text = a.NOM_ABONNÉ;
             labelPrénom.Text = a.PRÉNOM_ABONNÉ;
             labelLogin.Text = a.LOGIN_ABONNÉ;
-            List<PAYS> pays = musique.PAYS.ToList();
+            List<PAYS> pays = Musique.PAYS.ToList();
             foreach(PAYS p in pays)
             {
                 comboPays.Items.Add(p);
@@ -43,13 +43,12 @@ namespace Maquette
         /// <param name="e"></param>
         private void ChangeMDP_Click(object sender, EventArgs e)
         {
-            if (vérificationMDP(ancienMDP.Text, abonné))
+            if (VerificationMDP(ancienMDP.Text, abonné))
             {
                 if (nouveauMDP.Text == confirmedMDP.Text && Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
                 {
-                    if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$"))
-                    {
-                        String mdp = changerMDP(nouveauMDP.Text, abonné);
+                    if (Regex.IsMatch(nouveauMDP.Text, "^\\S\\w*\\S$")) {
+                        String mdp = ChangerMDP(nouveauMDP.Text, abonné);
                         if (mdp == null)
                         {
                             MessageBox.Show("Nouveau mot de passe trop long.");
@@ -127,7 +126,7 @@ namespace Maquette
         {
             if (comboPays.SelectedItem != null)
             {
-                changerPays((PAYS)comboPays.SelectedItem, abonné);
+                ChangerPays((PAYS)comboPays.SelectedItem, abonné);
                 MessageBox.Show("Pays changé.");
             }
         }

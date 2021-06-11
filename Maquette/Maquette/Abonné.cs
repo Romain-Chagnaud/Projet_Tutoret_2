@@ -120,7 +120,7 @@ namespace Maquette
         /// </summary>
         public void ChargerDisponibles()
         {
-            disponibles = getALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(getIndisponibles()).ToList();
+            disponibles = GetALBUMSs().OrderBy(a => a.TITRE_ALBUM).Except(GetIndisponibles()).ToList();
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Maquette
         /// </summary>
         private void InitialiserEmprunts()
         {
-            emprunts = getEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
+            emprunts = GetEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
             ActualiserPagesEmprunts();
             AfficherEmprunts();
         }
@@ -158,7 +158,7 @@ namespace Maquette
         /// </summary>
         public void InitialiserSuggestion()
         {
-            recommendations = getSuggestions(abonne.CODE_ABONNÉ);
+            recommendations = GetSuggestions(abonne.CODE_ABONNÉ);
             ActualiserPagesReco();
             AfficherSuggestions();
         }
@@ -189,7 +189,7 @@ namespace Maquette
         {
             foreach (EMPRUNTER emp in emprunts)
             {
-                prolongation(emp);
+                Prolongation(emp);
             }
             AfficherEmprunts();
         }
@@ -322,7 +322,7 @@ namespace Maquette
         /// <param name="album">L'album à emprunter</param>
         public void EmprunterAlbum(ALBUMS album)
         {
-            nouvelEmprunt(abonne, album);
+            NouvelEmprunt(abonne, album);
             InitialiserTout();
         }
 

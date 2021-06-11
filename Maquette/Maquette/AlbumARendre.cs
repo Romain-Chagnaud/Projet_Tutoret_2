@@ -14,7 +14,7 @@ namespace Maquette
     public partial class AlbumARendre : UserControl
     {
         public EMPRUNTER emprunt;
-        Abonné parent;
+        readonly Abonné parent;
 
         public AlbumARendre(EMPRUNTER emprunt, Abonné parent)
         {
@@ -32,7 +32,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>        
-        private void btnEtendre_Click(object sender, EventArgs e)
+        private void BtnEtendre_Click(object sender, EventArgs e)
         {
             EtendreDuree();
         }
@@ -43,7 +43,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnRendre_Click(object sender, EventArgs e)
+        private void BtnRendre_Click(object sender, EventArgs e)
         {
             RendreAlbum();
         }
@@ -57,7 +57,7 @@ namespace Maquette
         /// </summary>
         private void ChargerElements()
         {
-            ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
+            ALBUMS album = Outil.GetAlbumSelonID(emprunt.CODE_ALBUM);
             lblTitre.Text = album.TITRE_ALBUM;
             lblDate.Text = emprunt.DATE_RETOUR_ATTENDUE.ToString();
             if (album.POCHETTE != null)
@@ -71,9 +71,9 @@ namespace Maquette
         /// </summary>
         private void EtendreDuree()
         {
-            if (Outil.estProlongeable(emprunt))
+            if (Outil.EstProlongeable(emprunt))
             {
-                Outil.prolongation(emprunt);
+                Outil.Prolongation(emprunt);
                 parent.AfficherEmprunts();
             }
             else
@@ -88,7 +88,7 @@ namespace Maquette
         /// </summary>
         private void RendreAlbum()
         {
-            Outil.rendreEmprunt(emprunt);
+            Outil.RendreEmprunt(emprunt);
             parent.ActualiserEmprunts();
         }
 

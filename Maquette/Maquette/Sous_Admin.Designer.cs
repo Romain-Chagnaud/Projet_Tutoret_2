@@ -30,83 +30,83 @@ namespace Maquette
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sous_Admin));
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSuiCon = new System.Windows.Forms.Button();
-            this.btnPreCon = new System.Windows.Forms.Button();
-            this.lblPageReco = new System.Windows.Forms.Label();
+            this.lblFanto = new System.Windows.Forms.Label();
+            this.pnlFanto = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnSuppr = new System.Windows.Forms.Button();
+            this.btnSuiFan = new System.Windows.Forms.Button();
+            this.btnPreFan = new System.Windows.Forms.Button();
+            this.lblPageFan = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblFanto
             // 
-            this.label1.BackColor = System.Drawing.Color.Teal;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.label1.Location = new System.Drawing.Point(187, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 61);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Abonnés Fantômes";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFanto.BackColor = System.Drawing.Color.Teal;
+            this.lblFanto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFanto.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lblFanto.Location = new System.Drawing.Point(187, 20);
+            this.lblFanto.Name = "lblFanto";
+            this.lblFanto.Size = new System.Drawing.Size(289, 61);
+            this.lblFanto.TabIndex = 0;
+            this.lblFanto.Text = "Abonnés Fantômes";
+            this.lblFanto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel1
+            // pnlFanto
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Teal;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 120);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(549, 362);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.pnlFanto.BackColor = System.Drawing.Color.Teal;
+            this.pnlFanto.Location = new System.Drawing.Point(12, 120);
+            this.pnlFanto.Name = "pnlFanto";
+            this.pnlFanto.Size = new System.Drawing.Size(549, 362);
+            this.pnlFanto.TabIndex = 1;
             // 
-            // button1
+            // btnSuppr
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.button1.Location = new System.Drawing.Point(12, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 34);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Supression";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSuppr.BackColor = System.Drawing.Color.Teal;
+            this.btnSuppr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuppr.ForeColor = System.Drawing.SystemColors.Menu;
+            this.btnSuppr.Location = new System.Drawing.Point(12, 61);
+            this.btnSuppr.Name = "btnSuppr";
+            this.btnSuppr.Size = new System.Drawing.Size(107, 34);
+            this.btnSuppr.TabIndex = 2;
+            this.btnSuppr.Text = "Suppression";
+            this.btnSuppr.UseVisualStyleBackColor = false;
+            this.btnSuppr.Click += new System.EventHandler(this.BtnSuppr_Click);
             // 
-            // btnSuiCon
+            // btnSuiFan
             // 
-            this.btnSuiCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
-            this.btnSuiCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSuiCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnSuiCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuiCon.Location = new System.Drawing.Point(486, 506);
-            this.btnSuiCon.Name = "btnSuiCon";
-            this.btnSuiCon.Size = new System.Drawing.Size(75, 23);
-            this.btnSuiCon.TabIndex = 8;
-            this.btnSuiCon.UseVisualStyleBackColor = true;
-            this.btnSuiCon.Click += new System.EventHandler(this.btnSuiCon_Click);
+            this.btnSuiFan.BackgroundImage = global::Maquette.Properties.Resources.fleche_droite;
+            this.btnSuiFan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSuiFan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnSuiFan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuiFan.Location = new System.Drawing.Point(486, 506);
+            this.btnSuiFan.Name = "btnSuiFan";
+            this.btnSuiFan.Size = new System.Drawing.Size(75, 23);
+            this.btnSuiFan.TabIndex = 8;
+            this.btnSuiFan.UseVisualStyleBackColor = true;
+            this.btnSuiFan.Click += new System.EventHandler(this.BtnSuiFan_Click);
             // 
-            // btnPreCon
+            // btnPreFan
             // 
-            this.btnPreCon.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
-            this.btnPreCon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPreCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnPreCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreCon.Location = new System.Drawing.Point(12, 506);
-            this.btnPreCon.Name = "btnPreCon";
-            this.btnPreCon.Size = new System.Drawing.Size(75, 23);
-            this.btnPreCon.TabIndex = 9;
-            this.btnPreCon.UseVisualStyleBackColor = true;
-            this.btnPreCon.Click += new System.EventHandler(this.btnPreCon_Click);
+            this.btnPreFan.BackgroundImage = global::Maquette.Properties.Resources.fleche_gauche;
+            this.btnPreFan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPreFan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.btnPreFan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreFan.Location = new System.Drawing.Point(12, 506);
+            this.btnPreFan.Name = "btnPreFan";
+            this.btnPreFan.Size = new System.Drawing.Size(75, 23);
+            this.btnPreFan.TabIndex = 9;
+            this.btnPreFan.UseVisualStyleBackColor = true;
+            this.btnPreFan.Click += new System.EventHandler(this.btnPreFan_Click);
             // 
-            // lblPageReco
+            // lblPageFan
             // 
-            this.lblPageReco.AutoSize = true;
-            this.lblPageReco.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageReco.ForeColor = System.Drawing.Color.White;
-            this.lblPageReco.Location = new System.Drawing.Point(263, 516);
-            this.lblPageReco.Name = "lblPageReco";
-            this.lblPageReco.Size = new System.Drawing.Size(32, 13);
-            this.lblPageReco.TabIndex = 10;
-            this.lblPageReco.Text = "Page";
+            this.lblPageFan.AutoSize = true;
+            this.lblPageFan.BackColor = System.Drawing.Color.Transparent;
+            this.lblPageFan.ForeColor = System.Drawing.Color.White;
+            this.lblPageFan.Location = new System.Drawing.Point(263, 516);
+            this.lblPageFan.Name = "lblPageFan";
+            this.lblPageFan.Size = new System.Drawing.Size(32, 13);
+            this.lblPageFan.TabIndex = 10;
+            this.lblPageFan.Text = "Page";
             // 
             // Sous_Admin
             // 
@@ -116,12 +116,12 @@ namespace Maquette
             this.BackgroundImage = global::Maquette.Properties.Resources.flou1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 561);
-            this.Controls.Add(this.lblPageReco);
-            this.Controls.Add(this.btnPreCon);
-            this.Controls.Add(this.btnSuiCon);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPageFan);
+            this.Controls.Add(this.btnPreFan);
+            this.Controls.Add(this.btnSuiFan);
+            this.Controls.Add(this.btnSuppr);
+            this.Controls.Add(this.pnlFanto);
+            this.Controls.Add(this.lblFanto);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Sous_Admin";
@@ -134,11 +134,11 @@ namespace Maquette
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSuiCon;
-        private System.Windows.Forms.Button btnPreCon;
-        private System.Windows.Forms.Label lblPageReco;
+        private System.Windows.Forms.Label lblFanto;
+        private System.Windows.Forms.FlowLayoutPanel pnlFanto;
+        private System.Windows.Forms.Button btnSuppr;
+        private System.Windows.Forms.Button btnSuiFan;
+        private System.Windows.Forms.Button btnPreFan;
+        private System.Windows.Forms.Label lblPageFan;
     }
 }

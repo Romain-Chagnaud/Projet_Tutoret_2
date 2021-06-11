@@ -20,7 +20,7 @@ namespace Maquette
         public ListeAbonnes()
         {
             InitializeComponent();
-            abos = Outil.getABONNÉSs();
+            abos = Outil.GetABONNÉSs();
             ActualiserPage();
             AfficherAbos();
         }
