@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,22 @@ namespace Maquette
 {
     public partial class AlbumEmpruntable : UserControl
     {
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeft,
+            int nTop,
+            int nRight,
+            int nBottom,
+            int nWidthEllipse,
+            int nHeightEllipse
+            );
+
+
         ALBUMS album;
         Magasin magParent = null;
         Abonné aboParent = null;
+        public Point location;
 
 
         public AlbumEmpruntable(ALBUMS album, Magasin parent)
@@ -23,6 +37,11 @@ namespace Maquette
             InitializeComponent();
             this.album = album;
             this.magParent = parent;
+
+            this.Location = location;
+
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+
             ChargerElements();
         }
 
@@ -31,6 +50,11 @@ namespace Maquette
             InitializeComponent();
             this.album = album;
             this.aboParent = parent;
+
+            this.Location = location;
+
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+
             ChargerElements();
         }
 

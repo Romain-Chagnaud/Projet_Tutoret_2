@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static Maquette.Outil;
 
@@ -10,6 +11,17 @@ namespace Maquette
 {
     public partial class Abonné : Form
     {
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeft,
+            int nTop,
+            int nRight,
+            int nBottom,
+            int nWidthEllipse,
+            int nHeightEllipse
+            );
+
         public ABONNÉS abonne;
 
         public List<ALBUMS> disponibles;
@@ -34,8 +46,18 @@ namespace Maquette
             InitialiserElements();
             ChargerDisponibles();
 
+
+
             magasin = new Magasin(this);
             magasin.Show();
+
+            toolStrip1.Cursor = Cursors.Hand;
+
+            this.panelGrandEmprunt.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelGrandEmprunt.Width, panelGrandEmprunt.Height, 10, 10));
+            this.panelGrandConseils.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelGrandConseils.Width, panelGrandConseils.Height, 10, 10));
+            this.toolStrip1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, toolStrip1.Width, toolStrip1.Height, 10, 10));
+            this.panel1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 10, 10));
+
         }
 
         #region IHM

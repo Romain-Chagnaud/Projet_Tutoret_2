@@ -52,24 +52,25 @@ namespace Maquette
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Teal;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEspace,
             this.toolStripSeparator1,
             this.lblMagasin});
             this.toolStrip1.Location = new System.Drawing.Point(41, 38);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(333, 48);
+            this.toolStrip1.Size = new System.Drawing.Size(330, 47);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // lblEspace
             // 
             this.lblEspace.ActiveLinkColor = System.Drawing.Color.Red;
-            this.lblEspace.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEspace.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEspace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblEspace.Name = "lblEspace";
             this.lblEspace.Padding = new System.Windows.Forms.Padding(75, 25, 0, 0);
-            this.lblEspace.Size = new System.Drawing.Size(167, 45);
+            this.lblEspace.Size = new System.Drawing.Size(173, 44);
             this.lblEspace.Text = "Mon espace";
             this.lblEspace.Click += new System.EventHandler(this.lblEspace_Click);
             // 
@@ -78,12 +79,12 @@ namespace Maquette
             this.toolStripSeparator1.BackColor = System.Drawing.Color.Yellow;
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.Maroon;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 48);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
             // 
             // lblMagasin
             // 
             this.lblMagasin.AutoSize = false;
-            this.lblMagasin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblMagasin.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMagasin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.lblMagasin.Name = "lblMagasin";
             this.lblMagasin.Padding = new System.Windows.Forms.Padding(75, 25, 0, 0);
@@ -92,9 +93,13 @@ namespace Maquette
             // 
             // barreRecherche
             // 
-            this.barreRecherche.Location = new System.Drawing.Point(41, 16);
+            this.barreRecherche.BackColor = System.Drawing.Color.Teal;
+            this.barreRecherche.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.barreRecherche.Font = new System.Drawing.Font("Microsoft JhengHei", 18.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barreRecherche.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.barreRecherche.Location = new System.Drawing.Point(47, 3);
             this.barreRecherche.Name = "barreRecherche";
-            this.barreRecherche.Size = new System.Drawing.Size(236, 20);
+            this.barreRecherche.Size = new System.Drawing.Size(308, 34);
             this.barreRecherche.TabIndex = 11;
             // 
             // panelGrandEmprunt
@@ -149,19 +154,19 @@ namespace Maquette
             // 
             // panelDispo
             // 
-            this.panelDispo.Location = new System.Drawing.Point(3, 40);
+            this.panelDispo.Location = new System.Drawing.Point(3, 68);
             this.panelDispo.Name = "panelDispo";
-            this.panelDispo.Size = new System.Drawing.Size(1101, 474);
+            this.panelDispo.Size = new System.Drawing.Size(1101, 446);
             this.panelDispo.TabIndex = 1;
             // 
             // lblDispo
             // 
             this.lblDispo.AutoSize = true;
-            this.lblDispo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDispo.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDispo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.lblDispo.Location = new System.Drawing.Point(3, 11);
             this.lblDispo.Name = "lblDispo";
-            this.lblDispo.Size = new System.Drawing.Size(233, 26);
+            this.lblDispo.Size = new System.Drawing.Size(224, 26);
             this.lblDispo.TabIndex = 0;
             this.lblDispo.Text = "Albums disponibles :";
             // 
@@ -173,7 +178,7 @@ namespace Maquette
             this.panel1.Location = new System.Drawing.Point(660, 38);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 48);
+            this.panel1.Size = new System.Drawing.Size(358, 38);
             this.panel1.TabIndex = 17;
             // 
             // btnRecherche
@@ -181,11 +186,12 @@ namespace Maquette
             this.btnRecherche.BackColor = System.Drawing.Color.Teal;
             this.btnRecherche.BackgroundImage = global::Maquette.Properties.Resources.loupe;
             this.btnRecherche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRecherche.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRecherche.Location = new System.Drawing.Point(303, 13);
+            this.btnRecherche.Location = new System.Drawing.Point(3, 3);
             this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(26, 25);
+            this.btnRecherche.Size = new System.Drawing.Size(38, 32);
             this.btnRecherche.TabIndex = 12;
             this.btnRecherche.UseVisualStyleBackColor = false;
             this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);

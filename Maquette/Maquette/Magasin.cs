@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,16 @@ namespace Maquette
 {
     public partial class Magasin : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeft,
+            int nTop,
+            int nRight,
+            int nBottom,
+            int nWidthEllipse,
+            int nHeightEllipse
+            );
+
         Abonné parent;
         List<ALBUMS> affichables;
         int nombreDePages;
@@ -24,7 +35,14 @@ namespace Maquette
             InitializeComponent();
             this.parent = parent;
             affichables = new List<ALBUMS>();            
-            affichables.AddRange(parent.disponibles);      
+            affichables.AddRange(parent.disponibles);
+
+            toolStrip1.Cursor = Cursors.Hand;
+
+            this.panel1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 10, 10));
+            this.panelGrandEmprunt.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panelGrandEmprunt.Width, panelGrandEmprunt.Height, 10, 10));
+
+
             afficherAlbums();
             actualiserNombreDepages();
         }

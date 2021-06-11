@@ -54,8 +54,8 @@ namespace Maquette
             this.lblBvn = new System.Windows.Forms.Label();
             this.lblPasSugg = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panelGrandEmprunt.SuspendLayout();
             this.panelGrandConseils.SuspendLayout();
@@ -67,9 +67,9 @@ namespace Maquette
             // 
             this.btnToutAlg.BackColor = System.Drawing.Color.Teal;
             this.btnToutAlg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToutAlg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToutAlg.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToutAlg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.btnToutAlg.Location = new System.Drawing.Point(399, 8);
+            this.btnToutAlg.Location = new System.Drawing.Point(412, 13);
             this.btnToutAlg.Name = "btnToutAlg";
             this.btnToutAlg.Size = new System.Drawing.Size(117, 29);
             this.btnToutAlg.TabIndex = 5;
@@ -81,13 +81,14 @@ namespace Maquette
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Teal;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEspace,
             this.toolStripSeparator1,
             this.lblMagasin});
             this.toolStrip1.Location = new System.Drawing.Point(41, 38);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(333, 48);
+            this.toolStrip1.Size = new System.Drawing.Size(324, 48);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -103,8 +104,8 @@ namespace Maquette
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.Yellow;
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.Maroon;
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 48);
             // 
@@ -146,7 +147,7 @@ namespace Maquette
             this.panelGrandEmprunt.Controls.Add(this.btnToutAlg);
             this.panelGrandEmprunt.Location = new System.Drawing.Point(41, 105);
             this.panelGrandEmprunt.Name = "panelGrandEmprunt";
-            this.panelGrandEmprunt.Size = new System.Drawing.Size(519, 548);
+            this.panelGrandEmprunt.Size = new System.Drawing.Size(551, 548);
             this.panelGrandEmprunt.TabIndex = 15;
             // 
             // lblPageEmp
@@ -186,19 +187,19 @@ namespace Maquette
             // 
             // panelEmprunts
             // 
-            this.panelEmprunts.Location = new System.Drawing.Point(3, 40);
+            this.panelEmprunts.Location = new System.Drawing.Point(3, 66);
             this.panelEmprunts.Name = "panelEmprunts";
-            this.panelEmprunts.Size = new System.Drawing.Size(513, 474);
+            this.panelEmprunts.Size = new System.Drawing.Size(545, 448);
             this.panelEmprunts.TabIndex = 1;
             // 
             // lblEmprunt
             // 
             this.lblEmprunt.AutoSize = true;
-            this.lblEmprunt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmprunt.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmprunt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
             this.lblEmprunt.Location = new System.Drawing.Point(3, 11);
             this.lblEmprunt.Name = "lblEmprunt";
-            this.lblEmprunt.Size = new System.Drawing.Size(225, 26);
+            this.lblEmprunt.Size = new System.Drawing.Size(215, 26);
             this.lblEmprunt.TabIndex = 0;
             this.lblEmprunt.Text = "Albums empruntés :";
             // 
@@ -213,16 +214,16 @@ namespace Maquette
             this.panelGrandConseils.Controls.Add(this.pictureBox1);
             this.panelGrandConseils.Controls.Add(this.lblNom);
             this.panelGrandConseils.Controls.Add(this.lblBvn);
-            this.panelGrandConseils.Location = new System.Drawing.Point(625, 105);
+            this.panelGrandConseils.Location = new System.Drawing.Point(611, 105);
             this.panelGrandConseils.Name = "panelGrandConseils";
-            this.panelGrandConseils.Size = new System.Drawing.Size(519, 548);
+            this.panelGrandConseils.Size = new System.Drawing.Size(541, 548);
             this.panelGrandConseils.TabIndex = 16;
             // 
             // panelConseil
             // 
-            this.panelConseil.Location = new System.Drawing.Point(3, 147);
+            this.panelConseil.Location = new System.Drawing.Point(3, 189);
             this.panelConseil.Name = "panelConseil";
-            this.panelConseil.Size = new System.Drawing.Size(513, 369);
+            this.panelConseil.Size = new System.Drawing.Size(535, 327);
             this.panelConseil.TabIndex = 6;
             // 
             // lblPageReco
@@ -262,8 +263,8 @@ namespace Maquette
             // 
             // lblConseil
             // 
-            this.lblConseil.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConseil.Location = new System.Drawing.Point(17, 82);
+            this.lblConseil.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConseil.Location = new System.Drawing.Point(17, 103);
             this.lblConseil.Name = "lblConseil";
             this.lblConseil.Size = new System.Drawing.Size(164, 59);
             this.lblConseil.TabIndex = 3;
@@ -273,7 +274,7 @@ namespace Maquette
             // 
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = global::Maquette.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(284, -6);
+            this.pictureBox1.Location = new System.Drawing.Point(328, -6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(175, 147);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -283,22 +284,22 @@ namespace Maquette
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNom.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(49)))), ((int)(((byte)(0)))));
-            this.lblNom.Location = new System.Drawing.Point(147, 34);
+            this.lblNom.Location = new System.Drawing.Point(131, 53);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(62, 26);
+            this.lblNom.Size = new System.Drawing.Size(63, 26);
             this.lblNom.TabIndex = 1;
             this.lblNom.Text = "Nom";
             // 
             // lblBvn
             // 
             this.lblBvn.AutoSize = true;
-            this.lblBvn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBvn.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBvn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(24)))), ((int)(((byte)(3)))));
-            this.lblBvn.Location = new System.Drawing.Point(17, 34);
+            this.lblBvn.Location = new System.Drawing.Point(17, 53);
             this.lblBvn.Name = "lblBvn";
-            this.lblBvn.Size = new System.Drawing.Size(124, 26);
+            this.lblBvn.Size = new System.Drawing.Size(118, 26);
             this.lblBvn.TabIndex = 0;
             this.lblBvn.Text = "Bienvenue";
             // 
@@ -324,16 +325,6 @@ namespace Maquette
             this.panel1.Size = new System.Drawing.Size(276, 55);
             this.panel1.TabIndex = 17;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(24, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mon compte :";
-            // 
             // button1
             // 
             this.button1.BackgroundImage = global::Maquette.Properties.Resources.user;
@@ -346,6 +337,16 @@ namespace Maquette
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mon compte :";
             // 
             // Abonné
             // 

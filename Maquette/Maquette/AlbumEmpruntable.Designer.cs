@@ -38,22 +38,25 @@ namespace Maquette
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
-            this.lblTitre.Location = new System.Drawing.Point(124, 3);
+            this.lblTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(93, 3);
+            this.lblTitre.MaximumSize = new System.Drawing.Size(280, 0);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(28, 13);
+            this.lblTitre.Size = new System.Drawing.Size(47, 24);
             this.lblTitre.TabIndex = 1;
             this.lblTitre.Text = "Titre";
             // 
             // btnVoir
             // 
-            this.btnVoir.BackColor = System.Drawing.Color.Teal;
+            this.btnVoir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(156)))), ((int)(((byte)(120)))));
             this.btnVoir.BackgroundImage = global::Maquette.Properties.Resources.visibility;
             this.btnVoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVoir.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnVoir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(156)))), ((int)(((byte)(120)))));
             this.btnVoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoir.Location = new System.Drawing.Point(394, 10);
+            this.btnVoir.Location = new System.Drawing.Point(441, 3);
             this.btnVoir.Name = "btnVoir";
-            this.btnVoir.Size = new System.Drawing.Size(100, 100);
+            this.btnVoir.Size = new System.Drawing.Size(75, 75);
             this.btnVoir.TabIndex = 2;
             this.btnVoir.UseVisualStyleBackColor = false;
             this.btnVoir.Click += new System.EventHandler(this.btnVoir_Click);
@@ -61,9 +64,9 @@ namespace Maquette
             // pochette
             // 
             this.pochette.Image = global::Maquette.Properties.Resources.pas_image_tr;
-            this.pochette.Location = new System.Drawing.Point(3, 3);
+            this.pochette.Location = new System.Drawing.Point(12, 3);
             this.pochette.Name = "pochette";
-            this.pochette.Size = new System.Drawing.Size(100, 100);
+            this.pochette.Size = new System.Drawing.Size(75, 75);
             this.pochette.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pochette.TabIndex = 0;
             this.pochette.TabStop = false;
@@ -72,12 +75,13 @@ namespace Maquette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Teal;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(156)))), ((int)(((byte)(120)))));
             this.Controls.Add(this.btnVoir);
             this.Controls.Add(this.lblTitre);
             this.Controls.Add(this.pochette);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.Name = "AlbumEmpruntable";
-            this.Size = new System.Drawing.Size(528, 112);
+            this.Size = new System.Drawing.Size(528, 85);
             ((System.ComponentModel.ISupportInitialize)(this.pochette)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

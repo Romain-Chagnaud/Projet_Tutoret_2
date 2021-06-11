@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,26 @@ namespace Maquette
     public partial class AdminIHM : Form
     {
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeft,
+            int nTop,
+            int nRight,
+            int nBottom,
+            int nWidthEllipse,
+            int nHeightEllipse
+            );
+
         public AdminIHM()
         {
             InitializeComponent();
+
+            toolStrip1.Cursor = Cursors.Hand;
+
+            this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
+            this.groupBox1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, groupBox1.Width, groupBox1.Height, 10, 10));
+            this.groupBox2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, groupBox2.Width, groupBox2.Height, 10, 10));
+            this.groupBox3.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, groupBox3.Width, groupBox3.Height, 10, 10));
         }
 
 
