@@ -33,7 +33,7 @@ namespace Maquette
         /// </summary>
         private void ChargerElements()
         {
-            ALBUMS album = Outil.getAlbumSelonID(emprunt.CODE_ALBUM);
+            ALBUMS album = Outil.GetAlbumSelonID(emprunt.CODE_ALBUM);
             TitreAlbum.Text = album.TITRE_ALBUM;
             if (album.POCHETTE != null)
             {

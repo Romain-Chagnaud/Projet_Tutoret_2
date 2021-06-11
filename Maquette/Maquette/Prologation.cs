@@ -22,7 +22,7 @@ namespace Maquette
         {
             InitializeComponent();
 
-            prolo = getProlongés();
+            prolo = GetProlongés();
         }
 
         private void ChargerListe()

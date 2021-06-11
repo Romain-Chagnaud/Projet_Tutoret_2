@@ -20,7 +20,7 @@ namespace Maquette
         public Sous_Admin2cs()
         {
             InitializeComponent();
-            retards = Outil.getRetardataires();
+            retards = Outil.GetRetardataires();
             ActualiserPage();
 
         }

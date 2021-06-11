@@ -19,7 +19,7 @@ namespace Maquette
         public Sous_Admin()
         {
             InitializeComponent();
-            abo = Outil.getFantomes();
+            abo = Outil.GetFantomes();
             ActualiserNbPages();
         }
 
@@ -30,7 +30,7 @@ namespace Maquette
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Outil.purgerFantomes();
+            Outil.PurgerFantomes();
             flowLayoutPanel1.Controls.Clear();
         }
 
