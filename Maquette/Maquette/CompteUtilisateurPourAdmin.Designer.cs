@@ -43,11 +43,11 @@ namespace Maquette
             this.label7 = new System.Windows.Forms.Label();
             this.changerPays = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mdpLabel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.changeMDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.mdpLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,9 +115,9 @@ namespace Maquette
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(11, 150);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 20);
+            this.label4.Size = new System.Drawing.Size(181, 20);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Ancien mot de passe :";
+            this.label4.Text = "Mot de passe actuel :";
             // 
             // label5
             // 
@@ -215,6 +215,17 @@ namespace Maquette
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
+            // mdpLabel
+            // 
+            this.mdpLabel.AutoSize = true;
+            this.mdpLabel.BackColor = System.Drawing.Color.Teal;
+            this.mdpLabel.Font = new System.Drawing.Font("Monotype Corsiva", 19F, System.Drawing.FontStyle.Bold);
+            this.mdpLabel.Location = new System.Drawing.Point(9, 181);
+            this.mdpLabel.Name = "mdpLabel";
+            this.mdpLabel.Size = new System.Drawing.Size(61, 31);
+            this.mdpLabel.TabIndex = 20;
+            this.mdpLabel.Text = "Mdp";
+            // 
             // button4
             // 
             this.button4.BackgroundImage = global::Maquette.Properties.Resources.visibility;
@@ -264,17 +275,6 @@ namespace Maquette
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
-            // 
-            // mdpLabel
-            // 
-            this.mdpLabel.AutoSize = true;
-            this.mdpLabel.BackColor = System.Drawing.Color.Teal;
-            this.mdpLabel.Font = new System.Drawing.Font("Monotype Corsiva", 19F, System.Drawing.FontStyle.Bold);
-            this.mdpLabel.Location = new System.Drawing.Point(9, 181);
-            this.mdpLabel.Name = "mdpLabel";
-            this.mdpLabel.Size = new System.Drawing.Size(61, 31);
-            this.mdpLabel.TabIndex = 20;
-            this.mdpLabel.Text = "Mdp";
             // 
             // CompteUtilisateurPourAdmin
             // 

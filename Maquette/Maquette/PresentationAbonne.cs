@@ -23,8 +23,13 @@ namespace Maquette
 
         private void btnVoir_Click(object sender, EventArgs e)
         {
+            AfficherDetail();         
+        }
+
+        private void AfficherDetail()
+        {
             CompteUtilisateurPourAdmin ca = new CompteUtilisateurPourAdmin(abo);
-            ca.Show();
+            ca.ShowDialog();
         }
     }
 }

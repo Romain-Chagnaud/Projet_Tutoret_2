@@ -17,7 +17,7 @@ namespace Maquette
             labelNom.Text = a.NOM_ABONNÉ;
             labelPrénom.Text = a.PRÉNOM_ABONNÉ;
             labelLogin.Text = a.LOGIN_ABONNÉ;
-            mdpLabel.Text = a.PASSWORD_ABONNÉ;
+            mdpLabel.Text = Decrypter(a.PASSWORD_ABONNÉ);
             List<PAYS> pays = musique.PAYS.ToList();
             foreach (PAYS p in pays)
             {
@@ -41,6 +41,7 @@ namespace Maquette
                     else
                     {
                         MessageBox.Show("Mot de passe changé.");
+                        mdpLabel.Text = Decrypter(abonné.PASSWORD_ABONNÉ);
                     }
                 } else
                 {
@@ -51,7 +52,6 @@ namespace Maquette
             {
                 MessageBox.Show("Le nouveau mot de passe et la confirmation sont différents.");
             }
-
             nouveauMDP.Text = "";
             confirmedMDP.Text = "";
         }
