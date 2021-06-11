@@ -95,7 +95,7 @@ namespace Maquette
             this.btnPreFan.Size = new System.Drawing.Size(75, 23);
             this.btnPreFan.TabIndex = 9;
             this.btnPreFan.UseVisualStyleBackColor = true;
-            this.btnPreFan.Click += new System.EventHandler(this.btnPreFan_Click);
+            this.btnPreFan.Click += new System.EventHandler(this.BtnPreFan_Click);
             // 
             // lblPageFan
             // 

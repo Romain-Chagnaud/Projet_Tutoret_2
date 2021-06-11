@@ -76,7 +76,7 @@ namespace Maquette
             this.btnVoir.Size = new System.Drawing.Size(100, 100);
             this.btnVoir.TabIndex = 3;
             this.btnVoir.UseVisualStyleBackColor = false;
-            this.btnVoir.Click += new System.EventHandler(this.btnVoir_Click);
+            this.btnVoir.Click += new System.EventHandler(this.BtnVoir_Click);
             // 
             // PresentationAbonne
             // 

@@ -22,7 +22,7 @@ namespace Maquette
             abonnés = abo;
         }
 
-        private void btnVoir_Click(object sender, EventArgs e)
+        private void BtnVoir_Click(object sender, EventArgs e)
         {
             AfficherDetail();         
         }

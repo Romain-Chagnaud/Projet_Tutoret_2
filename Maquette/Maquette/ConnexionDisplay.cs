@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static Maquette.Outil;
 
 namespace Maquette
 {
@@ -29,10 +30,9 @@ namespace Maquette
         public ConnexionDisplay()
         {
             InitializeComponent();
-            Outil.ChargerMusiqueEntities();
+            ChargerMusiqueEntities();
             InscriptionPannel.Visible = false;
-            Abonne_Load();
-            List<String> pays = Outil.GetPays();
+            List<PAYS> pays = GetPays();
 
             foreach (var p in pays)
             {
@@ -53,13 +53,6 @@ namespace Maquette
         }
 
         #region IHM
-        /// <summary>
-        /// Méthode qui permet d'avoir la liste des abonnés figurants dans la base
-        /// </summary>
-        private void Abonne_Load()
-        {
-            var abonnes = Outil.GetABONNÉSs();
-        }
 
         /// <summary>
         /// Méthode qui permet à un utilisateur de se connecter à la base de donnée
@@ -70,7 +63,7 @@ namespace Maquette
         {
             if (textBoxId.Text != "" && textBoxPass.Text != "")
             {
-                ABONNÉS abo = Outil.Connexion(textBoxId.Text, textBoxPass.Text);
+                ABONNÉS abo = Connexion(textBoxId.Text, textBoxPass.Text);
                 textBoxId.Text = "";
                 textBoxPass.Text = "";
                 if (abo != null)
@@ -155,7 +148,6 @@ namespace Maquette
                         ConnexionPanel.Visible = true;
                         if (a != null)
                         {
-                            Abonne_Load();
                             nomBox.Text = "";
                             prenomBox.Text = "";
                             idBox.Text = "";

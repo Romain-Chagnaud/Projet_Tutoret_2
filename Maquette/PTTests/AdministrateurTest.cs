@@ -12,7 +12,7 @@ namespace PTTests
     {
         //US 4
         [TestMethod]
-        public void testProlongés()
+        public void TestProlongés()
         {
             ChargerMusiqueEntities();
             //On vérifie que la méthode nous retourne que des emprunts non-prolongeables
@@ -39,7 +39,7 @@ namespace PTTests
 
         //US 5
         [TestMethod]
-        public void testRetardataires()
+        public void TestRetardataires()
         {
             ChargerMusiqueEntities();
             //On créé un nouvel utilisateur qui n'aura donc pas de retard
@@ -73,7 +73,7 @@ namespace PTTests
 
         //US 6
         [TestMethod]
-        public void testFantômes()
+        public void TestFantômes()
         {
             ChargerMusiqueEntities();
 
@@ -103,8 +103,6 @@ namespace PTTests
             RendreEmprunt(em1);
 
             //Cas l'abonné fantôme est purgé
-            d = DateTime.Now.AddDays(-366);
-            em = NouvelEmpruntDaté(ab, a, d);
             fantomes = GetFantomes();
             Assert.IsTrue(fantomes.Contains(ab));
             PurgerFantomes();
@@ -114,7 +112,7 @@ namespace PTTests
 
         //US 7
         [TestMethod]
-        public void testTop10()
+        public void TestTop10()
         {
             ChargerMusiqueEntities();
             List<ALBUMS> top10 = GetTop10Albums();
@@ -174,13 +172,13 @@ namespace PTTests
 
         //US 8
         [TestMethod]
-        public void testAlbumsNonEmpruntés()
+        public void TestAlbumsNonEmpruntés()
         {
             ChargerMusiqueEntities();
             
             //On efface les emprunts liés à un album
             ALBUMS a = GetALBUMSs()[0];
-            var emprunts = GetEmpruntsSelonAlbum(a.CODE_ALBUM);
+            var emprunts = GetEmpruntsSelonAlbum(a);
             List<EMPRUNTER> empruntsEffacés = new List<EMPRUNTER>();
             foreach(EMPRUNTER emp in emprunts)
             {
@@ -217,7 +215,7 @@ namespace PTTests
 
         //US 12
         [TestMethod]
-        public void testAfficherAbonnés()
+        public void TestAfficherAbonnés()
         {
             ChargerMusiqueEntities();
             var abonnés = GetABONNÉSs();

@@ -57,7 +57,7 @@ namespace Maquette
         /// </summary>
         private void ChargerElements()
         {
-            ALBUMS album = Outil.GetAlbumSelonID(emprunt.CODE_ALBUM);
+            ALBUMS album = emprunt.ALBUMS;
             lblTitre.Text = album.TITRE_ALBUM;
             lblDate.Text = emprunt.DATE_RETOUR_ATTENDUE.ToString();
             if (album.POCHETTE != null)
