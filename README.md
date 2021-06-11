@@ -21,6 +21,11 @@ Le but de ce projet était de concevoir et réaliser une application pour une bo
 ![Capture](https://gitlab-ce.iut.u-bordeaux.fr/elemos/pt2_b/tree/master/capture.PNG?raw=true)
 
 
+Connexion au compte administrateur : <br>
+ID : Admin <br>
+Mdp : admin
+
+
 # User Stories
 
 ## US1: En tant que futur client de la discothèque, je souhaite pouvoir être abonné afin de pouvoir emprunter des albums.
