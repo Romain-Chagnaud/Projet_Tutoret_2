@@ -14,7 +14,7 @@ namespace Maquette
     public partial class AlbumARendre : UserControl
     {
         public EMPRUNTER emprunt;
-        Abonné parent;
+        readonly Abonné parent;
 
         public AlbumARendre(EMPRUNTER emprunt, Abonné parent)
         {
@@ -32,7 +32,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>        
-        private void btnEtendre_Click(object sender, EventArgs e)
+        private void BtnEtendre_Click(object sender, EventArgs e)
         {
             EtendreDuree();
         }
@@ -43,7 +43,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnRendre_Click(object sender, EventArgs e)
+        private void BtnRendre_Click(object sender, EventArgs e)
         {
             RendreAlbum();
         }

@@ -148,6 +148,12 @@
     <Compile Include="DescriptionAlbum.Designer.cs">
       <DependentUpon>DescriptionAlbum.cs</DependentUpon>
     </Compile>
+    <Compile Include="DescriptionAlbumAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescriptionAlbumAdmin.Designer.cs">
+      <DependentUpon>DescriptionAlbumAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="EDITEURS.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DescriptionAlbum.resx">
       <DependentUpon>DescriptionAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescriptionAlbumAdmin.resx">
+      <DependentUpon>DescriptionAlbumAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListeAbonnes.resx">
       <DependentUpon>ListeAbonnes.cs</DependentUpon>

@@ -17,37 +17,92 @@ namespace Maquette
             InitializeComponent();
         }
 
+        #region IHM
 
-         
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur bouton Pas Emprunté
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPasEmp_Click(object sender, EventArgs e)
         {
-            NonEmprunte ne = new NonEmprunte();
-            ne.Show();
+            AfficherNonEmprunt();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le bouton Top 10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnTop_Click(object sender, EventArgs e)
         {
-            TopAlbum ta = new TopAlbum();
-            ta.Show();
+            AfficherTop();
         }
 
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clic sur le label Abonné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LblAbo_Click(object sender, EventArgs e)
         {
-            AdminIHM add = new AdminIHM();
-            add.Show();
-            this.Close();
-        }        
+            AfficherPremiereFenetre();
+        }
 
+        /// <summary>
+        /// Clic sur le bouton casier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCasier_Click(object sender, EventArgs e)
         {
             AfficherCasier();
         }
 
+
+
+        #endregion
+
+        #region Logique
+
+        /// <summary>
+        /// Affiche la fenêtre des albums non empruntés
+        /// </summary>
+        private static void AfficherNonEmprunt()
+        {
+            NonEmprunte ne = new NonEmprunte();
+            ne.Show();
+        }
+
+        /// <summary>
+        /// Affiche la fenêtre du top 10 des albums
+        /// </summary>
+        private static void AfficherTop()
+        {
+            TopAlbum ta = new TopAlbum();
+            ta.Show();
+        }
+
+        /// <summary>
+        /// Affiche la fenêtre principale de gestion des abonnés
+        /// </summary>
+        private void AfficherPremiereFenetre()
+        {
+            AdminIHM add = new AdminIHM();
+            add.Show();
+            this.Close();
+        }
+
+        /// <summary>
+        /// Affiche la fenêtre des albums empruntés selon leur casier
+        /// </summary>
         private void AfficherCasier()
         {
             Casier casier = new Casier();
             casier.Show();
         }
+
+        #endregion
+
     }
 }
