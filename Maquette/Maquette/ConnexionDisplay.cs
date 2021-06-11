@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maquette
@@ -93,9 +87,6 @@ namespace Maquette
             }
         }
 
-        private void textBoxId_MouseUp(object sender, MouseEventArgs e)
-        {
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -133,9 +124,9 @@ namespace Maquette
                 string prenomTrim = prenomBox.Text.Trim();
                 string nomTrim = nomBox.Text.Trim();
                 if (prenomBox.Text == prenomTrim && nomBox.Text == nomTrim && !EstDansLaChaine(prenomBox.Text, charSpéciaux())
-                    && !EstDansLaChaine(nomBox.Text, charSpéciaux()) && !LoginContientCaractèresSpéciaux(idBox.Text)
+                    && !EstDansLaChaine(nomBox.Text, charSpéciaux())
                     && prenomTrim.Length > 0 && prenomTrim.Length <= 32 && nomTrim.Length > 0 && nomTrim.Length <= 32 && idBox.Text.Length > 0 && idBox.Text.Length <= 32
-                && passBox.Text.Length > 0 && passBox.Text.Length <= 32 && Regex.IsMatch(passBox.Text, "\\S\\w*\\S") && Regex.IsMatch(idBox.Text, "\\S[a-zA-Z0-9]*\\S"))
+                && passBox.Text.Length > 0 && passBox.Text.Length <= 32 && Regex.IsMatch(passBox.Text, "^\\S\\w*\\S$") && Regex.IsMatch(idBox.Text, "^\\S[a-zA-Z0-9]*\\S$"))
                 {
                     if (passBox.Text == PassConfirm.Text)
                     {
@@ -213,9 +204,40 @@ namespace Maquette
             return contient;
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void afficherButton_Click(object sender, EventArgs e)
         {
+            if (textBoxPass.PasswordChar == '●')
+            {
+                textBoxPass.PasswordChar = '\0';
+            }
+            else
+            {
+                textBoxPass.PasswordChar = '●';
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (passBox.PasswordChar == '●')
+            {
+                passBox.PasswordChar = '\0';
+            }
+            else
+            {
+                passBox.PasswordChar = '●';
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (PassConfirm.PasswordChar == '●')
+            {
+                PassConfirm.PasswordChar = '\0';
+            }
+            else
+            {
+                PassConfirm.PasswordChar = '●';
+            }
         }
     }
 }
