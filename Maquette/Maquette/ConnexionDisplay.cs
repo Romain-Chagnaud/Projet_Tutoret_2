@@ -144,15 +144,6 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Méthode qui renvoie un message 
-        /// </summary>
-        /// <param name="i"> chaine de caractere contenant le message </param>
-        public static void MBox(string i)
-        {
-            MessageBox.Show(i);
-        }
-
-        /// <summary>
         /// Méthode qui permet de s'inscrire dans la base de donnée
         /// </summary>
         /// <param name="sender"></param>
@@ -204,17 +195,6 @@ namespace Maquette
         }
 
         /// <summary>
-        /// Méthode qui donne accès aux carcatères spéciaux
-        /// </summary>
-        /// <returns></returns>
-        private static String[] MajMin()
-        {
-            String liste = "A a À à Â â Ä ä Ã ã B b C c ç D d E e é È è Ê ê Ë ë F f G g H h I i Ì ì Î î Ï ï J j K " +
-                "k L l M m N n Ñ ñ O o Ò ò Ô ô Ö ö Õ õ P p Q q R r S s T t U u Ù ù Û û Ü ü V v W w X x Y y ÿ Z z -";
-            return liste.Split(' ');
-        }
-
-        /// <summary>
         /// Méthode qui donne accès aux caractères spéciaux
         /// </summary>
         /// <returns></returns>
@@ -236,26 +216,6 @@ namespace Maquette
             for (int i = 0; i < liste.Length; i++)
             {
                 if (chaine.Contains(liste[i]))
-                {
-                    contient = true;
-                }
-            }
-            return contient;
-        }
-
-        /// <summary>
-        /// Méthode qui permet à un identifiant de contenir des caractères spéciaux
-        /// </summary>
-        /// <param name="chaine"> chaine de caractere </param>
-        /// <returns></returns>
-        private static Boolean LoginContientCaractèresSpéciaux(String chaine)
-        {
-            String liste = "_ ' . , ; : ! ? @ & § ~ ^ ` ¨ | ( ) { } [ ] / < > * + = % µ € $ ¤ £";
-            String[] listeTab = liste.Split(' ');
-            Boolean contient = false;
-            for (int i = 0; i < listeTab.Length; i++)
-            {
-                if (chaine.Contains(listeTab[i]))
                 {
                     contient = true;
                 }
