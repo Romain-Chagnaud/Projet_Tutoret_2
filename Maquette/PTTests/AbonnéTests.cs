@@ -11,7 +11,7 @@ namespace PTTests
     {
         //US 1
         [TestMethod]
-        public void testInscription()
+        public void TestInscription()
         {
             ChargerMusiqueEntities();
 
@@ -90,7 +90,7 @@ namespace PTTests
 
         //US 1
         [TestMethod]
-        public void testConnexion()
+        public void TestConnexion()
         {
             ChargerMusiqueEntities();
 
@@ -106,7 +106,7 @@ namespace PTTests
 
         //US 1
         [TestMethod]
-        public void testEmprunt()
+        public void TestEmprunt()
         {
             ChargerMusiqueEntities();
             //Emprunt numéro 1 pour lp
@@ -138,13 +138,13 @@ namespace PTTests
 
         //US 2
         [TestMethod]
-        public void testEmpruntésEnCours()
+        public void TestEmpruntésEnCours()
         {
             ChargerMusiqueEntities();
             //Vérification que les emprunts sont tous liés à l'utilisateurs et qu'ils ne sont tous pas rendus
             ABONNÉS ab = Connexion("lp", "lp");
 
-            var liste = GetEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
+            var liste = GetEmpruntsEnCoursAbonné(ab);
             foreach (EMPRUNTER em in liste)
             {
                 Assert.IsTrue(em.CODE_ABONNÉ == ab.CODE_ABONNÉ && em.DATE_RETOUR == null);
@@ -153,18 +153,18 @@ namespace PTTests
             //Ajout d'un emprunt
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
             EMPRUNTER e = NouvelEmprunt(ab, a);
-            liste = GetEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
+            liste = GetEmpruntsEnCoursAbonné(ab);
             Assert.IsTrue(liste.Contains(e));
 
             //Rendu d'un emprunt
             RendreEmprunt(e);
-            liste = GetEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
+            liste = GetEmpruntsEnCoursAbonné(ab);
             Assert.IsTrue(!liste.Contains(e));
         }
 
         //US 3 + 9
         [TestMethod]
-        public void testProlongation()
+        public void TestProlongation()
         {
             ChargerMusiqueEntities();
             ABONNÉS ab = Connexion("lp", "lp");
@@ -172,7 +172,7 @@ namespace PTTests
             //Nouvel emprunt
             ALBUMS a = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
             EMPRUNTER e = NouvelEmprunt(ab, a);
-            var liste = GetEmpruntsEnCoursAbonné(ab.CODE_ABONNÉ);
+            var liste = GetEmpruntsEnCoursAbonné(ab);
 
             //Prolongement d'un nouvel emprunt
             Assert.IsTrue(EstProlongeable(e));
@@ -202,14 +202,14 @@ namespace PTTests
 
         //US 10
         [TestMethod]
-        public void testSuggestions()
+        public void TestSuggestions()
         {
             ChargerMusiqueEntities();
             ABONNÉS ab = Connexion("lp", "lp");
 
             //On récupère la liste de tous les emprunts déjà réalisés de l'abonné, et des suggestions qui lui sont proposés
-            var liste = GetEmpruntsAbonné(ab.CODE_ABONNÉ);
-            var suggestion = GetSuggestions(ab.CODE_ABONNÉ);
+            var liste = GetEmpruntsAbonné(ab);
+            var suggestion = GetSuggestions(ab);
 
             //On récupère la liste des albums et de leurs genres des emprunts de l'abonné
             HashSet<GENRES> genres = new HashSet<GENRES>();
@@ -230,8 +230,8 @@ namespace PTTests
             //On ajoute un nouvel emprunt
             ALBUMS al = GetALBUMSs().Except(GetIndisponibles()).ToList()[0];
             EMPRUNTER em = NouvelEmprunt(ab, al);
-            liste = GetEmpruntsAbonné(ab.CODE_ABONNÉ);
-            suggestion = GetSuggestions(ab.CODE_ABONNÉ);
+            liste = GetEmpruntsAbonné(ab);
+            suggestion = GetSuggestions(ab);
 
             //On vérifie que le nouvel emprunt est bien dans la liste des emprunts
             Assert.IsTrue(liste.Contains(em));

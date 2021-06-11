@@ -60,7 +60,7 @@ namespace Maquette
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnPreFan_Click(object sender, EventArgs e)
+        private void BtnPreFan_Click(object sender, EventArgs e)
         {
             DiminuerReco();
         }

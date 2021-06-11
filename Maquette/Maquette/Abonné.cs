@@ -138,7 +138,7 @@ namespace Maquette
         /// </summary>
         private void InitialiserEmprunts()
         {
-            emprunts = GetEmpruntsEnCoursAbonné(abonne.CODE_ABONNÉ);
+            emprunts = GetEmpruntsEnCoursAbonné(abonne);
             ActualiserPagesEmprunts();
             AfficherEmprunts();
         }
@@ -158,7 +158,7 @@ namespace Maquette
         /// </summary>
         public void InitialiserSuggestion()
         {
-            recommendations = GetSuggestions(abonne.CODE_ABONNÉ);
+            recommendations = GetSuggestions(abonne);
             ActualiserPagesReco();
             AfficherSuggestions();
         }

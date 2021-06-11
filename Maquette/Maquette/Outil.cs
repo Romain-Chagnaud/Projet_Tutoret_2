@@ -38,10 +38,10 @@ namespace Maquette
         /// Méthode pour récupérer tout les pays
         /// </summary>
         /// <returns>Retourne une liste de PAYS</returns>
-        public static List<String> GetPays()
+        public static List<PAYS> GetPays()
         {
             var pays = (from p in Musique.PAYS
-                        select p.NOM_PAYS).ToList();
+                        select p).ToList();
             return pays;
         }
 
@@ -150,12 +150,12 @@ namespace Maquette
         /// </summary>
         /// <param name="id">L'id de l'abonné</param>
         /// <returns>Retourne une liste d'ALBUMS</returns>
-        public static List<ALBUMS> GetToutAlbumsEmpruntésParAbonné(int id)
+        public static List<ALBUMS> GetToutAlbumsEmpruntésParAbonné(ABONNÉS abo)
         {
             var albumsEmpruntés = (from al2 in Musique.ALBUMS
                                    join em1 in Musique.EMPRUNTER
                                    on al2.CODE_ALBUM equals em1.CODE_ALBUM
-                                   where em1.CODE_ABONNÉ == id
+                                   where em1.CODE_ABONNÉ == abo.CODE_ABONNÉ
                                    select al2).ToList();
             return albumsEmpruntés;
         }
@@ -211,10 +211,10 @@ namespace Maquette
         /// <param name="id">L'id du genre</param>
         /// <param name="listeAlbum">La liste d'albums</param>
         /// <returns>Retourne une liste d'ALBUMS correspondant au genre voulu</returns>
-        public static List<ALBUMS> GetAlbumsSelonGenreDansListe(int id, List<ALBUMS> listeAlbum)
+        public static List<ALBUMS> GetAlbumsSelonGenreDansListe(GENRES genre, List<ALBUMS> listeAlbum)
         {
             var albums = (from al in listeAlbum
-                          where al.CODE_GENRE == id
+                          where al.CODE_GENRE == genre.CODE_GENRE
                           select al).ToList();
             return albums;
         }
@@ -335,10 +335,10 @@ namespace Maquette
         /// </summary>
         /// <param name="id">L'id de l'abonné</param>
         /// <returns>Retourne une liste d'EMPRUNTER</returns>
-        public static List<EMPRUNTER> GetEmpruntsAbonné(int id)
+        public static List<EMPRUNTER> GetEmpruntsAbonné(ABONNÉS abo)
         {
             var emprunts = (from e in Musique.EMPRUNTER
-                            where e.CODE_ABONNÉ == id
+                            where e.CODE_ABONNÉ == abo.CODE_ABONNÉ
                             select e).ToList();
             return emprunts;
         }
@@ -348,10 +348,10 @@ namespace Maquette
         /// </summary>
         /// <param name="id">L'id de l'abonné</param>
         /// <returns>Retourne une liste d'EMPRUNTER</returns>
-        public static List<EMPRUNTER> GetEmpruntsEnCoursAbonné(int id)
+        public static List<EMPRUNTER> GetEmpruntsEnCoursAbonné(ABONNÉS ab)
         {
             var emprunts = (from e in Musique.EMPRUNTER
-                            where e.CODE_ABONNÉ == id && e.DATE_RETOUR == null
+                            where e.CODE_ABONNÉ == ab.CODE_ABONNÉ && e.DATE_RETOUR == null
                             select e).ToList();
             return emprunts;
         }
@@ -361,10 +361,10 @@ namespace Maquette
         /// </summary>
         /// <param name="id">L'id de l'album</param>
         /// <returns>Retourne une liste d'EMPRUNTER</returns>
-        public static List<EMPRUNTER> GetEmpruntsSelonAlbum(int id)
+        public static List<EMPRUNTER> GetEmpruntsSelonAlbum(ALBUMS al)
         {
             var emprunts = (from e in Musique.EMPRUNTER
-                            where e.CODE_ALBUM == id
+                            where e.CODE_ALBUM == al.CODE_ALBUM
                             select e).ToList();
             return emprunts;
         }
@@ -426,9 +426,9 @@ namespace Maquette
         /// </summary>
         /// <param name="id">L'id de l'abonné</param>
         /// <returns>Retourne une liste d'ALBUMS</returns>
-        public static List<ALBUMS> GetSuggestions(int id)
+        public static List<ALBUMS> GetSuggestions(ABONNÉS abo)
         {
-            var albumsEmpruntés = GetToutAlbumsEmpruntésParAbonné(id);
+            var albumsEmpruntés = GetToutAlbumsEmpruntésParAbonné(abo);
 
             var genres = albumsEmpruntés.GroupBy(g => g.GENRES, (key, values) => new { GENRES = key, Count = values.Count() });
             var genresTriés = genres.OrderByDescending(g => g.Count).ToList();
@@ -447,22 +447,22 @@ namespace Maquette
                     if (genresTriés.Count >= 3)
                     {
                         GENRES troisiemeGenre = genresTriés[2].GENRES;
-                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 3));
-                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 3));
-                        var albumsRecommandés3 = GetAlbumsSelonGenreDansListe(troisiemeGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés3 = GetAlbumsSelonGenreDansListe(troisiemeGenre, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés3.GetRange(0, 3));
                     } else
                     {
-                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 5));
-                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre.CODE_GENRE, listeAlbum);
+                        var albumsRecommandés2 = GetAlbumsSelonGenreDansListe(deuxiemeGenre, listeAlbum);
                         albumsRecommandés.AddRange(albumsRecommandés2.GetRange(0, 4));
                     }
                 } else
                 {
-                    var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre.CODE_GENRE, listeAlbum);
+                    var albumsRecommandés1 = GetAlbumsSelonGenreDansListe(premierGenre, listeAlbum);
                     albumsRecommandés.AddRange(albumsRecommandés1.GetRange(0, 9));
                 }
 
@@ -572,7 +572,7 @@ namespace Maquette
 
             foreach (ABONNÉS abo in abos)
             {
-                var emprunts = GetEmpruntsAbonné(abo.CODE_ABONNÉ);
+                var emprunts = GetEmpruntsAbonné(abo);
 
                 if (emprunts.Count > 0)
                 {
@@ -644,7 +644,7 @@ namespace Maquette
             List<ALBUMS> albumsNonEmpruntés = new List<ALBUMS>();
             foreach (ALBUMS al in albums)
             {
-                var emprunts = GetEmpruntsSelonAlbum(al.CODE_ALBUM);
+                var emprunts = GetEmpruntsSelonAlbum(al);
 
                 if (emprunts.Count > 0)
                 {

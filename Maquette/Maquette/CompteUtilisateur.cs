@@ -26,7 +26,7 @@ namespace Maquette
             labelNom.Text = a.NOM_ABONNÉ;
             labelPrénom.Text = a.PRÉNOM_ABONNÉ;
             labelLogin.Text = a.LOGIN_ABONNÉ;
-            List<PAYS> pays = Musique.PAYS.ToList();
+            List<PAYS> pays = GetPays();
             foreach(PAYS p in pays)
             {
                 comboPays.Items.Add(p);
